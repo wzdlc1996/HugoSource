@@ -31,7 +31,7 @@ pygmentsuseclasses = true
   [[menu.main]]
     name                   = "Linux"
     weight                 = -110
-    identifier             = "linux"
+    identifier             = "Linux"
     url                    = "linux/"
 
 
