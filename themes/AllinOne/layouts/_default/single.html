@@ -1,0 +1,86 @@
+
+{{ define "main" }}
+  <!-- Main layout -->
+  <main class="post-main-wrapper">
+    
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+
+      {{ if .Params.toc }}
+      <div class="col-md-10">
+      {{ else }}
+      <div class="container pr-5">
+      {{ end }}
+
+        <!-- Spied element -->
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          {{ partial "post-header.html" . }}
+
+
+          <div class="post-content markdown">
+            {{ .Content }}
+          </div>
+
+          <!-- Tags -->
+          <div class="row">
+            <div class="col-md-8">
+            {{ if .Params.tags }}
+              <div class="mb-5">
+                {{ partial "tags.html" . }}
+              </div>
+            {{ end }}
+            </div>
+            <!-- <div class="col-md-4">
+              <ul class="ul-x post-meta mb-5">
+                <li><a href="{{ .Type | relLangURL }}"><i class="fas fa-long-arrow-alt-right pr-2"></i>{{ i18n "return" }}</a></li>
+              </ul>
+            </div> -->
+          </div>
+          <!-- /.Tags -->
+
+          <!-- Prev & Next -->
+          <div class="row pt-3">
+            <div class="col-md-6">
+              {{ if .PrevInSection }}
+                <a href={{ .PrevInSection.Permalink }} class="post-meta">{{ i18n "previousPost" }}
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>{{ .PrevInSection.Title }}</span>
+                  </div>
+                </a>
+              {{ end }}
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              {{ if .NextInSection }}
+                <a href={{ .NextInSection.Permalink }} class="post-meta">{{ i18n "nextPost" }}
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>{{ .NextInSection.Title }}</span>
+                  </div>
+                </a>
+              {{ end }}
+            </div>
+          </div>
+
+          <!-- /.Prev & Next -->
+
+        </div>
+        <!-- /.Spied element -->
+
+      </div>
+      <!-- /.Grid column -->
+
+      {{ partial "toc.html" . }}
+
+    </div>
+    <!-- /.Grid row -->
+
+
+  </main>
+  <!-- /.Main layout -->
+
+{{ end }}

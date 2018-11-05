@@ -1,0 +1,75 @@
+baseURL                   = "https://wzdlc1996.github.io"
+builddrafts                = false
+languageCode               = "zh_Hans"
+canonifyurls               = true
+contentdir                 = "content"
+layoutdir                  = "layouts"
+publishdir                 = "public"
+enableEmoji                = true
+hasCJKLanguage             = true
+summaryLength              = 200
+Paginate                   = 3
+
+theme                      = "AllinOne"
+title                      = "Leonard"
+
+pygmentsuseclasses = true
+
+
+
+[permalinks]
+  blog                     = "blog/:year-:month/:slug/"
+
+
+[taxonomies]
+  tag                      = "tags"
+  series                   = "series"
+  category                 = "categories"
+
+
+[menu]
+  [[menu.main]]
+    name                   = "Linux"
+    weight                 = -110
+    identifier             = "linux"
+    url                    = "linux/"
+
+
+
+[params]
+    faviconfile              = "img/cat.png"               # from static/
+    avatar                   = "img/profile.jpg"             # path to image in static dir e.g img/avatar.png
+    author                   = "Leonard"
+    description              = ["It is a great day!", "", "A little site of Wang Zhenduo"]           # appears in the site header when set to a non-empty string
+    welcome_head             = "Hello, World!"
+    welcome_word             = "~ No Day But Today ~"
+
+    latestpostscount         = 5                             # how many posts to display on the home page
+    bloggroupby              = 'month'
+#    dateform                 = "Jan 2, 2006"
+#    dateformfull             = "2006-01-02  Monday  15:04:05"
+    noshowreadtime           = false                         # if true, don't show "<x> minutes read" in posts
+
+    # slides
+    slidesDirPath            = "themes/AllinOne/static/img/header-slides"    # path to image in local dir (path for hugo)
+    slidesDirPathURL         = "img/header-slides"    # path to image in static dir (for static pages)
+
+    # highlighting
+    highlightjs              = true
+
+    # latex
+    katex                    = true
+
+    # links
+    email                    = "wzdlc1996@email.com"
+    github                   = "http://github.com/wzdlc1996"
+#    linkedin                 = "//linkedin.com/in/you"
+#    facebook                 = "//facebook.com/you"
+#    googleplus               = "//google.com/you"
+#    twitter                  = "//twitter.com/you"
+#    px500                    = "//px500"
+#    instagram                = "//instagram.com/you"
+    include_rss              = true                          # include RSS <link> tag in <head> and show RSS icon
+
+    # analytics
+    googleAnalytics = "UA-128644147-1"
