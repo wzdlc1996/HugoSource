@@ -80,4 +80,47 @@
   {{ end }}
 
 
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+      MathJax.Hub.Config(
+      {
+          tex2jax: {
+          inlineMath: [['$','$'],['\\(','\\)']],
+          displayMath: [['$$','$$']],
+          processEscapes: true,
+          processEnvironments: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        },
+          TeX: {
+            extensions: ["autobold.js"],
+            Macros:{
+               bm: ["{\\boldsymbol #1}",1],
+               flo: ["\\overset {\\cdot} {#1}",1],
+               td: ["\\text{d}"],
+               ti: ["\\text{i}"],
+               bra: ["{\\langle #1 |}",1],
+               ket: ["{| #1 \\rangle}",1],
+               degree: ["{^\{\\circ\}}",0],
+               indent:["\\ \\ \\ \\",0],
+               rhat: ["\\overset {\\rightarrow} {#1}",1],
+               lhat: ["\\overset {\\leftarrow} {#1}",1],
+               lrhat: ["\\overset {\\leftrightarrow} {#1}",1]}
+            }
+      });
+  /*  MathJax.Hub.Queue(function() {
+      // Fix <code> tags after MathJax finishes running. This is a
+      // hack to overcome a shortcoming of Markdown. Discussion at
+      // https://github.com/mojombo/jekyll/issues/199
+      var all = MathJax.Hub.getAllJax();
+      for(i = 0; i < all.length; i += 1){
+          all[i].SourceElement().parentNode.className += 'has-jax';
+      }}
+  );*/
+</script>
+
 </head>

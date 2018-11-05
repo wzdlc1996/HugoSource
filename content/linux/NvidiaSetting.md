@@ -80,3 +80,85 @@ PRIME relies on `vidia-drm` , one need to creat a new file:
 
 options nvidia_drm modeset = 1
 ```
+
+### Step 5. Make dGPU as primary
+
+First for other distribution but manjaro, user need to edit the file `/etc/X11/xorg.conf` , if X.Org and X server version `1.17.2+`
+
+```shell
+#/etc/X11/xorg.conf
+
+Section "Module"
+    Load "modesetting"
+EndSection
+
+Section "Device"
+    Identifier "nvidia"
+    Driver "nvidia"
+    BusID "PCI"
+    Option "AllowEmptyInitialConfiguration"
+EndSection
+```
+
+Next, add the following two lines to the beginning of your `~/.xinitrc` :
+
+```shell
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+```
+
+However, if user is using a `display manager` , then he should create or edit a display setup script for his DM instead of using `~/.xinitrc` , this is different among main DMs, for the most three popular: (We assume user has stored the command above in a .sh file as optimus.sh and adjusted the permission)
+
+1. `LightDM`
+    Edit the file `/etc/lightdm/lightdm.conf` :
+
+    ```shell
+    [Seat:*]
+    display-setup-script = optimus.sh
+    ```
+
+2. `GDM`
+    GDM is the defult display manager of Gnome 3 . one should create two new .desktop files:
+
+    ```shell
+    #/usr/share/gdm/greeter/autostart/optimus.desktop
+    #/etc/xdg/autostart/optimus.desktop
+
+    [Desktop Entry]
+    Type=Application
+    Name=Optimus
+    Exec=sh -c "xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto"
+    NoDisplay=true
+    X-GNOME-Autostart-Phase=DisplayServer
+    ```
+
+    Or user can create one and link those two by command `ln -s`
+
+3. `SDDM`
+    SDDM is the default display manager of KDE . one should write those two command to file `/usr/share/sddm/script/Xsetup` like:
+
+    ```shell
+    #/usr/share/sddm/scripts/Xsetup
+
+    xrandr --setprovideroutputsource modesetting NVIDIA-0
+    xrandr --auto
+    ```
+
+### Step 6. Reboot
+
+If everything is set correctly, when user reboot, DM will load and he can log in. And:
+
+```shell
+$ glxinfo | grep -i vendor
+server glx vendor string: NVIDIA Corporation
+client glx vendor string: NVIDIA Corporation
+OpenGL vendor string: NVIDIA Corporation
+```
+
+
+<hr>
+
+### References
+1. [PRIME - ArchWiki](https://wiki.archlinux.org/index.php/PRIME)
+2. [NVIDIA Optimus - Arch Wiki](https://wiki.archlinux.org/index.php/NVIDIA_Optimus)
+3. [[HowTo] Set up PRIME on Manjaro](https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225)

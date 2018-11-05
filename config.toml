@@ -12,7 +12,6 @@ Paginate                   = 3
 
 theme                      = "AllinOne"
 title                      = "Leonard"
-
 pygmentsuseclasses = true
 
 
@@ -33,6 +32,11 @@ pygmentsuseclasses = true
     weight                 = -110
     identifier             = "Linux"
     url                    = "linux/"
+  [[menu.main]]
+    name                   = "Physics"
+    weight                 = -110
+    identifier             = "Physics"
+    url                    = "physics/"
 
 
 
@@ -58,7 +62,7 @@ pygmentsuseclasses = true
     highlightjs              = true
 
     # latex
-    katex                    = true
+    katex                    = false
 
     # links
     email                    = "wzdlc1996@email.com"
