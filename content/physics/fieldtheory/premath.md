@@ -89,10 +89,15 @@ For `$(m,n)$` type tensor `$T$` , it is the multilinear map:
 
 Here, we use `$\mathcal{M}$` to note the vector space and `$\mathcal{M}^* $` to note the dual-vector space. The Minkowski spacetime is also a vector space `$\mathcal{M}$` describing the space-time coordinates. <br>
 In a reference, one can write the tensor `$T$` as a quantity with `$4(m+n)$` indices:
+
 <div>$$T \sim T_{\mu_1,\cdots,\mu_m}^{\indent \indent \indent \indent \nu_1,\cdots,\nu_n} \ \ \ \mu_p,\nu_q \in \{0,1,2,3\}$$</div>
+
 And:
+
 <div>$$T(v_1,v_2,\cdots,v_m,u_1,\cdots,u_n) = T_{\mu_1,\cdots,\mu_m}^{\indent \indent \indent  \indent \nu_1,\cdots,\nu_n} (v_1)^{\mu_1}(v_2)^{\mu_2}\cdots (v_m)^{\mu_m} (u_1)_{\nu_1}\cdots (u_n)_{\nu_n}$$</div>
+
 Then the transformation of the tensor shall be:
+
 <div>$$(T')_{\mu_1,\cdots,\mu_m}^{\indent \indent \indent  \indent \nu_1,\cdots,\nu_n} = T_{\alpha_1,\cdots,\alpha_m}^{\indent \indent \indent \indent \beta_1,\cdots,\beta_n} \Lambda_{\mu_1}^{\indent \alpha_1}\cdots
 \Lambda_{\mu_m}^{\indent \alpha_m} \Lambda^{\nu_1}_{\indent \beta_1}\cdots \Lambda^{\nu_n}_{\indent \beta_n}$$</div>
 
