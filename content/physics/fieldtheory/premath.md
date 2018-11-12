@@ -145,6 +145,8 @@ They satisfy the commutation relation as:
 [K^i,K^j] &= -\ti \epsilon^{ijk} L^k
 \end{aligned}$$</div>
 
+where \(\epsilon^{ijk}\) is the covariant `Levi-Civita` simbol. Which equals `$1$` if `$ijk$` are even permutation of `$123$` , and `$-1$` for odd ones. And vanishes for otherwise.
+
 {{% fold "Proof" %}}
 
 Let us begin with the infinitesimal Lorentz Transformation in vector representation. Let `$J^{\mu\nu}$` be the generators. For
@@ -173,7 +175,11 @@ One can choose these matrix arbitarily. One of those is:
 
 The commutation relation are invariant among the representation. They are:
 
-<div>$$([J^{\alpha\beta},J^{\lambda\delta}])^{\mu}_{\indent \nu} =`$$</div>
+<div>$$([J^{\alpha\beta},J^{\gamma\delta}])_{\mu \nu} =\ti\Big\{\delta^{\delta}_{\alpha}(J^{\beta\gamma})+\delta^{\alpha}_{\gamma}(J^{\delta\beta})+\delta^{\beta}_{\delta}(J^{\gamma\alpha})+\delta_{\beta}^{\gamma}(J^{\alpha\delta}) \Big\}_{\mu\nu}$$</div>
+
+By the simple property:
+
+<div>$$([J^{\alpha\beta},J^{\gamma\delta}])_{\mu\nu} = \sum_\lambda (J^{\alpha\beta})_{\mu\lambda}(J^{\gamma\delta})_{\lambda\nu} - J^{\gamma\delta})_{\mu\lambda}(J^{\alpha\beta})_{\lambda\nu} = \sum_{\lambda}(J^{\alpha\beta})_{\mu\lambda}(J^{\gamma\delta})_{\lambda\nu} - (\mu\leftrightarrow \nu)$$</div>
 
 {{% /fold %}}
 
@@ -238,7 +244,7 @@ Where `$\epsilon = \ti \sigma^2$` , is invariant under Lorentz Transformation.
 
 {{% fold "Proof" %}}
 
-consider the Lorentz Transformation with parameter \(\bm{\theta},\bm{\eta}\) , then we have:
+consider the Lorentz Transformation with parameter `$\bm{\theta},\bm{\eta}$` , then we have:
 
 <div>$$a_l \rightarrow \Lambda_L a_l \ \ b_l \rightarrow \Lambda_L b_l$$</div>
 Where `$\Lambda_L = \exp\big(-\frac {\ti} 2 \sum_i \sigma^i (\theta^i - \ti \eta^i) \big) $` .
@@ -282,5 +288,47 @@ Then:
 
 Which means the quadratic form is indeed invariant.
 
+
+{{% /fold %}}
+
+
+
+#### Vectors
+_[Theorem]_ : For any left-handed Weyl spionor $a_l$ and right-handed Weyl spinor $b_r$ , Let `$\bar{\sigma}^{\mu}=\sigma_{\mu}=\eta_{\mu\nu}\sigma^{\nu}$` , one can construct some quantities with 4-components:
+
+<div>$$\begin{aligned}
+a^{\mu} &= a_l^{\dagger}\bar{\sigma}^{\mu}a_l \\
+b^{\mu} &= b_r^{\dagger}\sigma^{\mu}b_r
+\end{aligned}$$</div>
+
+Are `vectors` . Namely, they transformed by the (4-)vector-rep. of Lorentz group under Lorentz Transformation.
+
+{{% fold "Proof" %}}
+
+Same as our discussion in `Scalar` section, we have:
+
+<div>$$\Lambda_L = z_{\mu}\sigma^{\mu}$$</div>
+
+with `$z_0^2-z_1^2-z_2^2-z_3^2 = 1$` . Then for `$a_l \rightarrow \Lambda_L a_l$` , one have:
+
+<div>$$a^{\mu}\rightarrow a_l^{\dagger} \Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L a_l $$</div>
+
+For the completion of Pauli matrices in 4x4 Hermitian matrices space:
+
+<div>$$\begin{aligned}[]
+\Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L &= \eta_{\mu\nu} z_{\alpha}^{*}z_{\beta} \sigma^{\alpha}\sigma^{\nu}\sigma^{\beta} \\
+&= \Lambda^{\mu}_{\indent \nu} \bar{\sigma}^{\nu}
+\end{aligned}$$</div>
+
+By the inner-product of Pauli matrices:
+
+<div>$$(\sigma^\alpha,\sigma^\beta) \equiv \frac 1 2 \text{Tr}(\sigma^\alpha\sigma^\beta) = \delta^\alpha_\beta $$</div>
+
+Then we have:
+
+<div>$$\begin{aligned}
+\Lambda^{\mu}_{\indent \nu} &= \frac 1 2 \text{Tr}(\Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L\bar{\sigma}^{\nu}) \\
+&= \frac 1 2 \eta_{\mu\lambda}\eta_{\nu\delta}z_{\alpha}^{*}z_{\beta} \text{Tr}\sigma^\alpha\sigma^\lambda\sigma^\beta\sigma^\delta
+\end{aligned}$$</div>
 
 {{% /fold %}}

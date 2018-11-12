@@ -42,9 +42,9 @@ pygmentsuseclasses = true
 
 [params]
     faviconfile              = "img/cat.png"               # from static/
-    avatar                   = "img/profile.jpg"             # path to image in static dir e.g img/avatar.png
+    avatar                   = "img/white_cat.png"             # path to image in static dir e.g img/avatar.png
     author                   = "Leonard"
-    description              = ["It is a great day!", "", "A little site of Wang Zhenduo"]           # appears in the site header when set to a non-empty string
+    description              = ["Maybe some day I will know what I want", "", "A little site of Leonard, a physics worker"]           # appears in the site header when set to a non-empty string
     welcome_head             = "Hello, World!"
     welcome_word             = "~ No Day But Today ~"
 
@@ -55,7 +55,7 @@ pygmentsuseclasses = true
     noshowreadtime           = false                         # if true, don't show "<x> minutes read" in posts
 
     # slides
-    slidesDirPath            = "themes/AllinOne/static/img/header-slides"    # path to image in local dir (path for hugo)
+    slidesDirPath            = "static/img/header-slides"    # path to image in local dir (path for hugo)
     slidesDirPathURL         = "img/header-slides"    # path to image in static dir (for static pages)
 
     # highlighting
