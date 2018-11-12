@@ -3,7 +3,7 @@ title: "Preliminary Mathematics"
 date: 2018-11-05T15:45:57+08:00
 draft: false
 tags: ["Physics", "Math"]
-series: ["Field Theory"]
+series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true
 ---

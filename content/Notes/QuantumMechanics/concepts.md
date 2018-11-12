@@ -1,9 +1,9 @@
 ---
-title: "Concepts"
+title: "Basic Concepts of Quantum Mechanics"
 date: 2018-11-12T11:36:42+08:00
-draft: true
+draft: false
 tags: ["Physics", "Math"]
-series: ["Quantum Mechanics"]
+series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
 ---
@@ -135,9 +135,9 @@ Then we proved the theorem.
 
 Or one can rewrite it in Dirac notation: `$\bra{\hat O^{\dagger}\psi}=\bra{\psi}\hat O$`. <br>
 The `adjoint` operation has the following properties:
-1. `self-identical` : `$(\hat O^{\dagger})^{\dagger} = \hat O$` </li>
-2. `$(\lambda \hat O)^{\dagger}=\lambda^* \hat O^{\dagger} \ \ \ , \ \ (\hat A \hat B)^{\dagger}=\hat B^{\dagger}\hat A^{\dagger}$`</li>
-3. Any operator is the sum of its Hermitian & anti-Hermitian part: `$\hat O = (\hat O +\hat O^{\dagger})/2 +(\hat O -\hat O^{\dagger})/2$`</li>
+1. `self-identical` : `$(\hat O^{\dagger})^{\dagger} = \hat O$` 
+2. `$(\lambda \hat O)^{\dagger}=\lambda^* \hat O^{\dagger} \ \ \ , \ \ (\hat A \hat B)^{\dagger}=\hat B^{\dagger}\hat A^{\dagger}$`
+3. Any operator is the sum of its Hermitian & anti-Hermitian part: `$\hat O = (\hat O +\hat O^{\dagger})/2 +(\hat O -\hat O^{\dagger})/2$`
 
 <em>[Definition]</em> : `Matrix representation` . Under a complete basis, any kets can be represented as a vector, and the operator can be represented as a matrix:
 
@@ -151,8 +151,8 @@ The `adjoint` operation has the following properties:
 <div>$$\text{Tr} \hat O =\sum_n \bra{n} \hat O \ket{n}$$</div>
 
 in which the `$n$` is a `complete orthonormal basis` .
-1. The result of trace is `independent` of the choice of basis</li>
-2. Trace has the cyclic property: `$\text{Tr}(\hat A \hat B\hat C)=\text{Tr}(\hat C \hat A \hat B)=\text{Tr}(\hat B \hat C \hat A)$`</li>
+1. The result of trace is `independent` of the choice of basis
+2. Trace has the cyclic property: `$\text{Tr}(\hat A \hat B\hat C)=\text{Tr}(\hat C \hat A \hat B)=\text{Tr}(\hat B \hat C \hat A)$`
 <br>
 <em>[Defnition]</em> : `Eigenvalue` `$\lambda$` and coresponding `eigen-state` of operator `$\hat O$` defined by :
 
@@ -364,9 +364,9 @@ The last equality is simple to prove.
 Density matrix of a pure state: `$\hat \rho = \ket{\psi}\bra{\psi}$` , where `$\ket{\psi}\in \mathcal{H}_a\otimes\mathcal{H}_b$` is a normalized pure state,
 has some special properties:
 
-1. `Entanglement Entropy` : defined as the von Neumann Entropy of reduced density matrix: `$S_a=-\text{Tr}(\hat \rho_a\log\hat \rho_a) , \hat \rho_a = \text{Tr}_b\hat \rho$` </li>
-2. The degrees of freedom of `$a,b$` are entangled in this state if `$S_a \gt 0$` </li>
-3. The state `$\ket{\psi}$` is `disentangled`, <mark>IFF</mark> `$\ket{\psi}=\ket{\psi_a}\otimes \ket{\phi_b}$` , <mark>IFF</mark> `$S_a=0$` </li>
+1. `Entanglement Entropy` : defined as the von Neumann Entropy of reduced density matrix: `$S_a=-\text{Tr}(\hat \rho_a\log\hat \rho_a) , \hat \rho_a = \text{Tr}_b\hat \rho$`
+2. The degrees of freedom of `$a,b$` are entangled in this state if `$S_a \gt 0$`
+3. The state `$\ket{\psi}$` is `disentangled`, <mark>IFF</mark> `$\ket{\psi}=\ket{\psi_a}\otimes \ket{\phi_b}$` , <mark>IFF</mark> `$S_a=0$`
 4. `Schmidt decomposition` :
 
     <div>$$\ket{\psi}=\sum_i \lambda_i \ket{\phi_i}\otimes \ket{\varphi_i}$$</div>

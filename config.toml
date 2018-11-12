@@ -12,7 +12,7 @@ Paginate                   = 3
 
 theme                      = "AllinOne"
 title                      = "Leonard"
-pygmentsuseclasses = true
+pygmentsuseclasses         = true
 
 
 
@@ -28,15 +28,10 @@ pygmentsuseclasses = true
 
 [menu]
   [[menu.main]]
-    name                   = "Linux"
-    weight                 = -110
-    identifier             = "Linux"
-    url                    = "linux/"
-  [[menu.main]]
-    name                   = "Physics"
-    weight                 = -110
-    identifier             = "Physics"
-    url                    = "physics/"
+    name                   = "Notes"
+    #weight                 = -110
+    identifier             = "Notes"
+    url                    = "notes/"
 
 
 
