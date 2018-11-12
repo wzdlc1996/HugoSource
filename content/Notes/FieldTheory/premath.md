@@ -71,7 +71,7 @@ In Special Relativity, Lorentz transformation describes the coordinate transform
 </ol>
 With `Proper Orthochronous` (`Restricted Lorentz Group`) noted as`$\text{SO}^+(1,3)$`, we can construct the Lorentz Group`$\text{O}(1,3)$`as:
 
-<div>$$\\{ 1,P,T,PT \\} \text{SO}^+(1,3) = \text{O}(1,3)$$</div>
+<div>$$\{ 1,P,T,PT \} \text{SO}^+(1,3) = \text{O}(1,3)$$</div>
 
 Where`$P=(+,-,-,-)$`is the space inversion and`$T=(-,+,+,+)$`is the time reversal. They also induce those 4 (not connected)components of`$\text{O}(1,3)$`. <mark>These 4 components are connected (but not simply connected)</mark>
 
@@ -125,7 +125,7 @@ Where `$J^{\mu\nu} = -J^{\nu\mu}$` are generators, and `$\omega_{\mu\nu}=-\omega
 With the following notations:
 
 <div>$$\begin{aligned}
-\theta^i &= \frac 1 2 \epsilon^{ijk}\omega^{jk} \ ; \ L^i = \frac 1 2 \epsilon^{ijk}J^{jk} \\
+\theta^i &= \frac 1 2 \sum_{jk} \epsilon^{ijk}\omega^{jk} \ ; \ L^i = \frac 1 2 \sum_{jk} \epsilon^{ijk}J^{jk} \\
 \eta^i &= \omega_{0,i} \ ; \ K^i = J^{0,i}
 \end{aligned}$$</div>
 
@@ -145,7 +145,9 @@ They satisfy the commutation relation as:
 [K^i,K^j] &= -\ti \epsilon^{ijk} L^k
 \end{aligned}$$</div>
 
-where \(\epsilon^{ijk}\) is the covariant `Levi-Civita` simbol. Which equals `$1$` if `$ijk$` are even permutation of `$123$` , and `$-1$` for odd ones. And vanishes for otherwise.
+summation of $k$ is over $\{1,2,3\}$
+
+where $\epsilon^{ijk}$ is the covariant `Levi-Civita` simbol. Which equals `$1$` if `$ijk$` are even permutation of `$123$` , and `$-1$` for odd ones. And vanishes for otherwise.
 
 {{% fold "Proof" %}}
 
@@ -182,6 +184,35 @@ By the simple property:
 <div>$$([J^{\alpha\beta},J^{\gamma\delta}])_{\mu\nu} = \sum_\lambda (J^{\alpha\beta})_{\mu\lambda}(J^{\gamma\delta})_{\lambda\nu} - J^{\gamma\delta})_{\mu\lambda}(J^{\alpha\beta})_{\lambda\nu} = \sum_{\lambda}(J^{\alpha\beta})_{\mu\lambda}(J^{\gamma\delta})_{\lambda\nu} - (\mu\leftrightarrow \nu)$$</div>
 
 {{% /fold %}}
+
+Here we write down all matrix form of these generators in vector representation, the simbol $\sim$ means that the right-hand-side matrix is the matrix of left-hand-side `$A$` 's elements `$A^{\mu}_{\indent \nu}$`
+
+{{%fold "Matrix Form"%}}
+
+<div>$$\begin{aligned}
+J^{01}&=-J^{10}\sim \ti \begin{bmatrix}0&1&0&0\\ 1&0&0&0\\ 0&0&0&0 \\ 0&0&0&0  \end{bmatrix} \ ; \
+J^{02}=-J^{20}\sim \ti \begin{bmatrix}0&0&1&0\\ 0&0&0&0\\ 1&0&0&0\\ 0&0&0&0 \end{bmatrix} \ ; \
+J^{03}=-J^{30}\sim \ti \begin{bmatrix} 0&0&0&1\\ 0&0&0&0\\ 0&0&0&0\\ 1&0&0&0 \end{bmatrix} \\
+J^{12}&=-J^{21}\sim\ti \begin{bmatrix}0&0&0&0\\ 0&0&-1&0\\ 0&1&0&0\\ 0&0&0&0 \end{bmatrix} \ ; \
+J^{23}=-J^{32}\sim\ti\begin{bmatrix}0&0&0&0\\ 0&0&0&0\\ 0&0&0&-1\\ 0&0&1&0 \end{bmatrix} \ ; \
+J^{31}=J^{-31}\sim\ti \begin{bmatrix}0&0&0&0\\ 0&0&0&1\\ 0&0&0&0\\ 0&-1&0&0 \end{bmatrix}
+\end{aligned}$$</div>
+
+And for `$\bm{L},\bm{K}$` :
+
+<div>
+$$\begin{aligned}
+L^1&\sim \ti \begin{bmatrix}0&0&0&0\\ 0&0&0&0\\ 0&0&0& -1\\ 0&0&1&0 \end{bmatrix} \ ; \
+L^2\sim\ti \begin{bmatrix}0&0&0&0\\ 0&0&0&1\\ 0&0&0&0\\ 0&-1&0&0 \end{bmatrix} \ ; \
+L^3\sim\ti \begin{bmatrix}0&0&0&0\\ 0&0&-1&0\\ 0&1&0&0\\ 0&0&0&0 \end{bmatrix} \\
+K^2&\sim\ti\begin{bmatrix}0&1&0&0\\ 1&0&0&0\\ 0&0&0&0 \\ 0&0&0&0  \end{bmatrix} \ ; \
+K^2\sim\ti \begin{bmatrix}0&0&1&0\\ 0&0&0&0\\ 1&0&0&0\\ 0&0&0&0 \end{bmatrix} \ ; \
+K^3\sim \ti \begin{bmatrix} 0&0&0&1\\ 0&0&0&0\\ 0&0&0&0\\ 1&0&0&0 \end{bmatrix}
+\end{aligned}$$
+</div>
+
+{{%/fold%}}
+
 
 #### Weyl Spinor Representation
 
@@ -223,6 +254,45 @@ Using the `covariance` form of `Pauli Matrices` :
 We can write the matrix representation of Lorentz Group by spinor basis:
 
 <div>$$\Lambda_L = \exp\big(-\frac {\ti} 2 \sum_{i=1}^3 \sigma^i (\bm{\theta}-\ti \bm{\eta})^i \big) \ , \ \Lambda_R = \exp\big(-\frac {\ti} 2 \sum_{i=1}^3 \sigma^i (\bm{\theta}+\ti \bm{\eta})^i \big)$$</div>
+
+#### Parity-Transformation
+
+<em>[Definition]</em> : `Parity-Transformation` is the Spatial reflection transformation.
+
+In Minkowski space-time, we have the matrix form of the Parity-Transformation:
+
+<div>$$\begin{aligned}
+P_1 &\sim \text{diag}(1,1,-1,-1) \\
+P_2 &\sim \text{diag}(1,-1,1,-1) \\
+P_3 &\sim \text{diag}(1,-1,-1,1)\end{aligned}$$</div>
+
+It is obviously that `$P_i^2=I$` . That means they are self-identity.
+
+The question is: when a Parity-Transformation is operated on the space-time, what will happen on the Lorentz Transformation of these elements(vectors and spinors)
+
+Because we know the matrix form of Parity-Transformation of 4-vectors, we will begin with them. Vectors transforms as:
+
+<div>$$v^{\mu} \rightarrow \Lambda(\omega)^{\mu}_{\indent \nu} v^{\nu}$$</div>
+
+Then under Parity transformation it shall be :
+
+<div>$$P_i v^{\mu} \rightarrow P_i \Lambda(\omega)^{\mu}_{\indent \nu} v^{\nu}= P_i \Lambda(\omega)^{\mu}_{\indent \nu} P_i P_i v^{\nu}$$</div>
+
+That means under Parity Transformation, elements in (Restricted) Lorentz Group shall be transformed by:
+
+<div>$$ \Lambda \rightarrow P_i \Lambda P_i = \Lambda' $$</div>
+
+For the reason that `$\det P_i=1$` , `$\Lambda'$` shall be in the (Restricted) Lorentz Group too. Let `$\Lambda=\Lambda(\bm{\theta},\bm{\eta};\bm{L},\bm{K})$` , then we can derive the transformation of the generators `$\bm{L},\bm{K}$` under Parity Transformation, with parameters `$\bm{\theta},\bm{\eta}$` invariant.
+
+<em>[Theorem]</em> : Under Parity Transformation, we have:
+
+<div>$$P_i\Lambda(\bm{\theta},\bm{\eta};\bm{L},\bm{K}) P_i = \Lambda(\bm{\theta},\bm{\eta};-(P_i)^i_{\indent j}L^j , (P_i)^i_{\indent j}K^j) $$</div>
+
+That means that the 3-vector `$\bm{L}$` transforms like `Pseudovector` and `$\bm{K}$` transforms like `vector`
+
+{{%fold "Proof"%}}
+
+{{%/fold%}}
 
 ### Spinor Space
 
@@ -305,11 +375,11 @@ Are `vectors` . Namely, they transformed by the (4-)vector-rep. of Lorentz group
 
 {{% fold "Proof" %}}
 
-Same as our discussion in `Scalar` section, we have:
+According to the transformation regulation of spinor, we have:
 
-<div>$$\Lambda_L = z_{\mu}\sigma^{\mu}$$</div>
+<div>$$\Lambda_L = \exp\big(-\frac {\ti} 2 \sum_{i=1}^3 \sigma^i (\bm{\theta}-\ti \bm{\eta})^i \big)$$</div>
 
-with `$z_0^2-z_1^2-z_2^2-z_3^2 = 1$` . Then for `$a_l \rightarrow \Lambda_L a_l$` , one have:
+Then for $a_l \rightarrow \Lambda_L a_l$ , one have:
 
 <div>$$a^{\mu}\rightarrow a_l^{\dagger} \Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L a_l $$</div>
 
@@ -317,18 +387,29 @@ For the completion of Pauli matrices in 4x4 Hermitian matrices space:
 
 <div>$$\begin{aligned}[]
 \Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L &= \eta_{\mu\nu} z_{\alpha}^{*}z_{\beta} \sigma^{\alpha}\sigma^{\nu}\sigma^{\beta} \\
-&= \Lambda^{\mu}_{\indent \nu} \bar{\sigma}^{\nu}
+&= \mathcal{L}^{\mu}_{\indent \nu} \bar{\sigma}^{\nu}
 \end{aligned}$$</div>
 
-By the inner-product of Pauli matrices:
+We need to check if `$L^{\mu}_{\indent \nu}$` is the the vector representation of Lorentz Group, which shall be written as:
 
-<div>$$(\sigma^\alpha,\sigma^\beta) \equiv \frac 1 2 \text{Tr}(\sigma^\alpha\sigma^\beta) = \delta^\alpha_\beta $$</div>
+<div>$$\Lambda^{\mu}_{\indent \nu} = \exp(-\frac \ti 2 \omega_{\alpha\beta}J^{\alpha\beta})^{\mu}_{\indent \nu}=\exp\big(-\ti \sum_{i=1}^3 (\theta^i L^i + \eta^i K^i)\big)^{\mu}_{\indent \nu}$$</div>
 
-Then we have:
+We need only to check whether the infinitesimal transformation is consistent or not. Which means that we need to check the following two equalities(generator equalities):
 
 <div>$$\begin{aligned}
-\Lambda^{\mu}_{\indent \nu} &= \frac 1 2 \text{Tr}(\Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L\bar{\sigma}^{\nu}) \\
-&= \frac 1 2 \eta_{\mu\lambda}\eta_{\nu\delta}z_{\alpha}^{*}z_{\beta} \text{Tr}\sigma^\alpha\sigma^\lambda\sigma^\beta\sigma^\delta
+\partial_{\theta^i} \Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L|_{\bm{\eta}=\bm{\theta}=0} &= \partial_{\theta^i} \Lambda^{\mu}_{\indent \nu} \bar{\sigma}^{\nu}|_{\bm{\eta}=\bm{\theta}=0} \\
+\partial_{\eta^i} \Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L|_{\bm{\eta}=\bm{\theta}=0} &= \partial_{\eta^i} \Lambda^{\mu}_{\indent \nu} \bar{\sigma}^{\nu}|_{\bm{\eta}=\bm{\theta}=0}
 \end{aligned}$$</div>
+
+Which is:
+
+<div>$$\begin{aligned}
+\frac \ti 2[\sigma^i,\bar{\sigma}^{\mu}] &= -\ti (L^i)^{\mu}_{\indent \nu}\bar{\sigma}^{\nu} \\
+-\frac 1 2\{\sigma^i,\bar{\sigma}^{\mu}\} &= -\ti (K^i)^{\mu}_{\indent \nu}\bar{\sigma}^{\nu}
+\end{aligned}$$</div>
+
+By the matrix form of `$\bm{L},\bm{K}$` we can check these equalities
+
+Which is similar for the right-handed Weyl spinor.
 
 {{% /fold %}}
