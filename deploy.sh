@@ -6,8 +6,11 @@ echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 
 git add .
+
 msg="update `date`"
-git commit -m msg
+
+git commit -m "$msg"
+
 git push origin master
 
 # Go To Public folder
