@@ -8,7 +8,7 @@ categories: ["Linux"]
 toc: true
 ---
 
-### Introduction
+# Introduction
 usually, linux has two method to handle the dual-graphic card. The difference between
 them are:
 
@@ -17,7 +17,7 @@ them are:
 |Bumblebee       | Uses dGPU(descrete) only when requested.  Saving power <br> Manjaro default|Some overhead so lower raw performance|
 |PRIME|Uses the dGPU directly , Better performance |dGPU and iGPU(integrated) both powered on constantly <br> need manual configuration|
 
-### Step 1. Remove Bumblebee
+# Step 1. Remove Bumblebee
 
 Usually manjaro can be easily installed choosing the `free drive` mode, but `nouveau`
 is hard to use. And sometimes it make user cannot entry the x-system.
@@ -34,7 +34,7 @@ One can simply remove them using the `mhwd` command in terminal or via `Manjaro 
 In other distribution, the work is the same. User can using their package manager to do it.
 Or more directly, do **NOT** install bumblebee, directly install PRIME after truning off nouveau.
 
-### Step 2. Install Closed-source Driver
+# Step 2. Install Closed-source Driver
 One can follow the following articles to install the driver according to what he use:
 
 - [ATI](https://wiki.archlinux.org/index.php/ATI) to install drivers for ATI/AMD GPUs
@@ -42,7 +42,7 @@ One can follow the following articles to install the driver according to what he
 
 To be careful, user should query which version of the driver is the best for their hardware.
 
-### Step3. Fix MHWD's Configuration
+# Step3. Fix MHWD's Configuration
 this is for Manjaro Linux, for `mhwd` does the sensible thing and puts configuration in place as though the NVIDIA GPU was the only device available.
 Other distribution can jump to Step 4
 
@@ -50,10 +50,10 @@ Other distribution can jump to Step 4
 
     Firstly, remove `/etc/X11/xorg.conf.d/90-mhwd.conf` (notice the su permission) , and replace it with:
     ```shell
-    #/etc/X11/xorg.conf.d/optimus.conf  
+    #/etc/X11/xorg.conf.d/optimus.conf
     Section "Module"
         Load "modesetting"
-    EndSection  
+    EndSection
     Section "Device"
         Identifier "nvidia"
         Driver "nvidia"
@@ -72,7 +72,7 @@ Other distribution can jump to Step 4
     blacklist rivafb
     ```
 
-### Step 4. Enable `nvdia-drm.modeset`
+# Step 4. Enable `nvdia-drm.modeset`
 PRIME relies on `vidia-drm` , one need to creat a new file:
 
 ```shell
@@ -81,7 +81,7 @@ PRIME relies on `vidia-drm` , one need to creat a new file:
 options nvidia_drm modeset = 1
 ```
 
-### Step 5. Make dGPU as primary
+# Step 5. Make dGPU as primary
 
 First for other distribution but manjaro, user need to edit the file `/etc/X11/xorg.conf` , if X.Org and X server version `1.17.2+`
 
@@ -144,7 +144,7 @@ However, if user is using a `display manager` , then he should create or edit a 
     xrandr --auto
     ```
 
-### Step 6. Reboot
+# Step 6. Reboot
 
 If everything is set correctly, when user reboot, DM will load and he can log in. And:
 
@@ -158,7 +158,7 @@ OpenGL vendor string: NVIDIA Corporation
 
 <hr>
 
-### References
+# References
 1. [PRIME - ArchWiki](https://wiki.archlinux.org/index.php/PRIME)
 2. [NVIDIA Optimus - Arch Wiki](https://wiki.archlinux.org/index.php/NVIDIA_Optimus)
 3. [[HowTo] Set up PRIME on Manjaro](https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225)

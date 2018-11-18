@@ -1,16 +1,16 @@
 ---
-title: "Symmetriy in Quantum Mechanics"
+title: "Symmetry in Quantum Mechanics"
 date: 2018-11-12T14:38:46+08:00
 draft: false
-tags: ["Physics", "Math"]
+tags: ["Physics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
 ---
 
-### Basic of Group Theory
+# Basic of Group Theory
 
-#### Definitions
+## Definitions
 
 <em>[Definition]</em> : a `Group` is a set `$G$` with a binary multiplication : `$\circ : G\times G\rightarrow G$` defined. satisfying:
 
@@ -33,7 +33,7 @@ Some concepts about Group are listed following:
 -   `Conjugacy class` : `$f,h\in G$` are conjugate if `$\exists g \in G \Rightarrow gfg^{-1}=h$` <br> all elements conjugate to `$f$` form the `conjugacy class` of `$f$`
 -   `Direct product of groups` : `$G\times H$` is the set of `$(g,h)$` with `$g\in G, h \in H$` , and `$(g',h')\circ(g,h)=(g'g,h'h)\in G\times H$`
 
-#### Representation Theory
+## Representation Theory
 
 <em>[Definition]</em> : `Linear Representation` of group `$G$` on `linear space` `$V$` is a map `$R:G\rightarrow \text{GL}(V)$` :
 
@@ -51,7 +51,7 @@ Where `$gxg^{-1} = -\ti \frac {\td} {\td t} (ge^{\ti t x}g^{-1})|_{t=0}$`
 
 <em>[Definition]</em> : `Reducible representations` : `$\exists W \subset V \Rightarrow (\forall g \in G \Rightarrow R(g)V = V)$` . The contrary concept is `Irreducible representations (irrep.)`
 
-#### Orthogonality Theorem
+## Orthogonality Theorem
 
 <em>[Theorem]</em> : for any two irreps of (finite) group `$G$` , one has:
 
@@ -80,7 +80,7 @@ m&=r \\
 n &= k_i d_i \ \ k_i\in \mathbb{N}
 \end{aligned}$$</div>
 
-#### Projection Operator
+## Projection Operator
 
 Given a possibly reducible representation `$R$` of group `$G$` , and the characters of one irrep `$\chi_{R'}$` , it is possible to build an irrep. `$R'$` on the representation space of `$R$` :
 
@@ -96,9 +96,9 @@ Given a possibly reducible representation `$R$` of group `$G$` , and the charact
 
 3.  If `$R$`  contains irrep `$R'$` , then `$\ket {\tilde{e}_i}$` will span a finite dimensional space <mark>(not all `$\ket{\tilde{e}_i})$` are zero</mark> , then the group `$G$` is represented on this subspace as  <mark>(several copies of)</mark> the irrep `$R'$`
 
-### Conservatin Law & Degeneracy
+# Conservatin Law & Degeneracy
 
-#### Symmetry as Unitary Operator: 1-Particle Hilbert Space
+## Symmetry as Unitary Operator: 1-Particle Hilbert Space
 
 Think of a symmetry group `$G$` acting on the coordinate space, and induces the transformation: `$\bm{x}\rightarrow g\bm{x}$` , This shall induce unitary transformations let:
 
@@ -140,7 +140,7 @@ It is easy to check that:
 
 <div>$$\bm{U}(gh) = \bm{U}(g)\bm{U}(h)$$</div>
 
-#### Symmetry as Unitary Operator: Fock Space
+## Symmetry as Unitary Operator: Fock Space
 
 First of all , we announce an Implicit assumption: <br>
 <mark>The vacuum is invariant under symmetry.</mark> (this shall be carefull to treat!)
@@ -154,7 +154,7 @@ For fermion, on can find that:
 
 <div>$$\prod_i \hat{ge_i}^{\dagger} = \det g \prod_i \hat e_i^{\dagger}$$</div>
 
-#### Symmetry as Unitary Operator: Action on Operators
+## Symmetry as Unitary Operator: Action on Operators
 
 It is similar to the Heisenberg picture. The action of symmetry operation on state can be transfered to the action of operators:
 
@@ -174,7 +174,7 @@ The set of linear operators `$\hat O_i$` can also form a linear representation o
 
 <div>$$\hat {gO_i} = \sum_j \hat {O_j} R(g)_{ji}$$</div>
 
-#### Symmetry Generators as Conserved Observables
+## Symmetry Generators as Conserved Observables
 
 <em>[Theorem]</em> : The Hamiltonian is invariant under the action of `$g$` , which means that:
 
@@ -205,7 +205,7 @@ one have:
 
 {{%/fold%}}
 
-#### Symmetry & Level Degeneracy
+## Symmetry & Level Degeneracy
 
 A symmetry `$g$` satisfies `$[\hat H , \hat g]=0$` , which means that `$g$` does not change energy eigenvalues. <br>
 Degenerate energy eigenstates form a representation space of the symmetry group. Representation of `$g$` is `block diagonalized` in energy eigenbasis. <br>
@@ -218,6 +218,7 @@ Specially, nondegenerate energy eigenstates are 1-dimension representations.
 `usually` implies degeneracy of energy levels.
 
 <em>[Note]</em> :
+
 1.  If `$[\hat X,\hat Y]=\ti z$` is a non-zero c-number, there must be degeneracy. For unitary operator `$e^{\ti \hat X}$` changes eigenvalue of `$\hat Y$` by `$z$` (Landau level)
 
 2.  If `$[\hat X,\hat Y]$` is not a c-number, there may be a non-degeneracy energy level. `IF` the state is vanished by commutators of all order:
@@ -225,9 +226,9 @@ Specially, nondegenerate energy eigenstates are 1-dimension representations.
     <div>$$0=[\hat X,\hat Y]\ket{E} = [\hat X,[\hat X,\hat Y]]\ket{E}=[\hat Y,[\hat X,\hat Y]]\ket{E}=\cdots$$</div>
     (ground state pf electron in hydrogen atom(ignore spin) with angular momentum `$L=0$` , take `$\hat X =\hat L_x, \hat Y=\hat L_y$`)
 
-### Examples of Symmetry
+# Examples of Symmetry
 
-#### Translation
+## Translation
 
 Continuous translation in 1D open space: `$T_a : x\rightarrow x+1$` for all `$a\in\mathbb{R}$` form a group: `$T_aT_{a'}=T_{a+a'}$`, which is `isomorphic` to `$\mathbb{R}$` <br>
 The related unitary operator is:
@@ -237,3 +238,79 @@ The related unitary operator is:
 Or use momentum basis: `$\hat T(a) = \exp^{-\ti a \hat p}$` . <br>
 This shows that the generator of translation is `$\hat p$` . <br>
 The momentum eigenstates `$\ket{p}$` are 1D irreps, for `$\hat T(a)\ket{p} = e^{-\ti a p}\ket{p}$`
+
+## Discrete Translation
+
+Discrete translation(`lattice translation`): `$T: x\rightarrow x+a$` for a constant `$a\neq 0$`. The discrete translation group is the cyclic group generated by `$T$` : `$\{T^n\}$` for all `$n\in \mathbb{Z}$`
+
+1.  The unitary operator is still `$\hat T = \exp(-\ti a \hat p)$`
+2.  There is no associated Lie algebra and conserved observables(discrete group)
+3.  Unitary irreps are `1D` , `$\hat T = e^{\ti \theta}$` with real `$\theta$` mod `$2\pi$`
+4.  Momentum eigenstates `$\ket{p+\frac 2\pi n/a}$` for `$n\in\mathbb{Z}$` belong to the same 1D irrep.
+5.  `Bloch's Theorem` : for system with the above translation symmetry, `$[\hat H,\hat T]=0$` , the m-th energy eigenstate of irrep `$\hat T = e^{-\ti a \hat p}$` will be a superposition of `$\ket{p+nG}$` , `$\ket{E_m,p}=\sum_n u_{mn}\ket{p+nG}$` Where `$n\in\mathbb{Z}$` and `$G=2\pi/a$` (the reciprocal lattice vector)
+    And the `Bloch function` `$u_m(x)=\sum_{n}u_{mn}e^{2\pi \ti n(x/a)}$` is periodic: `$u_m(x+a)=u_m(x)$`
+6.  The `Bloch function` : `$u_m(x)$` (or Fourier coefficients `$u_{mn}$`) and the `crystal momentum` `$p$` in first `Brillouin zone` : `$-\pi/a\leq p \leq \pi/a$` in 1D case, define the eigenstates.
+
+# Selection Rule
+
+## Symmetry Constraints on Matrix Elements
+In general we want to consider the matrix element: `$(f_k)_{ij}=\bra{\phi_i}\hat f_k\ket{\psi_j}$` . Where `$i(j)$` indicates that `$\phi_i(\psi_j)$` is one of the degenerate energy levels of irrep. `$R_{\phi}(R_{\psi})$`
+And `$k$` means that `$\hat f_k$` belongs to a set of operators forming irrep. `$R_f$` .
+Then these matrix elements shall form a tensor product representation `$R_f\otimes R_{\phi}^{*}\otimes R_{\psi}$`
+
+1.  `$\hat f_k$` form a representation, in the sense that `$\hat g \hat f_k \hat g^{-1}=\sum_{k'}\hat f_{k'}R_f(g)_{k'k}$`
+2.  `$R_{\phi}^{*}$` is the conjugate representation of `$R_{\phi}$` , `$R_{\phi}^{*}(g)=[R_{\phi}(g)]^{*}$` it is easy to check it is also a representation. More over:
+    `$\bra{g\phi_i}=\bra{\phi_i}\hat g^{\dagger}=\sum_{i'}R_{\phi}^{*}(g)_{i'i}\bra{\phi_{i'}}$`
+3.  `$(f_k)_{ij}$` form a tensor represetntation in the sense that:
+
+    <div>$$\begin{aligned}
+    (f_k)_{ij}&=\bra{\phi_i}\hat f_k \ket{\psi_j} \equiv \bra{\phi_i}\hat g^{-1}\hat g \hat f_k \hat g^{-1}\hat g \ket{\psi_j} \\
+    &= \sum_{i',j',k'} R_{\phi}^{*}(g)_{i'i}R_f(g)_{k'k}R_{\psi}(g)_{j'j} \bra{\phi_{i'}} \hat f_{k'} \ket{\psi_{j'}} \\
+    &= \sum_{i',j',k'} (f_{k'})_{i'j'} R_f(g)_{k'k}R_{\phi}^{*}(g)_{i'i}R_{\psi}(g)_{j'j}
+    \end{aligned}$$</div>
+
+Sum over `$g$`, by the orthogonality theorem, we have:
+
+<em>[Theorem(Selection Rule)]</em> : the matrix element `$(f_k)_{ij}$` will vanish if the tensor representation `$R_f\otimes R_{\phi}^{*}\otimes R_{\psi}$` , after decomposed into direct sum of irreps, does `NOT` contain trivial representation.
+
+## Examples: Selection Rule
+
+-   `Parity selection rule`
+    Consider group `$\{1,I\}$` generated by spatial inversion `$I$` . It has only two irreps., trivial(even) one and odd representation: `$\{1,-1\}$`
+    -   States & Operators are classified into `parity odd` (u) and `parity even` (g) classes
+    -   Atomic orbitals of even(odd) angular momentum are parity even(odd)
+    -   The matrix element is nonzero only for `$\bra{g}\hat O_g\ket{g'}$` , `$\bra{g}\hat O_u\ket{u}$` , `$\bra{u}\hat O_g\ket{u'}$` , `$\bra{u}\hat O_u\ket{g}$`
+    -   Main contribution to optical transitions (absorption/emission of one photon) is from `$\bra{\phi}\bm{E}\cdot \bm{r}\ket{\psi}$` , the operator is parity odd. So initial and final states should have `opposite parity`
+    -   `Pseudo-vector` : vectors that are even under inversion.
+    -   `Pseudo-scalar` : scalars that are odd under inversion.
+-   `Raman selection rule`
+    absorb a photon of polarization `$\bm{E}_{\text{in}}$` and emit a photon of polarization `$\bm{E}_{\text{out}}$` , the relevant matrix element is `$\bra{\text{final}}(\bm{E}_{\text{out}}\cdot \bm{r})(\bm{E}_{\text{in}\cdot \bm{r}})\ket{\text{initial}}$` .
+    -   If the system have `$C_{4v}$` symmetry, the initial state is of trivial representation `$A_1$` , `$\bm{E}_{\text{in}}$`, `$\bm{E}_{\text{out}}$` are along `$x,y$` directions respectively, then the final state must have the symmetry of function `$xy$` , or `$B_2$` representation.
+
+## Examples: Symmetry-allowed Hamiltonian
+
+In many cases the symmetry of the system is known, but exact Hamiltonian is not. The goal is to write down a Hamiltonian consistent with the symmetry.
+
+-   Then general rule: find out representation `$\hat g$` of all symmetry generators, and demand that `$\hat g^{-1}\hat H \hat g = \hat H$`
+-   For continuous symmetry, `$\hat H$` should commute with all symmetry generators, or carry vanishing symmetry quantum number.
+
+There are some examples:
+
+-   `Translation symmetry`
+    For each monomial of operators, the sum of momenta of the factors must be zero. That means that Hamiltonian can only contain those items like: `$\hat \psi^{\dagger}(p)\hat \psi(p)$` , `$\hat \psi(-p)\hat \psi(p)$` , `$\hat \psi^{\dagger}(p_1)\hat \psi^{\dagger}(p_2)\hat \psi(p_3)\hat \psi(p_1+p_2-p_3)$`
+-   `Point group symmetry`
+    Generally, free particle Hamiltonian can be written as:
+
+    <div>$$\hat H = \int \hat {\bm{\psi}}^{\dagger}(\bm{k}) \bm{H}(\bm{k})\hat {\bm{\psi}}(\bm{k}) \td \bm{k}$$</div>
+
+    Where `$\hat{\bm{\psi}}(\bm{k})$` is a column vector of annihilation operators.
+
+    Under `$g$` there is :
+
+    <div>$$\begin{aligned}
+    \hat{\bm{\psi}}(\bm{k}) &\rightarrow_g R(g) \hat{\bm{\psi}}(g\bm{k}) \\
+    \hat H &\rightarrow_g \int \hat {\bm{\psi}}^{\dagger}(g\bm{k})R(g)^{-1} \bm{H}(\bm{k})R(g)\hat {\bm{\psi}}(\bm{k}) \td \bm{k}
+    \end{aligned}$$</div>
+
+    If `$g$` is symmetry transformation, Hamiltonian should be invariant. Then `$H(g\bm{k})=R(g)^{-1}H(\bm{k})R(g)$`
+    This will be one of the constraints of the Hamiltonian.

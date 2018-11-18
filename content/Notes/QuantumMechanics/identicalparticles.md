@@ -2,13 +2,13 @@
 title: "Identical Particles"
 date: 2018-11-12T13:42:48+08:00
 draft: false
-tags: ["Physics", "Math"]
+tags: ["Physics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
 ---
 
-### Outline
+# Outline
 
 `Fock space` is the direct sum of identical particle Hilbert space for all different particle numbers:
 
@@ -30,9 +30,9 @@ Many-body Hilbert space of fermions and bosons is (Anti-)Symmetrized tensor prod
 
 Second quantization language and some simple many-body wavefunction
 
-### The Fock Space
+# The Fock Space
 
-#### Permutation Group
+## Permutation Group
 
 <em>[Definition]</em> : `permutation` is a map : `$\sigma=\begin{pmatrix}1 & 2 & \cdots & n \\ \sigma(1) & \sigma(2) & \cdots & \sigma(n)\end{pmatrix}\equiv\{j,\sigma(j)\}$` means replacing `$j$` by `$\sigma(j)$` , and `$\sigma(j)\in\{1,2,\cdots,n\}$` <br>
 <em>[Definition]</em> : `Transposition` : `$(i,j)$` means exchange `$i$` and `$j$` while keeping others fixed. <br>
@@ -47,7 +47,7 @@ There are only two 1-d representation of permutation group:
 1.  the trivial one `$R(\sigma)=1$`
 2.  the alternative one `$R(\sigma)=(-1)^{\sigma}$`
 
-#### Traditional Treatment
+## Traditional Treatment
 
 The configuration of `$n$` indentical particles `$x=(\bm{x}_1,\bm{x}_2,\cdots,\bm{x}_n)$` has the same physical picture with all permutations of `$\bm{x}_1,\cdots,\bm{x}_n$` <br>
 This means that `$n$`-body state: `$\psi(x)=\psi(\bm{x}_1,\bm{x}_2,\cdots,\bm{x}_n)$` should be `'invariant'` under permutations of `$\bm{x}_i$` : <br>
@@ -69,7 +69,7 @@ This means that `$n$`-body state: `$\psi(x)=\psi(\bm{x}_1,\bm{x}_2,\cdots,\bm{x}
 -   `Fermions` : correspond to the alternative representation of permutation group, which means pariwise exchage changes the sign of the wavefunction. Half-odd-integer spin particles.
 -   In 2-dimensional space, braiding group instead of permutation group should be considered, there are paticles(anyons) beyond bosons and fermions.
 
-#### The Structure of Many-body Hilbert Space
+## The Structure of Many-body Hilbert Space
 
 <em>[Definition]</em> : `Fock space` : the Hilbert space of identical particles with indefinite particle number, is the `direct sum` of 0-partile & 1-particle & ... Hilbert space:
 
@@ -116,7 +116,7 @@ This means that `$n$`-body state: `$\psi(x)=\psi(\bm{x}_1,\bm{x}_2,\cdots,\bm{x}
 
     <div>$$\sqrt{\det[\langle \psi_i|\psi_j\rangle]}$$</div>
 
-#### Basis of Many-body Hilbert Space
+## Basis of Many-body Hilbert Space
 
 Given a complete orthonormal basis `$\{\ket{j}\}_{j=1}^{J}$` , we can construct the basis of `$\mathcal{H}_n$` :
 
@@ -127,7 +127,7 @@ Given a complete orthonormal basis `$\{\ket{j}\}_{j=1}^{J}$` , we can construct 
     When `$J\leq n$` , there is no many-body state, which is known as `Pauli exclusion` <br>
     These basis are `orthonormal` . And the number of basis (dimension of `$\mathcal{H}_n)$` is `$\begin{pmatrix} J \\ n \end{pmatrix} = \frac {\Gamma(1+J)} {\Gamma(n+1)\Gamma(J-n+1)}$`
 
-#### Occupation Number Rep.
+## Occupation Number Rep.
 
 denote the above basis `$\ket{i_1,i_2,\cdots,i_n}$` as `$\ket{1^{n_1},\cdots,m^{n_m}}$` , where `$n_j$` is the number of appearance of `$i_j$` , For `$n-$`particle state, `$\sum n_i=n$`.
 
@@ -137,9 +137,9 @@ denote the above basis `$\ket{i_1,i_2,\cdots,i_n}$` as `$\ket{1^{n_1},\cdots,m^{
 
 For fermion , `$n_j=0 \text{ or }1$`
 
-### Second Quantization
+# Second Quantization
 
-#### Creation & Annihilation Operators
+## Creation & Annihilation Operators
 
 <em>[Definition]</em> : `Creation operator` is an operator maps vector from `$\mathcal{H}_n$` to one in `$\mathcal{H}_{n+1}$` :
 
@@ -198,7 +198,7 @@ For vacuum, we have:
 
 <em>[Theorem]</em> : `Basis change` : `$\hat \psi^{\dagger} = \sum_i \langle e_i |\psi \rangle \hat {e_i}^{\dagger}$` , sum is over a complete orthonormal basis
 
-#### Some Calculation Tricks
+## Some Calculation Tricks
 
 <em>[Theorem]</em> : for orthonormal basis of creation(annihilation) operators `$\hat e_j^{\dagger}, \hat e_i$` , the commutator:
 
@@ -213,7 +213,7 @@ The proof can be obtained by the following formula:
 
 Where the summation over the sequence `$(i'_1,\cdots,i'_n)$` which is `$(i_1,\cdots,i_n)$` with one appearance of `$j$` replaced by `$i$`
 
-#### The Second Quantization
+## The Second Quantization
 
 <em>[Rule]</em> : `the rule of thumb` , to get a `many-body` Hamiltonian `(defined on the Fock space)` , simply `replace` 1-body wavefunction `$\psi(x),\psi^*(x)$` in the `Energy formula` for product
 states by `$\hat \psi(x), \hat \psi^{\dagger}(x)$` , remove the summations over all particles and need some `normal ordering`
@@ -249,9 +249,9 @@ states by `$\hat \psi(x), \hat \psi^{\dagger}(x)$` , remove the summations over 
 
 {{%/fold%}}
 
-### Special Many-body States
+# Special Many-body States
 
-#### Fermion Product State(Fermi Sea)
+## Fermion Product State(Fermi Sea)
 
 <em>[Definition]</em> : the Fermion Product State is:
 
@@ -283,7 +283,7 @@ And the unitary transformation on occupation number basis is:
 And the factor `$(-1)^{\sum_{j\gt i}n_j}$` is preserve the matrix elements of `$\hat \psi_j , \hat \psi_k^{\dagger}$` for `$j\gt i$`. <br>
 In particular, the new "vacuum" is originally `$\ket{0,\cdots,n_i=1,\cdots,0}$`.
 
-#### Fermion Pairing State(BCS state)
+## Fermion Pairing State(BCS state)
 
 <em>[Definition]</em> : Consider two orthonormal fermion modes `$c_1, c_2$` , teh pairing state is:
 
@@ -317,7 +317,7 @@ By a orthogonal transformation `$\hat c_i^{\dagger} \rightarrow O_{ij}\hat {(c')
 the state becomes `$\propto \exp(\lambda_1 \hat{c'}_1^{\dagger} \hat{c'}_2^{\dagger}+\lambda \hat{c'}_3^{\dagger}\hat {c'}_4^{\dagger}+\cdots)\ket{0}$` . <br>
 Bogoliubov transformations can be defined on `$\hat {c'}_{2i-1}$` & `$\hat {c'}_{2i}$`.
 
-#### Boson Coherent State
+## Boson Coherent State
 
 <em>[Definition]</em> : The coherent state from a single boson mode `$\hat b$` is:
 
@@ -330,7 +330,7 @@ The inner product between two Boson Coherent state is:
 
 <div>$$\langle z'|z\rangle = e^{-(|z|^2+|z'|^2)/2} e^{z(z')^* } $$</div>
 
-#### Boson Pairing State
+## Boson Pairing State
 
 Consider two orthonormal boson modes `$\hat b_1,\hat b_2$` , the boson pairing state is:
 
@@ -352,7 +352,7 @@ The `parent Hamiltonian ` is:
 <div>$$\hat H =\hat \gamma_1^{\dagger}\hat \gamma_1+\hat \gamma_2^{\dagger}\hat \gamma_2$$</div>
 
 
-### The Wick Expansion
+# The Wick Expansion
 
 Let `$\ket{0}$` be the single-particle vacuum , Let `$\hat A_i (i=1,\cdots,2n)$` be a set of single-particle operators, namely linear cominations of annihilation and creation operators, then
 `$\bra{0}\hat A_1\hat A_2\cdots\hat A_{2n}\ket{0}$` is the `Hafnian(Pfaffian)` of matrix `$\bra{0}\hat A_i\hat A_j\ket{0}$` for bosons(fermions) . <br>

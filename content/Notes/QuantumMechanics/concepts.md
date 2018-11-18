@@ -8,7 +8,7 @@ categories: ["Physics"]
 toc: true
 ---
 
-### Outline
+# Outline
 |Terminologies|Explanation|
 |-------------------|-------------------|
 |Hilbert Space: `$\mathcal{H}$` |Linear space equipped with an inner product |
@@ -16,9 +16,9 @@ toc: true
 |"bra" : `$\bra{\psi}$`  |linear functionals defined on `$\mathcal{H}$` : `$\mathcal{H}\rightarrow \mathbb{C}$`  |
 |quantum mechanical operators|linear mappings : `$\mathcal{H}_1\rightarrow \mathcal{H}_2$` |
 
-### The Hilbert Space
+# The Hilbert Space
 
-#### Wavefunction
+## Wavefunction
 
 The Hilbert space `$\mathcal{H}(V)$` defined on a coordinate space `$V$` is a `complex linear space` formed by all
 `normalizable` wavefunction defined on `$V$`. More strictly we should call it `Bogoliubov space`
@@ -47,7 +47,7 @@ The Gram matrix `$G_{i,j}=(\psi_i,\psi_j)$` of a set of wavefunction is Hermitia
 {{%/fold%}}
 
 
-#### Combining Hilbert Spaces
+## Combining Hilbert Spaces
 -   `Direct sum of two Hilbert spaces` : `$\mathcal{H}_1(V_1)\oplus \mathcal{H}_2(V_2)$` <br>
     the wavefunction in the combined Hilbert space is formed by :
 
@@ -99,7 +99,7 @@ corresponds to a wavefunction `$\psi_f$` so that
 
 <div>$$f=\bra{\psi_f} \ \ ,  \ \ f(\phi)=(\psi_f,\phi)$$</div>
 
-#### Complete Orthonormal Basis
+## Complete Orthonormal Basis
 
 <em>[Definition]</em> : A set of kets `$\{\ket{e_i}\}$` called as `Complete orthonormal basis` , IFF for ANY `$\psi\in\mathcal{H}$` , it can be expanded by the basis: `$\ket{\psi}=\sum_i \ket{e_i}\langle e_i | \psi\rangle$`
 
@@ -117,9 +117,9 @@ That is there is a row or column could be vanished though row-line operation on 
 Then we proved the theorem.
 {{%/fold%}}
 
-### Quantum Mechanical Operators
+# Quantum Mechanical Operators
 
-#### Operators
+## Operators
 
 <em>[Definition]</em> : `Linear operators` are linear mappings between two (offen the same) Hilbert spaces:
 
@@ -135,7 +135,7 @@ Then we proved the theorem.
 
 Or one can rewrite it in Dirac notation: `$\bra{\hat O^{\dagger}\psi}=\bra{\psi}\hat O$`. <br>
 The `adjoint` operation has the following properties:
-1. `self-identical` : `$(\hat O^{\dagger})^{\dagger} = \hat O$` 
+1. `self-identical` : `$(\hat O^{\dagger})^{\dagger} = \hat O$`
 2. `$(\lambda \hat O)^{\dagger}=\lambda^* \hat O^{\dagger} \ \ \ , \ \ (\hat A \hat B)^{\dagger}=\hat B^{\dagger}\hat A^{\dagger}$`
 3. Any operator is the sum of its Hermitian & anti-Hermitian part: `$\hat O = (\hat O +\hat O^{\dagger})/2 +(\hat O -\hat O^{\dagger})/2$`
 
@@ -174,7 +174,7 @@ and the diagonal matrix `$\rho$` has diagpnal elements `$\rho_n$`.
 <em>[Definition]</em> : `Unitary operator` : `$(\hat U \phi,\hat U \psi)=(\phi,\psi)$` for arbitrary `$\psi,\phi$`. Or equivalently `$\hat U^{\dagger}\hat U=\hat {1}$` <br>
 <em>[Definition]</em> : `anti-Unitary operator` : it is an anti-linear operator with the property that: `$(\hat U \psi,\hat U \phi)=(\phi,\psi)$` . <br>
 
-#### Abstract Calculations with Operators
+## Abstract Calculations with Operators
 
 <em>[Definition]</em> : Commutator & anti-commutator of two operators: `$[\hat A,\hat B]:=\hat A\hat B - \hat B \hat A \ \  ; \ \ \{\hat A,\hat B\}=\hat A \hat B+\hat B\hat A$` <br>
 For simplicity, we call commutator `$[\hat A,\hat B]$` as `Lie derivative` :`$\mathcal{L}_{\hat A}\hat B$`
@@ -217,7 +217,7 @@ For tensor product, we have:
 
 <div>$$\text{Tr}_{1\otimes 2} \hat A \otimes \hat B=\text{Tr}_1 \hat A\text{Tr}_2 \hat B$$</div>
 
-### Density Matrix
+# Density Matrix
 
 <em>[Definition]</em> : Density matrix of a `normalizad` pure state `$\psi$` is defined as :
 <div>$$\hat \rho_{\psi}=\ket{\psi}\bra{\psi}$$</div>
@@ -238,7 +238,7 @@ This definition is only the generalization through the probability theory, and h
 Expectation value of operator `$\hat O$` on density matrix is `$O=\text{Tr}(\hat O \hat \rho)$` <br>
 If `$\hat \rho_j$` are density matrices , `$\lambda_j\gt 0 , \sum_i \lambda_i =1$` , then `$\sum_j \lambda_j \hat \rho_j$` is also a density matrix
 
-### Entanglement
+# Entanglement
 
 <em>[Definition]</em> : `von Neumann Entropy` is a functional who maps the density matrix to a non-negative number:
 
@@ -359,7 +359,7 @@ The last equality is simple to prove.
 
 {{%/fold%}}
 
-#### Density Matrix of Pure State
+## Density Matrix of Pure State
 
 Density matrix of a pure state: `$\hat \rho = \ket{\psi}\bra{\psi}$` , where `$\ket{\psi}\in \mathcal{H}_a\otimes\mathcal{H}_b$` is a normalized pure state,
 has some special properties:
@@ -413,9 +413,9 @@ has some special properties:
     Proved.
     {{%/fold%}}
 
-### Measurement
+# Measurement
 
-#### Measurement
+## Measurement
 
 Measurement can be done for a Hermition operator `$\hat A$` on a pure or mixed states `$\hat \rho$` <br>
 The outcome of the measurement will be the eigenvalues of `$\hat A$`, and the probability of outcome `$\lambda$` is:
@@ -439,7 +439,7 @@ if eigenvalue-`$\lambda$` eigenstate is unique, this is the familiar statement t
 where `$\hat \rho_{\lambda}$` is the collapsed state,
 That is to say that the original entropy is less than the expectation value of entropy after measurement
 
-#### The Uncertainty Principle
+## The Uncertainty Principle
 
 <em>[Theorem]</em> : For Hermitian `$\hat A, \hat B$` , we have:
 

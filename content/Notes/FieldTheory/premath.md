@@ -8,9 +8,9 @@ categories: ["Physics"]
 toc: true
 ---
 
-### Minkowski Spacetime
+# Minkowski Spacetime
 
-#### The Structure of Minkowski Spacetime
+## The Structure of Minkowski Spacetime
 From now on we will study in `Minkowski spacetime` (non-General Relativity) .
 
 *[Definition]* : `Minkowski spacetime (non-curved)` is a 4-dimension real linear space:
@@ -31,7 +31,7 @@ The `inner product` in Minkowski spacetime is:
 
 <div>$$(x,y) := x^{\mu}y_{\mu} = x_{\mu}y^{\mu} = \eta_{\mu\nu}x^{\mu}y^{\nu}$$</div>
 
-#### Lorentz Transformation
+## Lorentz Transformation
 
 *[Definition]* : `Lorentz Transformation` is a linear transformation which hold the inner product invariant:
 
@@ -75,7 +75,7 @@ With `Proper Orthochronous` (`Restricted Lorentz Group`) noted as`$\text{SO}^+(1
 
 Where`$P=(+,-,-,-)$`is the space inversion and`$T=(-,+,+,+)$`is the time reversal. They also induce those 4 (not connected)components of`$\text{O}(1,3)$`. <mark>These 4 components are connected (but not simply connected)</mark>
 
-#### Scalar, Vector and Tensor
+## Scalar, Vector and Tensor
 
 _[Definition]_ : `Scalars` are some quantities, which is invariant when reference changes.
 
@@ -101,9 +101,9 @@ Then the transformation of the tensor shall be:
 <div>$$(T')_{\mu_1,\cdots,\mu_m}^{\indent \indent \indent  \indent \nu_1,\cdots,\nu_n} = T_{\alpha_1,\cdots,\alpha_m}^{\indent \indent \indent \indent \beta_1,\cdots,\beta_n} \Lambda_{\mu_1}^{\indent \alpha_1}\cdots
 \Lambda_{\mu_m}^{\indent \alpha_m} \Lambda^{\nu_1}_{\indent \beta_1}\cdots \Lambda^{\nu_n}_{\indent \beta_n}$$</div>
 
-### Lorentz group
+# Lorentz group
 
-#### Basic Concept
+## Basic Concept
 
 _[Definition]_ : `Lorentz Group` , or mathematically, `Generalized Orthogonal Group` `$\text{O}(1,3;\mathbb{R})$` , is the `metrix Lie Group` that preserves the quadratic form:
 
@@ -113,7 +113,7 @@ on `$\mathbb{R}^4$` . Which is a `6-D noncompact non-abelian real Lie group, not
 
 _[Definition]_ : `Restricted Lorentz Group` : `$\text{SO}^+(1,3)$`, is the connected component of Lorentz Group which contains the `identity element`
 
-#### Lie Algebra of Restricted Lorentz Group
+## Lie Algebra of Restricted Lorentz Group
 
 _[Definition]_ : `Vector representation` of `$\text{SO}^+(1,3)$` is its representation by `$4\times 4$` real metrix.
 
@@ -122,6 +122,7 @@ _[Theorem]_ : The common form of elements in `$\text{SO}^+(1,3)$` is:
 <div>$$\Lambda = \exp \Big(-\frac {\ti} 2 \omega_{\mu,\nu} J^{\mu,\nu} \Big)$$</div>
 
 Where `$J^{\mu\nu} = -J^{\nu\mu}$` are generators, and `$\omega_{\mu\nu}=-\omega_{\nu\mu}$` are six independent parameters
+
 With the following notations:
 
 <div>$$\begin{aligned}
@@ -214,7 +215,7 @@ K^3\sim \ti \begin{bmatrix} 0&0&0&1\\ 0&0&0&0\\ 0&0&0&0\\ 1&0&0&0 \end{bmatrix}
 {{%/fold%}}
 
 
-#### Weyl Spinor Representation
+## Weyl Spinor Representation
 
 _[Theorem]_ :     With the definition of `$L^i,K^i$` (or for simplicity `$\bm{L},\bm{K}$`) , one can define the new generator:
 
@@ -255,46 +256,68 @@ We can write the matrix representation of Lorentz Group by spinor basis:
 
 <div>$$\Lambda_L = \exp\big(-\frac {\ti} 2 \sum_{i=1}^3 \sigma^i (\bm{\theta}-\ti \bm{\eta})^i \big) \ , \ \Lambda_R = \exp\big(-\frac {\ti} 2 \sum_{i=1}^3 \sigma^i (\bm{\theta}+\ti \bm{\eta})^i \big)$$</div>
 
-#### Parity-Transformation
+## Parity-Transformation
 
-<em>[Definition]</em> : `Parity-Transformation` is the Spatial reflection transformation.
+<em>[Definition]</em> : `Parity-Transformation` is the Spatial inversion transformation.
 
 In Minkowski space-time, we have the matrix form of the Parity-Transformation:
 
-<div>$$\begin{aligned}
-P_1 &\sim \text{diag}(1,1,-1,-1) \\
-P_2 &\sim \text{diag}(1,-1,1,-1) \\
-P_3 &\sim \text{diag}(1,-1,-1,1)\end{aligned}$$</div>
+<div>$$P\sim \text{diag}(1,-1,-1,-1)$$</div>
 
-It is obviously that `$P_i^2=I$` . That means they are self-identity.
+It is obviously that `$P^2=1$` . That means they are self-identity.
 
-The question is: when a Parity-Transformation is operated on the space-time, what will happen on the Lorentz Transformation of these elements(vectors and spinors)
+The question is: when Parity-Transformation is operated on the space-time, what will happen on the Lorentz Transformation of these elements(vectors and spinors)
 
-Because we know the matrix form of Parity-Transformation of 4-vectors, we will begin with them. Vectors transforms as:
+Because we know the matrix form of Parity-Transformation of 4-vectors, we will begin with them.
 
-<div>$$v^{\mu} \rightarrow \Lambda(\omega)^{\mu}_{\indent \nu} v^{\nu}$$</div>
+-   Vectors transform as:
 
-Then under Parity transformation it shall be :
+    <div>$$v^{\mu} \rightarrow \Lambda(\omega)^{\mu}_{\indent \nu} v^{\nu}$$</div>
 
-<div>$$P_i v^{\mu} \rightarrow P_i \Lambda(\omega)^{\mu}_{\indent \nu} v^{\nu}= P_i \Lambda(\omega)^{\mu}_{\indent \nu} P_i P_i v^{\nu}$$</div>
+    Then under Parity transformation it shall be :
 
-That means under Parity Transformation, elements in (Restricted) Lorentz Group shall be transformed by:
+    <div>$$P v^{\mu} \rightarrow P \Lambda(\omega)^{\mu}_{\indent \nu} v^{\nu}= P \Lambda(\omega)^{\mu}_{\indent \nu} P P v^{\nu}$$</div>
 
-<div>$$ \Lambda \rightarrow P_i \Lambda P_i = \Lambda' $$</div>
+    That means under Parity Transformation, elements in (Restricted) Lorentz Group shall be transformed by:
 
-For the reason that `$\det P_i=1$` , `$\Lambda'$` shall be in the (Restricted) Lorentz Group too. Let `$\Lambda=\Lambda(\bm{\theta},\bm{\eta};\bm{L},\bm{K})$` , then we can derive the transformation of the generators `$\bm{L},\bm{K}$` under Parity Transformation, with parameters `$\bm{\theta},\bm{\eta}$` invariant.
+    <div>$$ \Lambda \rightarrow P \Lambda P = \Lambda' $$</div>
+
+    `$\Lambda'$` shall be in one component of the Lorentz Group too. Let `$\Lambda=\Lambda(\bm{\theta},\bm{\eta};\bm{L},\bm{K})$` , then we can derive the transformation of the generators `$\bm{L},\bm{K}$` under Parity Transformation, with parameters `$\bm{\theta},\bm{\eta}$` invariant.
 
 <em>[Theorem]</em> : Under Parity Transformation, we have:
 
-<div>$$P_i\Lambda(\bm{\theta},\bm{\eta};\bm{L},\bm{K}) P_i = \Lambda(\bm{\theta},\bm{\eta};-(P_i)^i_{\indent j}L^j , (P_i)^i_{\indent j}K^j) $$</div>
+<div>$$P\Lambda(\bm{\theta},\bm{\eta};\bm{L},\bm{K}) P = \Lambda(\bm{\theta},\bm{\eta};\bm{L} , -\bm{K}) $$</div>
 
 That means that the 3-vector `$\bm{L}$` transforms like `Pseudovector` and `$\bm{K}$` transforms like `vector`
 
 {{%fold "Proof"%}}
+For the explicit expression of `$\Lambda$` is:
 
+<div>$$\Lambda(\bm{\theta},\bm{\eta};\bm{L},\bm{K}) = \exp\big(-\ti \sum_{i=1}^3 (\theta^i L^i + \eta^i K^i)\big)$$</div>
+
+we have:
+
+<div>$$\begin{aligned}
+P\Lambda(\bm{\theta},\bm{\eta};\bm{L},\bm{K})P &= \exp\big(-\ti \sum_{i=1}^3 P(\theta^i L^i + \eta^i K^i)P\big) \\
+&=\exp\big(-\ti \sum_{i=1}^3 (\theta^i PL^iP + \eta^i PK^iP)\big) \\
+&=\Lambda(\bm{\theta},\bm{\eta};P\bm{L}P,P\bm{K}P)
+\end{aligned}$$</div>
+
+For the matrix form of `$\bm{L}$` and `$\bm{K}$` , we can check that:
+
+<div>$$\begin{aligned}
+P L^i P &= L^i \\
+P K^i P &= -K^i
+\end{aligned}$$</div>
+
+Q.E.D.
 {{%/fold%}}
 
-### Spinor Space
+<mark> This theorem hold for spinor representation too</mark>
+
+In some degree, we say that Parity-Transformation will exchange the left-handed spinor and right-handed spinor. For the difference between left/right handed spinor is `$L\leftrightarrow L , K\leftrightarrow -K$` (That is why they are called as `handed`)
+
+# Spinor Space
 
 _[Definition]_ : `1/2-spinor space` is a 2-dimension complex linear space used for the irrep. of Lorentz Group.
 To handle the Lorentz Group, we need two 1/2-spinor spaces, ususally noted as (1/2,0) and (0,1/2).
@@ -304,7 +327,7 @@ A spinor is noted as a pair of complex number, or a complex column vector.
 In this section, our goal is to construct some `invariants` of Lorentz Group or some quantities we have known from spinor spaces
 When spinor operated by the elements of Lorentz Group, it performs as the linear transformation with the 2x2 matrix above.
 
-#### Scalars
+## Scalars
 
 _[Theorem]_ : For any two left-handed spinors: `$a_l,b_l$` , the quadratic form:
 
@@ -363,7 +386,7 @@ Which means the quadratic form is indeed invariant.
 
 
 
-#### Vectors
+## Vectors
 _[Theorem]_ : For any left-handed Weyl spionor $a_l$ and right-handed Weyl spinor $b_r$ , Let `$\bar{\sigma}^{\mu}=\sigma_{\mu}=\eta_{\mu\nu}\sigma^{\nu}$` , one can construct some quantities with 4-components:
 
 <div>$$\begin{aligned}
@@ -413,3 +436,55 @@ By the matrix form of `$\bm{L},\bm{K}$` we can check these equalities
 Which is similar for the right-handed Weyl spinor.
 
 {{% /fold %}}
+
+## Dirac Spinor
+
+Sometimes we need a Parity-conserved theory, in which two handed spinor should be involved simultaneously. The simplest way is the `direct sum` of two spinor. This is called as `Dirac spinor` :
+
+<div>$$\psi_{\alpha} = \begin{bmatrix} a_l \\ b_r \end{bmatrix}$$</div>
+
+Where `$\psi_{\alpha}$` is a Dirac spinor. It has 4 components, the first two form a left-handed Weyl spinor, and the last two form a right-handed Weyl spinor.
+
+We define following 4x4 `$\gamma$` matrices, which will be widely used in field theory:
+
+<div>$$\gamma^{\mu} = \begin{bmatrix} \bm{0} & \sigma^{\mu} \\ \bar{\sigma}^{\mu} & \bm{0}\end{bmatrix}$$</div>
+
+<mark>This is a little different from some others book. Usually this forms of gamma matrices is called that in `Weyl(Chiral) basis` </mark>
+
+In `Dirac basis` , `$\gamma^{1,2,3}$` are the same, but `$\gamma^0 = \text{diag}(1,1,-1,-1)$ `.
+
+One can check that they satisfy a anti-commutation relation:
+
+<div>$$\gamma^{\mu}\gamma^{\nu}+\gamma^{\nu}\gamma^{\mu} = 2\eta^{\mu\nu}$$</div>
+
+Then we know that under Parity transformation, the Dirac spinor should exchange its two Weyl spinors: `$\psi \rightarrow \psi'=\gamma^0\psi$`
+
+Another important matrix is:
+
+<div>$$\gamma_5=\gamma^5 = \ti \gamma^0\gamma^1\gamma^2\gamma^3 = \begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}$$</div>
+
+It anti-commutes to any `$\gamma^\mu$` : `$\{\gamma^5,\gamma^{\mu}\}=0$`. And one can construct `Projector` by it:
+
+<div>$$P_L = \frac 1 2 (1-\gamma_5) \ ; \ P_R=\frac 1 2 (1+\gamma_5)$$</div>
+
+They will get the left(right)-handed part of a Dirac spinor.
+
+We can use Dirac spinor to construct some quantities, with `$\bar{\psi} = \psi^\dagger \gamma^0$`
+
+1.  `Parity-invariant` Lorentz Scalar and Vector:
+
+    <div>$$S = \bar{\psi}\psi \ ; \ V^\mu = \bar{\psi}\gamma^\mu\psi$$</div>
+
+    This shows that the matrices in spinor space `$\gamma^\mu$` seem like a vector in Minkowski spacetime.
+
+2.  `Pseudo-Scalar` `$P$` , `Pseudo-Vector` `$A^\mu$` and Tensor `$T^{\mu\nu}$` :
+
+    <div>$$P=\bar{\psi}\gamma^5\psi \ ; \ A^\mu=\bar{\psi}\gamma_5\gamma^\mu\psi \ ; \ T_{\mu\nu}=\bar{\psi}\sigma_{\mu\nu}\psi$$</div>
+
+    Where `$\sigma_{\mu\nu}=\frac {\ti} 2 [\gamma_{\mu},\gamma_{\nu}]$`
+
+<em>[Definition (Clifford Algebra)]</em> : There are 16 independent Dirac matrices: `$1,\gamma_5,\gamma_{\mu},\gamma_5\gamma_{\mu},\sigma_{\mu\nu}$` . They together with normal matrices product form an `algebra` , called as `Clifford Algebra`
+
+Finally, even it is trivial, we will give the transformation relationship of Dirac Spinor under the Lorentz Transformation:
+
+<div>$$\psi \rightarrow \psi' = \begin{bmatrix} \Lambda_L & 0 \\ 0 & \Lambda_R \end{bmatrix} \psi$$</div>

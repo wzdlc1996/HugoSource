@@ -2,15 +2,15 @@
 title: "Quantum Dynamics"
 date: 2018-11-12T14:15:58+08:00
 draft: false
-tags: ["Physics", "Math"]
+tags: ["Physics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
 ---
 
-### Time Evolution
+# Time Evolution
 
-#### Unitary Time Evolution
+## Unitary Time Evolution
 
 <em>[Assumption]</em> : The basic assumption of quantum dynamics is that , the time evolution of a closed system is `unitary` . <br>
 <em>[Definition]</em> : `Time evolution operator` : That means if we note the quantum state at time `$t$` as `$\ket{\psi(t)}$` , then there is a `Unitary operator`
@@ -56,7 +56,7 @@ By this definition, one can write down the equation that discribes the evolution
 
 <div>$$\ti \hbar \frac {\partial} {\partial t} \hat U(t,t_0) = \hat H(t) \hat U(t,t_0)$$</div>
 
-#### Schrodinger Equation and Schrodinger Picture
+## Schrodinger Equation and Schrodinger Picture
 
 Applying the evolution equation of `$\hat U(t,t_0)$`, one can derive the evolution equation of quantum state:
 
@@ -72,7 +72,7 @@ In general, one can write that :
 
 Where `$\mathcal{T}$` means time-ordering:
 
--   For `Bosonic` `$\hat A,\hat B$` , `$\mathcal{T}(\hat A(t)\hat B(t')) = \begin{cases} \hat A(t)\hat B(t') & t\gt t' \\ \hat B(t')\hat A(t) & t'\gt t\end{cases}$` 
+-   For `Bosonic` `$\hat A,\hat B$` , `$\mathcal{T}(\hat A(t)\hat B(t')) = \begin{cases} \hat A(t)\hat B(t') & t\gt t' \\ \hat B(t')\hat A(t) & t'\gt t\end{cases}$`
 -   For `Fermionic` `$\hat A,\hat B$` , `$\mathcal{T}(\hat A(t)\hat B(t')) = \begin{cases} \hat A(t)\hat B(t') & t\gt t' \\ (-1)\hat B(t')\hat A(t) & t'\gt t\end{cases}$`
 
 And this is equivalent to the `Dyson series` :
@@ -87,7 +87,7 @@ And expectation value of any operator does not change over time, density matrix 
 
 This is the `Schorodinger picture` (subscript `$_S$` hereafter) : <mark>time evolution is implemented on the state</mark>
 
-#### The Heisenberg Picture
+## The Heisenberg Picture
 
 The `Heisenberg picture` (subscript `$_H$` hereafter) : <mark>time evolution is encoded in operators, while the states have no evolution</mark>
 
@@ -104,9 +104,9 @@ The Heisenberg equation of motion:
 Where `$\hat H_H(t) = \hat U^{\dagger}(t)\hat H_S(t)\hat U(t) =\ti \hbar \hat U^{\dagger}(t)\frac {\td} {\td t} \hat U(t) $` <br>
 When `$\hat H_S(t)$` is independent of time, then `$\hat H$` commutes with `$\hat U$` , and `$\hat H_H = \hat H_S$`
 
-### Some Examples About Dynamics
+# Some Examples About Dynamics
 
-#### Liouville Equation
+## Liouville Equation
 
 In Schrodinger picture, For `$\hat \rho(t)  = \sum_i \lambda_i \ket{\psi_i(t)}\bra{\psi_i(t)}$` , one can write down:
 
@@ -114,7 +114,7 @@ In Schrodinger picture, For `$\hat \rho(t)  = \sum_i \lambda_i \ket{\psi_i(t)}\b
 
 But in Heisenberg picture, the density matrix will never change by time
 
-#### Single Particle Dynamics
+## Single Particle Dynamics
 
 Consider time independent Hamiltonian:
 
@@ -139,7 +139,7 @@ Consider time independent Hamiltonian:
 
     <div>$$m \frac {\td^2} {\td t^2} \langle \hat{\bm{x}}\rangle = - \langle \nabla V(\hat{\bm{x}})\rangle$$</div>
 
-#### 1D Harmonic Oscillator
+## 1D Harmonic Oscillator
 
 Having time-independent Hamiltonian:
 
@@ -167,7 +167,7 @@ Then one have :
 
 Then `$\Delta x^2 \Delta p^2 = \hbar^2/4$`
 
-#### Adiabatic Theorem
+## Adiabatic Theorem
 
 <em>[Theorem]</em> : When system is instantanous ground state(s) and the Hamiltonian changes `slowly` with time, then the system will remain to be (one of) the instantanous ground state(s) at later times. <br>
 For system's Hamiltonian is dependent of time by a parameter `$R$` :
@@ -213,9 +213,9 @@ With the initial condition: `$c_n(t=0) = \delta_{0,n}$` , and the Hamiltonian ch
 Which means that `$\ket{\psi(t)}$` is the simultaneous ground state .
 {{%/fold%}}
 
-### Propagator and Path Integral
+# Propagator and Path Integral
 
-#### Propagator
+## Propagator
 
 <em>[Definition]</em> : The `propagator` is the time-evolution operator represented in coordinate basis:
 
@@ -255,7 +255,7 @@ For free particle: `$\hat H = \hat p^2/2m$` , one can compute:
 
 <div>$$K(x',t';x,t) = \sqrt{\frac {m} {2\pi\hbar (t'-t)\ti}} \exp\big[\frac {\ti m (x'-x)^2} {2\hbar (t'-t)} \big]$$</div>
 
-#### Casual Functions
+## Causal Functions
 The propagator and `$G(t',t):=\text{Tr}\hat U(t',t) = \int \td x K(x,t';x,t)$` are `Causal functions` : nonzero only for `later(`$t'\gt t$`)` times. <br>
 The fourier transform (with a little difference from the one in mathematical) of causal function `$G(t)$` with `$G(t\lt 0)=0$` is:
 
@@ -289,7 +289,7 @@ Then one have:
 
 Example: `$G(t\gt 0) = e^{-\ti E t}$` , then `$\tilde{G}(\omega) = \frac 1 {\omega -E} - \ti \pi \delta(\omega-E)$`
 
-#### Path Integral in Quantum Mechanics
+## Path Integral in Quantum Mechanics
 
 The goal of path integral is that try to describe the quantum dynamics from a `"classical" point of view` , as particle moving in coordinate space(or coordinate-momentum phase space).
 
@@ -349,7 +349,7 @@ One can check these two version of path integral by single particle Hamiltonian:
 
 {{%/fold%}}
 
-#### Stationary Phase Approximation
+## Stationary Phase Approximation
 
 For the integral `$\int e^{\ti k f(x)}\td x$` with large `$k$` , most contribution comes from `$x_s$` where `$f$` is `stationary` , namely `$f'(x_s)=0$` . Then using the Taylor expansion to `$(x-x_s)^2$` , one can prove this approximation:
 
@@ -359,7 +359,7 @@ For n-dimensional integral:
 
 <div>$$\int e^{\ti k f(\bm{x}) } \td^n \bm{x} \approx \sum_{\bm{x}_s \in \{\bm{x}:\nabla f(\bm{x}) = \bm{0} \}} \Big(\frac {2\pi \ti} k \Big)^{n/2} \Big(\det \frac {\partial^2 f(\bm{x}_s)} {\partial x_i \partial x_j} \Big)^{-1/2} e^{\ti k f(\bm{x}_s)}$$</div>
 
-### Geometric Phase
+# Geometric Phase
 
 Consider an `adiabatic periodic evolution` of a Hamiltonian `$\hat H(t)$` with `$\hat H(T)=\hat H(0)$` . Suppose the Hamiltonian always has a `unique` ground state `$\ket{E_0(t)}$`. <br>
 We care for that after the periodic evolution, what is the phase acquired by the ground state. <br>
@@ -409,7 +409,7 @@ where `$t$` parametrizes a `periodic` evolution `$\ket{\psi(t)}$` <br>
 
 {{%/fold%}}
 
-### Gauge Invariance & Electromagnetic Field
+# Gauge Invariance & Electromagnetic Field
 
 We have known that adding a global phase factor `$\ket{\psi}\rightarrow e^{\ti\theta}\ket{\psi}$` with real `$\theta$` independent of `$\bm{x},t$`  will not change the Schorodinger equation and any expectation value of observables. <br>
 However, with the transformation:
