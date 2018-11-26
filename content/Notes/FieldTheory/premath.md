@@ -62,7 +62,7 @@ With the comparation between these two equality above, we have:
 <div>$$(\Lambda^{-1})^{\mu}_{\ \ \ \  \alpha} = \Lambda_{\alpha}^{\ \ \ \  \mu}$$</div>
 {{% /fold %}}
 
-In Special Relativity, Lorentz transformation describes the coordinate transformation between two references. We can classify Lorentz transformation by if it contain the time reversal and space inversion:
+In Special Relativity, Lorentz transformation describes the coordinate transformation between two reference frames. We can classify Lorentz transformation by if it contain the time reversal and space inversion:
 <ol>
   <li>`Proper, Orthochronous` : `$\det \Lambda = 1 \ \ , \ \ \Lambda^0_{\indent 0}\geq 1$` </li>
   <li>`Improper, Orthochronous` :`$\det \Lambda = -1 \ \ , \ \ \Lambda^0_{\indent 0}\geq 1$`</li>
@@ -77,9 +77,9 @@ Where`$P=(+,-,-,-)$`is the space inversion and`$T=(-,+,+,+)$`is the time reversa
 
 ## Scalar, Vector and Tensor
 
-_[Definition]_ : `Scalars` are some quantities, which is invariant when reference changes.
+_[Definition]_ : `Scalars` are some quantities, which is invariant when reference frame changes.
 
-_[Definition]_ : `Vectors` are those `4-components quantities`, which are transformed by `Lorentz Transformation` when reference changes: `$v'^{\mu} = \Lambda^{\mu}_{\indent \nu}v^{\nu}$` . For example, position `$x=(x^0,\bm{x})$` is a vector
+_[Definition]_ : `Vectors` are those `4-components quantities`, which are transformed by `Lorentz Transformation` when reference frame changes: `$v'^{\mu} = \Lambda^{\mu}_{\indent \nu}v^{\nu}$` . For example, position `$x=(x^0,\bm{x})$` is a vector
 
 _[Definition]_ : `Tensors` are multilinear maps from `$\mathcal{M}$`s and their `dual space` to scalars
 
@@ -88,7 +88,7 @@ For `$(m,n)$` type tensor `$T$` , it is the multilinear map:
 <div>$$T :\mathcal{M}^{\times m} \times (\mathcal{M}^* )^{\times n} \rightarrow \mathbb{R}$$</div>
 
 Here, we use `$\mathcal{M}$` to note the vector space and `$\mathcal{M}^* $` to note the dual-vector space. The Minkowski spacetime is also a vector space `$\mathcal{M}$` describing the space-time coordinates. <br>
-In a reference, one can write the tensor `$T$` as a quantity with `$4(m+n)$` indices:
+In a reference frame, one can write the tensor `$T$` as a quantity with `$4(m+n)$` indices:
 
 <div>$$T \sim T_{\mu_1,\cdots,\mu_m}^{\indent \indent \indent \indent \nu_1,\cdots,\nu_n} \ \ \ \mu_p,\nu_q \in \{0,1,2,3\}$$</div>
 
@@ -313,7 +313,7 @@ P K^i P &= -K^i
 Q.E.D.
 {{%/fold%}}
 
-<mark> This theorem hold for spinor representation too</mark>
+<mark> This theorem hold for spinor representation too</mark> , with the form : \(P\Lambda_{L(R)}P = \Lambda_{R(L)}\) and \(P a_{l(r)} = a_{r(l)}\)
 
 In some degree, we say that Parity-Transformation will exchange the left-handed spinor and right-handed spinor. For the difference between left/right handed spinor is `$L\leftrightarrow L , K\leftrightarrow -K$` (That is why they are called as `handed`)
 
@@ -410,7 +410,7 @@ For the completion of Pauli matrices in 4x4 Hermitian matrices space:
 
 <div>$$\begin{aligned}[]
 \Lambda_L^{\dagger}\bar{\sigma}^{\mu}\Lambda_L &= \eta_{\mu\nu} z_{\alpha}^{*}z_{\beta} \sigma^{\alpha}\sigma^{\nu}\sigma^{\beta} \\
-&= \mathcal{L}^{\mu}_{\indent \nu} \bar{\sigma}^{\nu}
+&= (\Lambda)^{\mu}_{\indent \nu} \bar{\sigma}^{\nu}
 \end{aligned}$$</div>
 
 We need to check if `$L^{\mu}_{\indent \nu}$` is the the vector representation of Lorentz Group, which shall be written as:
@@ -487,4 +487,47 @@ We can use Dirac spinor to construct some quantities, with `$\bar{\psi} = \psi^\
 
 Finally, even it is trivial, we will give the transformation relationship of Dirac Spinor under the Lorentz Transformation:
 
-<div>$$\psi \rightarrow \psi' = \begin{bmatrix} \Lambda_L & 0 \\ 0 & \Lambda_R \end{bmatrix} \psi$$</div>
+<div>$$\psi \rightarrow \psi' = \begin{bmatrix} \Lambda_L & 0 \\ 0 & \Lambda_R \end{bmatrix} \psi = \exp(-\frac {\ti} 4 \sum_{\mu\nu} \sigma_{\mu\nu}\omega_{\mu\nu}) \psi $$</div>
+
+Where `$\omega_{\mu\nu}$` are the parameters of `$\Lambda$`
+
+{{%fold "Proof"%}}
+
+Similar to what we have done before, we need only check the equalities of generators:
+
+<div>$$\begin{aligned}
+\partial_{\theta^i} \begin{bmatrix} \Lambda_L & 0 \\ 0 & \Lambda_R \end{bmatrix} \psi \Bigg|_{\bm{\theta}=\bm{\eta}=0} &= \partial_{\theta^i} \exp(-\frac {\ti} 4 \sum_{\mu\nu} \sigma_{\mu\nu}\omega_{\mu\nu}) \psi\Big|_{\bm{\theta}=\bm{\eta}=0} \\
+\partial_{\eta^i} \begin{bmatrix} \Lambda_L & 0 \\ 0 & \Lambda_R \end{bmatrix} \psi \Bigg|_{\bm{\theta}=\bm{\eta}=0} &= \partial_{\eta^i} \exp(-\frac {\ti} 4 \sum_{\mu\nu} \sigma_{\mu\nu}\omega_{\mu\nu}) \psi\Big|_{\bm{\theta}=\bm{\eta}=0}
+\end{aligned}$$</div>
+
+With `$\theta^i =  \epsilon^{ijk}\omega^{jk}/2 = \epsilon^{ijk}\omega_{jk}/2  , \eta^i=\omega_{0i}$` That is to check the equalities:
+
+<div>$$\begin{aligned}
+\begin{bmatrix} -\ti \sigma^i /2 & 0 \\ 0 & -\ti \sigma^i/2 \end{bmatrix} \psi  &= -\sum_{jk}\frac {\ti} 4 \sigma_{jk}\epsilon^{ijk} \psi \\
+\begin{bmatrix} -\sigma^i/2 & 0 \\ 0 & \sigma^i/2 \end{bmatrix} \psi &= -(\frac {\ti} 2 \sigma_{0i}) \psi
+\end{aligned}$$</div>
+
+For `$\sigma_{\mu\nu} = \frac {\ti} 2 [\gamma_{\mu},\gamma_{\nu}]$` , we can calculate it in Weyl basis:
+
+<div>$$\begin{aligned}
+\sigma_{\mu\nu} &= \frac {\ti} 2 \Bigg(\begin{bmatrix} 0 & \sigma^\mu \\ \bar{\sigma}^\mu & 0 \end{bmatrix}\begin{bmatrix} 0 & \sigma^\nu \\ \bar{\sigma}^\nu & 0 \end{bmatrix}-\begin{bmatrix} 0 & \sigma^\nu \\ \bar{\sigma}^\nu & 0 \end{bmatrix}\begin{bmatrix} 0 & \sigma^\mu \\ \bar{\sigma}^\mu & 0 \end{bmatrix}\Bigg) \\
+&= \frac {\ti} 2 \begin{bmatrix} \sigma^\mu \bar{\sigma}^\nu -\sigma^\nu \bar{\sigma}^\mu & 0 \\ 0 & \bar{\sigma}^\mu \sigma^\nu - \bar{\sigma}^\nu\sigma^\mu \end{bmatrix}
+\end{aligned}$$</div>
+
+With the Pauli matrices' property: `$[\sigma^i,\sigma^j] = 2\ti \epsilon^{ijk}\sigma^k$` , we have:
+
+<div>$$\begin{aligned}
+\sigma_{i0} &= \ti \begin{bmatrix} \sigma^i & 0 \\ 0 & -\sigma^i \end{bmatrix} \\
+\sigma_{ij} &= \epsilon^{ijk} \begin{bmatrix}\sigma^k & 0 \\ 0 & \sigma^k \end{bmatrix}
+\end{aligned}$$</div>
+
+Then we have:
+
+<div>$$\begin{aligned}
+-\frac {\ti} 2 \sigma_{0i} &= \begin{bmatrix} -\sigma^i/2 & 0 \\ 0 &\sigma^i /2\end{bmatrix} \\
+-\sum_{jk} \frac {\ti} 4 \sigma_{jk}\epsilon^{ijk} &= -2\delta_i^l \begin{bmatrix}\sigma^l & 0 \\ 0 & \sigma^l \end{bmatrix} \frac {\ti} 4 = \begin{bmatrix}-\ti\sigma^i/2 & 0 \\ 0 & -\ti\sigma^i/2 \end{bmatrix}
+\end{aligned}$$</div>
+
+The equalities are checked.
+
+{{%/fold%}}

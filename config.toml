@@ -33,13 +33,18 @@ pygmentsuseclasses         = true
     identifier             = "Notes"
     url                    = "notes/"
 
+  [[menu.main]]
+    name                   = "Articles"
+    identifier             = "Articles"
+    url                    = "artic/"
+
 
 
 [params]
     faviconfile              = "img/cat.png"               # from static/
     avatar                   = "img/white_cat.png"             # path to image in static dir e.g img/avatar.png
     author                   = "Leonard"
-    description              = ["Maybe some day I will know what I want", "", "A little site of Leonard, a physics worker"]           # appears in the site header when set to a non-empty string
+    description              = ["男なら 谁かのために强くなれ", "", "A little site of Leonard, a physics worker"]           # appears in the site header when set to a non-empty string
     welcome_head             = "Hello, World!"
     welcome_word             = "~ No Day But Today ~"
 

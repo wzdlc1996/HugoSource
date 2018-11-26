@@ -85,7 +85,7 @@ for some like `$\psi_1\otimes \psi_2 + \phi_1\otimes \phi_2$` , generally it CAN
 Usually we use the short-hand notation like:
 
 1. `$\langle \psi | \phi \rangle \equiv (\psi,\phi)=\int \psi^*\phi \td V$`
-2. `bra is a linear functional` : `$\langle \psi|\lambda_1 \phi_1 + \lambda_2\phi_2\rangle =\lambda_1 \langle \psi|\phi_1\rangle +\lambda_2 \langle \psi |\phi_2 \rangle\
+2. `bra is a linear functional` : `$\langle \psi|\lambda_1 \phi_1 + \lambda_2\phi_2\rangle =\lambda_1 \langle \psi|\phi_1\rangle +\lambda_2 \langle \psi |\phi_2 \rangle\$`
 3. `bra form an anti-linear space` : `$\lambda_1^* \bra{\psi_1}+\lambda_2^* \bra{\psi_2}=\bra{\lambda_1 \psi_1+\lambda_2 \psi_2}$`
 4. `Direct sum` : `$\ket{\psi_1}+\ket{\psi_2}$` with `$\psi_i\in \mathcal{H}_i$` means the direct sum state : `$\psi_1\oplus \psi_2 \in \mathcal{H}_1\oplus \mathcal{H}_2$`
 5. `Tensor product` : `$\ket{\psi_1}\ket{\psi_2}\equiv\ket{\psi_1}\otimes\ket{\psi_2}$` with `$\psi_i\in \mathcal{H}_i$` means the tensor product state `$\psi_1\otimes \psi_2\in \mathcal{H}_1\otimes \mathcal{H}_2$`
