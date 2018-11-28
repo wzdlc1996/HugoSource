@@ -375,42 +375,44 @@ has some special properties:
 
     {{%fold "Proof"%}}
 
-    Generally, one can write `$\ket{\psi}\in\mathcal{H}_a\otimes \mathcal{H}_b$` as the expansion on basis `$e_{i,a}$` and `$e_{i,b}$` in `$\mathcal{H}_a$` and `$\mathcal{H}_b$` :
+Generally, one can write `$\ket{\psi}\in\mathcal{H}_a\otimes \mathcal{H}_b$` as the expansion on basis `$e_{i,a}$` and `$e_{i,b}$` in `$\mathcal{H}_a$` and `$\mathcal{H}_b$` :
 
-    <div>$$\ket{\psi} = \sum_{i,j} a_{ij}\ket{e_{i,a}}\ket{e_{j,b}}$$</div>
+<div>$$\ket{\psi} = \sum_{i,j} a_{ij}\ket{e_{i,a}}\ket{e_{j,b}}$$</div>
 
-    While the SVD of matrix `$\bm{A}$` whose elements are `$a_{ij}$` is :
+While the SVD of matrix `$\bm{A}$` whose elements are `$a_{ij}$` is :
 
-    <div>$$\bm{A}= \bm{U}\bm{\Sigma}\bm{V}^{\dagger}$$</div>
+<div>$$\bm{A}= \bm{U}\bm{\Sigma}\bm{V}^{\dagger}$$</div>
 
-    And that is
+And that is
 
-    <div>$$a_{ij} = \sum_l u_{i,l}\lambda_l v^*_{j,l}$$</div>
+<div>$$a_{ij} = \sum_l u_{i,l}\lambda_l v^*_{j,l}$$</div>
 
-    Then let `$\ket{\phi_l} = \sum_i u_{i,l} \ket{e_{i,a}} \ , \ \ket{\varphi_l} = \sum_j v^*_{j,l}\ket{e_{j,b}}$` , one have:
+Then let `$\ket{\phi_l} = \sum_i u_{i,l} \ket{e_{i,a}} \ , \ \ket{\varphi_l} = \sum_j v^*_{j,l}\ket{e_{j,b}}$` , one have:
 
-    <div>$$\ket {\psi}=\sum_{l} \lambda_l \ket{\phi_l}\ket{\varphi_l}$$</div>
+<div>$$\ket {\psi}=\sum_{l} \lambda_l \ket{\phi_l}\ket{\varphi_l}$$</div>
 
-    While `$\ket{\phi_i},\ket{\varphi_i}$` are orthonormal in each Hilbert space for `$\bm{U},\bm{V}$` are unitary matrices. <br>
-    And for the expansion, one can write the reduced density matrix as:
+While `$\ket{\phi_i},\ket{\varphi_i}$` are orthonormal in each Hilbert space for `$\bm{U},\bm{V}$` are unitary matrices. <br>
+And for the expansion, one can write the reduced density matrix as:
 
-    <div>$$\begin{aligned}
-    \hat \rho_a &= \sum_k \bra{e_{k,b}} \sum_{i,j}\lambda_i\lambda_j^* \ket{\phi_i}\ket{\varphi_i}\bra{\phi_j}\bra{\varphi_j} \ket{e_{k,b}} \\
-    &= \sum_{i,j}\lambda_i\lambda_j^* \ket{\phi_i}\bra{\phi_j} \sum_k \langle \varphi_j |e_{k,b} \rangle \langle e_{k,b}| \varphi_i \rangle \\
-    &= \sum_i \lambda_i^2 \ket{\phi_i}\bra{\phi_i}
-    \end{aligned}$$</div>
+<div>$$\begin{aligned}
+\hat \rho_a &= \sum_k \bra{e_{k,b}} \sum_{i,j}\lambda_i\lambda_j^* \ket{\phi_i}\ket{\varphi_i}\bra{\phi_j}\bra{\varphi_j} \ket{e_{k,b}} \\
+&= \sum_{i,j}\lambda_i\lambda_j^* \ket{\phi_i}\bra{\phi_j} \sum_k \langle \varphi_j |e_{k,b} \rangle \langle e_{k,b}| \varphi_i \rangle \\
+&= \sum_i \lambda_i^2 \ket{\phi_i}\bra{\phi_i}
+\end{aligned}$$</div>
 
-    For `$\hat \rho$` is Hermitian so `$\lambda_i\in\mathbb{R}$` . That is `$\lambda_i^2$` are eigenvalues of `$\hat \rho_a$` and `$\ket{\phi_i}$` are `$\hat \rho_a$` 's eigenstates <br>
-    Further more, `$\lambda_i^2$` are also eigenvalues of `$\hat \rho_b$` and `$\ket{\varphi_i}$` are `$\hat \rho_b$`'s eigenstates.
+For `$\hat \rho$` is Hermitian so `$\lambda_i\in\mathbb{R}$` . That is `$\lambda_i^2$` are eigenvalues of `$\hat \rho_a$` and `$\ket{\phi_i}$` are `$\hat \rho_a$` 's eigenstates <br>
+Further more, `$\lambda_i^2$` are also eigenvalues of `$\hat \rho_b$` and `$\ket{\varphi_i}$` are `$\hat \rho_b$`'s eigenstates.
 
     {{%/fold%}}
 
 5.  `Reciprocity` : define reduced density matrix `$\hat \rho_b = \text{Tr}_a \hat \rho$` on `$\mathcal{H}_b$` , we have `$S_a=S_b$` .
     {{%fold "Proof"%}}
-    Using Schmidt decomposition: `$\ket{\phi}= \sum_i \lambda_i \ket{\phi_i}\ket{\varphi_i}$`, then one have:
-    <div>$$S_b=-\sum_i \lambda_i^2\log \lambda_i^2=S_a$$</div>
-    For the details in the previous proof.
-    Proved.
+Using Schmidt decomposition: `$\ket{\phi}= \sum_i \lambda_i \ket{\phi_i}\ket{\varphi_i}$`, then one have:
+
+<div>$$S_b=-\sum_i \lambda_i^2\log \lambda_i^2=S_a$$</div>
+
+For the details in the previous proof.
+Proved.
     {{%/fold%}}
 
 # Measurement

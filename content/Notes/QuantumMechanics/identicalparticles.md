@@ -62,7 +62,7 @@ This means that `$n$`-body state: `$\psi(x)=\psi(\bm{x}_1,\bm{x}_2,\cdots,\bm{x}
     Where `$R(\sigma)$` is a complex number of unit modulus.
     {{%fold "Note"%}}
 
-    the requirement of 1-d representation is come from we believe the wavefunction (with 1 component) can be completely discribe the many-body state
+the requirement of 1-d representation is come from we believe the wavefunction (with 1 component) can be completely discribe the many-body state
 
     {{%/fold%}}
 -   `Bosons` : correspond to the trivial representation of permutation group, which means any permutation has no effect on the wavefunction. Integer spin particles. <br>
