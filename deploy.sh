@@ -28,7 +28,7 @@ git push origin master
 # Come Back up to the Project Root
 cd ..
 
-msg = "update `date`"
+msg="update `date`"
 
 git add .
 git commit -m "$msg"
