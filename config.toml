@@ -15,7 +15,6 @@ title                      = "Leonard"
 pygmentsuseclasses         = true
 
 
-
 [permalinks]
   blog                     = "blog/:year-:month/:slug/"
 
