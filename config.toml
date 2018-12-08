@@ -65,7 +65,7 @@ pygmentsuseclasses         = true
     katex                    = false
 
     # links
-    email                    = "wzdlc1996@email.com"
+    email                    = "wzdlc1996@gmail.com"
     github                   = "http://github.com/wzdlc1996"
 #    linkedin                 = "//linkedin.com/in/you"
 #    facebook                 = "//facebook.com/you"
@@ -76,4 +76,4 @@ pygmentsuseclasses         = true
     include_rss              = true                          # include RSS <link> tag in <head> and show RSS icon
 
     # analytics
-    googleAnalytics = "UA-128644147-1"
+    #googleAnalytics = "UA-128644147-1"
