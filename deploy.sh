@@ -10,12 +10,6 @@ hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 
 git add .
 
-msg="update `date`"
-
-git commit -m "$msg"
-
-git push origin master
-
 # Go To Public folder
 cd public
 # Add changes to git.
@@ -33,3 +27,9 @@ git push origin master
 
 # Come Back up to the Project Root
 cd ..
+
+msg = "update `date`"
+
+git add .
+git commit -m "$msg"
+git push origin master
