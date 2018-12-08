@@ -149,8 +149,6 @@ q.e.d.
 
 {{%/fold%}}
 
-_[Note]_ :
-
 1.  This map is `two-to-one` mapping from SU(2) to SO(3) . For `$\bm{U},-\bm{U}\mapsto \bm{R}_{\bm{n}}(\theta)$` . Namely: `$\text{SO}(3) \simeq \text{SU}(2)/\mathbb{Z}_2$`
 2.  SO(3) manifold is `real projective space` : `$\text{RP}^3 = S^3/\mathbb{Z}_2$`
 
@@ -314,7 +312,7 @@ _[Theorem]_ : useful commutator, with `$\hat {\bm{L}}^2 = \delta_{ij}\hat L^i \h
 
 First:
 
-<div>$$\begin{aligned}
+<div>$$\begin{aligned}[]
 [\hat L^i,\hat L^j] &= \hbar^{-2} \sum_{m_1,n_1;m_2,n_2} \epsilon^{im_1m_2}\epsilon^{jn_1n_2}[\hat x^{m_1}\hat p^{m_2},\hat x^{n_1}\hat p^{n_2}] \\
 &=\hbar^{-2} \sum_{m_1,n_1;m_2,n_2} \epsilon^{im_1m_2}\epsilon^{jn_1n_2}\big(\hat x^{m_1}(-\ti \hbar \delta_{m_2n_1}\hat p^{n_2}) + \hat x^{n_1}\ti\hbar\delta_{m_1n_2} \hat p^{m_2} \big) \\
 &=-\ti\hbar^{-1} \sum_{m_1,n_2}\hat x^{m_1}\hat p^{n_2}(\delta_{in_2}\delta_{m_1j}-\delta_{ij}\delta_{m_1n_2}) +\ti\hbar^{-1}\sum_{n_1m_2}\hat x^{n_1}\hat p^{m_2}(\delta_{m_2j}\delta_{n_1i}-\delta_{ij}\delta_{m_2n_1}) \\
