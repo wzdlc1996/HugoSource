@@ -244,7 +244,6 @@ Then test how many ions are at level `$1$` at time `$t=T$` , which can be realiz
 
 When `$\tau\rightarrow 0$` or `$n\rightarrow \infty$` , we will find that `$P_1(T)=1$` , which is the QZE.
 
-###
 
 ## Anti-Zeno Effect
 
@@ -303,6 +302,38 @@ With `$1-|x(\tau)|^2 = |\bra{u}\hat U(\tau)\ket{u}|^2=P(\tau)\sim 1-\alpha \tau^
 
 That is QZE.
 
+## Itano's Experiment and RSI
+
+In the comment article by L.E.Ballentine [[Ballentine 1991][12]] , he disagreed with the "wavefunction collapse postulate" in Itano's experiment and paper. Ballentine's argument is consistent to the RSI but in his original paper he did not cite the word of Everett.
+
+Here we will introduce his argument. We will begin with the initial states of ions are all `$\ket{1}$` , and also assume that the decay from `$\ket{3}$` to `$\ket{1}$` is extremely fast. With a photon detector `$\ket{\{\cdots\}}$` (where the `$\cdots$` notes the history of the detector) we will have the "measurement" process, or the entanglement process of ion and detector:
+
+<div>$$\ket{1^n ,2^{N-n}}\otimes \ket{\{\cdots\}}\rightarrow \ket{1^n,2^{N-n}}\otimes\ket{\{n,\cdots\}}$$</div>
+
+Then for the Rabi oscillation between `$\ket{1}$` and `$\ket{2}$` , we have the evolution of the system in the `$\tau$` (in occupation basis and let `$\Omega\tau=\xi$`) :
+
+<div>$$\begin{aligned}
+\ket{1^m,2^n} &\rightarrow_{\tau} (\cos\Omega\tau \ket{1}-\ti\sin\Omega\tau\ket{2})^{\otimes m}(-\ti\sin\Omega\tau\ket{1}+\cos\Omega\tau\ket{2})^{\otimes n} \\
+&=\sum_{j=0}^m\sum_{k=0}^n C_m^j C_n^k \cos^{j+n-k} \xi(-\ti\sin\xi)^{m-j+k} \ket{1^{j+k},2^{m+n-j-k}} \\
+&=\sum_{l=0}^{m+n}R_{l;m,n}(\xi)\ket{1^l,2^{m+n-l}}
+\end{aligned}$$</div>
+
+Where `$R_{l;m,n}(\xi)=\sum_{j=0}^l C_m^j  C_n^{l-j} \cos^{2j+n-l}\xi (-\ti\sin\xi)^{m+l-2j}$` , in which invalid binomial coefficient should be zero.
+
+Then we can write the evolution of the system and detector:
+
+<div>$$\begin{aligned}
+\ket{1}^{\otimes N}\otimes\ket{\{\}} & \rightarrow_{\tau} \sum_{n=0}^N R_{n;N,0}(\xi)\ket{1^n,2^{N-n}}\otimes \ket{\{n\}} \\
+\ket{1}^{\otimes N}\otimes\ket{\{\}}& \rightarrow_{2\tau} \sum_{n=0}^N R_{n;N,0}(\xi) \sum_{n'=0}^N R_{n';n,N-n}(\xi) \ket{1^{n'},2^{N-n'}}\otimes \ket{\{n',n\}} \\
+\cdots
+\end{aligned}$$</div>
+
+In the special situation where `$N=1$` , it is reduced to what we discussed in the last section: the Zeno effect for a pure state in RSI. And for general situation, we know that `$R_{l;m,n}(\xi)$` is a representation of the `dynamics semi-group` of Quantum mechanics. According to the original word of Misra [[Misra 1977][2]] , the conclusion is the same.
+
+We need to point out, the `photon detector` might not be a classical apparatus. In fact, the decoherence of the state is caused by the spontaneous emission. And in that it does not need a "detector" actually. It can be find in Petrosky's paper [[Petrosky 1990][3]]. They discussed the Hamiltonian of the total system together with the spontaneous emission and photon absorption to excite the ion.
+
+
+
 [1]:https://en.wikipedia.org/wiki/Zeno%27s_paradoxes#Arrow_paradox
 [2]:https://aip.scitation.org/doi/10.1063/1.523304
 [3]:https://www.researchgate.net/publication/222378644_Quantum_Zeno_effect
@@ -314,3 +345,4 @@ That is QZE.
 [9]:https://math.stackexchange.com/questions/522603/is-the-dirac-delta-function-l1-integrable
 [10]:https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.29.454
 [11]:https://plato.stanford.edu/entries/qm-manyworlds/
+[12]:https://journals.aps.org/pra/pdf/10.1103/PhysRevA.43.5165
