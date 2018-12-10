@@ -18,7 +18,7 @@ This article follows the post of Yangming's Blog [[Hugo&Algolia][3]] .
 
 # Sign up to Algolia
 
-It is allowed to sign up to Algolia with the authorization of Github or Google accounts. And by defauld, Algolia will construct an app to us. For new user there is a 14-day-free-trial with much more records and permitted operations. One can get to learned during these two weeks.
+It is allowed to sign up to Algolia with the authorization of Github or Google accounts. And by the default, Algolia will construct an app to us. For new user there is a 14-day-free-trial with much more records and permitted operations. One can get to learned during these two weeks.
 
 The direct interface for the user of Algolia is its `Dashboard` [[Dashboard][4]]. And in the indices page we can find how many indices have been used.
 
@@ -314,7 +314,7 @@ After all, we will have a search icon in the left of the navigation bar. It will
 
 {{% center %}}<img name="preview" src="/imgs/artics/InsiteSearch_1.png"/>{{% /center %}}
 
-# Reference:
+# Reference
 
 1.  [Hugo official doc](https://gohugo.io/tools/search/)
 2.  [Algolia official page](https://www.algolia.com/)

@@ -240,7 +240,7 @@ and if there is no measurement sequence:
 
 Then test how many ions are at level `$1$` at time `$t=T$` , which can be realized by excite them to level `$3$` and measure the intensity of the spontaneous radiation. And comparing it with the theoretical prediction:
 
-<div>$$P_1(T) = \rho_{11}(T)=\frac 1 2 (1-\cos^n(\pi/n))$$</div>
+<div>$$P_1(T) = \rho_{11}(T)=\frac 1 2 (1+\cos^n(\pi/n))$$</div>
 
 When `$\tau\rightarrow 0$` or `$n\rightarrow \infty$` , we will find that `$P_1(T)=1$` , which is the QZE.
 

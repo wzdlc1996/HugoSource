@@ -593,3 +593,11 @@ H &=\int \td^3 \bm{x} \Big\{-\sum_{i=1}^3 \ti \bar{\psi}\gamma^i \partial_i \psi
 
 
 # Maxwell Field
+
+## Formalism
+
+_[Definition]_ : Maxwell Field is the field of `4-vector`. The Lagrangian is Lorentz Scalar constructed by the so-called `Electromagnetic Tensor`:
+
+$$\mathcal{L}=-\frac 1 4 F^{\mu\nu}F_{\mu\nu}$$
+
+And where \(F_{\mu\nu}=\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}\) is an anti-symmetry tensor. 
