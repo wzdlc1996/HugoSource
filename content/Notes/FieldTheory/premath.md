@@ -1,11 +1,12 @@
 ---
 title: "Preliminary Mathematics"
-date: 2018-11-05T15:45:57+08:00
+date: "2018-11-05T15:45:57+08:00"
 draft: false
 tags: ["Physics", "Math"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true
+summary: "The preliminary Mathematical knowledge for Quantum Field Theory. Containing the Minkowski Spacetime, Lorentz Group, and the representation theory of Lorentz Group."
 ---
 
 # Minkowski Spacetime

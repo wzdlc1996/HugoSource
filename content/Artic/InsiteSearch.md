@@ -6,6 +6,7 @@ tags: ["front-end","development"]
 series: ["hugo"]
 categories: ["tools"]
 toc: true
+summary: "How to add a search bar for in site posts in Hugo. We used the Algolia as the solution provider."
 ---
 
 # Introduction

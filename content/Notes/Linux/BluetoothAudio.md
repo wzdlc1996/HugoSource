@@ -6,6 +6,7 @@ tags: ["Linux", "Manjaro"]
 series: ["Linux"]
 categories: ["Linux"]
 toc: true
+summary: "How to manager the Bluetooth earphones. Switch HSV to A2DP for the better performance."
 ---
 
 # Switch HSV to A2DP

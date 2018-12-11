@@ -6,6 +6,7 @@ tags: ["Physics", "Math"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
+summary: "Some basic concepts for Quantum Mechanics."
 ---
 
 # Outline

@@ -7,7 +7,7 @@ layoutdir                  = "layouts"
 publishdir                 = "public"
 enableEmoji                = true
 hasCJKLanguage             = true
-summaryLength              = 200
+summaryLength              = 50
 Paginate                   = 3
 
 theme                      = "AllinOne"
@@ -49,8 +49,8 @@ pygmentsuseclasses         = true
 
     latestpostscount         = 5                             # how many posts to display on the home page
     bloggroupby              = 'month'
-#    dateform                 = "Jan 2, 2006"
-#    dateformfull             = "2006-01-02  Monday  15:04:05"
+    dateform                 = "Jan 2, 2006"
+    dateformfull             = "2006-01-02  Monday  15:04:05"
     noshowreadtime           = false                         # if true, don't show "<x> minutes read" in posts
 
     # slides

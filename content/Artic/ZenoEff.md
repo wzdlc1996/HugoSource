@@ -1,11 +1,13 @@
 ---
 title: "Quantum Zeno Effect"
-date: 2018-11-22T19:23:43+08:00
+date: "2018-11-22T19:23:43+08:00"
+lastmod: "2018-12-10T18:00:00+08:00"
 draft: false
 tags: ["quantum","measurement"]
 series: ["quantum-measurement"]
 categories: ["Reviews"]
 toc: true
+summary: "The quantum Zeno effect: an unstable particle will never be found to decay if it is continuously observed. The theoretical analysis and the experiment. And a simple introduction for Many worlds interpretation"
 ---
 
 # Introduction
@@ -323,15 +325,14 @@ Where `$R_{l;m,n}(\xi)=\sum_{j=0}^l C_m^j  C_n^{l-j} \cos^{2j+n-l}\xi (-\ti\sin\
 Then we can write the evolution of the system and detector:
 
 <div>$$\begin{aligned}
-\ket{1}^{\otimes N}\otimes\ket{\{\}} & \rightarrow_{\tau} \sum_{n=0}^N R_{n;N,0}(\xi)\ket{1^n,2^{N-n}}\otimes \ket{\{n\}} \\
-\ket{1}^{\otimes N}\otimes\ket{\{\}}& \rightarrow_{2\tau} \sum_{n=0}^N R_{n;N,0}(\xi) \sum_{n'=0}^N R_{n';n,N-n}(\xi) \ket{1^{n'},2^{N-n'}}\otimes \ket{\{n',n\}} \\
+\ket{1^N,2^0}\otimes\ket{\{\}} & \rightarrow_{\tau} \sum_{n=0}^N R_{n;N,0}(\xi)\ket{1^n,2^{N-n}}\otimes \ket{\{n\}} \\
+\ket{1^N,2^0}\otimes\ket{\{\}}& \rightarrow_{2\tau} \sum_{n=0}^N R_{n;N,0}(\xi) \sum_{n'=0}^N R_{n';n,N-n}(\xi) \ket{1^{n'},2^{N-n'}}\otimes \ket{\{n',n\}} \\
 \cdots
 \end{aligned}$$</div>
 
 In the special situation where `$N=1$` , it is reduced to what we discussed in the last section: the Zeno effect for a pure state in RSI. And for general situation, we know that `$R_{l;m,n}(\xi)$` is a representation of the `dynamics semi-group` of Quantum mechanics. According to the original word of Misra [[Misra 1977][2]] , the conclusion is the same.
 
 We need to point out, the `photon detector` might not be a classical apparatus. In fact, the decoherence of the state is caused by the spontaneous emission. And in that it does not need a "detector" actually. It can be find in Petrosky's paper [[Petrosky 1990][3]]. They discussed the Hamiltonian of the total system together with the spontaneous emission and photon absorption to excite the ion.
-
 
 
 [1]:https://en.wikipedia.org/wiki/Zeno%27s_paradoxes#Arrow_paradox

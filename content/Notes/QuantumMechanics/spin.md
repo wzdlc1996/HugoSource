@@ -6,6 +6,7 @@ tags: ["Physics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
+summary: "Angular momentum and spin theory in Quantum mechanics. Contain SU(2) and SO(3) basic concepts and their representation theory"
 ---
 
 # SU(2) and SO(3) Groups

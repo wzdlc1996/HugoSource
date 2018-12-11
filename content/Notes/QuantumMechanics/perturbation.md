@@ -6,6 +6,7 @@ tags: ["Physics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
+summary: "The perturbation theory for quantum mechanics. This is a useful method on solve some problems which we cannot handle it analytically"
 ---
 # Time-Independent Perturbation Theory
 
@@ -207,3 +208,45 @@ q.e.d.
 {{%/fold%}}
 
 # Perturbation Expansion as Unitary Transformations
+
+Given \(\hat H=\hat H_0+\lambda \hat V\) , where \(\hat H_0\) has known energy levels \(E_n^{(0)}\) (may be degenerate) . Try to find a sequence of unitary transformations to remove the "off-diagonal terms"
+
+Here "off-diagonal terms" means terms connecting eigenstates of \(\hat H_0\) with different energy. Therefor the procedure only block-diagonalizes the Hamiltonian. Terms (diagonal and off-diagonal) connecting eigenstates of \(\hat H_0\) with the same energy, namely the matrix in the secular equation of degenerate perturbation theory, will be produced.
+
+Define the projector \(\hat P_n\) projecting onto \(E_n\) subspace. Then \(1=\sum_n \hat P_n\) , and define \(\hat V_{nm}=\hat P_n\hat V\hat P_m\) . Then we have: \([\hat H_0,\hat V_{nm}]=(E_n^{(0)}-E_m^{(0)})\hat V_{nm}\) , for \(\hat H_0\hat P_n=\hat P_n\hat H_0=E_n^{(0)}\hat P_n\) .
+
+Consider \(\hat H^{(1)}=e^{\ti\lambda \hat S_0}\hat H e^{-\ti\lambda \hat S_0}\) , by Baker-Hausdorff formula:
+
+$$\hat H^{(1)}=\hat H_0 + \lambda([\ti\hat S_0,\hat H_0]+\hat V)+\lambda^2\Big(\frac 1 2 [\ti\hat S_0,[\ti\hat S_0,\hat H_0]]+[\ti\hat S_0,\hat H_0]\Big)+\cdots$$
+
+we want to cancel \(\hat V_{nm}\) terms with \(n\neq m\) in \(\hat H\) up to the order \(\lambda\) , that is to say we need \([\ti\hat S_0,\hat H_0]+\sum_{n\neq m}\hat V_{nm}=0\) . the solution is: \(\ti\hat S_0=\sum_{n\neq m} (E_n^{(0)}-E_m^{(0)})^{-1}\hat V_{nm}\) .
+
+Then we have:
+
+$$\begin{aligned}
+\hat H^{(1)} &= \hat H_0+\lambda \sum_n \hat V_{nn} +\lambda^2 \Big(-\frac 1 2 [\ti\hat S_0,\sum_{n\neq m}\hat V_{nm}]+\lambda^2[\ti\hat S_0,\hat H_0] \Big)+O(\lambda^3) \\
+&=\hat H_0 + \lambda \sum_n \hat V_{nn} +\lambda^2 \sum_{n\neq m} \frac {\hat V_{nm}\hat V_{mn}} {E_n^{(0)}-E_m^{(0)}}
+\end{aligned}$$
+
+Which is the 2nd perturbation result.
+
+And this procedure can also be carried out to arbitrary order of \(\lambda\) , using the unitary transformations with generators of different order of \(\lambda\) to cancel the off-diagonal elements of the Hamiltonian with the last order.
+
+# Time-Dependent Perturbation Theory
+
+## The Interaction Picture
+
+Given the Schrodinger Picture time-dependent Hamiltonian: \(\hat H_S(t)=\hat H_0+\hat V_S(t)\) , where \(\hat H_0\) is independent of time, the time evolution is:
+
+$$\ti\hbar \frac {\td} {\td t} \ket{\psi(t)}_S = \Big(\hat H_0+\hat V_S(t)\Big)\ket{\psi(t)}_S$$
+
+_[Definition]_ : `Interaction Picture` is the the Schrodinger Picture with an unitary transformation:
+
+$$\begin{aligned}
+\ket{\psi}_I &= e^{\ti\hat H_0 t/\hbar }\ket{\psi}_S \\
+\hat O_I(t) &= e^{\ti\hat H_0t/\hbar} \hat O_S(t)e^{-\ti\hat H_0t/\hbar}
+\end{aligned}$$
+
+Then the expectation of observable is invariant. And the time evolution is:
+
+$$\ti\hbar \frac {\td} {\td t} \ket{\psi(t)}_I = \hat V_I(t)\ket{\psi(t)}_I$$

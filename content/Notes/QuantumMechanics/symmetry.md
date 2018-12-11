@@ -6,6 +6,7 @@ tags: ["Physics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
+summary: "The symmetry theory in quantum mechanics. Including some tricks about solve some problems with it."
 ---
 
 # Basic of Group Theory

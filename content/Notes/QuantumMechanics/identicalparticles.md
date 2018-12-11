@@ -6,6 +6,7 @@ tags: ["Physics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
+summary: "Quantum theory for identical particles. Contain Permutation group theory and Second quantization."
 ---
 
 # Outline

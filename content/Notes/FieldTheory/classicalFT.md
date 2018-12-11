@@ -6,6 +6,7 @@ tags: ["Physics"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true
+summary: "The classical field theory. Lagrange & Hamilton Formalism and the Noether Theorem."
 ---
 
 # Introduction

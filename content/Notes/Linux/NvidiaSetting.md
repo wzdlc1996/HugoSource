@@ -6,6 +6,7 @@ tags: ["Linux", "Manjaro"]
 series: ["Linux"]
 categories: ["Linux"]
 toc: true
+summary: "How to handle the dual graphic card on Manjaro. We only show the configuration for Nvidia card."
 ---
 
 # Introduction

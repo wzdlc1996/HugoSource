@@ -6,6 +6,7 @@ tags: ["Physics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
+summary: "The dynamics theory of Quantum mechanics. And basic introduction for path-integral formalism."
 ---
 
 # Time Evolution
