@@ -313,7 +313,7 @@ body {
 
 After all, we will have a search icon in the left of the navigation bar. It will be looked like:
 
-{{% center %}}<img name="preview" src="/imgs/artics/InsiteSearch_1.png"/>{{% /center %}}
+{{% center %}}<img name="preview" src="/imgs/artics/hugo/InsiteSearch_1.png"/>{{% /center %}}
 
 # Reference
 

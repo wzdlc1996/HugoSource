@@ -1,0 +1,24 @@
+[[series]]
+name = "quantum-mechanics"
+img = "/imgs/seriesintro/advqm.jpg"
+summary = "Class notes of advanced Quantum Mechanics in PKU, teacher@Wang Fa"
+
+[[series]]
+name = "field-theory"
+img = "/imgs/seriesintro/qft.jpg"
+summary = "Class notes of Quantum Field Theory in PKU, teacher@Zheng Hanqing, book's author @Liu Chuan"
+
+[[series]]
+name = "linux"
+img = "/imgs/seriesintro/linux.png"
+summary = "Notes of learning Linux, the best open-source operating system"
+
+[[series]]
+name = "hugo"
+img = "/imgs/seriesintro/hugo.png"
+summary = "Notes of learning Hugo, the fast framework for generating static site."
+
+[[series]]
+name = "quantum-measurement"
+img = "/imgs/seriesintro/measurement.png"
+summary = "The study about the quantum measurement problem."
