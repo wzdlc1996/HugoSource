@@ -2,23 +2,16 @@
 
 Hugo theme - AllinOne.
 
-[Demo](https://orianna-zzo.github.io/AllinOne-html/)
+[Demo](https://wzdlc1996.github.io)
 
-Here are some screen shots.
-
-![Carousel](https://github.com/orianna-zzo/AllinOne/blob/master/images/screenshot.png)
-
-![List](https://github.com/orianna-zzo/AllinOne/blob/master/images/screenshot2.png)
-
-![Post](https://github.com/orianna-zzo/AllinOne/blob/master/images/screenshot3.png)
-
+Forked from [orianna-zzo/AllinOne](https://github.com/orianna-zzo/AllinOne)
 
 ## Features
 
 * Responsive full image carousel (Responsive text layout on it should be improved)
 * Suited for blogging and personal webpages with static profile image (avatar) and website image (faviconfile)
 * Smooth scroll && hierarchical TOC Scrollspy for content (h1~h4)
-* Syntax highlighting with highlightjs 
+* Syntax highlighting with highlightjs
 * Katex for Latex
 * Google Analytics
 * Font Awesome 3.1.0
@@ -38,6 +31,7 @@ Most features are optional and can be individually enabled/disabled in your `con
   * [Post Intro Picture](#post-intro-picture)
   * [Post Summary](#post-summary)
   * [Series Intro Picture](#series-intro-picture)
+  * [In Site Search](#in-site-search)
 * [License](#license)
 * [Thanks](#thanks)
 
@@ -68,11 +62,11 @@ Here are simple examples for quick start.
 
 ```toml
 # if you want to use images in the theme (defult in the theme)
-slidesDirPath    = "themes/AllinOne/static/img/header-slides"  
+slidesDirPath    = "themes/AllinOne/static/img/header-slides"
 slidesDirPathURL = "img/header-slides"
 
 # if you want to use images in static/img/header-slides
-slidesDirPath  = "static/img/header-slides"  
+slidesDirPath  = "static/img/header-slides"
 slidesDirPathURL = "img/header-slides"
 ```
 
@@ -112,7 +106,7 @@ There are three ways to add summary to each post.
 
   Alternatively, you may add the \<!--more--\> summary divider where you want to split the article. Content that comes before the summary divider will be used as that content’s summary and stored in the `.Summary` page variable with all HTML formatting intact. The only extra work is add the \<!--more--\> summary divider.
 
-* User-defined Summary 
+* User-defined Summary
 
   You may want a specific summary for the post other than the front sentences of the content. In this case, you could but summary in the yaml head of the post with the param name `summary`.
 
@@ -134,6 +128,16 @@ img = "images/blog/2018-08/test5.jpg"
 summary = "How I build up my personal website"
 ```
 
+### In Site Search
+
+I add the in site search function to this theme. The configuration is posted on my personal site: [wzdlc1996/gitpage](https://wzdlc1996.github.io/artic/insitesearch/) .
+
+The function is realized with the commercial search method `Algolia`.
+
+The preview:
+
+![in-site-search](https://wzdlc1996.github.io/imgs/artics/InsiteSearch_1.png)
+
 
 ## License
 
@@ -145,3 +149,5 @@ Thanks to the following projects I learned from:
 
 * Hugo theme [cocoa](https://github.com/nishanths/cocoa-hugo-theme)
 * Material design for Bootstrap4 [mdb](https://mdbootstrap.com/)
+* github/orianna-zzo/AllinOne [orianna-zzo/AllinOne](https://github.com/orianna-zzo/AllinOne)
+* Yangming's Blog for in site search [Yangming's Blog](https://www.qikqiak.com/post/hugo-integrated-algolia-search/)

@@ -2,3 +2,6 @@
 	path = public
 	url = git@github.com:wzdlc1996/wzdlc1996.github.io.git
 	branch = master
+[submodule "theme/AllinOne"]
+	path = theme/AllinOne
+	url = git@github.com:wzdlc1996/AllinOne.git
