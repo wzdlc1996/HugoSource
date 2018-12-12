@@ -41,7 +41,7 @@ From the root of your Hugo site, clone the theme into `themes/AllinOne` by runni
 
 ```sh
 # Clone theme into the themes/AllinOne directory
-$ git clone https://github.com/orianna-zzo/AllinOne.git themes/AllinOne
+$ git clone https://github.com/wzdlc1996/AllinOne.git themes/AllinOne
 ```
 
 ## Usage

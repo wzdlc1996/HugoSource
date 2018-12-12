@@ -3,5 +3,5 @@
 	url = git@github.com:wzdlc1996/wzdlc1996.github.io.git
 	branch = master
 [submodule "theme/AllinOne"]
-	path = theme/AllinOne
+	path = themes/AllinOne
 	url = git@github.com:wzdlc1996/AllinOne.git
