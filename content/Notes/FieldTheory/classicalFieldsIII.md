@@ -2,7 +2,7 @@
 title: "Classical Fields: Maxwell Field"
 date: 2018-12-11T15:21:14+08:00
 draft: true
-tags: ["Physics"]
+tags: ["classical-theory"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true

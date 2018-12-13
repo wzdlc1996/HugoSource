@@ -2,8 +2,7 @@
 title: "Bluetooth Audio Issues"
 date: 2018-11-15T13:13:29+08:00
 draft: false
-tags: ["Linux", "Manjaro"]
-series: ["Linux"]
+tags: ["os-setup", "manjaro"]
 categories: ["Linux"]
 toc: true
 summary: "How to manager the Bluetooth earphones. Switch HSV to A2DP for the better performance."

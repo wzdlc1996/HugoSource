@@ -2,7 +2,7 @@
 title: "Identical Particles"
 date: 2018-11-12T13:42:48+08:00
 draft: false
-tags: ["Physics"]
+tags: ["quantum","statistical-phys"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true

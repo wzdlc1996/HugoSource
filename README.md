@@ -23,3 +23,15 @@ For the known [issue](https://gohugo.io/content-management/formats/#mathjax-with
     2. From adjusted content files to markdown _(where do *NOT* need reg-exp)_ :
        Inline: <code>\`\$</code> to `$` or `\(` (depend on plugin-config) and <code>\$\`</code> to `$` or `\)`
        Block: `<div>$$` to `$$` and `$$</div>` to `$$`
+
+## Content Arrangement
+
+There are three properties can be assigned for every post:
+
+1.  `Category`: Is the main and basic classification for posts. It is a little like the classification of sub-folders in the `/content/` folder. Different posts about different subjects should be assigned different `category`, like _physics_ , _linux_ , _tools_ , and so on. And one post can only have one `category`
+2.  `Series`: Not all posts should have the `series` property. Only those posts which have fine connection and structure of logic can be assigned the same `series` . Like a set of class notes and book reviews. A `series` of posts should show a more developed theory (about 100-year-developing) but not the work are still studied.
+3.  `Tags`: Every posts should have its tags. They will form a description for it finely, but show its combination to other posts. One posts can have more than one tags. Every time to make a new posts, check whether there are some tags can be used or not. Do `NOT` make duplicate tags.
+
+## Theme
+
+You can get a much more detailed documentation about the theme at [orianna-zzo/AllinOne](https://github.com/orianna-zzo/AllinOne) , and the modified one for the theme used here at [wzdlc1996/AllinOne](https://github.com/wzdlc1996/AllinOne)

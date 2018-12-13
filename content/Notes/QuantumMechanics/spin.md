@@ -2,7 +2,7 @@
 title: "Angular Momentum and Spin"
 date: 2018-11-14T11:42:20+08:00
 draft: false
-tags: ["Physics"]
+tags: ["quantum","symmetry","statistical-phys"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true

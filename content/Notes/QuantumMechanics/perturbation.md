@@ -3,7 +3,7 @@ title: "Perturbation Theory"
 date: 2018-12-03T13:24:17+08:00
 lastmod: "2018-12-12T13:38:00+08:00"
 draft: false
-tags: ["Physics"]
+tags: ["quantum","approximation"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true

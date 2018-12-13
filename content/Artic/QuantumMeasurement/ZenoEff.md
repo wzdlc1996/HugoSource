@@ -4,7 +4,6 @@ date: "2018-11-22T19:23:43+08:00"
 lastmod: "2018-12-10T18:00:00+08:00"
 draft: false
 tags: ["quantum","measurement"]
-series: ["quantum-measurement"]
 categories: ["Reviews"]
 toc: true
 summary: "The quantum Zeno effect: an unstable particle will never be found to decay if it is continuously observed. The theoretical analysis and the experiment. And a simple introduction for Many worlds interpretation"

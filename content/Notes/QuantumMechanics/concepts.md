@@ -2,7 +2,7 @@
 title: "Basic Concepts of Quantum Mechanics"
 date: 2018-11-12T11:36:42+08:00
 draft: false
-tags: ["Physics", "Math"]
+tags: ["quantum"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true

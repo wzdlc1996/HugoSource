@@ -2,7 +2,7 @@
 title: "Quantum Dynamics"
 date: 2018-11-12T14:15:58+08:00
 draft: false
-tags: ["Physics"]
+tags: ["quantum","dynamics"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true

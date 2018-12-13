@@ -3,7 +3,7 @@ title: "Classical Fields: Scalar Field"
 date: "2018-11-18T21:49:41+08:00"
 lastmod: "2018-12-11T17:11:00+08:00"
 draft: false
-tags: ["Physics"]
+tags: ["classical-theory"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true

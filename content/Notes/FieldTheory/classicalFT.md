@@ -2,7 +2,7 @@
 title: "Classical Field Theory"
 date: 2018-11-14T15:20:07+08:00
 draft: false
-tags: ["Physics"]
+tags: ["classical-theory"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true

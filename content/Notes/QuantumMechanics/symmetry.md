@@ -2,7 +2,7 @@
 title: "Symmetry in Quantum Mechanics"
 date: 2018-11-12T14:38:46+08:00
 draft: false
-tags: ["Physics"]
+tags: ["quantum","symmetry","math"]
 series: ["Quantum-Mechanics"]
 categories: ["Physics"]
 toc: true
