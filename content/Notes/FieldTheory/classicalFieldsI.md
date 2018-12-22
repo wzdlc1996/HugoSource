@@ -56,13 +56,13 @@ Which requires that `$-k_\mu k^\mu+m^2=0$` , which is the `dispersion relationsh
 With this relation, we separate the general solution to two items according to the sign of frequency:
 
 <div>$$\begin{aligned}
-\phi(x) &= \int \frac {\td^3\bm{k}} {(2\pi)^{3/2}} \Big\{e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} a(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} a(\bm{k})^* \Big\} \\
-\pi(x) &= \int \frac {\td^3\bm{k} \ \ti \omega_{|\bm{k}|}} {(2\pi)^{3/2}} \Big\{-e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} a(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} a(\bm{k})^* \Big\}
+\phi(x) &= \int \frac {\td^3\bm{k}} {(2\pi)^{3/2}} \sqrt{\frac 1 {2\omega_{|\bm{k}|}}} \Big\{e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} a(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} a(\bm{k})^* \Big\} \\
+\pi(x) &= \int \frac {\td^3\bm{k} \ \ti \omega_{|\bm{k}|}} {(2\pi)^{3/2}} \sqrt{\frac 1 {2\omega_{|\bm{k}|}}} \Big\{-e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} a(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} a(\bm{k})^* \Big\}
 \end{aligned}$$</div>
 
 One can rewrite the Hamiltonian with `$a(\bm{k})$` as:
 
-<div>$$H = \int \td^3\bm{x} \ \omega_{|\bm{k}|}^2 (a(\bm{k})^*a(\bm{k}) + a(\bm{k})a(\bm{k})^*)$$</div>
+<div>$$H = \frac 1 2 \int \td^3\bm{k} \ \omega_{|\bm{k}|} (a(\bm{k})^*a(\bm{k}) + a(\bm{k})a(\bm{k})^*)$$</div>
 
 In which we hold the order of `$a$` , which will let the conclusion hold in quantum theory
 
@@ -71,21 +71,21 @@ In which we hold the order of `$a$` , which will let the conclusion hold in quan
 We need to compute three items in Hamiltonian:
 
 <div>$$\begin{aligned}
-\int \td^3\bm{x} \pi^2 &= \int \td^3\bm{x} \int \frac {\td^3 \bm{k}_1 \td^3\bm{k}_2 (-\omega_1\omega_2)} {(2\pi)^3}\Big\{e^{\ti(\bm{k}_1+\bm{k}_2)\cdot \bm{x}-\ti(\omega_1+\omega_2)t}a(\bm{k}_1)a(\bm{k}_2) \\
+\int \td^3\bm{x} \pi^2 &= \int \td^3\bm{x} \int \frac {\td^3 \bm{k}_1 \td^3\bm{k}_2 (-\omega_1\omega_2)} {(2\pi)^3} \sqrt{\frac 1 {4\omega_1\omega_2}} \Big\{e^{\ti(\bm{k}_1+\bm{k}_2)\cdot \bm{x}-\ti(\omega_1+\omega_2)t}a(\bm{k}_1)a(\bm{k}_2) \\
 & \ \ \ \ + e^{-\ti(\bm{k}_1+\bm{k}_2)\cdot \bm{x}+\ti(\omega_1+\omega_2)t}a(\bm{k}_1)^*a(\bm{k}_2)^* \\
 & \ \ \ \ -e^{\ti(\bm{k}_1-\bm{k}_2)\cdot \bm{x}-\ti(\omega_1-\omega_2)t} a(\bm{k}_1)a(\bm{k}_2)^* \\
 & \ \ \ \ -e^{-\ti(\bm{k}_1-\bm{k}_2)\cdot \bm{x}+\ti(\omega_1-\omega_2)t} a(\bm{k}_1)^*a(\bm{k}_2) \Big\} \\
-&= \int \td^3 \bm{k} \ \omega_{|\bm{k}|}^2 \Big\{a(\bm{k})^* a(\bm{k})+a(\bm{k}) a(\bm{k})^*-e^{-2\ti \omega t} a(\bm{k})a(-\bm{k}) - e^{2\ti \omega t} a(\bm{k})^{*}a(-\bm{k})^*  \Big\} \\
+&=\frac 1 2 \int \td^3 \bm{k} \ \omega_{|\bm{k}|} \Big\{a(\bm{k})^* a(\bm{k})+a(\bm{k}) a(\bm{k})^*-e^{-2\ti \omega t} a(\bm{k})a(-\bm{k}) - e^{2\ti \omega t} a(\bm{k})^{*}a(-\bm{k})^*  \Big\} \\
 \\
-\int\td^3\bm{x}(\nabla \phi)^2 &= \int \td^3 \bm{k} \ |\bm{k}|^2 \Big\{a(\bm{k})^* a(\bm{k})+a(\bm{k}) a(\bm{k})^*-e^{-2\ti \omega t} a(\bm{k})a(-\bm{k}) - e^{2\ti \omega t} a(\bm{k})^{*}a(-\bm{k})^*  \Big\} \\
+\int\td^3\bm{x}(\nabla \phi)^2 &= \frac 1 2 \int \td^3 \bm{k} \ \frac 1 {2\omega_{|\bm{k}|}}  |\bm{k}|^2 \Big\{a(\bm{k})^* a(\bm{k})+a(\bm{k}) a(\bm{k})^*-e^{-2\ti \omega t} a(\bm{k})a(-\bm{k}) - e^{2\ti \omega t} a(\bm{k})^{*}a(-\bm{k})^*  \Big\} \\
 \\
-\int\td^3\bm{x}(m \phi)^2 &= \int \td^3 \bm{k} \ m^2 \Big\{a(\bm{k})^* a(\bm{k})+a(\bm{k}) a(\bm{k})^*+e^{-2\ti \omega t} a(\bm{k})a(-\bm{k}) + e^{2\ti \omega t} a(\bm{k})^{*}a(-\bm{k})^*  \Big\} \\
+\int\td^3\bm{x}(m \phi)^2 &= \frac 1 2 \int \td^3 \bm{k} \ \frac {m^2} {\omega_{|\bm{k}|}} \Big\{a(\bm{k})^* a(\bm{k})+a(\bm{k}) a(\bm{k})^*+e^{-2\ti \omega t} a(\bm{k})a(-\bm{k}) + e^{2\ti \omega t} a(\bm{k})^{*}a(-\bm{k})^*  \Big\} \\
 
 \end{aligned}$$</div>
 
 Then we have the result:
 
-<div>$$H = \int \td^3\bm{x} \ \omega_{|\bm{k}|}^2 (a(\bm{k})^*a(\bm{k}) + a(\bm{k})a(\bm{k})^*)$$</div>
+<div>$$H =\frac 1 2 \int \td^3\bm{k} \ \omega_{|\bm{k}|} (a(\bm{k})^*a(\bm{k}) + a(\bm{k})a(\bm{k})^*)$$</div>
 
 {{%/fold%}}
 
@@ -107,7 +107,7 @@ With the formalism of complex valued Klein-Gordon Field, we can use two set of r
 
 And write down the expression of `$Q$` :
 
-<div>$$Q = 2\int \td^3 \bm{k}\ \ti \omega_{|\bm{k}|}\Big(b(\bm{k})^*a(\bm{k})-b(\bm{k})a(\bm{k})^*\Big) $$</div>
+<div>$$Q = \int \td^3 \bm{k}\ \ti \Big(b(\bm{k})^*a(\bm{k})-b(\bm{k})a(\bm{k})^*\Big) $$</div>
 
 
 
@@ -116,10 +116,10 @@ And write down the expression of `$Q$` :
 With:
 
 <div>$$\begin{aligned}
-\phi_r(x) &= \int \frac {\td^3\bm{k}} {(2\pi)^{3/2}} \Big\{e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} a(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} a(\bm{k})^* \Big\} \\
-\pi_r(x) &= \int \frac {\td^3\bm{k} \ \ti \omega_{|\bm{k}|}} {(2\pi)^{3/2}} \Big\{-e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} a(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} a(\bm{k})^* \Big\} \\
-\phi_i(x) &= \int \frac {\td^3\bm{k}} {(2\pi)^{3/2}} \Big\{e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} b(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} b(\bm{k})^* \Big\} \\
-\pi_i(x) &= \int \frac {\td^3\bm{k} \ \ti \omega_{|\bm{k}|}} {(2\pi)^{3/2}} \Big\{-e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} b(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} b(\bm{k})^* \Big\}
+\phi_r(x) &= \int \frac {\td^3\bm{k}} {(2\pi)^{3/2}} \sqrt{\frac 1 {2\oemga_{|\bm{k}|}}} \Big\{e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} a(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} a(\bm{k})^* \Big\} \\
+\pi_r(x) &= \int \frac {\td^3\bm{k} \ \ti \omega_{|\bm{k}|}} {(2\pi)^{3/2}} sqrt{\frac 1 {2\oemga_{|\bm{k}|}}} \Big\{-e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} a(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} a(\bm{k})^* \Big\} \\
+\phi_i(x) &= \int \frac {\td^3\bm{k}} {(2\pi)^{3/2}} sqrt{\frac 1 {2\oemga_{|\bm{k}|}}} \Big\{e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} b(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} b(\bm{k})^* \Big\} \\
+\pi_i(x) &= \int \frac {\td^3\bm{k} \ \ti \omega_{|\bm{k}|}} {(2\pi)^{3/2}} sqrt{\frac 1 {2\oemga_{|\bm{k}|}}} \Big\{-e^{\ti \bm{k}\cdot \bm{x} - \ti \omega_{|\bm{k}|}t} b(\bm{k})+e^{-\ti \bm{k}\cdot \bm{x} + \ti \omega_{|\bm{k}|}t} b(\bm{k})^* \Big\}
 \end{aligned}$$</div>
 
 And:
@@ -143,23 +143,23 @@ Then the charge:
 Then we need only compute the integral of `$\pi_i\phi_r$` , and another term can be obtained by permute the `$a$` and `$b$` :
 
 <div>$$\begin{aligned}
-\int \td^3 \bm{x} \pi_i \phi_r &= \int \td^3 \bm{x} \int \frac {\td^3 \bm{k}_1 \td^3 \bm{k}_2} {(2\pi)^3} \ti \omega_1\Big\{-e^{\ti (\bm{k}_1+\bm{k}_2)\cdot \bm{x} - \ti (\omega_1+\omega_2)t} b(\bm{k}_1)a(\bm{k}_2) \\
+\int \td^3 \bm{x} \pi_i \phi_r &= \int \td^3 \bm{x} \int \frac {\td^3 \bm{k}_1 \td^3 \bm{k}_2} {(2\pi)^3} \ti \omega_1 \frac 1 {\sqrt{4\omega_1\omega_2}}\Big\{-e^{\ti (\bm{k}_1+\bm{k}_2)\cdot \bm{x} - \ti (\omega_1+\omega_2)t} b(\bm{k}_1)a(\bm{k}_2) \\
 &\indent -e^{\ti (\bm{k}_1-\bm{k}_2)\cdot \bm{x} - \ti (\omega_1-\omega_2)t} b(\bm{k}_1)a(\bm{k}_2)^* + e^{-\ti (\bm{k}_1-\bm{k}_2)\cdot \bm{x} + \ti (\omega_1-\omega_2)t} b(\bm{k}_1)^*a(\bm{k}_2)  \\
 &\indent +e^{-\ti (\bm{k}_1+\bm{k}_2)\cdot \bm{x} + \ti (\omega_1+\omega_2)t} b(\bm{k}_1)^*a(\bm{k}_2)^* \Big\} \\
-&=\int \td^3 \bm{k} \ \ti \omega_{|\bm{k}|}\Big\{ -e^{-2\ti\omega_{|\bm{k}|}t}b(\bm{k})a(-\bm{k})-b(\bm{k})a(\bm{k})^* +b(\bm{k})^* a(\bm{k}) +e^{2\ti\omega_{|\bm{k}|}t}b(\bm{k})^*a(-\bm{k})^* \Big\} \\
-\int \td^3 \bm{x} \pi_r \phi_i &= \int \td^3 \bm{k} \ \ti \omega_{|\bm{k}|}\Big\{ -e^{-2\ti\omega_{|\bm{k}|}t}a(\bm{k})b(-\bm{k})-a(\bm{k})b(\bm{k})^* +a(\bm{k})^* b(\bm{k}) +e^{2\ti\omega_{|\bm{k}|}t}a(\bm{k})^*b(-\bm{k})^* \Big\} \\
-&=\int \td^3 \bm{k} \ \ti \omega_{|\bm{k}|}\Big\{ -e^{-2\ti\omega_{|\bm{k}|}t}a(-\bm{k})b(\bm{k})-a(\bm{k})b(\bm{k})^* +a(\bm{k})^* b(\bm{k}) +e^{2\ti\omega_{|\bm{k}|}t}a(-\bm{k})^*b(\bm{k})^* \Big\} \\
+&=\int \td^3 \bm{k} \ \ti \frac 1 2\Big\{ -e^{-2\ti\omega_{|\bm{k}|}t}b(\bm{k})a(-\bm{k})-b(\bm{k})a(\bm{k})^* +b(\bm{k})^* a(\bm{k}) +e^{2\ti\omega_{|\bm{k}|}t}b(\bm{k})^*a(-\bm{k})^* \Big\} \\
+\int \td^3 \bm{x} \pi_r \phi_i &= \int \td^3 \bm{k} \ \ti \frac 1 2\Big\{ -e^{-2\ti\omega_{|\bm{k}|}t}a(\bm{k})b(-\bm{k})-a(\bm{k})b(\bm{k})^* +a(\bm{k})^* b(\bm{k}) +e^{2\ti\omega_{|\bm{k}|}t}a(\bm{k})^*b(-\bm{k})^* \Big\} \\
+&=\int \td^3 \bm{k} \ \ti \frac 1 2\Big\{ -e^{-2\ti\omega_{|\bm{k}|}t}a(-\bm{k})b(\bm{k})-a(\bm{k})b(\bm{k})^* +a(\bm{k})^* b(\bm{k}) +e^{2\ti\omega_{|\bm{k}|}t}a(-\bm{k})^*b(\bm{k})^* \Big\} \\
 \end{aligned}$$</div>
 
 Then we have:
 
-<div>$$Q = 2\int \td^3 \bm{k}\ \ti \omega_{|\bm{k}|}\Big(b(\bm{k})^*a(\bm{k})-b(\bm{k})a(\bm{k})^*\Big) $$</div>
+<div>$$Q = \int \td^3 \bm{k}\ \ti \Big(b(\bm{k})^*a(\bm{k})-b(\bm{k})a(\bm{k})^*\Big) $$</div>
 
 
 {{%/fold%}}
 
 Or with that `$c_{\pm}(\bm{k})=\frac {a(\bm{k})\mp\ti b(\bm{k})} {\sqrt{2}}$` , we have:
 
-<div>$$Q=2\int \td^3 \bm{k} \omega_{|\bm{k}|}(c_+(\bm{k})^*c_+(\bm{k})-c_-(\bm{k})^*c_-(\bm{k}))$$</div>
+<div>$$Q=\int \td^3 \bm{k}(c_+(\bm{k})^*c_+(\bm{k})-c_-(\bm{k})^*c_-(\bm{k}))$$</div>
 
 This conclusion hold in Quantum theory where `$a,a^*$` are not commutable but `$a,b$` are commutable.

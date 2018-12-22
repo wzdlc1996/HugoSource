@@ -83,7 +83,7 @@ for some like `$\psi_1\otimes \psi_2 + \phi_1\otimes \phi_2$` , generally it CAN
 
 <div>$$\bra \psi : \mathcal{H} \rightarrow \mathbb{C} , \phi \mapsto (\psi,\phi)$$</div>
 
-Usually we use the short-hand notation like:
+Usually we use the short-hand notion like:
 
 1. `$\langle \psi | \phi \rangle \equiv (\psi,\phi)=\int \psi^*\phi \td V$`
 2. `bra is a linear functional` : `$\langle \psi|\lambda_1 \phi_1 + \lambda_2\phi_2\rangle =\lambda_1 \langle \psi|\phi_1\rangle +\lambda_2 \langle \psi |\phi_2 \rangle\$`

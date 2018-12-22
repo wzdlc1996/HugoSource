@@ -34,7 +34,7 @@ We define some `projection operators` :
 
 <div>$$\begin{aligned}
 \hat P &= \ket{E_n^{(0)}}\bra {E_n^{(0)}} \\
-\hat Q &= 1 - \hat P = \sum_{m\neq n} \ket{E_m^{(0)}}\bra{E_m^{(0)}} \\
+\hat Q &= 1 - \hat P = \sum_{m,m\neq n} \ket{E_m^{(0)}}\bra{E_m^{(0)}} \\
 \end{aligned}$$</div>
 
 They have such properties: `$[\hat H,\hat P]=[\hat H,\hat Q]=0$` , and `$\hat H\hat P = E_n^{(0)}\hat P, \hat P\hat Q=0$` .
@@ -84,8 +84,8 @@ Where `$\hat G_n=\hat Q_n (E_n-\hat H_0)^{-1}\hat Q_n$` . They do not really sol
 2.  Second order perturbation:
 
     <div>$$\begin{aligned}
-    \ket{n,\lambda} &= \ket{E_n^{(0)}} + \lambda \sum_{m\neq n} \frac {\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}} {E_m^{(0)}-E_n^{(0)}} \ket{E_m^{(0)}} + O(\lambda^2) \\
-    E_n &= E_n^{(0)} + \lambda \bra{E_n^{(0)}}\hat V \ket{E_n^{(0)}} + \lambda^2 \sum_{m\neq n} \frac {|\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}|^2} {E_m^{(0)}-E_n^{(0)}} + O(\lambda^3)
+    \ket{n,\lambda} &= \ket{E_n^{(0)}} + \lambda \sum_{m,m\neq n} \frac {\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}} {E_m^{(0)}-E_n^{(0)}} \ket{E_m^{(0)}} + O(\lambda^2) \\
+    E_n &= E_n^{(0)} + \lambda \bra{E_n^{(0)}}\hat V \ket{E_n^{(0)}} + \lambda^2 \sum_{m,m\neq n} \frac {|\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}|^2} {E_m^{(0)}-E_n^{(0)}} + O(\lambda^3)
     \end{aligned}$$</div>
 
     {{%fold "Proof"%}}
@@ -95,15 +95,15 @@ To compute the Second order expansion, we have:
 <div>$$\begin{aligned}
 \ket{n,\lambda} &= \ket{E_n^{(0)}} + \lambda \hat G_n \hat V \ket{E_n^{(0)}} \\
 &= \ket{E_n^{(0)}} + \lambda \sum_m \hat G_n \ket{E_m^{(0)}}\bra{E_m^{(0)}} \hat V \ket{E_n^{(0)}} \\
-&= \ket{E_n^{(0)}} + \lambda \sum_{m\neq n} \frac {V_{mn}} {E_n-E_m^{(0)}} \ket{E_m^{(0)}} \\
-&\approx \ket{E_n^{(0)}} + \lambda \sum_{m\neq n} \frac {V_{mn}} {E_n^{(0)}-E_m^{(0)}} \ket{E_m^{(0)}}
+&= \ket{E_n^{(0)}} + \lambda \sum_{m,m\neq n} \frac {V_{mn}} {E_n-E_m^{(0)}} \ket{E_m^{(0)}} \\
+&\approx \ket{E_n^{(0)}} + \lambda \sum_{m,m\neq n} \frac {V_{mn}} {E_n^{(0)}-E_m^{(0)}} \ket{E_m^{(0)}}
 \end{aligned}$$</div>
 
 up to the first order of `$\lambda$`. And the energy:
 
 <div>$$\begin{aligned}
-E_n-E_n^{(0)} &= \lambda V_{nn} + \bra{E_n^{(0)}} \lambda \hat V \lambda \sum_{m\neq n} \frac {V_{mn}} {E_n^{(0)}-E_m^{(0)}} \ket{E_m^{(0)}} \\
-&=\lambda V_{nn} + \lambda^2 \sum_{m\neq n} \frac {V_{mn}V_{nm}} {E_n^{(0)}-E_m^{(0)}}
+E_n-E_n^{(0)} &= \lambda V_{nn} + \bra{E_n^{(0)}} \lambda \hat V \lambda \sum_{m,m\neq n} \frac {V_{mn}} {E_n^{(0)}-E_m^{(0)}} \ket{E_m^{(0)}} \\
+&=\lambda V_{nn} + \lambda^2 \sum_{m,m\neq n} \frac {V_{mn}V_{nm}} {E_n^{(0)}-E_m^{(0)}}
 \end{aligned}$$</div>
 
 q.e.d.
@@ -178,15 +178,15 @@ The second equation usually is called `secular equation` . It requires that the 
 
 2.  Second order perturbation:
 
-    <div>$$\ket{n,\lambda} = \sum_{\alpha} c_\alpha\Big( \ket{E_{n,\alpha}^{(0)}} + \sum_{m\neq n} \frac {\lambda V_{m,n\alpha}} {E_n-E_m^{(0)}} \ket{E_m^{(0)}} \Big) + O(\lambda^2)$$</div>
+    <div>$$\ket{n,\lambda} = \sum_{\alpha} c_\alpha\Big( \ket{E_{n,\alpha}^{(0)}} + \sum_{m,m\neq n} \frac {\lambda V_{m,n\alpha}} {E_n-E_m^{(0)}} \ket{E_m^{(0)}} \Big) + O(\lambda^2)$$</div>
 
     And `$c_\alpha, E_n$` can be obtained by:
 
-    <div>$$(E_n-E_n^{(0)})c_\alpha = \sum_{\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\beta + O(\lambda^3)$$</div>
+    <div>$$(E_n-E_n^{(0)})c_\alpha = \sum_{\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\beta + O(\lambda^3)$$</div>
 
 _[Theorem]_ : if the first order perturbation has `completely` remove the degeneracy, we can use `normalized` `$c_\alpha$`, namely `$\sum_\alpha |c_\alpha|^2=1$` from 1st perturbation here to compute the energy shift, and:
 
-<div>$$E_n-E_n^{(0)} = \sum_{\alpha,\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\alpha^* c_\beta + O(\lambda^3)$$</div>
+<div>$$E_n-E_n^{(0)} = \sum_{\alpha,\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\alpha^* c_\beta + O(\lambda^3)$$</div>
 
 {{%fold "Proof"%}}
 
@@ -202,7 +202,7 @@ Its first order perturbation result is that `$\bm{c}'=\bm{c}+O(\lambda)$` , with
 
 That is:
 
-<div>$$E_n-E_n^{(0)} = \bm{c}^\dagger \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big)\bm{c} + O(\lambda^3)$$</div>
+<div>$$E_n-E_n^{(0)} = \bm{c}^\dagger \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big)\bm{c} + O(\lambda^3)$$</div>
 
 q.e.d.
 
@@ -368,23 +368,23 @@ Then with the time-independent theory we have:
 Consider non-degenerate case, `$\psi_n$` has large overlap with only `$\ket{\psi_n^{(0)}}$` with `$Z_n=|\bra{\psi_n^{(0)}}\psi_n\rangle|^2$` :
 
 <div>$$\begin{aligned}
-\bra{\psi_n^{(0)}}\hat U_I(t)\ket{\psi_n^{(0)}}&= Z_n e^{-\ti(E_n-E_n^{(0)})t/\hbar}+\sum_{m\neq n} |\bra{\psi_n^{(0)}}\psi_m\rangle|^2 e^{-\ti E_m t/\hbar}e^{\ti E_n^{(0)}t/\hbar} \\
-&\approx Z_n + Z_n \frac {-\ti} \hbar (E_n-E_n^{(0)}) t + Z_n \frac 1 2 \Big(\frac {-\ti(E_n-E_n^{(0)})t} \hbar \Big)^2 +\sum_{m\neq n} |\bra{\psi_n^{(0)}}\psi_m\rangle|^2 e^{-\ti E_m t/\hbar}e^{\ti E_n^{(0)}t/\hbar}
+\bra{\psi_n^{(0)}}\hat U_I(t)\ket{\psi_n^{(0)}}&= Z_n e^{-\ti(E_n-E_n^{(0)})t/\hbar}+\sum_{m,m\neq n} |\bra{\psi_n^{(0)}}\psi_m\rangle|^2 e^{-\ti E_m t/\hbar}e^{\ti E_n^{(0)}t/\hbar} \\
+&\approx Z_n + Z_n \frac {-\ti} \hbar (E_n-E_n^{(0)}) t + Z_n \frac 1 2 \Big(\frac {-\ti(E_n-E_n^{(0)})t} \hbar \Big)^2 +\sum_{m,m\neq n} |\bra{\psi_n^{(0)}}\psi_m\rangle|^2 e^{-\ti E_m t/\hbar}e^{\ti E_n^{(0)}t/\hbar}
 \end{aligned}$$</div>
 
 While compute `$\bra{\psi_n^{(0)}}\hat U_I(t)\ket{\psi_n^{(0)}}$` by Dyson series, up to 2nd order this is:
 
 <div>$$\begin{aligned}
 \bra{\psi_n^{(0)}}\hat U_I(t)\ket{\psi_n^{(0)}} &= 1+\frac {-\ti} \hbar \int_{t_1=0}^t \td t_1 \ \bra{\psi_n^{(0)}}\hat V_I(t_1)\ket{\psi_n^{(0)}} + (\frac {-\ti}\hbar)^2 \int_{0}^t \td t_1 \int_0^{t_1}\td t_2 \bra{\psi_n^{(0)}}\hat V_I(t_1)\hat V_I(t_2)\ket{\psi_n^{(0)}} \\
-&=\Big[1-\sum_{m\neq n} \frac {V_{nm}V_{mn}} {(E_n^{(0)}-E_m^{(0)})^2}\Big] + \frac {-\ti} \hbar \big(V_{nn}+\sum_{m\neq n}\frac {V_{nm}V_{mn}} {E_n^{(0)}-E_m^{(0)}}\big)t+\frac 1 2 \big(\frac {-\ti V_{nn}t} \hbar\big)^2  \\
+&=\Big[1-\sum_{m,m\neq n} \frac {V_{nm}V_{mn}} {(E_n^{(0)}-E_m^{(0)})^2}\Big] + \frac {-\ti} \hbar \big(V_{nn}+\sum_{m\neq n}\frac {V_{nm}V_{mn}} {E_n^{(0)}-E_m^{(0)}}\big)t+\frac 1 2 \big(\frac {-\ti V_{nn}t} \hbar\big)^2  \\
 &\indent -  \big(\frac {-\ti} \hbar\big)^2 \sum_{m\neq n} V_{nm} V_{mn} \frac {e^{\ti(E_n^{(0)}-E_m^{(0)})t/\hbar}} {\ti(E_m^{(0)}-E_n^{(0)})/\hbar \cdot \ti(E_n^{(0)}-E_m^{(0)})/\hbar}
 \end{aligned}$$</div>
 
 Compare with these two results:
 
 <div>$$\begin{aligned}
-E_n-E_n^{(0)} &= V_{nn}+\sum_{m\neq n} \frac {V_{nm}V_{mn}} {E_n^{(0)}-E_m^{(0)}} \\
-Z_n&=1-\sum_{m\neq n} \frac {V_{nm}V_{mn}} {(E_n^{(0)}-E_m^{(0)})^2}
+E_n-E_n^{(0)} &= V_{nn}+\sum_{m,m\neq n} \frac {V_{nm}V_{mn}} {E_n^{(0)}-E_m^{(0)}} \\
+Z_n&=1-\sum_{m,m\neq n} \frac {V_{nm}V_{mn}} {(E_n^{(0)}-E_m^{(0)})^2}
 \end{aligned}$$</div>
 
 Consistent with the time-independent perturbation theory.

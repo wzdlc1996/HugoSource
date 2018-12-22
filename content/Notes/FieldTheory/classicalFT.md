@@ -307,9 +307,9 @@ In relativity Field theory, we will only study those fields:
 1.  Fields obey some rules when the spacetime transformed by Lorentz transformation.
 2.  The `action` , as the integral of Lagrangian density over spacetime, should be invariant with the spacetimes transformation(Lorentz transformation). That is, <mark>The action of Field system should be a `scalar`</mark>
 
-These two requirements come from `Relativity principle` , which claims that the mechanics in different frame should be the same.
+These two requirements come from `Relativity principle` , which claims that the mechanics in different frames should be the same.
 
-With this requirements, the field should be the basis of one representation of Lorentz Group. And obey the transformation rule:
+With this requirements, the field should be the basis of a representation of Lorentz Group. And obey the transformation rule:
 
 <div>$$\psi(x)\rightarrow \psi'(x'=\Lambda_{\text{spacetime}}(\omega)x) = \big(\Lambda_{\text{Field}}(\omega)\psi\big)(x'=\Lambda_{\text{spacetime}}(\omega)x) $$</div>
 

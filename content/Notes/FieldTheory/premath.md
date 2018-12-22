@@ -314,7 +314,7 @@ P K^i P &= -K^i
 Q.E.D.
 {{%/fold%}}
 
-<mark> This theorem hold for spinor representation too</mark> , with the form : \(P\Lambda_{L(R)}P = \Lambda_{R(L)}\) and \(P a_{l(r)} = a_{r(l)}\)
+<mark> This theorem hold for spinor representation too</mark> , with the form : `$P\Lambda_{L(R)}P = \Lambda_{R(L)}\) and \(P a_{l(r)} = a_{r(l)}$`
 
 In some degree, we say that Parity-Transformation will exchange the left-handed spinor and right-handed spinor. For the difference between left/right handed spinor is `$L\leftrightarrow L , K\leftrightarrow -K$` (That is why they are called as `handed`)
 
