@@ -311,8 +311,8 @@ These two requirements come from `Relativity principle` , which claims that the 
 
 With this requirements, the field should be the basis of a representation of Lorentz Group. And obey the transformation rule:
 
-<div>$$\psi(x)\rightarrow \psi'(x'=\Lambda_{\text{spacetime}}(\omega)x) = \big(\Lambda_{\text{Field}}(\omega)\psi\big)(x'=\Lambda_{\text{spacetime}}(\omega)x) $$</div>
+<div>$$\psi(x)\rightarrow \psi'(x'=\Lambda_{\text{spacetime}}(\omega)x) = \big(\Lambda_{\text{Field}}(\omega)\psi\big)(x=\Lambda_{\text{spacetime}}(\omega)^{-1}x') $$</div>
 
-Where `$\omega$` is the parameter of Lorentz transformation.
+Where `$\omega$` is the parameter of Lorentz transformation. This equality will lead that such fact: when one in frame `$S$` find that at point `$x$` the field is `$\psi$` , then the one in frame `$S'$` should find that this field at point `$x'=\Lambda_{\text{spacetime}}x$` should be `$\psi'=\Lambda_{\text{Field}}\psi$`.
 
 In fact, this principle can also be generalized to `Poincare Group` , if the spatial is `homogeneous`.

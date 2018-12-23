@@ -317,13 +317,13 @@ q.e.d.
     <div>$$\begin{aligned}
     P^{(+) 2} &= P^{(+)} \\
     P^{(-) 2} &= P^{(-)} \\
-    P^{(+)}\hat P^{(-)} &= P^{(-)}P^{(+)} = 0 \\
+    P^{(+)}P^{(-)} &= P^{(-)}P^{(+)} = 0 \\
     P^{(+)} +P^{(-)} & = 1
     \end{aligned}$$</div>
 
     That is why call them `Projector` .
 
-    More over, acting any solution of free Dirac equation, `$\hat P^{(+)}$` extracts the `positive-energy part` and `$\hat P^{(-)}$` extracts the `negative-energy part`
+    More over, acting any solution of free Dirac equation, `$P^{(+)}$` extracts the `positive-energy part` and `$P^{(-)}$` extracts the `negative-energy part`
 
     {{%fold "Proof"%}}
 

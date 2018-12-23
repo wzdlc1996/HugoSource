@@ -9,9 +9,9 @@ toc: true
 summary: "The canonical quantization of Real-valued Scalar Field(Klein Gordon Field). And computation of propagator and discussion, especially the causality property. At last we will discuss the discrete symmetry of Klein Gordon Field in Quantum Theory"
 ---
 
-# Quantization of Scalar Field
+# Quantization of Klein-Gordon Field
 
-## Canonical Quantization of Scalar Field
+## Canonical Quantization of real-valued Scalar Field
 
 Here we only consider the `real-valued` Scalar Field. The result for charged one (complex-valued) is easily to be obtained. The Hamiltonian of Scalar Field system is:
 
@@ -133,7 +133,7 @@ That is, in Heisenberg Picture, the operators which is dependent of time:
 
 The Hamiltonian of Real-valued Scalar Field is the same as the Hamiltonian of a set of non-interaction harmonic oscillators. Then we can construct the `Hilbert space` by the `ground state` and `creation/annihilation operators`. This is also called as `Fock space`.
 
-_[Definition]_ : `vacuum` is the ground state of Scalar Field. Usually denote it as `$\ket{0}$` , and it is zero if annihilation operator acts on it:
+_[Definition]_ : `vacuum of the Klein-Gordon Field` is the ground state of Scalar Field. Usually denote it as `$\ket{0}$` , and it is zero if annihilation operator acts on it:
 
 <div>$$a(\bm{k}) \ket{0}=0 \ ; \ \forall \bm{k}$$</div>
 
@@ -157,7 +157,7 @@ And the `complete relation` in `1-particle` subspace:
 
 <div>$$1_{\text{one-particle}}=\int \frac {\td^3\bm{k}} {2\omega_{|\bm{k}|}} \ket{\bm{k}}\bra{\bm{k}}$$</div>
 
-Where `$\int \td^3\bm{k} (2\omega_{|\bm{k}|})^{-1}=\int_{p^0\gt 0} \td^4p \  \delta(p^\mu p_\mu-m^2)$` is covariant measure.
+Where `$\int \td^3\bm{p} (2\omega_{|\bm{p}|})^{-1}=\int_{p^0\gt 0} \td^4p \  \delta(p^\mu p_\mu-m^2)$` is covariant measure.
 
 {{%fold "Proof"%}}
 
@@ -220,7 +220,7 @@ The right-hand-side of the equality is obvious invariant under (Orthochronous) L
 
 {{%/fold%}}
 
-In Fock space, the Lorentz transformation for coordinates induces the Unitary transformation for operators.
+In Fock space, the Lorentz transformation for coordinates induces the Unitary transformation for operators (In finite-dimensional space Lorentz group has no unitary representation because it is not `tight`. But Fock space is infinite-dimensional.).
 
 _[Definition]_ : Consider the coordinate transformation(`special Lorentz Transformation`) `$x\rightarrow x'=\Lambda x$` , the corresponding operator on Hilbert space is `$U(\Lambda)$` , then we have:
 
@@ -259,6 +259,18 @@ together with that `$\Lambda$` is the special Lorentz Transformation.
 For general cases, if `$\Lambda$` is a general Lorentz Transformation, this conclusion works for operators in Schrodinger equation for they are independent of time, or equivalently, the zero-component of `$k$` :
 
 <div>$$\phi'(\bm{x}'=\Lambda \bm{x})\equiv U(\Lambda)\phi(\bm{x})U(\Lambda)^{-1} = \phi(\bm{x}'=\Lambda \bm{x})$$</div>
+
+{{%fold "Some discussion about this and the classical form"%}}
+
+This seems to violate the transformation regulation in Classical theory which is:
+
+<div>$$\psi(x)\rightarrow \psi'(x'=\Lambda_{\text{spacetime}}(\omega)x) = \big(\Lambda_{\text{Field}}(\omega)\psi\big)(x=\Lambda_{\text{spacetime}}(\omega)^{-1}x') $$</div>
+
+But actually not. Here we use the field operator `$\phi$` to create or annihilate at some spacetime point. But in classical theory we discussed that the coordinate transform with a `fixed` field. Like the passive transformation & active transformation, they are just mutually inverse.
+
+We will see this at spinor and vector field, in which the inverse relationship will be much more clear. For the `$\Lambda_{\text{Field}}$` in those cases are inversion too. 
+
+{{%/fold%}}
 
 ## Causality of Scalar Field
 
