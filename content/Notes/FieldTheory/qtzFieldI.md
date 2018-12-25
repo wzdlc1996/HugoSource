@@ -268,7 +268,7 @@ This seems to violate the transformation regulation in Classical theory which is
 
 But actually not. Here we use the field operator `$\phi$` to create or annihilate at some spacetime point. But in classical theory we discussed that the coordinate transform with a `fixed` field. Like the passive transformation & active transformation, they are just mutually inverse.
 
-We will see this at spinor and vector field, in which the inverse relationship will be much more clear. For the `$\Lambda_{\text{Field}}$` in those cases are inversion too. 
+We will see this at spinor and vector field, in which the inverse relationship will be much more clear. For the `$\Lambda_{\text{Field}}$` in those cases are inversion too.
 
 {{%/fold%}}
 
@@ -333,15 +333,15 @@ The conserved charge:
 
 _[Definition]_ : `Feynman Propagator` or `two-point time-ordered Green's Function` of Scalar Field is defined as :
 
-<div>$$\ti \Delta_F(x-y):=\bra{0}\mathcal{T}\{\phi(y)\phi(x)^\dagger\}\ket{0} $$</div>
+<div>$$\ti \Delta_F(x-y):=\bra{0}\mathcal{T}\{\phi(x)\phi(y)^\dagger\}\ket{0} $$</div>
 
-Here the time-ordered product is:
+Here the time-ordered product (`for bosonic operators`) is:
 
 <div>$$\mathcal{T}\{A(x)B(y)\}=\Theta(x^0-y^0)A(x)B(y)+\Theta(y^0-x^0)B(y)A(x)$$</div>
 
 One can compute the propagator:
 
-<div>$$\ti \Delta_F(x-y)=\int \frac {\td^4 p} {(2\pi)^4} e^{\ti p\cdot (x-y)} \frac {\ti} {p^2-m^2+\ti \epsilon}$$</div>
+<div>$$\ti \Delta_F(x-y)=\int \frac {\td^4 p} {(2\pi)^4} e^{-\ti p\cdot (x-y)} \frac {\ti} {p_\mu p^\mu-m^2+\ti \epsilon}$$</div>
 
 Where `$\epsilon\rightarrow 0^+$` .
 
@@ -350,10 +350,10 @@ Where `$\epsilon\rightarrow 0^+$` .
 We compute these two terms in time-ordered product:
 
 <div>$$\begin{aligned}
-\bra{0}\phi(y)\phi(x)^\dagger\ket{0}&= \int \frac {\td^3 \bm{k}_1 \td^3 \bm{k}_2} {(2\pi)^3 \sqrt{4\omega_1\omega_2}}e^{-\ti k_2\cdot y+\ti k_1\cdot x} \bra{0}a(\bm{k}_2)a(\bm{k}_1)^\dagger \ket{0}  \\
-&=\int \frac {\td^3 \bm{k}} {(2\pi)^3 2\omega_{|\bm{k}|}} e^{\ti k\cdot (x-y)} \\
-\bra{0}\phi(x)^\dagger\phi(y)\ket{0}&=\int \frac {\td^3 \bm{k}_1 \td^3 \bm{k}_2} {(2\pi)^3 \sqrt{4\omega_1\omega_2}}e^{-\ti k_2\cdot x+\ti k_1\cdot y} \bra{0}a(\bm{k}_2)a(\bm{k}_1)^\dagger \ket{0}  \\
+\bra{0}\phi(x)\phi(y)^\dagger\ket{0}&= \int \frac {\td^3 \bm{k}_1 \td^3 \bm{k}_2} {(2\pi)^3 \sqrt{4\omega_1\omega_2}}e^{-\ti k_2\cdot x+\ti k_1\cdot y} \bra{0}a(\bm{k}_2)a(\bm{k}_1)^\dagger \ket{0}  \\
 &=\int \frac {\td^3 \bm{k}} {(2\pi)^3 2\omega_{|\bm{k}|}} e^{-\ti k\cdot (x-y)} \\
+\bra{0}\phi(y)^\dagger\phi(x)\ket{0}&=\int \frac {\td^3 \bm{k}_1 \td^3 \bm{k}_2} {(2\pi)^3 \sqrt{4\omega_1\omega_2}}e^{-\ti k_2\cdot y+\ti k_1\cdot x} \bra{0}a(\bm{k}_2)a(\bm{k}_1)^\dagger \ket{0}  \\
+&=\int \frac {\td^3 \bm{k}} {(2\pi)^3 2\omega_{|\bm{k}|}} e^{\ti k\cdot (x-y)} \\
 \end{aligned}$$</div>
 
 Then we have:
@@ -363,32 +363,32 @@ Then we have:
 Then we consider the integral:
 
 <div>$$\begin{aligned}
-\int \frac {\td^4 p} {(2\pi)^4} e^{\ti p\cdot x} \frac {\ti} {p^2-m^2+\ti \epsilon}&=\int \frac {\td^3\bm{p}} {(2\pi)^4} \int \td p^0 \frac {\ti e^{\ti p\cdot x}} {(p^0-\omega_{|\bm{p}|}+\ti \epsilon)(p^0+\omega_{|\bm{p}|}-\ti \epsilon)}
+\int \frac {\td^4 p} {(2\pi)^4} e^{-\ti p\cdot x} \frac {\ti} {p_\mu p^\mu-m^2+\ti \epsilon}&=\int \frac {\td^3\bm{p}} {(2\pi)^4} \int \td p^0 \frac {\ti e^{-\ti p\cdot x}} {(p^0-\omega_{|\bm{p}|}+\ti \epsilon)(p^0+\omega_{|\bm{p}|}-\ti \epsilon)}
 \end{aligned}$$</div>
 
-If `$x^0\gt 0$` , the Jordon's Lemma allow us to use the upper half plane. Then the pole is `$-\omega_{|\bm{p}|}+\ti \epsilon$` , we have:
+If `$x^0\lt 0$` , the Jordon's Lemma allow us to use the upper half plane. Then the pole is `$-\omega_{|\bm{p}|}+\ti \epsilon$` , we have:
 
-<div>$$\text{integral} =2\pi \ti \int \frac {\td^3 \bm{p}} {(2\pi)^4} \frac {\ti e^{-\ti \omega_{|\bm{p}|}x^0-\ti \bm{p}\cdot \bm{x}}} {-2\omega_{|\bm{p}|}}=\int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} e^{-\ti \omega_{|\bm{p}|}x^0 + \ti \bm{p}\cdot \bm{x}} = \int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} e^{-\ti p\cdot x } $$</div>
+<div>$$\text{integral} =2\pi \ti \int \frac {\td^3 \bm{p}} {(2\pi)^4} \frac {\ti e^{\ti \omega_{|\bm{p}|}x^0+\ti \bm{p}\cdot \bm{x}}} {-2\omega_{|\bm{p}|}}=\int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} e^{\ti \omega_{|\bm{p}|}x^0 - \ti \bm{p}\cdot \bm{x}} = \int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} e^{\ti p\cdot x } $$</div>
 
-And if `$x^0\lt 0$` , we can only use the lower half plane. Then the pole is `$\omega_{|\bm{p}|}-\ti \epsilon$` , we have:
+And if `$x^0\gt 0$` , we can only use the lower half plane. Then the pole is `$\omega_{|\bm{p}|}-\ti \epsilon$` , we have:
 
-<div>$$\text{integral} =-2\pi \ti \int \frac {\td^3 \bm{p}} {(2\pi)^4} \frac {\ti e^{\ti \omega_{|\bm{p}|}x^0-\ti \bm{p}\cdot \bm{x}}} {2\omega_{|\bm{p}|}}=\int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} e^{\ti \omega_{|\bm{p}|}x^0 - \ti \bm{p}\cdot \bm{x}} = \int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} e^{\ti p\cdot x } $$</div>
+<div>$$\text{integral} =-2\pi \ti \int \frac {\td^3 \bm{p}} {(2\pi)^4} \frac {\ti e^{-\ti \omega_{|\bm{p}|}x^0+\ti \bm{p}\cdot \bm{x}}} {2\omega_{|\bm{p}|}}=\int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} e^{-\ti \omega_{|\bm{p}|}x^0 + \ti \bm{p}\cdot \bm{x}} = \int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} e^{-\ti p\cdot x } $$</div>
 
 That is :
 
-<div>$$\int \frac {\td^4 p} {(2\pi)^4} e^{\ti p\cdot x} \frac {\ti} {p^2-m^2+\ti \epsilon}=\int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} \Big\{\Theta(x^0-y^0)e^{-\ti p\cdot (x-y)} + \Theta(y^0-x^0)e^{\ti p\cdot (x-y)} \Big\}$$</div>
+<div>$$\int \frac {\td^4 p} {(2\pi)^4} e^{-\ti p\cdot x} \frac {\ti} {p_\mu p^\mu-m^2+\ti \epsilon}=\int \frac {\td^3 \bm{p}} {(2\pi)^3 2\omega_{|\bm{p}|}} \Big\{\Theta(x^0-y^0)e^{-\ti p\cdot (x-y)} + \Theta(y^0-x^0)e^{\ti p\cdot (x-y)} \Big\}$$</div>
 
 Or equivalently:
 
-<div>$$\ti \Delta_F(x-y) = \int \frac {\td^4 p} {(2\pi)^4} e^{\ti p\cdot x} \frac {\ti} {p^2-m^2+\ti \epsilon}$$</div>
+<div>$$\ti \Delta_F(x-y) = \int \frac {\td^4 p} {(2\pi)^4} e^{-\ti p\cdot (x-y)} \frac {\ti} {p_\mu p^\mu-m^2+\ti \epsilon}$$</div>
 
 {{%/fold%}}
 
 # Discrete Symmetry of Scalar Field
 
-## Spatial inversion
+## Spatial Inversion
 
-We hope the spacial inversion will induce a unitary operator so as to:
+We hope the `spatial inversion` induces a unitary operator so as to:
 
 <div>$$U_P \phi(x^0,\bm{x})U_P^{-1}= e^{\ti \theta_P} \phi(x^0,-\bm{x})$$</div>
 
@@ -406,7 +406,7 @@ We can also represent `$U_P$` by creation/annihilation operators:
 
 ## Charge Conjugation
 
-We hope the charge conjugation will induce a unitary operator so as to:
+We hope the `charge conjugation` induces a unitary operator so as to:
 
 <div>$$U_C \phi(x)U_C^{-1}=e^{\ti \theta_C}\phi(x)^\dagger$$</div>
 
@@ -418,7 +418,7 @@ And for creation operators:
 
 ## Time Reversal
 
-Time reversal will induce an anti-unitary operator. With conjugation operator `$K$` we can write it as `$U_T K$` , where `$U_T$` is a unitary operator:
+`Time reversal` induces an anti-unitary operator. With conjugation operator `$K$` we can write it as `$U_T K$` , where `$U_T$` is a unitary operator:
 
 <div>$$(U_T K) \phi(x^0,\bm{x})(U_T K)^{-1} = e^{\ti \theta_T} \phi(-x^0,\bm{x})$$</div>
 
