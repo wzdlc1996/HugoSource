@@ -75,17 +75,17 @@ Where `$\hat G_n=\hat Q_n (E_n-\hat H_0)^{-1}\hat Q_n$` . They do not really sol
 1.  First order perturbation:
 
     <div>$$\begin{aligned}
-    \ket{n,\lambda} &= \ket{E_n^{(0)}} + O(\lambda) \\
-    E_n &= E_n^{(0)} + \lambda \bra{E_n^{(0)}}\hat V \ket{E_n^{(0)}} + O(\lambda^2)
+    \ket{n,\lambda} &= \ket{E_n^{(0)}} + \mathcal{O}(\lambda) \\
+    E_n &= E_n^{(0)} + \lambda \bra{E_n^{(0)}}\hat V \ket{E_n^{(0)}} + \mathcal{O}(\lambda^2)
     \end{aligned}$$</div>
 
-    Here the energy is up to `$O(\lambda^2)$` but state-vector is up to `$O(\lambda)$` . This is caused by that energy is the quadratic form of state-vector.
+    Here the energy is up to `$\mathcal{O}(\lambda^2)$` but state-vector is up to `$\mathcal{O}(\lambda)$` . This is caused by that energy is the quadratic form of state-vector.
 
 2.  Second order perturbation:
 
     <div>$$\begin{aligned}
-    \ket{n,\lambda} &= \ket{E_n^{(0)}} + \lambda \sum_{m,m\neq n} \frac {\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}} {E_m^{(0)}-E_n^{(0)}} \ket{E_m^{(0)}} + O(\lambda^2) \\
-    E_n &= E_n^{(0)} + \lambda \bra{E_n^{(0)}}\hat V \ket{E_n^{(0)}} + \lambda^2 \sum_{m,m\neq n} \frac {|\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}|^2} {E_m^{(0)}-E_n^{(0)}} + O(\lambda^3)
+    \ket{n,\lambda} &= \ket{E_n^{(0)}} + \lambda \sum_{m,m\neq n} \frac {\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}} {E_m^{(0)}-E_n^{(0)}} \ket{E_m^{(0)}} + \mathcal{O}(\lambda^2) \\
+    E_n &= E_n^{(0)} + \lambda \bra{E_n^{(0)}}\hat V \ket{E_n^{(0)}} + \lambda^2 \sum_{m,m\neq n} \frac {|\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}|^2} {E_m^{(0)}-E_n^{(0)}} + \mathcal{O}(\lambda^3)
     \end{aligned}$$</div>
 
     {{%fold "Proof"%}}
@@ -168,25 +168,25 @@ The second equation usually is called `secular equation` . It requires that the 
 
 1.  First order perturbation:
 
-    <div>$$\ket{n,\lambda} = \sum_{\alpha} c_\alpha \ket{E_{n,\alpha}^{(0)}}+O(\lambda)$$</div>
+    <div>$$\ket{n,\lambda} = \sum_{\alpha} c_\alpha \ket{E_{n,\alpha}^{(0)}}+\mathcal{O}(\lambda)$$</div>
 
     And the energy shift and `$c_\alpha$` can be obtained by the equation:
 
-    <div>$$(E_n-E_n^{(0)})c_\alpha = \lambda \sum_{\beta=1}^g V_{n,\alpha;n,\beta} c_\beta+O(\lambda^2)$$</div>
+    <div>$$(E_n-E_n^{(0)})c_\alpha = \lambda \sum_{\beta=1}^g V_{n,\alpha;n,\beta} c_\beta+\mathcal{O}(\lambda^2)$$</div>
 
     up to `$\lambda^2$` , where `$V_{n,\alpha;m,\beta}=\bra{E_{n,\alpha}^{(0)}}\hat V \ket{E_{m,\beta}^{(0)}}$`
 
 2.  Second order perturbation:
 
-    <div>$$\ket{n,\lambda} = \sum_{\alpha} c_\alpha\Big( \ket{E_{n,\alpha}^{(0)}} + \sum_{m,m\neq n} \frac {\lambda V_{m,n\alpha}} {E_n-E_m^{(0)}} \ket{E_m^{(0)}} \Big) + O(\lambda^2)$$</div>
+    <div>$$\ket{n,\lambda} = \sum_{\alpha} c_\alpha\Big( \ket{E_{n,\alpha}^{(0)}} + \sum_{m,m\neq n} \frac {\lambda V_{m,n\alpha}} {E_n-E_m^{(0)}} \ket{E_m^{(0)}} \Big) + \mathcal{O}(\lambda^2)$$</div>
 
     And `$c_\alpha, E_n$` can be obtained by:
 
-    <div>$$(E_n-E_n^{(0)})c_\alpha = \sum_{\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\beta + O(\lambda^3)$$</div>
+    <div>$$(E_n-E_n^{(0)})c_\alpha = \sum_{\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\beta + \mathcal{O}(\lambda^3)$$</div>
 
 _[Theorem]_ : if the first order perturbation has `completely` remove the degeneracy, we can use `normalized` `$c_\alpha$`, namely `$\sum_\alpha |c_\alpha|^2=1$` from 1st perturbation here to compute the energy shift, and:
 
-<div>$$E_n-E_n^{(0)} = \sum_{\alpha,\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\alpha^* c_\beta + O(\lambda^3)$$</div>
+<div>$$E_n-E_n^{(0)} = \sum_{\alpha,\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\alpha^* c_\beta + \mathcal{O}(\lambda^3)$$</div>
 
 {{%fold "Proof"%}}
 
@@ -196,13 +196,13 @@ The 1st perturbation can completely remove the degeneracy means that this equati
 
 In the following order perturbation we need to solve the equation `$\Delta' \bm{c}'=( \bm{V}+\lambda \bm{W}) \bm{c}'$` , or the matrix `$\bm{V}+\lambda \bm{W}$` 's eigenvectors and eigenvalues, this is a nondegenerate perturbation question.
 
-Its first order perturbation result is that `$\bm{c}'=\bm{c}+O(\lambda)$` , with `$\bm{c}$` normalized, we have:
+Its first order perturbation result is that `$\bm{c}'=\bm{c}+\mathcal{O}(\lambda)$` , with `$\bm{c}$` normalized, we have:
 
-<div>$$\Delta' = \Delta + \lambda \bm{c}^\dagger \bm{W} \bm{c} + O(\lambda^2\|\bm{W}\|)$$</div>
+<div>$$\Delta' = \Delta + \lambda \bm{c}^\dagger \bm{W} \bm{c} + \mathcal{O}(\lambda^2\|\bm{W}\|)$$</div>
 
 That is:
 
-<div>$$E_n-E_n^{(0)} = \bm{c}^\dagger \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big)\bm{c} + O(\lambda^3)$$</div>
+<div>$$E_n-E_n^{(0)} = \bm{c}^\dagger \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big)\bm{c} + \mathcal{O}(\lambda^3)$$</div>
 
 q.e.d.
 
@@ -225,7 +225,7 @@ we want to cancel `$\hat V_{nm}$` terms with `$n\neq m$` in `$\hat H$` up to the
 Then we have:
 
 <div>$$\begin{aligned}
-\hat H^{(1)} &= \hat H_0+\lambda \sum_n \hat V_{nn} +\lambda^2 \Big(-\frac 1 2 [\ti\hat S_0,\sum_{n\neq m}\hat V_{nm}]+\lambda^2[\ti\hat S_0,\hat H_0] \Big)+O(\lambda^3) \\
+\hat H^{(1)} &= \hat H_0+\lambda \sum_n \hat V_{nn} +\lambda^2 \Big(-\frac 1 2 [\ti\hat S_0,\sum_{n\neq m}\hat V_{nm}]+\lambda^2[\ti\hat S_0,\hat H_0] \Big)+\mathcal{O}(\lambda^3) \\
 &=\hat H_0 + \lambda \sum_n \hat V_{nn} +\lambda^2 \sum_{n\neq m} \frac {\hat V_{nm}\hat V_{mn}} {E_n^{(0)}-E_m^{(0)}}
 \end{aligned}$$</div>
 
@@ -314,7 +314,7 @@ Then we can write the integral as:
 
 We consider the constant perturbation first, which means that `$\hat V_S(t)=\hat V$` is independent of time. Then up to the first order:
 
-<div>$$\bra{f}\hat U_I(t)\ket{i}=\bra{f}i\rangle - \frac {\ti} {\hbar} \frac {\hbar} {\ti(E_f-E_i)}(e^{\ti(E_f-E_i)t/\hbar}-1)V_{fi}+O(V^2)$$</div>
+<div>$$\bra{f}\hat U_I(t)\ket{i}=\bra{f}i\rangle - \frac {\ti} {\hbar} \frac {\hbar} {\ti(E_f-E_i)}(e^{\ti(E_f-E_i)t/\hbar}-1)V_{fi}+\mathcal{O}(V^2)$$</div>
 
 And the probability with `$\bra{f}i\rangle=0$` :
 
@@ -340,7 +340,7 @@ Where `$\omega$` is a nonzero real constant, `$\hat V$` may not be hermitian but
 
 Keep up to 1st order term in the Dyson series:
 
-<div>$$\bra{f}\hat U_I(t)\ket{i}=\bra{f}i\rangle -\Big\{ \frac {V_{fi}} {E_f-E_i+\hbar \omega} (e^{\ti(E_f-E_i+\hbar\omega)t/\hbar}-1)+\frac {V_{fi}^\dagger} {E_f-E_i-\hbar\omega} (e^{\ti(E_f-E_i-\hbar\omega)t/\hbar}-1) \Big\}+O(V^2)$$</div>
+<div>$$\bra{f}\hat U_I(t)\ket{i}=\bra{f}i\rangle -\Big\{ \frac {V_{fi}} {E_f-E_i+\hbar \omega} (e^{\ti(E_f-E_i+\hbar\omega)t/\hbar}-1)+\frac {V_{fi}^\dagger} {E_f-E_i-\hbar\omega} (e^{\ti(E_f-E_i-\hbar\omega)t/\hbar}-1) \Big\}+\mathcal{O}(V^2)$$</div>
 
 Where `$V_{fi}=\bra{f}\hat V\ket{i} \ ; \ V_{fi}^\dagger = \bra{f}\hat V^\dagger \ket{i}=V_{if}^*$` .
 

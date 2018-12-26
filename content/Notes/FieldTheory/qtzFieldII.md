@@ -289,7 +289,7 @@ For `fermionic operators`, we need adjust the definition of `time-ordered produc
 
 <div>$$\mathcal{T}\{A(x)B(y)\}=\Theta(x^0-y^0)A(x)B(y)-\Theta(y^0-x^0)B(y)A(x)$$</div>
 
-Then the `Feynman propagator` of Dirac Field is:
+_[Theorem]_ the `Feynman propagator` of Dirac Field is:
 
 <div>$$\ti \Delta_{F}(x-y)_{\alpha\beta}:=\bra{0}\mathcal{T}\{\psi_\alpha(x)\bar{\psi}_\beta(y)\}\ket{0}$$</div>
 
