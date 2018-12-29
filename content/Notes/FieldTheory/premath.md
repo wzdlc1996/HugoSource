@@ -56,7 +56,7 @@ Or with the raising and lowering indices pairly will not change the value:
 
 For `$\Lambda$`and`$\Lambda^{-1}$` shall satisfy:
 
-<div>$$\Lambda \Lambda^{-1} = 1 \Leftrightarrow (\Lambda)^{\mu}_{\ \ \ \  \alpha} (\Lambda)^{\alpha}_{\ \ \ \  \nu} = \delta_{\nu}^{\mu}$$</div>
+<div>$$\Lambda \Lambda^{-1} = 1 \Leftrightarrow (\Lambda)^{\mu}_{\ \ \ \  \alpha} (\Lambda^{-1})^{\alpha}_{\ \ \ \  \nu} = \delta_{\nu}^{\mu}$$</div>
 
 With the comparation between these two equality above, we have:
 

@@ -69,7 +69,7 @@ Or:
 
 {{%/fold%}}
 
-That is, under `Lorentz gauge` it is the same to the standard wave-equation. And under `Feynmann gauge` (`$\xi=1$`) it is also the standard form of wave-equation:
+That is, under `Lorentz gauge` it is the same to the standard wave-equation. And under `Feynman gauge` (`$\xi=1$`) it is also the standard form of wave-equation:
 
 <div>$$\partial_\nu\partial^\nu A_\mu=\square A_\mu=0$$</div>
 
@@ -124,35 +124,35 @@ Similarly, we use the Fourier transform as:
 
 <div>$$A_\mu(x)=\int \frac {\td \omega \td^3\bm{k}} {(2\pi)^{4/2}} e^{\ti \bm{k}\cdot \bm{x}-\ti \omega t} a_\mu(\bm{k},\omega)$$</div>
 
-Remembering that `$A_\mu$` is a real-vector, and `$k=(\omega,\bm{k})$` , with the dispersion relation: `$k_\mu k^\mu=0$`, the generic solution can be written as:
+Remembering that `$A_\mu$` is a real-vector, and `$k=(\omega_{|\bm{k}|},\bm{k})$` , with the dispersion relation: `$k_\mu k^\mu=0$`, the generic solution can be written as:
 
-<div>$$A_\mu(x)=\int \frac {\td^3 \bm{k}} {(2\pi)^{3/2}}\sqrt{\frac 1 {2\omega_{|\bm{k}|}}}\sum_{\lambda=0}^3 \Big(a(\bm{k},\lambda)\epsilon_{\mu}(k,\lambda)e^{-\ti k_\nu x^\nu}+a(\bm{k},\lambda)^* \epsilon_{\mu}(k,\lambda)^* e^{\ti k_\nu x^\nu} \Big)$$</div>
+<div>$$A_\mu(x)=\int \frac {\td^3 \bm{k}} {(2\pi)^{3/2}}\sqrt{\frac 1 {2\omega_{|\bm{k}|}}}\sum_{\lambda=0}^3 \Big(a(\bm{k},\lambda)\epsilon_{\mu}(\bm{k},\lambda)e^{-\ti k_\nu x^\nu}+a(\bm{k},\lambda)^* \epsilon_{\mu}(\bm{k},\lambda)^* e^{\ti k_\nu x^\nu} \Big)$$</div>
 
-Where `$\omega_{|\bm{k}|}=|\bm{k}|^2$` , `$\lambda$` denotes four polarization direction, and `$\epsilon_\mu(k,\lambda)$` is the corresponding vector.
+Where `$\omega_{|\bm{k}|}=|\bm{k}|$` , `$\lambda$` denotes four polarization direction, and `$\epsilon_\mu(\bm{k},\lambda)$` is the corresponding vector.
 
-Here we make a convention about the polarization vector `$\epsilon_{\mu}(k,\lambda)$` :
+Here we make a convention about the polarization vector `$\epsilon_{\mu}(\bm{k},\lambda)$` :
 
 _[Convention]_ : The polarization vector is defined by the following two condition:
 
-1.  For special situation: `$k_0=(k,0,0,k)$`:
+1.  For special situation: `$k_{\text{special}}=(|\bm{k}|,0,0,|\bm{k}|)$`:
 
     <div>$$\begin{aligned}
-    \epsilon(k_0,0) &= (1,0,0,0)\\
-    \epsilon(k_0,1) &= (0,1,0,0) \\
-    \epsilon(k_0,2) &= (0,0,1,0) \\
-    \epsilon(k_0,3) &= (0,0,0,1)
+    \epsilon((0,0,|\bm{k}|),0) &= (1,0,0,0)\\
+    \epsilon((0,0,|\bm{k}|),1) &= (0,1,0,0) \\
+    \epsilon((0,0,|\bm{k}|),2) &= (0,0,1,0) \\
+    \epsilon((0,0,|\bm{k}|),3) &= (0,0,0,1)
     \end{aligned}$$</div>
 
-    Or simply: `$\epsilon_\mu(k_0,\lambda) = \delta_{\mu}^\lambda$`
+    Or simply: `$\epsilon^\mu(\bm{k}_{\text{special}},\lambda) = \delta^{\mu}_\lambda$` . This setting means that they are polarization direction of linear-polarization. For circular-polarization, they could be complex-vector.
 
-2.  For generic situation, let `$\Lambda(\omega)k_0=k$`, is the Lorentz transform for vector. We have:
+2.  For generic situation, let `$\Lambda(\omega)k_{\text{special}}=k$`, that is to say `$k_{\text{special}}^0=|\bm{k}|$` , or no boost, is the Lorentz transform for vector. We have:
 
-    <div>$$\epsilon(k,\lambda)=\Lambda(\omega)\epsilon(k_0,\lambda)$$</div>
+    <div>$$\epsilon(\bm{k},\lambda)=\Lambda(\omega)\epsilon(k_{\text{special}},\lambda)$$</div>
 
 _[Theorem]_ : with such the convention, we can prove that polarization vector has the following properties:
 
-1.  `$\epsilon_\mu(k,\lambda)\epsilon^{\mu*}(k,\lambda')=\eta_{\lambda,\lambda'}$`
-2.  `$\sum_{\lambda=0}^3 \eta_{\lambda,\lambda}\epsilon^{\mu}(k,\lambda)\epsilon^{\nu *}(k,\lambda)=\eta^{\mu\nu}$`
+1.  `$\epsilon_\mu(\bm{k},\lambda)\epsilon^{\mu*}(\bm{k},\lambda')=\eta_{\lambda,\lambda'}$`
+2.  `$\sum_{\lambda=0}^3 \eta_{\lambda,\lambda}\epsilon^{\mu}(\bm{k},\lambda)\epsilon^{\nu *}(\bm{k},\lambda)=\eta^{\mu\nu}$`
 
 For linear-polarization , there will be no need for the conjugation. But for circular polarization, we need the conjugation.
 
@@ -160,14 +160,56 @@ For linear-polarization , there will be no need for the conjugation. But for cir
 
 We prove this theorem by linear-polarization. For circular-polarization is similar.
 
-1.  Let `$\Lambda k_0=k$` , we have `$\epsilon_\mu(k,\lambda)=\Lambda_\mu^{\indent \nu}\epsilon_\nu(k_0,\lambda)=\Lambda_{\mu}^{\indent \nu}\delta_{\nu}^\lambda=\Lambda_\mu^{\indent \lambda}$` . Then:
+1.  Let `$\Lambda k_{\text{special}}=k$` , we have `$\epsilon_\mu(\bm{k},\lambda)=\Lambda_\mu^{\indent \nu}\epsilon_\nu(\bm{k}_{\text{special}},\lambda)=\Lambda_{\mu}^{\indent \nu}\eta_{\nu\lambda}=\Lambda_{\mu\lambda}$` . Then:
 
-    <div>$$\epsilon_\mu(k,\lambda)\epsilon^{\mu*}(k,\lambda')=\Lambda_{\mu}^{\indent \lambda}\Lambda^{\mu\lambda'}=\eta^{\lambda\lambda'}=\eta_{\lambda\lambda'}$$</div>
+    <div>$$\epsilon_\mu(\bm{k},\lambda)\epsilon^{\mu*}(\bm{k},\lambda')=\Lambda_{\mu\lambda}\Lambda^{\mu}_{\lambda'}=\eta_{\lambda\lambda'}$$</div>
 
-2.  With that `$\epsilon_\mu(k,\lambda)=\Lambda_\mu^{\indent \lambda}$` , we have:
+2.  With that `$\epsilon_\mu(\bm{k},\lambda)=\Lambda_{\mu\lambda}$` , we have:
 
-    <div>$$\sum_{\lambda=0}^3 \eta_{\lambda,\lambda}\epsilon^\mu(k,\lambda)\epsilon^{\nu*}(k,\lambda)=\eta_{\lambda,\lambda'}\Lambda^{\mu\lambda}\Lambda^{\nu\lambda'}=\eta^{\mu\nu}$$</div>
+    <div>$$\sum_{\lambda=0}^3 \eta^{\lambda,\lambda}\epsilon^\mu(\bm{k},\lambda)\epsilon^{\nu*}(\bm{k},\lambda)=\eta_{\lambda,\lambda'}\Lambda^{\mu\lambda}\Lambda^{\nu\lambda'}=\eta^{\mu\nu}$$</div>
 
 {{%/fold%}}
 
-It is obvious that `$\epsilon_\mu(k,\lambda=1,2)k^\mu=0$`. We usually call them `Horizontal Polarization` or `Physical Polarization` . Call `$\epsilon_\mu(k,\lambda=3)$` `Vertical Polarization` , call `$\epsilon_\mu(k,\lambda=0)$` `Scalar Polarization` . The latter two are also called as `Non-physical Polarization`.
+It is obvious that `$\epsilon_\mu(\bm{k},\lambda=1,2)k^\mu=0$`. We usually call them `Horizontal Polarization` or `Physical Polarization` . Call `$\epsilon_\mu(\bm{k},\lambda=3)$` `Vertical Polarization` , call `$\epsilon_\mu(\bm{k},\lambda=0)$` `Scalar Polarization` . The latter two are also called as `Non-physical Polarization`.
+
+## Plane-Wave Expansion and Hamiltonian
+
+At last we will write the Hamiltonian of Maxwell Field as the quadratic form of coefficients `$a(\bm{k},\lambda)$` in plane-wave expansion. Like what we did before, we will hold the order of them so that the formulas can be used in quantum theory in the future. Our discussion will only cover the result of `Feynman gauge` `$\xi=1$` :
+
+_[Theorem]_ : With the plane wave expansion and Feynman gauge, one can write the Hamiltonian as:
+
+<div>$$H=\frac 1 2 \int \td^3 \bm{k} \ \omega_{|\bm{k}|} \Big( \sum_{\lambda=1}^3\big( a(\bm{k},\lambda)a(\bm{k},\lambda)^*+a(\bm{k},\lambda)^* a(\bm{k},\lambda)\big) - \big(a(\bm{k},0)a(\bm{k},0)^*+a(\bm{k},0)^* a(\bm{k},0)\big) \Big) $$</div>
+
+{{%fold "Proof"%}}
+
+With the plane wave expansion we have:
+
+<div>$$A^\mu (x)=\int \frac {\td^3 \bm{k}} {(2\pi)^{3/2}} \sqrt{\frac 1 {2\omega_{|\bm{k}|}}} \sum_{\lambda=0}^3 \Big(a(\bm{k},\lambda)\epsilon^\mu(\bm{k},\lambda)e^{-\ti k_\nu x^\nu}+a(\bm{k},\lambda)^* \epsilon^{\mu}(\bm{k},\lambda)^* e^{\ti k_\nu x^\nu}\Big)$$</div>
+
+And the Hamiltonian with Feynman gauge can be written as:
+
+<div>$$H = \frac 1 2 \int \td^3 \bm{x} \Big\{\sum_i \Big((\partial_0 A_i)^2 + (\nabla A_i)^2 \Big) -(\partial_0 A_0)^2 - (\nabla A_0)^2\Big\}$$</div>
+
+We will compute this integral:
+
+<div>$$\begin{aligned}
+I_\nu&= \int \td^3 \bm{x} \sum_\mu (\partial_\mu A_\nu)^2 \\
+&= \sum_{\mu}\int \td^3 \bm{x} \int \frac {\td^3 \bm{k}_1\td^3 \bm{k}_2} {(2\pi)^3 \sqrt{4\omega_1\omega_2}} \sum_{\lambda_1,\lambda_2} \Big(a_1 \epsilon_{1,\nu}(-\ti k_{1,\mu})e^{-\ti k_1\cdot x}+a_1^*\epsilon_{1,\nu}^* (\ti k_{1,\mu})e^{\ti k_1\cdot x}\Big) \\
+&\indent \cdot\Big(a_2 \epsilon_{2,\nu}(-\ti k_{2,\mu})e^{-\ti k_2\cdot x}+a_2^*\epsilon_{2,\nu}^* (\ti k_{2,\mu})e^{\ti k_2\cdot x}\Big)\\
+&= \sum_\mu \int \frac {\td^3 \bm{k}} {2\omega_{|\bm{k}|}} \sum_{\lambda,\lambda'} \Big\{-a(\bm{k},\lambda)a(-\bm{k},\lambda')\epsilon_\nu(\bm{k},\lambda)\epsilon_{\nu}(-\bm{k},\lambda')e^{-2\ti \omega_{|\bm{k}|}t} (k_0^2,-k_1^2,-k_2^2,-k_3^2)^\mu \\
+&\indent + k_\mu^2 a(\bm{k},\lambda)a(\bm{k},\lambda')^*\epsilon_\nu(\bm{k},\lambda)\epsilon_\nu(\bm{k},\lambda')^* + k_\mu^2 a(\bm{k},\lambda)^* a(\bm{k},\lambda) \epsilon_\nu(\bm{k},\lambda)^* \epsilon_\nu (\bm{k},\lambda') \\
+&\indent - a(\bm{k},\lambda)^* a(-\bm{k},\lambda')^* \epsilon_\nu(\bm{k},\lambda)^* \epsilon_\nu (-\bm{k},\lambda')^* e^{2\ti \omega_{|\bm{k}|}t} (k_0^2,-k_1^2,-k_2^2,-k_3^2)^\mu  \Big\} \\
+&= \int \td^3 \bm{k} \ \omega_{|\bm{k}|}\sum_{\lambda,\lambda'} \Big\{ a(\bm{k},\lambda)a(\bm{k},\lambda')^*\epsilon_\nu(\bm{k},\lambda)\epsilon_\nu(\bm{k},\lambda')^* + a(\bm{k},\lambda)^* a(\bm{k},\lambda) \epsilon_\nu(\bm{k},\lambda)^* \epsilon_\nu (\bm{k},\lambda')  \Big\}
+\end{aligned}$$</div>
+
+Note that `$k_0^2-k_1^2-k_2^2-k_3^2=0$` , because `$\omega_{|\bm{k}|}=|\bm{k}|$` . And compute the third equality should be carefully, because the delta function of `$\delta^3(\bm{k}_1+\bm{k}_2)$` leads `$k_2=(\omega_{|\bm{k}|},-\bm{k})\neq -k_1$` . And in the second equality, `$a_i,\epsilon_{i,\nu}$` means that `$a(\bm{k}_i) , \epsilon_\nu(\bm{k}_1,\lambda_1)$` , for the simplicity.
+
+With `$H = -\frac 1 2 \sum_\nu \eta^{\nu\nu} I_\nu$`, we can write down:
+
+<div>$$H=-\frac 1 2\int \td^3 \bm{k} \ \omega_{|\bm{k}|}\sum_{\lambda,\lambda'}\Big\{ a(\bm{k},\lambda)a(\bm{k},\lambda')^*\epsilon_\nu(\bm{k},\lambda)\epsilon^\nu(\bm{k},\lambda')^* + a(\bm{k},\lambda)^* a(\bm{k},\lambda) \epsilon_\nu(\bm{k},\lambda)^* \epsilon^\nu (\bm{k},\lambda')  \Big\}$$</div>
+
+With the property of `$\epsilon^\mu$` : `$\epsilon(\bm{k},\lambda)\cdot \epsilon(\bm{k},\lambda')=\eta_{\lambda,\lambda'}$` , we can write the Hamiltonian as:
+
+<div>$$H=\frac 1 2 \int \td^3 \bm{k} \ \omega_{|\bm{k}|} \Big( \sum_{\lambda=1}^3\big( a(\bm{k},\lambda)a(\bm{k},\lambda)^*+a(\bm{k},\lambda)^* a(\bm{k},\lambda)\big) - \big(a(\bm{k},0)a(\bm{k},0)^*+a(\bm{k},0)^* a(\bm{k},0)\big) \Big) $$</div>
+
+{{%/fold%}}
