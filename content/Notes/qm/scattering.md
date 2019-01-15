@@ -36,7 +36,7 @@ Incoming plane wave `$\ket{\bm{k}}$` is not normalizable. Probability is not eas
 
 # Lippmann-Schwinger Equation
 
-Take the time-independent approach: `$(\hat H_0+\hat V)\ket{\psi}=E\ket{\psi}$` . Assume that `$\hat V$` is sufficiently short-ranged, namely for position `$\bm{r}$` at a very large distance from the scattering potential `$\hat V\approx 0$` and `$\ket{\psi}=\ket{\bm{k}}$`, that is `$E=\hbar^2 \bm{k}^2/2m$` . Like the perturbation theory we have the `Lippmann-Schwinger Equation`
+Take the time-independent approach: `$(\hat H_0+\hat V)\ket{\psi}=E\ket{\psi}$` . Assume that `$\hat V$` is sufficiently short-ranged, namely for position `$\bm{r}$` at a very large distance from the scattering potential `$\hat V\approx 0$` and `$\ket{\psi}=\ket{\bm{k}}$`, that is `$E=\hbar^2 \bm{k}^2/2m$` .(Here we argue `$\ket{\psi}$` and `$\ket{\bm{k}}$` have the same energy, which means we are only considering `elastic scattering`) Like the perturbation theory we have the `Lippmann-Schwinger Equation`
 
 <div>$$\ket{\psi}=\ket{\bm{k}}+\frac {1} {E-\hat H_0+\ti \epsilon}\hat V\ket{\psi}$$</div>
 
@@ -44,15 +44,30 @@ Where `$\ti\epsilon$` is used to avoid singularity.
 
 {{%fold "Proof"%}}
 
-The Lippmann-Schwinger equation can we writen as `$E\ket{\psi}-\hat H_0\ket{\psi}+\ti \epsilon \ket{\psi}=\ti\epsilon \ket{\bm{k}}+\hat V \ket{\psi}$` . For the Schrodinger equation:
+The Lippmann-Schwinger equation can we writen as `$E\ket{\psi}-\hat H_0\ket{\psi}+\ti \epsilon \ket{\psi}=\ti\epsilon \ket{\bm{k}}+\hat V \ket{\psi}$` . For the time-evolution of `$\ket{\psi}$` can be obtained by the Schrodinger equation:
 
-<div>$$\ti \hbar \frac {\td } {\td t}\ket{\psi(t)} = (\hat H_0+\hat V)\ket{\psi(t)}$$</div>
+<div>$$\ti \hbar \frac {\td } {\td t}\ket{\psi(t)} = (\hat H_0+\hat V)\ket{\psi(t)}=(E+\ti\epsilon)\ket{\psi(t)}-\ti\epsilon\ket{\bm{k}}$$</div>
 
-Solution is:
+Then we have:
+
+<div>$$\ti\hbar \frac {\td} {\td t} \Big(e^{\ti Et/\hbar -\epsilon t/\hbar}\ket{\psi(t)}\Big)=-\ti \epsilon e^{\ti Et/\hbar -\epsilon t/\hbar}\ket{\bm{k}}$$</div>
+
+Then the solution is:
+
+<div>$$\ket{\psi(t)}=e^{-\ti Et/\hbar+\epsilon t/\hbar}\Big(\ket{\psi(t=0)}-\frac {e^{\ti Et/\hbar-\epsilon t/\hbar}-1} {\ti E-\epsilon} \ti \epsilon \ket{\bm{k}}\Big)$$</div>
+
+Or equivalently,
 
 <div>$$\ket{\psi(t)}=e^{-\ti E t/\hbar + \epsilon t/\hbar}\big(\ket{\psi}+\frac {\epsilon} {E+\ti\epsilon}\ket{\bm{k}}\big)-\frac {\epsilon} {E+\ti\epsilon}\ket{\bm{k}}$$</div>
 
-Which satisfies `$\ket{\psi(t\rightarrow -\infty)}\propto \ket{\bm{k}}$`
+Which satisfies `$\ket{\psi(t\rightarrow -\infty)}\propto \ket{\bm{k}}$` , mimic the scattering process. With this meaning, one can also write it as the form of:
+
+<div>$$\begin{aligned}
+\ket{\psi^{(\pm)}}=\ket{\bm{k}}_{\text{in}/\text{out}}+\frac 1 {E-\hat H_0\pm \ti \epsilon} \hat V \ket{\psi^{(\pm)}}
+\end{aligned}$$</div>
+
+Where `$(+)$` corresponding to the `$\ket{\bm{k}}_{\text{in}}$` , because `$\ket{\psi^{(+)}(t\rightarrow -\infty)} = \ket{\bm{k}}_{\text{in}}$` , \
+And `$(-)$` corresponding to the `$\ket{\bm{k}}_{\text{out}}$` , because `$\ket{\psi^{(-)}(t\rightarrow +\infty)} = \ket{\bm{k}}_{\text{out}}$` .
 
 {{%/fold%}}
 

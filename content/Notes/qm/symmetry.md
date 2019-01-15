@@ -69,11 +69,11 @@ Equivalent representations have the same character , and conjugacy class have th
 
 <em>[Theorem]</em> :
 
-<div>$$\sum_{g\in G} \chi_R(g)^*\chi_R'(g) = |G|\delta_{R,R'}$$</div>
+<div>$$\sum_{g\in G} \chi_R(g)^*\chi_{R'}(g) = |G|\delta_{R,R'}$$</div>
 
 Where `$\delta_{R,R'}=1$` when `$R,R'$` are equivalent, it is `$0$` otherwise
 
-<em>[Theorem]</em> : For `finite group` `$G$` ,  let `$n=|G|$` , `$m$` is the `number of conjugacy classes` , `$r$` is the `number of inequivalent irreps` , `$d_i$` is the `dimemsions of irrep. `$i$`` , then:
+<em>[Theorem]</em> : For `finite group` `$G$` ,  let `$n=|G|$` , `$m$` is the `number of conjugacy classes` , `$r$` is the `number of inequivalent irreps` , `$d_i$` is the `dimemsions of irrep.` `$i$` , then:
 
 <div>$$\begin{aligned}
 m&=r \\

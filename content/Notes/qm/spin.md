@@ -123,7 +123,7 @@ In this meaning, SU(2) manifold is `$S^3$` , points `$a\in \mathbb{R}^4$` with `
 
 _[Theorem]_ : The `adjoint representation` of SU(2) element `$e^{-\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}}$` is the 3x3 rotation matrix `$\bm{R}_{\bm{n}}(\theta)$` :
 
-<div>$$e^{-\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} (\bm{\sigma}\cdot \bm{x}) e^{\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} = \sigma \cdot (\bm{R}_{\bm{n}}(\theta)\bm{x})$$</div>
+<div>$$e^{-\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} (\bm{\sigma}\cdot \bm{x}) e^{\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} = \bm{\sigma} \cdot (\bm{R}_{\bm{n}}(\theta)\bm{x})$$</div>
 
 {{%fold "Proof"%}}
 
@@ -224,7 +224,7 @@ Then the occupation basis form the representation basis of SU(2):
 
 And:
 
-<div>$$D_{m,m'}^{(j)}(\bm{U}) = \sqrt{\frac {(j+m')!(j-m')!} {(j+m)!(j-m)!}} \sum_{k=0}^{j+m} \Big(\begin{array}{cc}j+m \\ k\end{array}\Big)\Big(\begin{array}{cc}j-m \\ j+m'-k\end{array}\Big) u^k v^{j+m-k}(-v^*)^{j+m'-k}(u*)^{j-m-(j+m'-k)}$$</div>
+<div>$$D_{m,m'}^{(j)}(\bm{U}) = \sqrt{\frac {(j+m')!(j-m')!} {(j+m)!(j-m)!}} \sum_{k=0}^{j+m} \Big(\begin{array}{cc}j+m \\ k\end{array}\Big)\Big(\begin{array}{cc}j-m \\ j+m'-k\end{array}\Big) u^k v^{j+m-k}(-v^*)^{j+m'-k}(u^*)^{j-m-(j+m'-k)}$$</div>
 
 This is the (`$2j+1$`)-dimensional `irreducible` unitary representation of SU(2) .
 
@@ -536,12 +536,42 @@ q.e.d.
 
 {{%/fold%}}
 
-_[Theorem]_ : `Rotation` of polarization in `$\mathcal{H}_{1/2}$` .
+_[Theorem]_ : `Rotation` of polarization in `$\mathcal{H}_{1/2}$` : if `$\ket{z_1,z_2}$` is the state with polarization of `$\bm{n}$` , and:
+
+<div>$$e^{-\ti \frac \theta 2 \bm{n'}\cdot \bm \sigma}\begin{bmatrix}z_1 \\ z_2 \end{bmatrix}=\begin{bmatrix}z'_1 \\ z'_2 \end{bmatrix}$$</div>
+
+Then `$\ket{z'_1,z'_2}$` is the state with polarization of `$\bm{R}_{\bm{n}'}(\theta)\bm{n}$` , that is to say:
+
+<div>$$(\bm{R}_{\bm{n}'}(\theta)\bm{n})\cdot \hat{\bm{S}}\ket{z'_1,z'_2}=\frac 1 2 \ket{z_1,z_2}$$</div>
+
+{{%fold "Proof"%}}
+
+One needs only prove that:
+
+<div>$$[z^*_1,z^*_2]\bm{\sigma}\begin{bmatrix}z_1 \\ z_2 \end{bmatrix}=\bm{n} \ ; \ e^{-\ti \frac \theta 2 \bm{n'}\cdot \bm \sigma}\begin{bmatrix}z_1 \\ z_2 \end{bmatrix}=\begin{bmatrix}z'_1 \\ z'_2 \end{bmatrix} \Rightarrow [z'^*_1,z'^*_2]\bm{\sigma}\begin{bmatrix}z'_1 \\ z'_2 \end{bmatrix} = \bm{R}_{\bm{n}'}(\theta)\bm{n}$$</div>
+
+That is equivalent to prove:
+
+<div>$$e^{\ti \frac \theta 2 \bm{n}'\cdot\bm{\sigma}}\bm{\sigma} e^{-\ti \frac \theta 2 \bm{n}'\cdot\bm{\sigma}}=\big[\bm{R}_{\bm{n}'}(\theta)\big]\bm{\sigma}$$</div>
+
+Where the left-hand-side is the product should be treated as matrix dot vector.
+
+This is similar to what we have shown:
+
+<div>$$e^{-\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} (\bm{\sigma}\cdot \bm{x}) e^{\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} = \bm{\sigma} \cdot (\bm{R}_{\bm{n}}(\theta)\bm{x})$$</div>
+
+which is equivalent to:
+
+<div>$$e^{-\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} \bm{\sigma} e^{\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} =[\bm{R}_{\bm{n}}(-\theta)] \bm{\sigma}$$</div>
+
+q.e.d.
+
+{{%/fold%}}
 
 
 ## Addition of Angular Momentum
 
-Let us consider a system of momentum `$j_1$` `$+$` a system of momentum `$j_2$`
+Let us consider a system of momentum `$j_1+$` a system of momentum `$j_2$`
 
 The tensor product under SU(2) rotation as:
 
