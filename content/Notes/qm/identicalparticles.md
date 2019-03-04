@@ -262,7 +262,7 @@ Norm of this state is given by the Gram determinant: `$\sqrt{\text{det}[\langle 
 If `$\psi_i$` are linearly dependent , this state vanishes. <br>
 Linearly independent `$\psi_i$` span a n-dimensional 1-body Hilbert space. Given a complete orthonormal basis of this sapce `$c_i$` , then:
 
-<div>$$\ket{\psi_1,\cdots,\psi_n} = \text{det}[\langle c_i|\psi_j] \ket{c_1,\cdots,c_n}$$</div>
+<div>$$\ket{\psi_1,\cdots,\psi_n} = \text{det}[\langle c_i|\psi_j\rangle] \ket{c_1,\cdots,c_n}$$</div>
 
 And this state is the eigenstate of `$\hat n=\sum_i \hat c_i^{\dagger}\hat c_i$` with eigenvalue is `$n$`. <br>
 The `parent Hamiltonian` of this state is:
@@ -286,7 +286,7 @@ In particular, the new "vacuum" is originally `$\ket{0,\cdots,n_i=1,\cdots,0}$`.
 
 ## Fermion Pairing State(BCS state)
 
-<em>[Definition]</em> : Consider two orthonormal fermion modes `$c_1, c_2$` , teh pairing state is:
+<em>[Definition]</em> : Consider two orthonormal fermion modes `$c_1, c_2$` , the pairing state is:
 
 <div>$$\ket{\lambda} = (1+|\lambda|^2)^{-1/2}\exp(\lambda \hat c_1^{\dagger}\hat c_2^{\dagger}) \ket{0}$$</div>
 
