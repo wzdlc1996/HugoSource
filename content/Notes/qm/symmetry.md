@@ -116,7 +116,7 @@ Where `$J =|\det \partial_i (g\bm{x})^j| $` is the Jacobian of the transformatio
 {{%fold "Proof"%}}
 for single particle state `$\ket{\psi}$` , it shall be transformed as:
 
-<div>$$\ket{g\psi} = \int \td\bm{x}  \psi(\bm{x})\ket{g\bm{x}} = \int \psi(g^{-1}\bm{x}) \ket{\bm{x}} J^{-1}\td \bm{x}$$</div>
+<div>$$\ket{g\psi} = \int \td\bm{x}  \psi(\bm{x})\ket{g\bm{x}} = \int \psi(g^{-1}\bm{x}) \ket{\bm{x}} J^{-1}\td^3 \bm{x}$$</div>
 
 Then we have
 
@@ -302,7 +302,7 @@ There are some examples:
 -   `Point group symmetry`
     Generally, free particle Hamiltonian can be written as:
 
-    <div>$$\hat H = \int \hat {\bm{\psi}}^{\dagger}(\bm{k}) \bm{H}(\bm{k})\hat {\bm{\psi}}(\bm{k}) \td \bm{k}$$</div>
+    <div>$$\hat H = \int \hat {\bm{\psi}}^{\dagger}(\bm{k}) \bm{H}(\bm{k})\hat {\bm{\psi}}(\bm{k}) \td^3 \bm{k}$$</div>
 
     Where `$\hat{\bm{\psi}}(\bm{k})$` is a column vector of annihilation operators.
 
@@ -310,7 +310,7 @@ There are some examples:
 
     <div>$$\begin{aligned}
     \hat{\bm{\psi}}(\bm{k}) &\rightarrow_g R(g) \hat{\bm{\psi}}(g\bm{k}) \\
-    \hat H &\rightarrow_g \int \hat {\bm{\psi}}^{\dagger}(g\bm{k})R(g)^{-1} \bm{H}(\bm{k})R(g)\hat {\bm{\psi}}(\bm{k}) \td \bm{k}
+    \hat H &\rightarrow_g \int \hat {\bm{\psi}}^{\dagger}(g\bm{k})R(g)^{-1} \bm{H}(\bm{k})R(g)\hat {\bm{\psi}}(\bm{k}) \td^3 \bm{k}
     \end{aligned}$$</div>
 
     If `$g$` is symmetry transformation, Hamiltonian should be invariant. Then `$H(g\bm{k})=R(g)^{-1}H(\bm{k})R(g)$`

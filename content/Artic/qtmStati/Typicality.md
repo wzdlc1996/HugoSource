@@ -206,11 +206,11 @@ Then:
 
 $$F(t,\ket{\psi})\equiv F(t,\{c_{E,a}\})=\sum_{E,a;E',a'}A_{E,a;E',a'}c_{E,a}^*c_{E',a'}e^{-\ti(E-E')t}$$
 
-_[Theorem]_ : the time-mean and time-variance, as the function of random vector \(\ket{\psi}\sim \{c_{E,a}\}\) , is:
+_[Theorem]_ : The time-mean and time-variance, as the function of random vector \(\ket{\psi}\sim \{c_{E,a}\}\) , is:
 
 $$\begin{aligned}
 \mu_A(\{c_{E,a}\}) &= \sum_{E} \sum_{a,a'=1}^{d(E)} A_{E,a;E,a'} c_{E,a}^* c_{E,a'} \\
-\sigma_A^2 (\{c_{E,a}\})+ \mu_A^2 &= \sum_{E_1-E_1'=E_2-E_2'}\sum_{a,a';b,b'} A_{E_1,a;E_1',a'}c_{E_1',a'}c_{E_1,a}^* A_{E_2,b;E_2',b'}c_{E_2',b'}c_{E_2,b}^*
+\sigma_A^2 (\{c_{E,a}\})+ \mu_A^2 &= \sum_{E_1-E_1'+E_2-E_2'=0}\sum_{a,a';b,b'} A_{E_1,a;E_1',a'}c_{E_1',a'}c_{E_1,a}^* A_{E_2,b;E_2',b'}c_{E_2',b'}c_{E_2,b}^*
 \end{aligned}$$
 
 {{%fold "Proof"%}}
@@ -229,9 +229,9 @@ And:
 $$\begin{aligned}
 \sigma_A^2+\mu_A^2 &= \lim_{T\rightarrow \infty} \frac 1 T \int_0^T \Big(\bra{\psi(t)}\hat A\ket{\psi(t)}\Big)^2 \td t \\
 &=\lim_{T\rightarrow \infty} \frac 1 T \int_0^T\td t \Big\{\sum_{E_1,a_1;E_1',a_1'}\sum_{E_2,a_2;E_2',a_2'}A_{E_1,a_1;E_1',a_1'}c_{E_1,a_1}^*c_{E_1',a_1'}A_{E_2,a_2;E_2',a_2'}c_{E_2,a_2}^*c_{E_2',a_2'}\\
-&\indent \cdot e^{-\ti\big((E_1-E_1')-(E_2-E_2')\big)t}\Big\}\\
-&=\sum_{E_1,a_1;E_1',a_1'}\sum_{E_2,a_2;E_2',a_2'}A_{E_1,a_1;E_1',a_1'}c_{E_1,a_1}^*c_{E_1',a_1'}A_{E_2,a_2;E_2',a_2'}c_{E_2,a_2}^*c_{E_2',a_2'} \delta_{E_1-E_1',E_2-E_2'}\\
-&=\sum_{E_1-E_1'=E_2-E_2'}\sum_{a,a';b,b'} A_{E_1,a;E_1',a'}c_{E_1',a'}c_{E_1,a}^* A_{E_2,b;E_2',b'}c_{E_2',b'}c_{E_2,b}^*
+&\indent \cdot e^{-\ti\big((E_1-E_1')+(E_2-E_2')\big)t}\Big\}\\
+&=\sum_{E_1,a_1;E_1',a_1'}\sum_{E_2,a_2;E_2',a_2'}A_{E_1,a_1;E_1',a_1'}c_{E_1,a_1}^*c_{E_1',a_1'}A_{E_2,a_2;E_2',a_2'}c_{E_2,a_2}^*c_{E_2',a_2'} \delta_{E_1-E_1',-(E_2-E_2')}\\
+&=\sum_{E_1-E_1'+E_2-E_2'=0}\sum_{a,a';b,b'} A_{E_1,a;E_1',a'}c_{E_1',a'}c_{E_1,a}^* A_{E_2,b;E_2',b'}c_{E_2',b'}c_{E_2,b}^*
 \end{aligned}$$
 
 If we treated the initial state \(\ket{\psi}\) as the random vector in \(\mathcal{H}(N)\) , then these two quantities are random variables.
@@ -244,6 +244,10 @@ $$\begin{aligned}
 \mathbb{E}\mu_A &=\frac 1 N \text{Tr}_{\mathcal{H}(N)} \hat A \\
 \mathbb{E}\big(|\mu_A-\mathbb{E}\mu_A|^2\big)&=\frac 1 {N+1}\Big\{\frac {\sum_E \text{Tr}_{E-\text{subspace}} \hat A^2} {N}-\Big(\frac {\text{Tr}_{\mathcal{H}(N)}\hat A} {N}\Big)^2\Big\}
 \end{aligned}$$
+
+Where \(\text{Tr}_{E-\text{subspace}}\hat A^2\) means:
+
+$$\text{Tr}_{E-\text{subspace}} \hat A^2 = \sum_{a,a'}\bra{E,a}\hat A \ket{E,a'}\bra{E,a'}\hat A\ket{E,a}$$
 
 {{%fold "Proof"%}}
 
@@ -278,7 +282,7 @@ $$\begin{aligned}
 &= \frac 1 {N(N+1)}\Big\{(\text{Tr}_{\mathcal{H}(N)}\hat A)^2+\sum_E \text{Tr}_{E-\text{subspace}}\hat A^2 \Big\}
 \end{aligned}$$
 
-Which is the same as the result above. Then we can also write down the variance of \(\mu_A\):
+Which is the same as the result above. In fact, one can also compute this quantity with the generic 4-point function, and it also induces the same conclusion. Then we can write down the variance of \(\mu_A\):
 
 $$\begin{aligned}
 &\mathbb{E}\big(|\mu_A-\mathbb{E}\mu_A|^2\big)=\mathbb{E}\mu_A^2-(\mathbb{E}\mu_A)^2\\
@@ -292,46 +296,215 @@ The mean of time-mean is the same as the statical case. And is consistent with t
 
 _[Theorem]_ : The mean and variance of random variable \(\sigma_A^2\) are:
 
+$$\mathbb{E}\sigma_A^2 = \text{Var}(\sigma_A^2)=0$$
+
 {{%fold "Proof"%}}
 
 First, compute the mean of \(\sigma_A\):
 
 $$\begin{aligned}
-\mathbb{E}(\sigma_A^2+\mu_A^2) &= \sum_{E_1-E_1'=E_2-E_2'} \sum_{a_1,a_1';a_2,a_2'} A_{E_1,a_1;E_1',a_1'} A_{E_2,a_2;E_2',a_2'}\mathbb{E}(c_{E_1',a_1'}c_{E_1,a_1}^*c_{E_2',a_2'}c_{E_2,a_2}^*)
+\mathbb{E}(\sigma_A^2+\mu_A^2) &= \sum_{E_1-E_1'+E_2-E_2'=0} \sum_{a_1,a_1';a_2,a_2'} A_{E_1,a_1;E_1',a_1'} A_{E_2,a_2;E_2',a_2'}\mathbb{E}(c_{E_1',a_1'}c_{E_1,a_1}^*c_{E_2',a_2'}c_{E_2,a_2}^*)
 \end{aligned}$$
 
-Let us consider the generic four-point-function:
+Let us consider the generic four-point-function, with the theorem about the spherical mean and Gaussian integral(see Appendix), we have:
 
-$$G(1',1,2',2)=\mathbb{E}(c_{E_1',a_1'}c_{E_1,a_1}^*c_{E_2',a_2'}c_{E_2,a_2}^*)$$
-
-It is non-zero only when it is even function, namely they are paired. Then it is:
-
-$$G(1',1,2',2)=\frac 1 {(N+1)N}\begin{cases} 2 & 1=1'=2=2'\\
-1 & 1=1'\neq 2=2' \text{ or } 1=2'\neq 2=1'\\
-0 & 1=2\neq 2'=1' \\
-0 & \text{otherwise}
-\end{cases}$$
+$$\begin{aligned}
+G(1',1,2',2)&=\mathbb{E}(c_{E_1',a_1'}c_{E_1,a_1}^*c_{E_2',a_2'}c_{E_2,a_2}^*)\\
+&=\frac {\Gamma(N)} {\Gamma(N+2)} \partial_{w_{1'}^*}\partial_{w_{1}}\partial_{w_{2'}^*}\partial_{w_2} e^{\bm{w}^\dagger \bm{w}} \Bigg|_{\bm{w}=0} \\
+&=\frac 1 {N(N+1)}\Big(\delta_{(E_1',a_1'),(E_2,a_2)}\delta_{(E_2',a_2'),(E_1,a_1)}+\delta_{(E_1',a_1'),(E_1,a_1)}\delta_{(E_2',a_2'),(E_2,a_2)}\Big)\\
+&=\frac 1 {N(N+1)}\Big(\delta_{E_1',E_2}\delta_{a_1',a_2}\delta_{E_2',E_1}\delta_{a_2',a_1}+\delta_{E_1',E_1}\delta_{a_1',a_1}\delta_{E_2',E_2}\delta_{a_2',a_2}\Big)\\
+\end{aligned}$$
 
 Then:
 
 $$\begin{aligned}
-\mathbb{E}(\sigma_A^2+\mu_A^2) &=\frac 1 {N(N+1)}\Big\{ 2\sum_{E}\sum_{a} A_{E,a;E,a}^2 +\sum_{E_1\neq E_2} \sum_{a,b}A_{E_1,a;E_1,a}A_{E_2,b;E_2,b}\\
-&\indent + \sum_{E}\sum_{a\neq b} A_{E,a;E,a}A_{E,b;E,b}+\sum_{E}\sum_{a\neq a'} A_{E,a;E,a'}A_{E,a';E,a}\Big\}\\
-&=\frac 1 {N(N+1)}\Big\{\sum_{E_1\neq E_2}\sum_{a,b}A_{E_1,a;E_1,a}A_{E_2,b;E_2,b}+\sum_{E}\sum_{a,b}A_{E,a;E,a}A_{E,b;E,b}\\
-&\indent +\sum_E\sum_{a,a'}A_{E,a;E,a'}A_{E,a';E,a}\Big\} \\
-&= \frac 1 {N(N+1)} \Big\{(\text{Tr}_{\mathcal{H}(N)}\hat A)^2+\sum_E \text{Tr}_{E-\text{subspace}}\hat A^2\Big\}
+\mathbb{E}(\sigma_A^2+\mu_A^2) &= \sum_{E_1-E_1'+E_2-E_2'=0} \sum_{a_1,a_1';a_2,a_2'} \frac {A_{E_1,a_1;E_1',a_1'} A_{E_2,a_2;E_2',a_2'}} {N(N+1)}\delta_{E_1',E_2}\delta_{a_1',a_2}\delta_{E_2',E_1}\delta_{a_2',a_1} \\
+&\indent +\sum_{E_1-E_1'+E_2-E_2'=0} \sum_{a_1,a_1';a_2,a_2'} \frac {A_{E_1,a_1;E_1',a_1'} A_{E_2,a_2;E_2',a_2'}} {N(N+1)}\delta_{E_1',E_1}\delta_{a_1',a_1}\delta_{E_2',E_2}\delta_{a_2',a_2}\\
+&=\sum_{E,E'} \sum_{a,a'}\frac {A_{E,a;E',a'} A_{E',a';E,a}} {N(N+1)}+\sum_{E,E'}\sum_{a,b} \frac {A_{E,a;E,a} A_{E',b;E',b}} {N(N+1)}\\
+&=\frac {\text{Tr}_{\mathcal{H}(N)} \hat A^2} {N(N+1)} + \frac {\big(\text{Tr}_{\mathcal{H}(N)}\hat A\big)^2} {N(N+1)}
 \end{aligned}$$
 
 Then:
 
-$$\mathbb{E}\sigma_A^2=0$$
-
+$$\begin{aligned}
+\mathbb{E}\sigma_A^2&=\frac 1 {N(N+1)}\Big\{\text{Tr}_{\mathcal{H}(N)} \hat A^2 - \sum_E \text{Tr}_{E-\text{subspace}}\hat A^2\Big\}\\
+&=\frac 1 {N(N+1)}\Big\{\sum_{E}\sum_{a}\bra{E,a}\hat A^2\ket{E,a}-\sum_E\sum_{a,a'}\bra{E,a}\hat A\ket{E,a'}\bra{E,a'}\hat A\ket{E,a}\Big\} \\
+&= \frac 1 {N(N+1)}\text{Tr}_{\mathcal{H}(N)}\Big(\hat A^2-\hat A\hat P_E\hat A\Big)
+\end{aligned}$$
 
 {{%/fold%}}
 
 ## Relaxation of Entropy
 
+Consider the entropy for pure state, obviously it is dependent of the basis we choose. But we have a special model to describe its relaxation.
 
+Let the initial state is \(\ket{\psi(t=0)}\) , then with the notation \(\ket{\psi(t=0)}^{\bot}\) denoting those \(N-1\) orthonormal states which orthogonal to the \(\ket{\psi(t=0)}\) , or its `Orthogonal complement`. Then we have:
+
+$$S(\ket{\psi(t)},\{\ket{\psi(t=0)},\ket{\psi(t=0)}^{\bot}\})\Big|_{t=0}=0$$
+
+But the left-hand-side of the equality above is a random variable which is dependent of the choice of those \(N-1\) orthogonal complement, or it is generated by the \(U(N-1)\) group. We define the "entropy" of the system as a function of initial state and time is the mean of this random variable \(S(\ket{\psi(t)},\{\ket{\psi(t=0)},\ket{\psi(t=0)}^{\bot}\})\) over all possible orthonormal complements. And this induces the following theorem:
+
+_[Theorem]_ : The entropy defined by the model above is a function of initial state \(\ket{\psi}\) and time \(t\) is:
+
+$$S(t,\ket{\psi}):=\mathbb{E}_{\{\ket{\psi}^\bot\}}\Big(S\big(\hat U(t)\ket{\psi},\{\ket{\psi},\ket{\psi}^\bot\}\big)\Big)=(\Psi(N)-\Psi(2))\big(1-P(t)\big)-f(P(t))$$
+
+Where \(P(t)=|\bra{\psi}\hat U(t)\ket{\psi}|^2\) is so called as `survival probability` , it is a quantity in \([0,1]\) . And \(f(x)=x\log x+(1-x)\log (1-x)\).
+
+{{%fold "Proof"%}}
+
+Let \(\{\ket{\psi}^\bot\}=\{\ket{\phi_1},\cdots,\ket{\phi_{N-1}}\}\) , then we have the expansion of \(\ket{\psi(t)}=\hat U(t)\ket{\psi(t)}\):
+
+$$\ket{\psi(t)}=\ket{\psi}\bra{\psi}\psi(t)\rangle + \sum_{j=1}^{N-1} \ket{\phi_j} x_j$$
+
+Where the normalization condition is \(\sum_{j=1}^{N-1} |x_j|^2=1-|\bra{\psi}\psi(t)\rangle|^2=1-P(t)\). And the average on \(\{\phi_j\}\) is the same as average on the \(N-1\) complex sphere of \(\{x_j\}\). With:
+
+$$\begin{aligned}
+S\big(\hat U(t)\ket{\psi},\{\ket{\psi},\ket{\psi}^\bot\}\big)&=-P(t)\log P(t)-\sum_{j=1}^{N-1} |x_j|^2 \log |x_j|^2 \\
+&=-P(t)\log P(t) - (1-P(t)) \sum_{j=1}^{N-1} \frac {|x_j|^2} {1-P(t)} \log \frac {|x_j|^2} {1-P(t)}\\
+&\indent - (1-P(t))\log (1-P(t)) \\
+&= -f(P(t)) + (1-P(t)) S^{(N-1)}(y)
+\end{aligned}$$
+
+Where \((N-1)\)-random vector \(y\) is uniformly distributed on the \(N-1\) unit complex sphere. So we have:
+
+$$S(t,\ket{\psi}):=\mathbb{E}_{\{\ket{\psi}^\bot\}}\Big(S\big(\hat U(t)\ket{\psi},\{\ket{\psi},\ket{\psi}^\bot\}\big)\Big)=-f(P(t))+(1-P(t))\mathbb{E}S^{N-1}(y)$$
+
+q.e.d.
+
+{{%/fold%}}
+
+Then \(f(P(t))\sim\mathcal{O}(1)\) , which means when the dimension of Hilbert space \(N\) is sufficient large, we can simply approximate the function as:
+
+$$S(t,\ket{\psi})\approx S_{\text{eq}}\big(1-P(t)\big)$$
+
+Where \(S_{\text{eq}}\) is the entropy of equilibrium state, which is
+
+$$S_{\text{eq}}=\Psi(N+1)-\Psi(2)\sim \log N-1+\gamma$$
+
+Then the entropy looks like the expected value of an initial-state-dependent observable:
+
+$$S(t,\ket{\psi})=\bra{\psi(t)}\Big(S_{\text{eq}}(1-\ket{\psi}\bra{\psi})\Big)\ket{\psi(t)}$$
+
+Using the energy-eigenbasis, we have the entropy as a function of time and energy amplitude:
+
+$$S(t,\ket{\psi})\equiv S(t,\{c_{E,a}\})=S_{\text{eq}}\Big(1-\sum_{E,E'}\sum_{a,a'}|c_{E,a}|^2|c_{E',a'}|^2 e^{-\ti(E-E')t}\Big)$$
+
+Without loss of generality, we consider the `relative error of entropy`:
+
+$$s(t,\ket{\psi}):=\frac {S_{\text{eq}}-S(t,\ket{\psi})} {S_{\text{eq}}}=\sum_{E,E'}\sum_{a,a'}|c_{E,a}|^2|c_{E',a'}|^2 e^{-\ti(E-E')t}$$
+
+below.
+
+_[Theorem]_ : The time-mean and time-variance of \(s(t,\ket{\psi})\), as the function of random vector \(\ket{\psi}\sim\{c_{E,a}\}\), is:
+
+$$\begin{aligned}
+\mu_s(\{c_{E,a}\}) &= \sum_E p(E)^2 \\
+\sigma_s^2(\{c_{E,a}\})+\mu_s^2&=\sum_{E_1-E_1'=E_2-E_2'} p(E_1)p(E_1')p(E_2)p(E_2')
+\end{aligned}$$
+
+Where \(p(E)=\sum_{a=1}^{d(E)} |c_{E,a}|^2\) is the probability of initial state is in the \(E\)-subspace.
+
+{{%fold "Proof"%}}
+The time-mean is easily to be obtained with the definition of time-statistic. And the variance is:
+
+$$\begin{aligned}
+\sigma_s^2+\mu_s^2 &=  \lim_{T\rightarrow \infty}\frac 1 T \int_0^T s(t,\ket{\psi})^2 \td t \\
+&= \lim_{T\rightarrow \infty}\frac 1 T \int_0^T \td t \ e^{-\ti (E_1-E_1')t+\ti(E_2-E_2')t} \\
+&\indent \cdot \sum_{E_1,E_1',E_2,E_2'}\sum_{a_1,a_1';a_2,a_2'} |c_{E_1,a_1}|^2 |c_{E_1',a_1'}|^2 |c_{E_2,a_2}|^2 |c_{E_2',a_2'}|^2 \\
+&= \sum_{E_1-E_1'=E_2-E_2'} \sum_{a_1,a_1';a_2,a_2'} |c_{E_1,a_1}|^2 |c_{E_1',a_1'}|^2 |c_{E_2,a_2}|^2 |c_{E_2',a_2'}|^2
+\end{aligned}$$
+
+q.e.d.
+
+{{%/fold%}}
+
+_[Theorem]_ : The mean and variance of random variable \(\mu_s\) are:
+
+$$\begin{aligned}
+\mathbb{E}\mu_s &= \\
+\mathbb{E}\big(|\mu_s-\mathbb{E}\mu_s|^2\big) &=
+\end{aligned}$$
+
+{{%fold "Proof"%}}
+
+To compute the \(\mathbb{E}(p(E)^2)\) we need the 4-point function:
+
+$$\begin{aligned}
+G(1',1,2',2)&=\mathbb{E}(c_{E_1',a_1'}c_{E_1,a_1}^*c_{E_2',a_2'}c_{E_2,a_2}^*)\\
+&=\frac 1 {N(N+1)}\Big(\delta_{E_1',E_2}\delta_{a_1',a_2}\delta_{E_2',E_1}\delta_{a_2',a_1}+\delta_{E_1',E_1}\delta_{a_1',a_1}\delta_{E_2',E_2}\delta_{a_2',a_2}\Big)\\
+\end{aligned}$$
+
+And
+
+$$\begin{aligned}
+\mathbb{E}(p(E)^2)&=\sum_{a,a'} \mathbb{E} (c_{E,a} c_{E,a}^* c_{E,a'} c_{E,a'}^*) \\
+&= \frac 1 {N(N+1)} \sum_{a,a'}\Big(\delta_{a,a'}\delta_{a',a}+\delta_{a,a}\delta_{a',a'}\Big) \\
+&= \frac 1 {N(N+1)}\sum_{a,a'=1}^{d(E)} (1+\delta_{a,a'}) \\
+&= \frac {d(E)^2+d(E)} {N(N+1)}
+\end{aligned}$$
+
+Then with that \(\sum_E d(E)=N\), we have:
+
+$$\mathbb{E}\mu_s=\frac {\sum_E d(E)^2} {N(N+1)}+ \frac 1 {N+1}$$
+
+Then we need to compute:
+
+$$\mathbb{E}\mu_s^2=\sum_{E,E'} \mathbb{E}(p(E)^2 p(E')^2)$$
+
+We can begin with the generic 8-point function:
+
+$$\begin{aligned}
+G(x_1,x_1',\cdots,x_4,x_4') &= \mathbb{E}(z_{x_1}z_{x_1'}^*\cdots z_{x_4}z_{x_4'}^*) \\
+&= \frac {\Gamma(N)} {\Gamma(N+4)} \sum_{\sigma\in S_4} \delta_{x_1,\sigma(x_1')}\delta_{x_2,\sigma(x_2')}\delta_{x_3,\sigma(x_3')}\delta_{x_4,\sigma(x_4')}
+\end{aligned}$$
+
+Then:
+
+$$\begin{aligned}
+\mathbb{E}(|c_{E_1,a_1}|^2|c_{E_2,a_2}|^2|c_{E_3,a_3}|^2|c_{E_4,a_4}|^2)&= G(x_1,x_1'=x_1,\cdots,x_4,x_4'=x_4) \\
+&=\frac {\Gamma(N)} {\Gamma(N+4)} \sum_{\sigma\in S_4} \prod_{i=1}^4 \delta_{x_i,\sigma(x_i)} \\
+&= \frac {\Gamma(N)} {\Gamma(N+4)} \sum_{\sigma\in S_4} \prod_{i=1}^4 \delta_{E_i,\sigma(E_i)}\delta_{a_i,\sigma(a_i)} \\
+\end{aligned}$$
+
+If we sum all indices \(a\) , then with the fact that \(\delta_{a_i,\sigma(a_i)}\) always appears with \(\delta_{E_i,\sigma(E_i)}\) , which means we do not need to worry if the summation will be out of range. So we have the energy-occupation 4-point function:
+
+$$\begin{aligned}
+& \mathbb{E}(p(E_1)p(E_2)p(E_3)p(E_4))=\frac {\Gamma(N)} {\Gamma(N+4)}\sum_{\sigma\in S_4}\prod_{i=1}^4 \delta_{E_i,\sigma(E_i)}\sum_{a_1,a_2,a_3,a_4}\prod_{i=1}^4 \delta_{a_i,\sigma(a_i)} \\
+=&\frac {\Gamma(N)} {\Gamma(N+4)} \Big(d_1d_2d_3d_4+d_1d_2d_3(\delta_{34}+\delta_{24}+\delta_{14})+d_2d_3d_4(\delta_{12}+\delta_{13})+d_1d_2d_4\delta_{23} \\
+&\indent + 2(d_1d_2 \delta_{234}+d_2d_3 \delta_{134}+d_3d_4 \delta_{124} + d_4d_1\delta_{123}) + d_1d_3\delta_{12}\delta_{34}+d_1d_2\delta_{13}\delta_{24}\\
+&\indent + d_1 d_2\delta_{14}\delta_{23} + 6 d_1 \delta_{1234} \Big)
+\end{aligned}$$
+
+Where \(\delta_{ij}=\delta_{E_i,E_j} \ ; \ \delta_{ijk}=\delta_{E_i,E_j}\delta_{E_j,E_k} \ ; \ \delta_{ijkl}=\delta_{E_i,E_j}\delta_{E_j,E_k}\delta_{E_k,E_l}\) , and \(!n\) is derangement of \(n\) .
+
+Then:
+
+$$\begin{aligned}
+\sum_{E,E'}\mathbb{E}(p(E)^2p(E')^2)&=\sum_{E_1,E_2,E_3,E_4}\mathbb{E}(p(E_1)p(E_2)p(E_3)p(E_4))\delta_{E_1,E_2}\delta_{E_3,E_4}\\
+&=\frac {\Gamma(N)} {\Gamma(N+4)}\Big(\sum_{E,E'}\big(d(E)^2d(E')^2+d(E)^2d(E')+d(E)d(E')^2\\
+&\indent +d(E)d(E')\big)+\sum_E \big(4d(E)^3+8d(E)^2+2d(E)^2+6 d(E)\big)\Big)\\
+&=\frac {\Gamma(N)} {\Gamma(N+4)}\Big((\sum_E d(E)^2)^2+(2N+10) \sum_E d(E)^2+4\sum_E d(E)^3\\
+&\indent +6 N+N^2\Big)
+\end{aligned}$$
+
+Then:
+
+$$\begin{aligned}
+\mathbb{E}\big(|\mu_s-\mathbb{E}\mu_s|^2\big)&=\mathbb{E}(\mu_s^2)-\big(\mathbb{E}\mu_s\big)^2\\
+&=\frac {D_2^2+2(N+5)D_2+4D_3+6D_1+D_1^2} {N(N+1)(N+2)(N+3)} - \frac {(D_1+D_2)^2} {N^2(N+1)^2}\\
+\end{aligned}$$
+
+Where we define:
+
+$$D_n=\sum_E d(E)^n$$
+
+Obviously that \(D_{n-1} \leq D_n\leq N^n\). And \(D_1=N\).
+
+When \(D_n=N^n\) , that means the energy levels are full-degeneracy, then the variance is zero, this result is trivial. But if \(D_n=N\) , that means the energy levels are non-degeneracy, then:
+
+$$\mathbb{E}\big(|\mu_s-\mathbb{E}\mu_s|^2\big)\sim \frac 4 {N^3}$$
+
+{{%/fold%}}
 
 # Density Matrix of Sub-system
 
@@ -457,6 +630,60 @@ $$\Big\langle |z_1|^{2\alpha_1}\cdots |z_N|^{2\alpha_N}\Big\rangle_{\mathcal{H}_
 _[Corollary 2]_ : For the \(n_i=2m\) situation, which can be used in the discussion of sub-system, one has:
 
 $$\Big\langle\prod_{k=1}^n\big(\sum_{i=1}^m |z_{i+(k-1)m}|^2\big)^{\alpha_k}\Big\rangle_{\mathcal{H}_{nm}}=\frac {\Gamma(mn)\Gamma(\alpha_1+m)\cdots \Gamma(\alpha_n+m)} {\Gamma(m)^n \Gamma(\alpha_1+\cdots+\alpha_n + nm)}$$
+
+_[Theorem]_ : `multi-point correlation function computing` If function \(f:\mathbb{R}^n\rightarrow \mathbb{R}\) is a homogeneous function of degree \(\alpha\) , that is to say \(f(rx)=r^\alpha f(x)\). Then with the Baker's theorem we have its spherical mean is:
+
+$$\langle f\rangle = \frac {\int e^{-\sum_i x_i^2} f(x)\td^n x } {\int_{S^{n-1}}\td \sigma_{n-1}\int_0^{\infty} e^{-r^2} r^{n-1+\alpha}\td r }= \frac {\Gamma(\frac n 2)\int e^{-\sum_i x_i^2} f(x)\td^n x } {\pi^{n/2}\Gamma(\frac {n+\alpha} 2)}$$
+
+{{%fold "Proof"%}}
+
+It can be easily proven by substituting \(\exp(-\sum_i x_i^2)f\) into Baker's theorem. We have:
+
+$$\begin{aligned}
+\int e^{-\sum_i x_i^2} f(x)\td^n x&=\int_0^{\infty} r^{n-1}\td r \Big(\int_{S^{n-1}} e^{-\sum_i (rs_i)^2} f(rs)\td \sigma_{n-1}(s)\Big) \\
+&=\int_0^{\infty} e^{-r^2} r^{\alpha+n-1} \td r \int_{S^{n-1}} f(s)\td \sigma_{n-1}(s) \\
+&=\frac 1 2 \int_0^{\infty} e^{-u} u^{\frac {\alpha+n} 2 -1} \td u \langle f\rangle \int_{S^{n-1}} \td \sigma_{n-1} \\
+&=\frac {\pi^{n/2}} {\Gamma(n/2)} \Gamma(\frac {\alpha+n} 2) \langle f\rangle
+\end{aligned}$$
+
+q.e.d.
+
+{{%/fold%}}
+
+_[Corollary 1]_ : `Generic multi-point correlation function on complex sphere` \(\mathcal{H}_N\) .
+
+$$\Big\langle \prod_{j=1}^{n}z_{i_j}^{\alpha_j}z_{i_j}^{*\beta_j}\Big\rangle_{\mathcal{H}_N}=\frac {\Gamma(N)} {\Gamma\big(N+(\sum_j \alpha_j+\beta_j)/2\big)}\prod_{j=1}^n\partial_{w_{i_j}}^{\beta_j}\partial_{w_{i_j}^*}^{\alpha_j} \exp\big(\sum_{i=1}^N w_i w_i^*\big)\Bigg|_{\bm{w}=0}$$
+
+{{%fold "Proof"%}}
+
+It can be handled in \(2N\)-real sphere, then function \(f\):
+
+$$f(x)=\prod_{j=1}^n (x_{i_j,r}+\ti x_{i_j,i})^{\alpha_j} (x_{i_j,r}-\ti x_{i_j,i})^{\beta_j} $$
+
+is a homogeneous function of degree \(g=\sum_j \alpha_j+\beta_j\). Then with the theorem above:
+
+$$\begin{aligned}
+\big\langle f(x)\big\rangle_{\mathcal{H}_N} &= \frac {\Gamma(N)} {\pi^{N}\Gamma(N+g/2)}\int e^{-\sum_i x_{i,r}^2+x_{i,i}^2} f(x) \td^{2N} x \\
+&= \frac {\Gamma(N)} {\pi^{N}\Gamma(N+g/2)} \prod_{j=1}^n\partial_{w_{i_j}}^{\beta_j}\partial_{w_{i_j}^*}^{\alpha_j} \int \exp\Big(-\sum_i \big(x_{i,r}^2 +x_{i,i}^2-w_i^* z_i-w_i z_i^*\big)\Big)\td^{2N}x\Bigg|_{\bm{w}=0} \\
+&=\frac {\Gamma(N)} {\Gamma(N+g/2)}\prod_{j=1}^n\partial_{w_{i_j}}^{\beta_j}\partial_{w_{i_j}^*}^{\alpha_j} \int \exp\Big(-\bm{z}^\dagger \bm{z} +\bm{w}^\dagger \bm{z}+\bm{w}\bm{z}^\dagger\big)\Big)\prod_i \frac {\td \text{Re}z_i \td \text{Im}z_i} {\pi}\Bigg|_{\bm{w}=0} \\
+&=\frac {\Gamma(N)} {\Gamma(N+g/2)}\prod_{j=1}^n\partial_{w_{i_j}}^{\beta_j}\partial_{w_{i_j}^*}^{\alpha_j} \exp\Big(\bm{w}^\dagger\bm{w}\Big) \Bigg|_{\bm{w}=0}
+\end{aligned}$$
+
+Where the gaussian integral can be easily checked.
+
+{{%/fold%}}
+
+_[Corollary 2]_ : `A special case of multi-point function on complex sphere` \(\mathcal{H}_N\) . The special case means that all indices are \(1\), and the number of normal complex variables is equal to that of their conjugations:
+
+$$\begin{aligned}
+\Big\langle \prod_{j=1}^n z_{p_j} z_{q_j}^* \Big\rangle_{\mathcal{H}_N} = \frac {\Gamma(N)} {\Gamma(N+n)} \sum_{\sigma \in S_n} \prod_{j=1}^n \delta_{p_j,\sigma(q_j)}
+\end{aligned}$$
+
+Where \(S_n\) is \(n\)-permutation group.
+
+It can be easily proved with the corollary 1, and the fact that only when differentials fully act on monomial factor so the result is a constant products with the exponential function can the function be not zero.
+
+And this is the only non-zero case of multi-point function, and the case of existing indices are not \(1\) can be easily get by let indices \(p_j,q_j\) can duplicate.
 
 [1]:http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.383.9227&rep=rep1&type=pdf
 [2]:https://arxiv.org/abs/1812.10020
