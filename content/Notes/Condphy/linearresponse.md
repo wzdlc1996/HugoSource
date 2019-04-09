@@ -559,4 +559,4 @@ G_R(\bm{k},\bm{k'},\epsilon) &= G_R^0(\bm{k},\bm{k'},\epsilon) + \int \frac {\td
 G_A(\bm{k},\bm{k'},\epsilon) &= G_A^0(\bm{k},\bm{k'},\epsilon) + \int \frac {\td^d \bm{p}} {(2\pi)^{d/2}} G_A(\bm{k},\bm{p},\epsilon) H'(\bm{p}-\bm{k'}) G_A(\bm{k'},\epsilon)
 \end{aligned}$$
 
-Where \(H'(\bm{k})=\int \frac {\td^d \bm{r}} {(2\pi)^{d/2}} e^{-\ti \bm{k}\cdot \bm{r}} H'(\bm{r})\) , and \(G_{R/A}^)(\bm{k},\bm{k'},\epsilon)=\delta(\bm{k}-\bm{k'})G_{R/A}^0(\bm{k},\epsilon)\) is the Green's function for the system without the impurity potential.
+Where \(H'(\bm{k})=\int \frac {\td^d \bm{r}} {(2\pi)^{d/2}} e^{-\ti \bm{k}\cdot \bm{r}} H'(\bm{r})\) , and \(G_{R/A}^0(\bm{k},\bm{k'},\epsilon)=\delta(\bm{k}-\bm{k'})G_{R/A}^0(\bm{k},\epsilon)\) is the Green's function for the system without the impurity potential.
