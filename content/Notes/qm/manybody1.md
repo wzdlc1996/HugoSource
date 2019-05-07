@@ -227,7 +227,7 @@ Then compare both sides, we have the Schrodinger equation:
 
 ## Introduction to Grassmann Algebra
 
-<em>[Definition]</em> : `Grassmann algebra` `$\mathcal{G}_N$` is defined by a set of generators `$\{\xi_\alpha\} \ ; \ \alpha=1,\cdots,N$` usually over the `Complex field` (`$\mathbb{C}$`$` . These generators are called `Grassmann variables`, which are `anti-commute`  and commute to ordinary complex numbers (c-number) `$x\in \mathbb{C}$`:
+<em>[Definition]</em> : `Grassmann algebra` `$\mathcal{G}_N$` is defined by a set of generators `$\{\xi_\alpha\} \ ; \ \alpha=1,\cdots,N$` usually over the `Complex field` (`$\mathbb{C}$`$ . These generators are called `Grassmann variables`, which are `anti-commutative`  and are commutative with ordinary complex numbers (c-number) `$x\in \mathbb{C}$`:
 
 <div>$$\xi_\alpha\xi_\beta+\xi_\beta\xi_\alpha=0 \ ; \ x\xi = \xi x$$</div>
 
@@ -272,13 +272,13 @@ Then:
 
 <div>$$\partial_\alpha f=v(\xi_{\neg \alpha})$$</div>
 
-The order is important. Note that `$\partial_\xi$` and `$\partial_{\xi^*}$` is also anti-commute.
+The order is important. Note that `$\partial_\xi$` and `$\partial_{\xi^*}$` is also anti-commutative.
 
 `Integral` is defined to be a linear mapping with properties mimicking those of ordinary integrals. With the properties:
 
 <div>$$\int \td \xi \ 1 =\int \td\xi^* \ 1 = 0 \  ; \ \int \td \xi \ \xi=\int \td \xi^* \xi^* = 1$$</div>
 
-Note that `$\int \td \xi^* \ \xi$` is not defined. Also `integral operators` are anti-commute. And `$\int \td \xi$` can be simply treated as an operator, returns `$0$` when applied on `$1$` , and returns `$1$` when applied on `$\xi$`
+Note that `$\int \td \xi^* \ \xi$` is not defined. Also `integral operators` are anti-commutative. And `$\int \td \xi$` can be simply treated as an operator, returns `$0$` when applied on `$1$` , and returns `$1$` when applied on `$\xi$`
 
 <mark>It is obvious that, for Grassmann functions, `$\partial_\xi=\int \td\xi$`</mark>
 
@@ -337,7 +337,9 @@ _[Theorem]_ : Linear Change of Grassmann Varibles. Let `$\xi=(\xi_1,\cdots,\xi_N
 
 Where `$\td \eta=\td \eta_N\cdots\td \eta_1$` , and `$\td \xi=\td \xi_N\cdots\td\xi_1$` , with the inverted order.
 
-<div>$$ \int \td \eta \ f(\eta)=\frac 1 {\det M}\int \td \ \xi f(M\xi+b)$$</div>
+<div>$$ \int \td \eta \ f(\eta)=\frac 1 {\det M}\int \td \xi f(M\xi+b)$$</div>
+
+Noting this variable substitution rule is different from the case of c-number: `$\int \td x \ f(x) = \int \td z \frac {\partial(x)} {\partial(z)} f(x(z))$` i.e. for linear transform for c-numbers `$x=M z+b$`, the Jacobian contributes the factor `$\det M$` but not `$(\det M)^{-1}$`!
 
 {{%fold "Proof"%}}
 
@@ -393,7 +395,7 @@ With the linear variables change, let:  `$\eta \rightarrow \eta+H^{-1}J \ ; \ \e
 
 <div>$$I=\int \prod_i \td \eta_i^* \td \eta_i \exp\Big(-\eta^\dagger H\eta-J^\dagger H^{-1} J\Big)$$</div>
 
-For the exponents terms are sums of even numbers of Grassmann generators, so they commute with each other. So the exponential function can be written as a product of two. And with the diagonalizaiton of `$H$` and variables change, note the determinant is `$1$` for the transformation, so we have:
+For the exponents terms are sums of even numbers of Grassmann generators, so they are commutative with each other. So the exponential function can be written as a product of two. And with the diagonalizaiton of `$H$` and variables change, note the determinant is `$1$` for the transformation, so we have:
 
 <div>$$\begin{aligned}
 I&= e^{-J^\dagger H^{-1} J } \int \prod_i \td \eta_i^* \td \eta_i e^{-\sum_i \lambda_i \eta_i^*\eta} \\
@@ -407,13 +409,13 @@ q.e.d.
 {{%/fold%}}
 
 
-### Fermion Coherent States
+## Fermion Coherent States
 
 _[Definition]_ : The generic form of the coherent state from from a set of Fermion mode `$\hat a_i$` is:
 
 <div>$$\ket{\xi}=\exp\big(-\sum_i \xi_i \hat a_i^\dagger\big)\ket{0}=\prod_i (1-\xi_i \hat a_i^\dagger)\ket{0}$$</div>
 
-Where `$\xi_i$` are Grassmann generators, and the Fermion Fock space must be enlarged to define a coherent state. These Grassmann numbers and creation/annihilation operators are `anti-commute`: `$\xi\hat a+\hat a \xi=0$`. And `$(\xi\hat a)^\dagger = \hat a^\dagger \xi^*$` . This is much different from the c-numbers and operators.
+Where `$\xi_i$` are Grassmann generators, and the Fermion Fock space must be enlarged to define a coherent state. These Grassmann numbers and creation/annihilation operators are `anti-commutative`: `$\xi\hat a+\hat a \xi=0$`. And `$(\xi\hat a)^\dagger = \hat a^\dagger \xi^*$` . This is much different from the c-numbers and operators.
 
 _[Theorem]_ : The overlap between two coherent states is:
 
@@ -448,7 +450,7 @@ Then:
 &=\exp(-\xi^*\cdot \xi')
 \end{aligned}$$</div>
 
-Where we used the property that product of two Grassmann numbers are commute: `$\xi_i\xi_j\xi_k\xi_l=\xi_k\xi_l\xi_i\xi_j$`. This property shows that a Grassmann number looks like a half of a c-number.
+Where we used the property that product of two Grassmann numbers are commutative: `$\xi_i\xi_j\xi_k\xi_l=\xi_k\xi_l\xi_i\xi_j$`. This property shows that a Grassmann number looks like a half of a c-number.
 
 {{%/fold%}}
 
@@ -496,7 +498,7 @@ With the definition of Coherent state, we can expand it with the occupation basi
 &=\sum_{n=1}^N (-1)^n \sum_{k_1+\cdots+k_N=n,k_i=0,1} \xi_N^{k_N}\cdots \xi_1^{k_1}\ket{k_1,\cdots,k_N}
 \end{aligned}$$</div>
 
-Where we used the property that `$\xi_i \hat a_i$` is commute with any operators and Grassman generators. Then we have, with the fact that `$\hat A$` has even number of Fermion field operators so that it commute with any Grassmann generators:
+Where we used the property that `$\xi_i \hat a_i$` is commutative with any operators and Grassman generators. Then we have, with the fact that `$\hat A$` has even number of Fermion field operators so that it is commutative with any Grassmann generators:
 
 <div>$$\begin{aligned}
 \int \prod_i \td \xi_i^* \td\xi_i e^{-\xi^*\cdot \xi} \bra{-\xi}\hat A\ket{\xi}&= \int \prod_i \td \xi_i^* \td\xi \prod_i (1-\xi_i^*\xi_i) \sum_{m,n}(-1)^{m+n} \\
@@ -514,7 +516,7 @@ Where `$\sum_{k,l}'=\sum_{k_1+\cdots+k_N=n,k_i=0,1}\sum_{l_1+\cdots+l_N=m,l_i=0,
 =& (-1)^{n}\delta_{k,l}
 \end{aligned}$$</div>
 
-Where we used that `$1-\xi_i^*\xi$` commutes with any other Grassmann generators. And if `$l_i=k_i$`, `$l_i+k_i$` will be always an even number. Then we have:
+Where we used that `$1-\xi_i^*\xi$` is commutative with any other Grassmann generators. And if `$l_i=k_i$`, `$l_i+k_i$` will be always an even number. Then we have:
 
 <div>$$\begin{aligned}
 \int \prod_i \td \xi_i^* \td\xi_i e^{-\xi^*\cdot \xi} \bra{-\xi}\hat A\ket{\xi}&= \int \prod_i \td \xi_i^* \td\xi \prod_i (1-\xi_i^*\xi_i) \sum_{m,n}(-1)^{m+n} \\
@@ -545,7 +547,7 @@ With the commutator:
 
 <div>$$[\hat a_i , \prod_j (1-\xi_j\hat a_j^\dagger)]=\prod_{j\lt i}(1-\xi_j\hat a_j^\dagger)[\hat a_i,1-\xi_i\hat a_i^\dagger]\prod_{j\gt i}(1-\xi_j\hat a_j^\dagger)=\prod_{j\lt i}(1-\xi_j\hat a_j^\dagger)\xi_i\prod_{j\gt i}(1-\xi_j\hat a_j^\dagger)$$</div>
 
-Where we used the property that `$1-\xi_j\hat a_j^\dagger$` commute with `$a_i$` when `$i\neq j$`, and `$\hat a_i\xi_i=-\xi_i\hat a_i$`, the anti-commutation relation. Then:
+Where we used the property that `$1-\xi_j\hat a_j^\dagger$` is commutative with `$a_i$` when `$i\neq j$`, and `$\hat a_i\xi_i=-\xi_i\hat a_i$`, the anti-commutation relation. Then:
 
 <div>$$\bra{\xi}\hat a_i^\dagger \hat a_i\ket{\xi}=\bra{0}\Big(\prod_{j\neq i} (1-\xi_j\hat a_j^\dagger)\Big)^\dagger \xi_i^*\xi_i \prod_{j\neq i} (1-\xi_j\hat a_j^\dagger)\ket{0}=\xi_i^*\xi_i \exp(\sum_{j\neq i}\xi_j^*\xi_j)$$</div>
 
@@ -553,7 +555,7 @@ Then:
 
 <div>$$\bar N=\frac {\bra{\xi}\hat N\ket{\xi}} {\bra{\xi}\xi\rangle}=\frac {\sum_i \xi_i^*\xi_i e^{\xi^*\cdot \xi-\xi_i^*\xi_i}} {e^{\xi^*\cdot \xi}}=\sum_i \xi_i^*\xi_i e^{-\xi_i^*\xi_i}=\sum_i \xi_i^*\xi_i$$</div>
 
-The last identity is caused by `$\xi^*\xi e^{-\xi^*\xi}=\xi^*\xi-\xi^*\xi\xi^*\xi=\xi^*\xi$` .
+The last identity is caused by `$\xi^*\xi e^{-\xi^*\xi}=\xi^*\xi-\xi^*\xi\xi^*\xi=\xi^*\xi$`.
 
 And with:
 
@@ -574,7 +576,7 @@ Then:
 &=\bra{\xi}\xi\rangle \Big(\sum_{i,j}\xi_i^*\xi_j^*\xi_j\xi_i+\bar N\Big)=\bra{\xi}\xi\rangle \Big(\bar N^2+\bar N\Big)
 \end{aligned}$$</div>
 
-Then with that `$\bar N$` is the summation of pairs of Grassmann generators, so it commutes with any single generators or creation/annihilation operators. Then:
+Then with that `$\bar N$` is the summation of pairs of Grassmann generators, so it is commutative with any single generators or creation/annihilation operators. Then:
 
 <div>$$\begin{aligned}
 (\Delta N)^2 & := \frac {\bra{\xi}(\hat N-\bar N)^2\ket{\xi}} {\bra{\xi}\xi\rangle}\\

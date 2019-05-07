@@ -464,7 +464,7 @@ Another important matrix is:
 
 <div>$$\gamma_5=\gamma^5 = \ti \gamma^0\gamma^1\gamma^2\gamma^3 = \begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}$$</div>
 
-It anti-commutes to any `$\gamma^\mu$` : `$\{\gamma^5,\gamma^{\mu}\}=0$`. And one can construct `Projector` by it:
+It is anti-commutative with any `$\gamma^\mu$` : `$\{\gamma^5,\gamma^{\mu}\}=0$`. And one can construct `Projector` by it:
 
 <div>$$P_L = \frac 1 2 (1-\gamma_5) \ ; \ P_R=\frac 1 2 (1+\gamma_5)$$</div>
 

@@ -30,7 +30,7 @@ Which means that :
 The conflit between the second equation and the first implies that those coefficients must be some matrix but number.
 
 Moreover, we need them be Hermitian for they are coefficients in Hamiltonian. <br>
-Then our question is to find four <mark>anti-commute, hermitian, square to identity</mark> matrices.
+Then our question is to find four <mark>anti-commutative, hermitian, square to identity</mark> matrices.
 
 First we consider 2x2 matrices. For all 2x2 Hermitian matrices are some linear combination of Pauli matrice, while:
 <div>$$\{\sigma^i,\sigma^j\}=0 , \{\sigma^i,\sigma^0\}=2\sigma^i$$</div>

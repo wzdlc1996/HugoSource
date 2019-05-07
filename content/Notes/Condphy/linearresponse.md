@@ -266,7 +266,7 @@ For the energy eigenstates \(\hat H(\bm{B})\ket{n(\bm{B})}=\hbar\omega_n(\bm{B})
 
 $$\hat T \hat H(\bm{B})\hat T^{-1}\hat T\ket{n(\bm{B})}=\hbar \omega_n(\bm{B})\hat T\ket{n(\bm{B})}\Rightarrow \omega_n(\bm{B})=\omega_n(-\bm{B}), \ket{n(-\bm{B})}=\hat T\ket{n(\bm{B})}$$
 
-Where we used the fact that energy eigenvalue \(\omega_n(\bm{B})\) is real number, so \(\hat T\) commutes with it. In the expression of \(\chi_R\) , only \(\omega\) and matrix elements, i.e. \(P_{mn},Q_{mn}\) are dependent of \(\bm{B}\). If \(\hat A\) is independent of spin, it cannot be a function of magnetic field:
+Where we used the fact that energy eigenvalue \(\omega_n(\bm{B})\) is real number, so \(\hat T\) is commutative with it. In the expression of \(\chi_R\) , only \(\omega\) and matrix elements, e.g. \(P_{mn},Q_{mn}\) are dependent of \(\bm{B}\). If \(\hat A\) is independent of spin, it cannot be a function of magnetic field:
 
 $$\begin{aligned}
 A_{mn}(-\bm{B}) &= \bra{m(-\bm{B})}\hat A \ket{n(-\bm{B})}=\bra{m(\bm{B})}\hat T^\dagger \hat A\hat T\ket{n(\bm{B})} \\
@@ -277,7 +277,7 @@ A_{mn}(-\bm{B}) &= \bra{m(-\bm{B})}\hat A \ket{n(-\bm{B})}=\bra{m(\bm{B})}\hat T
 
 Where in the fourth equality we used the property of \(\hat T\) is an anti-unitary operator.
 
-If \(\hat A\) is independent of spin, so it commutes with any Pauli matrices. And with that \(\ti \sigma^y\) is a real matrix, it commutes with \(\hat K\) , so we have \(\ti \sigma^y \hat K (-\ti) \sigma^y \hat K=\hat K^2=1\) , that means that \(\hat T^{-1}=\ti \sigma^y \hat K\). Then:
+If \(\hat A\) is independent of spin, so it is commutative with any Pauli matrices. And with that \(\ti \sigma^y\) is a real matrix, it is commutative with \(\hat K\) , so we have \(\ti \sigma^y \hat K (-\ti) \sigma^y \hat K=\hat K^2=1\) , that means that \(\hat T^{-1}=\ti \sigma^y \hat K\). Then:
 
 $$\begin{aligned}
 \hat T^{-1}\hat A\hat T&= \ti \sigma^y \hat K \hat A (-\ti)\sigma^y \hat K \\

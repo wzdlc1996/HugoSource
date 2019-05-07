@@ -193,7 +193,7 @@ For generator `$X$`, and unitary symmetry `$\Phi : g \rightarrow \hat g \equiv \
 which is independent of `$\theta$` value. <br>
 
 <em>[Theorem]</em> : When `$\hat \Phi(e^{\ti \theta X})$` is a symmetry unitary operator, which means that `$[\hat \Phi(e^{\ti\theta X}),\hat H]=0$` . Then
-`$\hat X$` is an Hermitian, and it commute with `$\hat H$` , which means that it is a conserved observable.
+`$\hat X$` is an Hermitian, and it is commutative with `$\hat H$` , which means that it is a conserved observable.
 
 {{%fold "Proof"%}}
 Using `$\hat \Phi(e^{\ti\theta X})^{-1} \hat H \hat \Phi(e^{\ti\theta X}) = \hat H$` , take `$\frac {\td} {\td \theta}$` at `$\theta=0$` , and notice that
@@ -293,7 +293,7 @@ Sum over `$g$`, by the orthogonality theorem, we have:
 In many cases the symmetry of the system is known, but exact Hamiltonian is not. The goal is to write down a Hamiltonian consistent with the symmetry.
 
 -   Then general rule: find out representation `$\hat g$` of all symmetry generators, and demand that `$\hat g^{-1}\hat H \hat g = \hat H$`
--   For continuous symmetry, `$\hat H$` should commute with all symmetry generators, or carry vanishing symmetry quantum number.
+-   For continuous symmetry, `$\hat H$` should be commutative with all symmetry generators, or carry vanishing symmetry quantum number.
 
 There are some examples:
 

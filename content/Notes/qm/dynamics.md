@@ -103,7 +103,7 @@ Then for matrix elements in Heisenberg picture, one have: `$\bra{\psi}\hat O_H(t
 The Heisenberg equation of motion:
 <div>$$\hbar \frac {\td} {\td t} \hat O_H(t) = \ti [\hat H_H(t),\hat O_H(t)]$$</div>
 Where `$\hat H_H(t) = \hat U^{\dagger}(t)\hat H_S(t)\hat U(t) =\ti \hbar \hat U^{\dagger}(t)\frac {\td} {\td t} \hat U(t) $` <br>
-When `$\hat H_S(t)$` is independent of time, then `$\hat H$` commutes with `$\hat U$` , and `$\hat H_H = \hat H_S$`
+When `$\hat H_S(t)$` is independent of time, then `$\hat H$` is commutative with `$\hat U$` , and `$\hat H_H = \hat H_S$`
 
 # Some Examples About Dynamics
 
@@ -320,7 +320,7 @@ One can check these two version of path integral by single particle Hamiltonian:
 
     With the `Trotter-Suzuki Approximation` : `$e^{\eta (\hat A+\hat B)} = e^{\eta \hat A} e^{\eta \hat B} + O(\eta^2)$` , one have:
 
-    <div>$$\bra{x_{i+1}}e^{-\ti \epsilon \hat H/\hbar} \ket{x_i} \approx \bra{x_{i+1}}e^{-\frac {\ti} {\hbar} \epsilon \frac {\hat p^2} {2m}} \ket{x_i} e^{-\frac {\ti} {\hbar} V(x_i)} = \sqrt{\frac {m} {2\pi\hbar \epsilon \ti}} e^{\frac {\ti} {\hbar} \epsilon \big(\frac {m} 2 (\frac {x_{i+1}-x_i} \epsilon)^2 - V(x_i) \big)} $$</div>
+    <div>$$\bra{x_{i+1}}e^{-\ti \epsilon \hat H/\hbar} \ket{x_i} \approx \bra{x_{i+1}}e^{-\frac {\ti} {\hbar} \epsilon \frac {\hat p^2} {2m}} \ket{x_i} e^{-\frac {\ti} {\hbar} \epsilon V(x_i)} = \sqrt{\frac {m} {2\pi\hbar \epsilon \ti}} e^{\frac {\ti} {\hbar} \epsilon \big(\frac {m} 2 (\frac {x_{i+1}-x_i} \epsilon)^2 - V(x_i) \big)} $$</div>
 
     Using this expression, one can write the propagator as:
 

@@ -417,7 +417,7 @@ U_T K \psi(x^0,\bm{x}) (U_T K)^{-1} &=\sum_s\int \frac {\td^3 \bm{k}} {(2\pi)^{3
 &=\gamma^1 \gamma^3 \psi(-x^0,\bm{x})
 \end{aligned}$$</div>
 
-Noting that conjugation operator `$K$` does not commute to complex number:
+Noting that conjugation operator `$K$` is not commutative with complex number:
 
 <div>$$K c = c^* K$$</div>
 
