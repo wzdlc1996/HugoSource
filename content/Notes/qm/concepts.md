@@ -407,13 +407,16 @@ Further more, `$\lambda_i^2$` are also eigenvalues of `$\hat \rho_b$` and `$\ket
     {{%/fold%}}
 
 5.  `Reciprocity` : define reduced density matrix `$\hat \rho_b = \text{Tr}_a \hat \rho$` on `$\mathcal{H}_b$` , we have `$S_a=S_b$` .
+
     {{%fold "Proof"%}}
+
 Using Schmidt decomposition: `$\ket{\phi}= \sum_i \lambda_i \ket{\phi_i}\ket{\varphi_i}$`, then one have:
 
 <div>$$S_b=-\sum_i \lambda_i^2\log \lambda_i^2=S_a$$</div>
 
 For the details in the previous proof.
 Proved.
+
     {{%/fold%}}
 
 # Measurement

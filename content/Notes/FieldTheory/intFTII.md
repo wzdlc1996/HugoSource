@@ -2,7 +2,7 @@
 title: "Interacting Field Theory: Scattering Theory"
 date: 2019-01-12T14:14:27+08:00
 draft: false
-tags: ["classical-theory"]
+tags: ["quantum"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true

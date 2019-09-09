@@ -2,7 +2,7 @@
 title: "Quantization of Free Field: Maxwell Field"
 date: 2018-12-26T20:11:35+08:00
 draft: false
-tags: ["classical-theory"]
+tags: ["quantum"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true

@@ -1,6 +1,6 @@
 ---
 title: "Theory of Superconductivity"
-date: 2019-03-28T10:20:31+08:00
+date: 2019-04-22T16:08:36+08:00
 draft: true
 tags: ["statistical-phys"]
 series: ["Condensed-Matter"]
@@ -142,51 +142,219 @@ If \(X(\beta)=X(0)\) , and the identity \(A\nabla^2 P-P\nabla^2 A=\nabla\cdot(A\
 $$S_2=\int_0^\beta \td \tau \int\td^d \bm{r} \ \Big\{A\Big(-\frac {\nabla^2} {2m}+2g\phi_0^2\Big)A+ P\Big(-\frac {\nabla^2} {2m}\Big)P +2\ti A\partial_\tau P\Big\}$$
 {{%/fold%}}
 
-Such introduced fields \(A,P\) has different influence on \(\phi_0\) . For the generic case of \(\phi_0\in \mathbb{C}\) , \(A\) is the term which variates \(\text{Re}\phi_0\) , and \(P\) is the term which variates \(\text{Im}\phi_0\) . So our discussion can be also applied to such generic case, if only reinterpret the definition of \(A\) and \(P\).
+Such introduced fields \(A,P\) has different influence on \(\phi_0\) . For the generic case of \(\phi_0\in \mathbb{C}\) , \(A\) is the term which variates \(\text{Re}\phi_0\) , and \(P\) is the term which variates \(\text{Im}\phi_0\) . So our discussion can be also applied to such generic case with the reinterpretation of the definition of \(A\) and \(P\).
 
 As the \(S_2\) is a quadratic form of the field \(A,P\) , we can rewrite it in the Fourier transform:
 
-$$S=S_0 + \sum_{\omega_n}\int \td^d \bm{k} \ \begin{bmatrix}A(-\bm{k},-\ti \omega_n) \\ P(-\bm{k},-\ti\omega_n)\end{bmatrix}^{T}\begin{bmatrix}\frac {\bm{k}^2} {2m} +2g\psi_0^2 & \omega_n \\ -\omega_n & \frac {\bm{k}^2} {2m} \end{bmatrix} \begin{bmatrix}A(-\bm{k},-\ti \omega_n) \\ P(-\bm{k},-\ti\omega_n)\end{bmatrix}$$
+$$S=S_0 + \sum_{\omega_n}\int \td^d \bm{k} \ \begin{bmatrix}A(-\bm{k},-\ti \omega_n) \\ P(-\bm{k},-\ti\omega_n)\end{bmatrix}^{T}\begin{bmatrix}\frac {\bm{k}^2} {2m} +2g\phi_0^2 & \omega_n \\ -\omega_n & \frac {\bm{k}^2} {2m} \end{bmatrix} \begin{bmatrix}A(\bm{k},\ti \omega_n) \\ P(\bm{k},\ti\omega_n)\end{bmatrix}$$
 
+{{% fold "Proof"%}}
 
+With the Fourier transformation:
 
-# Dilute Bose Gas
+$$X(\bm{r},\tau)=\frac 1 {\sqrt{\beta}} \sum_n \int \frac {\td^d \bm{k}} {(2\pi)^{d/2}} e^{\ti(\bm{k}\cdot \bm{r}-\omega_n\tau)} X(\bm{k},\ti\omega_n)  \ ; \ \text{symbol } X \in \{A,P\}$$
 
-\(\psi\) are coherent state!.convergent
+Then let us see the quadratic form. Noting that \(A,P\) are real valued so \(X(\bm{k},\ti\omega_n)^*=X(-\bm{k},-\ti\omega_n)\) :
 
-Our thermal action functional(with wick rotation) is, with \(\hbar=1\) here:
+$$\begin{aligned}
+\int_0^\beta \td\tau \int \td^d \bm{r} \ X \nabla^2 X&=\sum_{m,n} \int \td^d \bm{k}\td^d\bm{k'} \ \delta_{m,-n}\delta(\bm{k}+\bm{k'}) X(\bm{k'},\ti\omega_m) (-\bm{k}^2)X(\bm{k},\ti\omega_n)\\
+&=-\sum_{\omega_n}\int\td^d \bm{k} \ X(-\bm{k},-\ti\omega_n) \bm{k}^2 X(\bm{k},\ti\omega_n) \\
+\int_0^\beta \td\tau \int \td^d \bm{r} \ X\partial_{\tau} Y&= -\ti\sum_{\omega_n}\int\td^d \bm{k} \ X(-\bm{k},-\ti\omega_n) (\omega_n) Y(\bm{k},\ti\omega_n) \\
+&=-\ti \sum_{\omega_n} \int \td^d\bm{k} \ Y(-\bm{k},-\ti\omega_n) (-\omega_n) X(\bm{k},\ti\omega_n)
+\end{aligned}$$
 
-$$S=\int_0^{\beta} \td \tau \int \td^d \bm{r} \ \psi^*(\bm{r},\tau)\Big\{\frac {\partial} {\partial \tau} -\frac {\nabla^2} {2m} -\mu\Big\}\psi(\bm{r},\tau) +\frac 1 2 g \psi^*(\bm{r},\tau)\psi(\bm{r},\tau)$$
+With these equalities in mind, one can simply prove the Fourier transform of action.
 
-And with the path integral formalism, we have the partition function:
+{{% /fold %}}
 
-$$\mathcal{Z}=\text{Tr} \ e^{-\beta(\hat H-\mu\hat N)}=\int_{\psi(\beta)=\psi(0)} \mathcal{D}[\psi^*]\mathcal{D}[\psi] e^{-S[\psi^*,\psi]}$$
+Then one can evaluate the thermal Green's function with the momentum-frequency argument:
 
-## Ideal Bose Gas
+$$-\Big\langle \begin{bmatrix} A(\bm{k},\ti\omega_n) \\ P(\bm{k},\ti\omega_n)\end{bmatrix} \begin{bmatrix}A(-\bm{k},-\ti\omega_n) & P(-\bm{k},-\ti\omega_n) \end{bmatrix} \Big\rangle =-\frac 1 2 \frac 1 {\frac {\bm{k}^2} {2m}\big(\frac {\bm{k}^2} {2m}+2g\phi_0^2\big)+\omega_n^2}\begin{bmatrix} \bm{k}^2/2m & -\omega_n \\ \omega_n & \bm{k}^2/2m+2g\phi_0^2 \end{bmatrix}$$
 
-First of all, we let \(g=0\) , which means that we are handling the `ideal Bose gas`. To hold the boundary condition \(\psi(\tau=\beta)=\psi(\tau=0)\) , we can expand it with discrete Fourier series, just like the way we deal with the thermal function:
+{{% fold "Proof"%}}
 
-$$\psi(\bm{r},\tau)=\sum_n \int \frac {\td^d \bm{k}} {(2\pi)^d} \psi_{\bm{k},n} e^{\ti (\bm{k}\cdot \bm{r}-\omega_n \tau)}$$
+We have known that the Green's function of system with spatial translation symmetry in frequency-momentum representation should be:
 
-Where \(\omega_n=\frac {2\pi} {\beta} n\). And:
+$$\mathcal{G}(\bm{k},\ti\omega_n)= - \langle \mathcal{T}\{\hat \phi(\bm{k},\ti\omega_n)\hat \phi^\dagger(-\bm{k},-\ti\omega_n)\}$$
 
-$$\psi_{n,\bm{k}}=\frac 1 \beta \int_0^\beta \td \tau \int \td^d \bm{r} \ \psi(\bm{r},\tau) e^{-\ti(\bm{k}\cdot \bm{r}-\omega_n\tau)}$$
+For detial see [The proof for real time Green's function]({{< ref "/Notes/qm/manybody2.md#frequency-momentum-representation" >}}). It should be easy to be generalized to the thermal Green's function.
 
-Then we have the action:
+With this in mind together with the relation between time-ordered expectation value and the path integral, we can write down the "Green's function"-like matrix:
 
-$$S=\beta \sum_n \int \frac {\td^d \bm{k}} {(2\pi)^d} \psi_{n,\bm{k}}^* (-\ti \omega_n+\frac {\bm{k}^2} {2m}-\mu)\psi_{n,\bm{k}}$$
+$$\begin{aligned}
+\langle \phi_1 \phi_1^*\rangle &= \langle (A+\ti P)(A'-\ti P')\rangle \\
+&= \langle A A'\rangle +\ti \langle P A'\rangle -\ti \langle A P'\rangle -\ti\ti \langle P P'\rangle \\
+&\sim \Big \langle \begin{bmatrix} A A' & A P' \\ P A' & P P'\end{bmatrix}\Big\rangle =-\bm{G}
+\end{aligned}$$
 
-Here we can see that \(\mu\) should not be a positive number. Cause the integral of \(e^{-S}\) should be not divergent. And so a theory of \(\mu\gt 0\) must not be stable.
+For the total field should be \(\phi=\phi_0+\phi_1\), then the Green's function is (Note that \(\phi_0\) is a real number):
 
-\(\psi(\bm{r},t)=\psi_0+\psi_1(\bm{r},t)\) . Then \(\psi_1=A+\ti P\). compute the action with Fourier transformation as:
+$$\mathcal{G}=\langle(\phi_0+\phi_1)(\phi_0+\phi_1^*)\rangle = \phi_0^2 + \langle \phi_1\phi_1^*\rangle$$
 
-$$S=\begin{bmatrix} A(\bm{k},\ti \omega_n) &  P \end{bmatrix} \begin{bmatrix} \frac {k^2} {2m}+2g \psi_0^2 & \omega_n \\ -\omega_n & \frac {k^2} {2m} \end{bmatrix}\begin{bmatrix} A(\bm{k},\ti \omega_n) \\  P \end{bmatrix}$$
+Where we used the fact that expectation value of odd number of field should vanish. Then the connection between Green's function and the matrix is:
 
-Green's function:
+$$\mathcal{G}-\phi_0^2=\bm{G}_{11}+\bm{G}_{22} +\ti (-\bm{G}_{12}+\bm{G}_{21})$$
 
-$$G=\langle \mathcal{T}\{\psi\psi^\dagger\}\rangle=\frac {\int \mathcal{D}[\phi]\mathcal{D}[\psi^*] \psi \psi^\dagger e^{-S}} {\int \mathcal{D}[\phi]\mathcal{D}[\psi^*]  e^{-S}}$$
+Then let us evaluate the matrix:
 
-time-ordered vanishes.
+$$\begin{aligned}
+\bm{G}(\bm{k},\ti\omega_n)&=-\Big\langle \begin{bmatrix} A(\bm{k},\ti\omega_n) \\ P(\bm{k},\ti\omega_n)\end{bmatrix}\begin{bmatrix}A(-\bm{k},-\ti\omega_n) & P(-\bm{k},-\ti\omega_n) \end{bmatrix}\Big\rangle \\
+&= -\frac {\int \mathcal{D}\phi_1^* \mathcal{D}\phi_1 e^{-S} \begin{bmatrix} A(\bm{k},\ti\omega_n) \\ P(\bm{k},\ti\omega_n)\end{bmatrix}\begin{bmatrix}A(-\bm{k},-\ti\omega_n) & P(-\bm{k},-\ti\omega_n) \end{bmatrix} \ } {\int \mathcal{D}\phi_1^* \mathcal{D}\phi_1 \ e^{-S}} \\
+&=-\frac {\partial^2} {\partial \bm{J} \partial {\bm{J^*}}} \frac 1 {\mathcal{Z}} \int \mathcal{D}A\mathcal{D}P  \ \exp\Big\{-S +\bm{J}^\dagger \begin{bmatrix} A(\bm{k},\ti\omega_n) \\ P(\bm{k},\ti\omega_n)\end{bmatrix}+\begin{bmatrix}A(-\bm{k},-\ti\omega_n) & P(-\bm{k},-\ti\omega_n) \end{bmatrix}\bm{J}\Big\}\Bigg|_{\bm{J}=\bm{J}^\dagger=0}
+\end{aligned}$$
+
+This equality should be interpreted as:
+
+$$\bm{G}_{ij}=-\frac {\partial^2} {\partial J_j\partial J^*_i}\cdots\Bigg|_{\bm{J}=\bm{J}^\dagger=0}$$
+
+We need to check the variable substitution for the functional integral:
+
+$$\begin{aligned}
+\mathcal{D}\phi_1^*\mathcal{D}\phi_1 &=\prod_{\tau,\bm{r}}\frac {\td \phi_1^*(\bm{r},\tau)\td \phi_1(\bm{r},\tau)} {2\pi\ti} \\
+&=\prod_{\tau,\bm{r}}\frac {\td A(\bm{r},\tau)\td P(\bm{r},\tau)} {\pi}
+\end{aligned}$$
+
+Let us consider the discrete version of Fourier transformation, i.e. Fourier series. For a simpler case we consider the 1-d situation:
+
+$$x_m = \frac 1 {\sqrt{N}} \sum_{k=-k_L=-\pi/\epsilon}^{k_L} e^{\ti k m \epsilon} y_k = \frac 1 {\sqrt{N}}\sum_{k>0} \cos km\epsilon \ \text{Re}y_k +\sin km\epsilon \ \text{Im} y_k$$
+
+Where \(\epsilon\) is the infinitesimal quantity introduced by the slicing for functional integral. So we have:
+
+$$\prod_m \td x_m = \Big|\frac {\partial (x_1,\cdots)} {\partial (y_1, \cdots)}\Big|\prod_k \td \text{Re}y_k\td \text{Im}y_k $$
+
+Using the fact that such Fourier transformation is an isometric transform we can prove that the absolute value of the Jacobian of such linear transformation is \(1\).
+
+So, we have the final equality:
+
+$$\begin{aligned}
+\mathcal{D}\phi_1^*\mathcal{D}\phi_1 &= \prod_{(\omega_n,\bm{k})\in \text{half-hypersphere}}\frac {\td \text{Re}A(\bm{k},\ti\omega_n)\td\text{Im}A(\bm{k},\ti\omega_n)\td \text{Re}P(\bm{k},\ti\omega_n)\td\text{Im}P(\bm{k},\ti\omega_n)} {\pi} \\
+&=\pi \prod_{(\omega_n,\bm{k}\in \text{half-hypersphere})} \frac {\td A(\bm{k},\ti\omega_n)\td A(\bm{k},\ti\omega_n)^*} {2\pi \ti} \prod_{(\omega_n,\bm{k}\in \text{half-hypersphere})} \frac {\td P(\bm{k},\ti\omega_n)\td P(\bm{k},\ti\omega_n)^*} {2\pi \ti} \\
+&\equiv \mathcal{D} A\mathcal{D}P
+\end{aligned}$$
+
+And there is a constraint for complex variable: \(A(-k)=A^*(k)\) , so the integral is totally a Gaussian integral. So it should be:
+
+$$\begin{aligned}
+\bm{G}(\bm{k},\ti\omega_n)&=-\frac {\partial^2} {\partial \bm{J}\partial \bm{J}^*} \exp\Big(\frac 1 2\bm{J}^\dagger \begin{bmatrix}\frac {\bm{k}^2} {2m} +2g\phi_0^2 & \omega_n \\ -\omega_n & \frac {\bm{k}^2} {2m}\end{bmatrix}^{-1}\bm{J}\Big)\Bigg|_{\bm{J}=\bm{J}^*=0} \\
+&=-\frac 1 2 \begin{bmatrix}\frac {\bm{k}^2} {2m} +2g\phi_0^2 & \omega_n \\ -\omega_n & \frac {\bm{k}^2} {2m}\end{bmatrix}^{-1} \\
+&=-\frac 1 2 \frac 1 {\frac {\bm{k}^2} {2m}\big(\frac {\bm{k}^2} {2m}+2g\phi_0^2\big)+\omega_n^2}\begin{bmatrix} \bm{k}^2/2m & -\omega_n \\ \omega_n & \bm{k}^2/2m+2g\phi_0^2 \end{bmatrix}
+\end{aligned}$$
+
+Where the factor \(1/2\) comes from the sum in the exponent of the action is over all hypersphere. So there should be a factor \(2\) if we treat it as complex Gaussian integral on half-hypersphere. And the inverse of matrix let the factor be \(1/2\) .
+
+q.e.d.
+
+{{% /fold %}}
+
+Then we find that the Green's function has a first-order pole at:
+
+$$\ti\omega_n=\pm \sqrt{\frac {\bm{k}^2} {2m}\Big(\frac {\bm{k}^2} {2m}+2g\phi_0^2\Big)}\equiv\pm\omega_{\bm{k}}$$
+
+As we know, first-order pole of the Green's function shows the dispersion relation of the excited states. Bogoliubov was the first to derive this, showing that owing to the interaction \(g\), it is a dispersion proportional to \(\bm{k}^2\) alters to the dispersion of `acoustic waves` which is proportional to \(\bm{k}\) . And <mark>this fact leads to superfluidity</mark>.
+
+{{% fold "Follow-up" %}}
+
+As the final process, let us determine \(\mu\) and \(\phi_0\) using the saddle-node approach:
+
+First we need the particle number, or its fluctuation:
+
+$$n_{\bm{k}}= \frac 1 {\beta}\sum_{\omega_n} e^{\ti\omega_n \epsilon} \mathcal{G}(\bm{k},\ti\omega_n)=\frac 1 {\beta}\sum_{\omega_n}\frac {e^{\ti\omega_n\epsilon}} {\omega_{\bm{k}}^2+\omega_n^2}\Big\{\frac {\bm{k}^2} {2m}+g\phi_0^2+\ti\omega_n\Big\}$$
+
+Which should be easy to get with the connection: \(\mathcal{G}=(\bm{G}_{11}+\bm{G}_{22})+\ti(\bm{G}_{21}-\bm{G}_{12})\) .
+
+With the Matsubara frequency summation, it is:
+
+$$\begin{aligned}
+\Delta N_{\bm{k}}=&\frac 1 {\beta}\sum_{\omega_n}\frac {e^{\ti\omega_n\epsilon}} {\omega_{\bm{k}}^2+\omega_n^2}\Big\{\frac {\bm{k}^2} {2m}+g\phi_0^2+\ti\omega_n\Big\}=\frac 1 {2\pi\ti\beta}\oint \frac {e^{\epsilon z}(\frac {\bm{k}^2} {2m}+g\phi_0^2+z)} {\omega_{\bm{k}}^2-z^2}\frac {-\beta\td z} {1-e^{\beta z}}\\
+=& \frac {\frac {\bm{k}^2} {2m}+g\phi_0^2-\omega_{\bm{k}}} {2\omega_{\bm{k}}(1-e^{-\beta \omega_{\bm{k}}})}+ \frac {\frac {\bm{k}^2} {2m}+g\phi_0^2 +\omega_{\bm{k}}} {2\omega_{\bm{k}}(1-e^{\beta\omega_{\bm{k}}})}
+\end{aligned}$$
+
+Then the total fluctuation should be integral this over the \(\bm{k}\) space, if the volume of space is \(V\) , i.e. \(\int \td^d \bm{r} = V\), we have the summation over \(\bm{k}\) (restrict \(d=3\)):
+
+$$\sum_{\bm{k}} \Delta N_{\bm{k}}=\frac V {(2\pi)^3} \int \td^3 \bm{k} \Delta N_{\bm{k}}\rightarrow_{\beta\rightarrow \infty} \frac {V} {24\pi^2} (4mg \phi_0^2)^{3/2} $$
+
+Then we have the equation:
+
+$$N=V \phi_0^2+\sum_{\bm{k}}\Delta N_{\bm{k}}=V\Big(\phi_0^2+\frac {(mg)^{3/2}} {3\pi^2}\phi_0^3\Big)$$
+
+Then together with the bifurcation condition \(\phi_0^2=\mu/g\) . We have determined all parameters in the statistical theory of such interacting Bose gas.
+
+{{% /fold %}}
+
+The solution above is also called `Bogoliubov theory` which is appropriate in the dilute limit or when the coupling is small. <mark>The main idea is that fluctuation around the classical, symmetry breaking solution \(\phi_0\) are assumed to be small. So the path integral can be approximation evaluated by the Gaussian integral. </mark>
+
+### Goldstone mode and superfluidity
+
+<mark>In low-dimensional systems, or for the case when the system is locally gauge invariant</mark>, `NO spontaneous symmetry breaking occurs`, and the mean field approximation becomes meaningless, so as to the assumption we used above in saddle-node approach. A new theoretical description is necessary.
+
+We cannot separate the field as a mean field and fluctuation then expand the action into the quadratic form. But the mean field limit is helpful. The action has minimum at \(|\phi_0|^2=\mu/g\) . So the transverse(global phase transformation) contributes no loss while longitudinal(modulus change) contributes a small change. So we can write the field as:
+
+$$\phi(\bm{r},\tau)=\sqrt{\rho(\bm{r},\tau)}e^{\ti\theta(\bm{r},\tau)} \ , \ \phi^*(\bm{r},\tau)=\sqrt{\rho(\bm{r},\tau)}e^{-\ti\theta(\bm{r},\tau)}$$
+
+Substitute these into the action functional we have:
+
+$$S=\int_0^\beta \td\tau\int\td^d\bm{r}\Big\{\ti\rho \partial_{\tau} \theta+\frac 1 {2m}\Big(\frac 1 {4\rho} (\nabla\rho)^2+\rho (\nabla \theta)^2\Big)-\mu\rho +\frac 1 2 g\rho^2\Big\}$$
+
+{{% fold "Proof" %}}
+
+we need to check the time-derivative and kinetic energy term:
+
+$$\begin{aligned}
+\phi^*\partial_{\tau}\phi &= \sqrt{\rho}e^{-\ti\theta}\big(\frac 1 {2\sqrt{\rho}}e^{\ti \theta}\partial_{\tau}\rho+\sqrt{\rho}\ti e^{\ti \theta}\partial_{\tau} \theta\big) \\
+&=\frac 1 2 \partial_{\tau}\rho + \ti \rho\partial_{\tau}\theta \\
+\phi^*\nabla^2\phi &= \nabla\cdot(\phi^*\nabla\phi)-\nabla \phi^*\cdot\nabla\phi \\
+&= \frac 1 2 \nabla^2 |\phi|^2 - |\nabla \phi|^2 \\
+&= \frac 1 2 \nabla^2 \rho - (\nabla \sqrt{\rho})^2 - \rho(\nabla \theta)^2 \\
+&= \frac 1 2 \nabla^2\rho - \frac 1 {4\rho}(\nabla \rho)^2 -\rho (\nabla\theta)^2
+\end{aligned}$$
+
+Also we eliminate the terms \(\nabla^2\rho,\partial_{\tau}\rho\) because they contribute nothing in the spatial-time integral because of the boundary condition. Then we have the action:
+
+$$S=\int_0^\beta\td\tau \int\td^d \bm{r} \Big\{\ti\rho\partial_{\tau}\theta + \frac 1 {2m}\Big(\frac 1 {4\rho}(\nabla \rho)^2+\rho (\nabla\theta)^2\Big)-\mu\rho +\frac 1 2 g\rho^2\Big\}$$
+
+{{%/fold%}}
+
+Now we rewrite the chemical potential as \(\mu\rightarrow \mu+x(\bm{r},\tau)\) mathematically. \(x\) is a test field which helps us extract the information about \(\rho\) . And expand \(\rho\) up to the first order, zero order should also be the mean field contribution: \(\rho=\mu/g+\delta\rho\) . On the other hand, we are interested in the case of low energy, so we assume \(\omega_n,\bm{k}\) or \(\partial_{\tau},\nabla\) to be small . Then write them up to second order, noting \(\int \td\tau\int\bm{r} \delta\rho=\int \td\tau\int \bm{r} x=0\):
+
+$$S\approx \int_0^{\beta}\td\tau \int \td^d \bm{r} \ \Big(\ti \delta\rho\partial_{\tau}\theta+\frac {\phi_0^2} {2m}(\nabla \theta)^2+\frac 1 2 g (\delta\rho)^2-x \delta\rho\Big)$$
+
+Such action describes the low-energy physics of a superfluid.
+1.  The second term arises due to the effect of \(\phi_0\neq 0\) , representing the rigidity of \(\theta\). (like an elastic energy proportional to the square of the phase difference, and phase becomes solid as if it were a rigid body).
+2.  The third term signifies that the fluctuation of \(\rho\) feels a finite retrospective force
+3.  The forth term is the test field with respect to \(\delta\rho\) .
+
+And the current density is:
+
+$$\bm{j}(\bm{r},\tau)=\frac 1 {2m\ti}\big(\phi^*(\bm{r},\tau)\nabla \phi(\bm{r},\tau)-\nabla\phi^*(\bm{r},\tau)\phi(\bm{r},\tau)\big)$$
+
+{{% fold "Proof"%}}
+
+In the second quantization , current density operator (without magnetic field) should be:
+
+$$\hat {\bm{j}}(\bm{r},t) = \frac {-\ti} {2m}\Big(\hat \psi^\dagger(\bm{r},t)\nabla \hat \psi(\bm{r},t)-\nabla \hat \psi^\dagger(\bm{r},t) \hat \psi(\bm{r},t)\Big)$$
+
+So with the coherent state and path integral, the thermal average of it should equal to the functional integral form:
+
+$$\langle \hat {\bm{j}}(\bm{r},t)\rangle=\frac {\int\mathcal{D}\phi^*\mathcal{D}\phi \ e^{-S} \frac 1 {2m\ti} (\phi^*(\bm{r},\tau)\nabla \phi(\bm{r},\tau)-\nabla\phi^*(\bm{r},\tau)\phi(\bm{r},\tau))} {\int \mathcal{D}\phi^*\mathcal{D}\phi \ e^{-S}}$$
+
+For detial see [The proof for relation between operator expectation value and path integral]({{< ref "/Notes/qm/manybody3.md#partition-function-and-green's-function" >}})
+
+That is why we say , the current density should have the form above.
+
+{{%/fold%}}
+
+For this system, it is:
+
+$$\bm{j}(\bm{r},\tau)=\frac {\rho(\bm{r},\tau)} {m} \nabla \theta(\bm{r},\tau)\sim \frac {\phi_0^2} {m}\nabla \theta(\bm{r},\tau)$$
+
+With the \(\delta S=0\) , we have the following equation of motion (classical limit)
+
+$$\begin{aligned}
+\frac {\partial \theta(\bm{r},t)} {\partial t} &= x(\bm{r},t)-g  \delta \rho(\bm{r},t) \\
+\frac {\partial  \rho(\bm{r},t)} {\partial t} &= -\frac {\psi_0^2} {m} \nabla^2  \theta(\bm{r},t)=-\nabla\cdot  \bm{j}(\bm{r},t)
+\end{aligned}$$
+
+Where we used the Wick rotation \(\tau=\ti t\) so that they are equations of real-argument functions. They are also called `Josephson equation`
 
 
 XYmodel Nagosa 3.1-3.3

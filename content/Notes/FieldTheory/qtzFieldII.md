@@ -2,7 +2,7 @@
 title: "Quantization of Free Field: Dirac Field"
 date: 2018-12-23T16:27:27+08:00
 draft: false
-tags: ["classical-theory"]
+tags: ["quantum"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true

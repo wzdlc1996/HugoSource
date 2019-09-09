@@ -170,12 +170,12 @@ Then `$\Delta x^2 \Delta p^2 = \hbar^2/4$`
 
 ## Adiabatic Theorem
 
-<em>[Theorem]</em> : When system is instantanous ground state(s) and the Hamiltonian changes `slowly` with time, then the system will remain to be (one of) the instantanous ground state(s) at later times. <br>
+<em>[Theorem]</em> : When system is instantaneous ground state(s) and the Hamiltonian changes `slowly` with time, then the system will remain to be (one of) the instantaneous ground state(s) at later times. <br>
 For system's Hamiltonian is dependent of time by a parameter `$R$` :
 
 <div>$$\hat H(t) = \hat H(R(t))$$</div>
 
-The instantanous eigenstates of Hamiltonian are `$\hat H(t)\ket{E_n(t)} = E_n(t) \ket{E_n(t)}$`. <br>
+The instantaneous eigenstates of Hamiltonian are `$\hat H(t)\ket{E_n(t)} = E_n(t) \ket{E_n(t)}$`. <br>
 The Adiabatic theorem showd that:
 
 <div>$$\ket{\psi(t=0)} = \ket{E_0(t=0)} \Rightarrow \ket{\psi(t)} = \ket{E_0(t)}$$</div>
@@ -381,7 +381,7 @@ Where `$A(t) = \ti \bra {E_0(t)}\partial_t \ket{E_0(t)}$`
 
 <em>[Definition]</em> : `the Berry's phase` :
 <div>$$\int A(t)\td t \equiv \int \ti \bra{\psi(t)}\partial_t \ket{\psi(t)} \td t$$</div>
-where `$t$` parametrizes a `periodic` evolution `$\ket{\psi(t)}$` <br>
+where `$t$` parametrizes a `periodic` evolution `$\ket{\psi(t)}$`. And `$\ket{\psi(t)}$` is the instantaneous eigenstate of time-dependent Hamiltonian `$\hat H(t)$` , we also assume they are non-degenerate.  <br>
 <em>[Definition]</em> : `the Berry connection` :
 
 <div>$$A(t) := \ti \bra{\psi(t)}\partial_t\ket{\psi(t)}$$</div>

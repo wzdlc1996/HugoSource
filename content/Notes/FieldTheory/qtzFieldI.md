@@ -2,7 +2,7 @@
 title: "Quantization of Free Field: Scalar Field"
 date: 2018-12-20T14:29:47+08:00
 draft: false
-tags: ["classical-theory"]
+tags: ["quantum"]
 series: ["Field-Theory"]
 categories: ["Physics"]
 toc: true
