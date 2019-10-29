@@ -17,3 +17,8 @@ summary = "Notes of learning Linux, the best open-source operating system"
 name = "quantum-measurement"
 img = "/imgs/seriesintro/measurement.png"
 summary = "The study about the quantum measurement problem."
+
+[[series]]
+name = "applied-mathematics"
+img = "/imgs/seriesintro/aplMath.jpg"
+summary = "Applied Mathematics"
