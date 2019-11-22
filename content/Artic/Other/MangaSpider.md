@@ -246,3 +246,5 @@ if __name__=="__main__":
 ```
 
 当然也可以将上面的代码块放在 `if __name__=="__main__":` 下来运行. 不过这里一般不会出现在其他文件导入这个文件的情形, 因此没有做这样的处理.
+
+代码放置在 [wzdlc1996/mangaSpider](https://github.com/wzdlc1996/mangaSpider) 下. 
