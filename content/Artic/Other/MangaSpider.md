@@ -107,7 +107,7 @@ Output: '||jpg|webp|17201|第01回|pic_014|pic_015|pic_017|pic_016|pic_013|pic_0
 
 再把这串解码后的字符串放回到原来的位置, 当然要把 `.split('|')` 加上, 再在空白的标签页里跑跑看:
 
-{{% center %}}<img name="preview" src="/imgs/artics/other/mangaspider_7.png"/>{{% /center %}}
+{{% center %}}<img name="preview" src="/imgs/artics/other/mangaspider_8.png"/>{{% /center %}}
 
 完美.
 
@@ -247,4 +247,4 @@ if __name__=="__main__":
 
 当然也可以将上面的代码块放在 `if __name__=="__main__":` 下来运行. 不过这里一般不会出现在其他文件导入这个文件的情形, 因此没有做这样的处理.
 
-代码放置在 [wzdlc1996/mangaSpider](https://github.com/wzdlc1996/mangaSpider) 下. 
+代码放置在 [wzdlc1996/mangaSpider](https://github.com/wzdlc1996/mangaSpider) 下.
