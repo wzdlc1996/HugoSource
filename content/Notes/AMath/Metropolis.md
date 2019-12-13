@@ -73,7 +73,7 @@ $$\sum_{k}\mathbb{P}(X_n=j|X_{n-1}=k)\mathbb{P}(X_{n-1}=k|X_{n-2}=k') = \mathbb{
 
 {{% /fold%}}
 
-_[Definition]_ : A Markov chain is called **stationary** or **time-homogeneous** , if \(p_{j,k}(n)\) is independent of \(n\). From know on we will discuss only stationary Markov chain. And let \(\bm{P}\) be the matrix whose \((i,j)\)-th element is `transition probability` \(p_{i,j}\) , that is why \(\bm{P}\) is called the `Transition Probability Matrix`(TPM)
+_[Definition]_ : A Markov chain is called **stationary** or **time-homogeneous** , if \(p_{j,k}(n)\) is independent of \(n\). **From now on we will discuss only stationary Markov chain**. And let \(\bm{P}\) be the matrix whose \((i,j)\)-th element is `transition probability` \(p_{i,j}\) , that is why \(\bm{P}\) is called the `Transition Probability Matrix`(TPM)
 
 So with transition probabilities matrix and the Chapman-Kolmogorov equation, one have:
 
@@ -107,14 +107,19 @@ $$\bm{Q}\bm{P}\bm{Q}^T = \begin{bmatrix}\bm{A}_1 & \bm{B} \\ \bm{0} & \bm{A}_2\e
 
 is a blocked-upper-triangular matrix. Otherwise \(\bm{P}\) is called **irreducible**
 
-_[Definition]_ : A matrix \(\bm{P}\) is called **primitive**, if there exist an natural number \(s\) such that:
+_[Definition]_ : A matrix \(\bm{P}\) is called **primitive**, if it is non-`negative` and there exist an natural number \(s\) such that:
 
 $$(\bm{P}^s)_{ij}\gt 0 \ ; \ \forall i,j$$
 
 _[Remark]_ : We show the relation between `primitive` and `reducibility` in handwaving manner:
 
-1.  A matrix is `primitive` then it must be `irreducible`. If it is reducible, then \(\bm{Q}\bm{P}^s\bm{Q}^{T}\) will always be block upper triangular, and \(\bm{Q}\) is permutation then \(\bm{P}\) should not be primitive.
-2.  A matrix is `irreducible` and not `periodic`, i.e., there exists natural number \(s > 1\) such that \(\bm{P}^s = \bm{P}\), then it must be primitive.
+1.  A matrix is `primitive` then it must be `irreducible`. Can be proved by:
+
+    If it is reducible, then \(\bm{Q}\bm{P}^s\bm{Q}^{T}\) will always be block upper triangular, and \(\bm{Q}\) is permutation then \(\bm{P}\) should not be primitive.
+
+2.  A matrix is `irreducible` and not `periodic`, (for `periodic`, it means that there exists natural number \(s > 1\) such that \(\bm{P}^s = \bm{P}\)), then it must be `primitive`.
+
+    In fact, for finite non-negative matrix \(\bm{P}\) , we have: ( irreducible + aperiodic \(\Leftrightarrow\) primitive )
 
 _[Theorem]_ : **(Perron-Frobenius)** . Let \(\bm{A}\) be an `irreducible` nonnegative matrix, and let \(\rho(\bm{A})\) be its spectral radius: \(\rho(\bm{A}) = \max_\lambda |\lambda|\), where \(\lambda\) are eigenvalues of \(\bm{A}\). Then:
 1.  There exists a positive `right` eigenvector \(\bm{x}\) of \(\bm{A}\), such that:
@@ -183,7 +188,7 @@ Obviously, such argument might be not true if \(\bm{U}\) does not have more than
 
 {{% /fold%}}
 
-_[Theorem]_ : If the TPM is primitive, (\(exists s \in \mathbb{N}\Rightarrow \forall i,j; (\bm{P}^s)_{ij} \gt 0\)), then:
+_[Theorem]_ : If the TPM is primitive, (\(\exists s \in \mathbb{N}\Rightarrow \forall i,j; (\bm{P}^s)_{ij} \gt 0\)), then:
 
 1.  There exists a unique invariant distribution \(\bm{\pi}\) , \(\bm{\pi}\) is strictly positive
 
@@ -193,7 +198,7 @@ _[Theorem]_ : If the TPM is primitive, (\(exists s \in \mathbb{N}\Rightarrow \fo
 
 {{% fold "Proof"%}}
 
-We need only prove the second assertion, because the first has been proved by Perron-Frobenius theorem if we notice \(\text{primitive}\Rightarrow \text{irreducible}\)
+We need only to prove the second assertion, because the first has been proved by Perron-Frobenius theorem if we notice \(\text{primitive}\Rightarrow \text{irreducible}\)
 
 Give two distributions \(\bm{\mu}, \bm{\nu}\) , we define the `total variation distance` by:
 
@@ -253,3 +258,11 @@ _[Theorem]_ : If the TPM is irreducible, (\(\forall i,j;\exists s \in \mathbb{N}
 2.  For any \(\bm{\mu}_0\) :
 
     $$\bm{\pi}_n  = \frac 1 n \sum_{j=1}^n \bm{\mu}_0 \bm{P}^j \rightarrow \bm{\pi} \ , \ \text{exponentially fast as } n\rightarrow \infty$$
+
+{{% fold "Proof"%}}
+
+We need only to prove the second assertion because the first one has been proved to be true by Perron-Frobenius theorem.
+
+For the second assertion, we should point out 
+
+{{% /fold %}}
