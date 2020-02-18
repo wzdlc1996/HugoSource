@@ -1,14 +1,3 @@
----
-title: "Random Variable"
-date: 2019-10-29T11:36:42+08:00
-draft: false
-tags: ["math"]
-series: ["Applied-Mathematics"]
-categories: ["Mathematics"]
-toc: true
-summary: "This is an introduction to Probability Theory. Include the definition of Probability Space and Random Variables. Conditional Expectation and How to generate random numbers. Read this would be helpful for understanding further probability theory even Measure theory in the future"
----
-
 # Random Variable
 
 ## Introduction to Probability Theory
@@ -139,7 +128,7 @@ _[Theorem]_ : **Properties of conditional expectation** . Suppose `$X,Y$` are ra
 
     So `$\mathbb{E}(X|\mathcal{H})$` should be a constant function, it equals to `$\mathbb{E}(X)$`. i.e. `$\mathbb{E}(X|\mathcal{H}) = \mathbb{E}(X)$`
 
-7.  It is not a simple theorem. Technically it is called "Pulling out known factor" property of conditional expectation. Here, we show a brief(hand-waving proof). For detail see: [Properties of conditional_expectation](https://web.ma.utexas.edu/users/gordanz/notes/conditional_expectation.pdf).
+7.  It is not a simple theorem. Technically it is called "Pulling out known factor" property of conditional expectation. Here, we show a brief(hand-waving proof). For detail see: [Properties of conditional_expectation](https://web.ma.utexas.edu/users/gordanz/notes/conditional_expectation.pdf) .
 
     Consider the simplest case of `$Y = 1_B$` where `$B\in\mathcal{G}$` . So `$Y$` is `$\mathcal{G}$`-measurable. Then we have: `$1_B\mathbb{E}(Y|\mathcal{G})$` is `$\mathcal{G}$`-measurable, and for arbitrary `$A\in\mathcal{G}$` we have:
 
@@ -342,4 +331,5 @@ The probability of `$X_i$` lies in interval `$[x,x+\td x]$` is:
 <div>$$\mathbb{P}(X_i\in[x,x+\td x]) = \mathbb{P}(Z_i \in [\frac {F(x)} A , \frac {F(x+\td x)} {A}])\mathbb{P}(\text{accept}) = \frac 1 A f(x)\td x \cdot \frac {p(x)} {f(x)} = \frac 1 A  p(x)\td x$$</div>
 
 q.e.d.
+
 {{%/fold %}}
