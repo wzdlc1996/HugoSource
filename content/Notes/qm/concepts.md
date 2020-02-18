@@ -65,15 +65,14 @@ The Gram matrix `$G_{i,j}=(\psi_i,\psi_j)$` of a set of wavefunction is Hermitia
     with the induced volume element defined as : `$\td (V_1\oplus V_2)=\td V_1+\td V_2$`
 
 -    `Tensor product of two Hilbert spaces` : `$\mathcal{H}_1(V_1)\otimes \mathcal{H}_2(V_2)$` <br>
-    the wavefunction in the combined Hilbert space is formed by :
+     the wavefunction in the combined Hilbert space is formed by :
+     <div>$$(\psi_1\otimes \psi_2 )(\bm{x}_1,\bm{x}_2)=\psi_1(\bm{x}_1)\psi_2(\bm{x}_2) \ \ \text{ for } \bm{x}_i \in V_i \text{ and } \psi_i \in \mathcal{H}_i(V_i)$$</div>
 
-    <div>$$(\psi_1\otimes \psi_2 )(\bm{x}_1,\bm{x}_2)=\psi_1(\bm{x}_1)\psi_2(\bm{x}_2) \ \ \text{ for } \bm{x}_i \in V_i \text{ and } \psi_i \in \mathcal{H}_i(V_i)$$</div>
+     And the induced inner product is :
 
-    And the induced inner product is :
+     <div>$$(\phi_1\otimes \phi_2 , \psi_1\otimes \psi_2)_{V_1\otimes V_2}=(\phi_1,\psi_1)_{V_1}\cdot (\phi_2,\psi_2)_{V_2}$$</div>
 
-    <div>$$(\phi_1\otimes \phi_2 , \psi_1\otimes \psi_2)_{V_1\otimes V_2}=(\phi_1,\psi_1)_{V_1}\cdot (\phi_2,\psi_2)_{V_2}$$</div>
-
-    with the induced volume element defined as : `$\td (V_1\otimes V_2)=\td V_1 \td V_2$`
+     with the induced volume element defined as : `$\td (V_1\otimes V_2)=\td V_1 \td V_2$`
 
 <mark>`Entanglement` : wavefunctions in `$\mathcal{H}_1\otimes \mathcal{H}_2$` may not be a direct product like `$\psi_1\otimes \psi_2$`</mark> <br>
 for some like `$\psi_1\otimes \psi_2 + \phi_1\otimes \phi_2$` , generally it CANNOT be written as the direct product of wavefunctions from each Hilbert space

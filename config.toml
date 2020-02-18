@@ -10,7 +10,7 @@ hasCJKLanguage             = true
 summaryLength              = 50
 Paginate                   = 3
 
-theme                      = "AllinOne"
+theme                      = "coder"
 title                      = "Leonard"
 pygmentsuseclasses         = true
 
@@ -40,8 +40,8 @@ pygmentsuseclasses         = true
 
 
 [params]
-    faviconfile              = "img/cat.png"               # from static/
-    avatar                   = "img/white_cat.png"             # path to image in static dir e.g img/avatar.png
+    faviconfile              = "imgs/cat.png"               # from static/
+    avatar                   = "imgs/white_cat.png"             # path to image in static dir e.g img/avatar.png
     author                   = "Leonard"
     description              = ["男なら 谁かのために强くなれ", "", "A little site of Leonard, a physics worker"]           # appears in the site header when set to a non-empty string
     welcome_head             = "Hello, World!"
@@ -54,8 +54,8 @@ pygmentsuseclasses         = true
     noshowreadtime           = false                         # if true, don't show "<x> minutes read" in posts
 
     # slides
-    slidesDirPath            = "themes/AllinOne/static/img/header-slides"    # path to image in local dir (path for hugo)
-    slidesDirPathURL         = "img/header-slides"    # path to image in static dir (for static pages)
+    slidesDirPath            = "static/imgs/header-slides"    # path to image in local dir (path for hugo)
+    slidesDirPathURL         = "imgs/header-slides"    # path to image in static dir (for static pages)
 
     # highlighting
     highlightjs              = true

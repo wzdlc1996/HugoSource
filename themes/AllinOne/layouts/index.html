@@ -1,0 +1,60 @@
+{{ define "header" }}
+   {{ partial "site-navbar.html" . }}
+   {{ partial "homepage-header.html" . }}
+
+  <!-- Welcome Word -->
+  {{ with $.Site.Params.welcome_head }}
+    <section class="container pt-5 text-center">
+      <h1 class="display-3">{{ $.Site.Params.welcome_head }}</h1>
+      {{ with $.Site.Params.welcome_word }}
+      <p style="font-size:1.8rem; color: var(--text-light);">{{ $.Site.Params.welcome_word }}</p>
+      {{ end }}
+    </section>
+  {{ end }}
+  <!-- /.Welcome Word -->
+
+{{ end }}
+
+
+{{ define "main" }}
+  <!-- Main layout -->
+  <main class="post-main-wrapper px-5">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3">
+        <!-- <hr> -->
+
+        {{ partial "sidebar-categories.html" . }}
+
+        {{ partial "sidebar-tags.html" . }}
+
+        {{ partial "sidebar-series.html" . }}
+
+      </div>
+      <!-- /.Sidebar -->
+
+      <!-- Post list -->
+      <!-- <div class="pt-5 px-5 mx-5"> -->
+      <div class="col-md-9 mt-3">
+        {{ $totalpostscount := len (.Data.Pages) }}
+        {{ $latestpostscount := .Site.Params.latestpostscount | default $totalpostscount }}
+        {{ if gt $latestpostscount 0 }}
+          <!--<div class='post-heading'>
+            {{ i18n "latestPosts" }}
+          </div>-->
+          <div>
+              {{ range (first $latestpostscount .Site.Pages.ByPublishDate.Reverse ) }}
+                  {{ partial "post-card.html" . }}
+              {{ end }}
+
+          </div>
+        {{ end }}
+
+      </div>
+      <!-- /.Post list -->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+{{ end }}

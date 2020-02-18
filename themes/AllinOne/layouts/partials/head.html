@@ -1,0 +1,150 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="r64AlTCOZzKlMSpDsUj76TvI5OGOmE_h2kRn11UtSYk" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+
+  {{ template "_internal/opengraph.html" . }}
+
+  <title>
+  {{ if eq .Kind "home" }}
+      {{ .Site.Title }}
+  {{ else }}
+      {{ if .Params.heading }} {{ .Params.heading }} | {{ .Site.Title }} {{ else }} {{ .Title }} | {{ .Site.Title }} {{ end }}
+  {{ end }}
+  </title>
+
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  <!-- HTTPS -->
+  {{ if .Site.Params.forcehttps }}
+  <script type="text/javascript">
+      var baseURL = '{{ .Site.BaseURL }}';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  {{ end }}
+
+  <!-- Font Awesome -->
+  <link href="{{ "css/vendors-extensions/fontawesome/all.min.css" | absURL }}" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="{{ "css/font.css" | absURL }}" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="{{ "css/vendors/bootstrap4/bootstrap.min.css" | absURL }}" rel="stylesheet">
+  <link href="{{ "css/vendors/mdb/mdb.min.css" | absURL }}" rel="stylesheet">
+  <link href="{{ "css/vendors/mdb/style.min.css" | absURL }}" rel="stylesheet">
+  <link href="{{ "css/main.css" | absURL }}" rel="stylesheet">
+
+
+  <!-- Icon -->
+  <link rel="shortcut icon"
+  {{ if .Site.Params.faviconfile }}
+      href="{{ .Site.Params.faviconfile | absURL }}"
+  {{ else if.Site.Params.avatar}}
+      href="{{ .Site.Params.avatar | absURL }}"
+  {{ end }}
+  >
+
+
+  <!-- RSS -->
+  {{ $rssInclude := .Site.Params.include_rss }}
+  {{ $siteTitle := .Site.Title }}
+  {{ with .OutputFormats.Get "RSS" }}
+  {{ if and $rssInclude .RelPermalink}}
+      <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $siteTitle }}" />
+  {{ end }}
+  {{ end }}
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  <!-- KaTeX -->
+  {{ if .Site.Params.katex }}
+    <link rel="stylesheet" href="{{ "js/vendors/katex/katex.min.css"| absURL }}">
+  {{ end }}
+  <!-- /.KaTeX -->
+
+  <!-- Highlight -->
+  {{ if .Site.Params.highlightjs }}
+    <link rel="stylesheet" href="{{ "css/vendors/highlight/github-gist.css"| absURL }}">
+  {{ end }}
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!--Search-->
+  <link rel="stylesheet" href="{{ "css/search.css" | absURL }}" />
+
+
+<!--mathjax-->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+      MathJax.Hub.Config(
+      {
+          tex2jax: {
+          inlineMath: [['$','$'],['\\(','\\)']],
+          displayMath: [['$$','$$']],
+          processEscapes: true,
+          processEnvironments: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        },
+          TeX: {
+            extensions: ["autobold.js"],
+            Macros:{
+               bm: ["{\\boldsymbol #1}",1],
+               flo: ["\\overset {\\cdot} {#1}",1],
+               td: ["\\text{d}"],
+               ti: ["\\text{i}"],
+               bra: ["{\\langle #1 |}",1],
+               ket: ["{| #1 \\rangle}",1],
+               degree: ["{^\{\\circ\}}",0],
+               indent:["\\ \\ \\ \\",0],
+               rhat: ["\\overset {\\rightarrow} {#1}",1],
+               lhat: ["\\overset {\\leftarrow} {#1}",1],
+               lrhat: ["\\overset {\\leftrightarrow} {#1}",1]}
+            }
+      });
+  /*  MathJax.Hub.Queue(function() {
+      // Fix <code> tags after MathJax finishes running. This is a
+      // hack to overcome a shortcoming of Markdown. Discussion at
+      // https://github.com/mojombo/jekyll/issues/199
+      var all = MathJax.Hub.getAllJax();
+      for(i = 0; i < all.length; i += 1){
+          all[i].SourceElement().parentNode.className += 'has-jax';
+      }}
+  );*/
+</script>
+
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ .Site.Params.googleAnalytics }}');
+</script>
+
+
+
+</head>
