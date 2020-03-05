@@ -138,7 +138,7 @@ q.e.d.
 
 _[Definition]_ : The `Spectral representation` , or the `spectral decomposition` of the response function, is to rewrite it with the complete set of energy eigenstates of the unperturbed system: \(\hat H_0\ket{m}=\hbar \omega_m \ket{m}\) (note that if there is degeneracy of energy level, the summation below should cover it). Then with that \(\bra{m}\hat P \ket{n}=P_{mn}\), we have:
 
-$$\chi_R(\omega)=\int \frac {\td t} {\sqrt{2\pi}} e^{-\ti \omega t} \chi_R(t)=\frac 1 {\hbar \sqrt{2\pi}} \int_{-\infty}^{\infty} \frac {\td u \ (1-e^{-\beta \hbar u})} {u-\omega-\ti\epsilon} \sum_{m,n}\frac {\exp(-\beta \hbar \omega_m)} {Z} P_{mn}Q_{nm}\delta\big(u-(\omega_n-\omega_m)\big)$$
+$$\chi_R(\omega)=\int \td t \  e^{-\ti \omega t} \chi_R(t)=\frac 1 {\hbar } \int_{-\infty}^{\infty} \frac {\td u \ (1-e^{-\beta \hbar u})} {u-\omega-\ti\epsilon} \sum_{m,n}\frac {\exp(-\beta \hbar \omega_m)} {Z} P_{mn}Q_{nm}\delta\big(u-(\omega_n-\omega_m)\big)$$
 
 {{%fold "Proof"%}}
 
@@ -163,8 +163,8 @@ $$\chi_R(t-t')=\frac {\ti} {\hbar Z}\sum_{m,n}e^{\ti (\omega_m-\omega_n) (t-t')}
 Or the Fourier transform:
 
 $$\begin{aligned}
-\chi_R(\omega) &= \int \frac {\td t} {\sqrt{2\pi}} e^{\ti\omega t} \chi_R(t) \\
-&= \int_0^{\infty} \frac {\ti \td t} {\hbar Z \sqrt{2\pi}} \sum_{m,n}e^{\ti (\omega_m-\omega_n+\omega) t} P_{mn}Q_{nm}\big(e^{-\beta \hbar \omega_m}-e^{-\beta \hbar \omega_n}\big)
+\chi_R(\omega) &= \int \td t \ e^{\ti\omega t} \chi_R(t) \\
+&= \int_0^{\infty} \frac {\ti \td t} {\hbar Z} \sum_{m,n}e^{\ti (\omega_m-\omega_n+\omega) t} P_{mn}Q_{nm}\big(e^{-\beta \hbar \omega_m}-e^{-\beta \hbar \omega_n}\big)
 \end{aligned}$$
 
 Consider the integral:
@@ -173,17 +173,17 @@ $$\int_0^{\infty} \ti \td t \ e^{\ti \alpha t}=\ti \frac {e^{(\ti \alpha-\epsilo
 
 Where \(\epsilon\) is a infinitesimal positive number. Then we have:
 
-$$\chi_R(\omega)=\frac 1 {\hbar Z \sqrt{2\pi}}\sum_{m,n} \frac {e^{-\beta \hbar \omega_m}-e^{-\beta \hbar \omega_n}} {-\omega_m+\omega_n-\omega-\ti\epsilon} P_{mn}Q_{nm}$$
+$$\chi_R(\omega)=\frac 1 {\hbar Z}\sum_{m,n} \frac {e^{-\beta \hbar \omega_m}-e^{-\beta \hbar \omega_n}} {-\omega_m+\omega_n-\omega-\ti\epsilon} P_{mn}Q_{nm}$$
 
 Then we can write it with the integral and delta function:
 
-$$\chi_R(\omega) = \frac 1 {\hbar \sqrt{2\pi}} \int_{-\infty}^{\infty} \frac {\td u \ (1-e^{-\beta \hbar u})} {u-\omega-\ti\epsilon} \sum_{m,n}\frac {\exp(-\beta \hbar \omega_m)} {Z} P_{mn}Q_{nm}\delta\big(u-(\omega_n-\omega_m)\big)$$
+$$\chi_R(\omega) = \frac 1 {\hbar} \int_{-\infty}^{\infty} \frac {\td u \ (1-e^{-\beta \hbar u})} {u-\omega-\ti\epsilon} \sum_{m,n}\frac {\exp(-\beta \hbar \omega_m)} {Z} P_{mn}Q_{nm}\delta\big(u-(\omega_n-\omega_m)\big)$$
 
 {{%/fold%}}
 
 _[Definition]_ : the `Spectral function` is defined as :
 
-$$A(\omega)=\text{Im} \chi_R(\omega)=\frac {\pi} {\hbar \sqrt{2\pi}} (1-e^{-\beta \hbar \omega}) \sum_{m,n}p_m P_{mn}Q_{nm}\delta(\omega-(\omega_n-\omega_m))$$
+$$A(\omega)=\text{Im} \chi_R(\omega)=\frac {\pi} {\hbar} (1-e^{-\beta \hbar \omega}) \sum_{m,n}p_m P_{mn}Q_{nm}\delta(\omega-(\omega_n-\omega_m))$$
 
 in which \(p_m=Z^{-1}e^{-\beta \hbar \omega_m}\) , and we used the property that \(\frac 1 {x+\ti \epsilon}=\mathcal{P}\frac 1 x-\ti \pi \delta(x)\). If we extend the variable to the complex plane, then we have the `dynamical susceptibility` :
 
@@ -191,7 +191,7 @@ $$\chi(z)=\int \frac {\td u} {\pi} \frac {A(u)} {u-z}$$
 
 Then `retard correlation function` is \(\chi_R(\omega)=\chi(\omega+\ti \epsilon)\) , which is a particular example of Kramers-Kronig relation. And can also define the `advanced correlation function` : \(\chi_A(\omega)=\chi(\omega-\ti\epsilon)\).
 
-_[Theorem]_ : Let correlation function \(S(t-t')=\langle \hat P_I(t)\hat Q_I(t')\rangle\) , and its Fourier transform \(S(\omega)=\int \frac {\td t} {\sqrt{2\pi}} e^{\ti \omega t} S(t)\) , we can derive the `quantum fluctuation-dissipation theorem`:
+_[Theorem]_ : Let correlation function \(S(t-t')=\langle \hat P_I(t)\hat Q_I(t')\rangle\) , and its Fourier transform \(S(\omega)=\int \td t \ e^{\ti \omega t} S(t)\) , we can derive the `quantum fluctuation-dissipation theorem`:
 
 $$S(\omega)=2\hbar (1+f_{BE}(\hbar \omega))A(\omega)$$
 
@@ -205,7 +205,7 @@ $$S(t-t')=\langle \hat P_I(t)\hat Q_I(t')\rangle = \frac 1 Z \sum_{m,n}e^{\ti (\
 
 Then:
 
-$$S(\omega)=\frac {2\pi} {Z\sqrt{2\pi}} \sum_{m,n}p_m P_{mn}Q_{nm}\delta(\omega+\omega_m-\omega_n)$$
+$$S(\omega)=2\pi \sum_{m,n}p_m P_{mn}Q_{nm}\delta(\omega+\omega_m-\omega_n)$$
 
 It is obvious that:
 
@@ -234,21 +234,21 @@ $$\begin{aligned}
 
 With the spectral decomposition:
 
-$$\chi_R(\omega)_{\hat P\hat Q}=\frac 1 {\hbar \sqrt{2\pi}} \sum_{m,n} \frac {p_m - p_n} {\omega_n-\omega_m-\omega -\ti \epsilon} P_{mn}Q_{nm}$$
+$$\chi_R(\omega)_{\hat P\hat Q}=\frac 1 {\hbar} \sum_{m,n} \frac {p_m - p_n} {\omega_n-\omega_m-\omega -\ti \epsilon} P_{mn}Q_{nm}$$
 
 Then:
 
 $$\begin{aligned}
-\big(\chi_R(-\omega)_{\hat P^\dagger \hat Q^\dagger}\big)^* &= \frac 1 {\hbar \sqrt{2\pi}} \sum_{m,n} \frac {p_m-q_n} {\omega_n-\omega_m-\omega+\ti \epsilon} P_{nm}Q_{mn} \\
-&=\frac 1 {\hbar \sqrt{2\pi}} \sum_{m,n} \frac {p_n-q_m} {\omega_m-\omega_n-\omega+\ti \epsilon} P_{mn}Q_{nm} \\
+\big(\chi_R(-\omega)_{\hat P^\dagger \hat Q^\dagger}\big)^* &= \frac 1 {\hbar} \sum_{m,n} \frac {p_m-q_n} {\omega_n-\omega_m-\omega+\ti \epsilon} P_{nm}Q_{mn} \\
+&=\frac 1 {\hbar} \sum_{m,n} \frac {p_n-q_m} {\omega_m-\omega_n-\omega+\ti \epsilon} P_{mn}Q_{nm} \\
 &= \chi_R(\omega)_{\hat P \hat Q}
 \end{aligned}$$
 
 And:
 
 $$\begin{aligned}
-\chi_R(\omega)_{\hat Q^T \hat P^T} &= \frac 1 {\hbar \sqrt{2\pi}} \sum_{m,n} \frac {p_m-q_n} {\omega_n-\omega_m-\omega-\ti \epsilon} (Q^T)_{mn}(P^T)_{nm} \\
-&=\frac 1 {\hbar \sqrt{2\pi}} \sum_{m,n} \frac {p_m-q_n} {\omega_n-\omega_m-\omega-\ti \epsilon} Q_{nm}P_{mn} \\
+\chi_R(\omega)_{\hat Q^T \hat P^T} &= \frac 1 {\hbar} \sum_{m,n} \frac {p_m-q_n} {\omega_n-\omega_m-\omega-\ti \epsilon} (Q^T)_{mn}(P^T)_{nm} \\
+&=\frac 1 {\hbar} \sum_{m,n} \frac {p_m-q_n} {\omega_n-\omega_m-\omega-\ti \epsilon} Q_{nm}P_{mn} \\
 &=\chi_R(\omega)_{\hat P \hat Q}
 \end{aligned}$$
 
@@ -294,8 +294,8 @@ $$A_{mn}(-\bm{B})=\bra{n(\bm{B})}(\hat A^T)^\dagger \ket{m(\bm{B})}= (A^T)_{nm}(
 So:
 
 $$\begin{aligned}
-\chi_R(\omega;-\bm{B})_{\hat Q^T \hat P^T} &= \frac 1 {\hbar \sqrt{2\pi}} \sum_{m,n} \frac {p_m-q_n} {\omega_n(-\bm{B})-\omega_m(-\bm{B})-\omega-\ti \epsilon} (Q^T)_{mn}(-\bm{B})(P^T)_{nm}(-\bm{B}) \\
-&=\frac 1 {\hbar \sqrt{2\pi}} \sum_{m,n} \frac {p_m-q_n} {\omega_n(\bm{B})-\omega_m(\bm{B})-\omega-\ti \epsilon} Q_{nm}(\bm{B})P_{mn}(\bm{B}) \\
+\chi_R(\omega;-\bm{B})_{\hat Q^T \hat P^T} &= \frac 1 {\hbar} \sum_{m,n} \frac {p_m-q_n} {\omega_n(-\bm{B})-\omega_m(-\bm{B})-\omega-\ti \epsilon} (Q^T)_{mn}(-\bm{B})(P^T)_{nm}(-\bm{B}) \\
+&=\frac 1 {\hbar} \sum_{m,n} \frac {p_m-q_n} {\omega_n(\bm{B})-\omega_m(\bm{B})-\omega-\ti \epsilon} Q_{nm}(\bm{B})P_{mn}(\bm{B}) \\
 &=\chi_R(\omega;\bm{B})_{\hat P \hat Q}
 \end{aligned}$$
 
@@ -348,7 +348,7 @@ Compute the thermal average with Wick's Theorem, at last we find:
 
 $$\begin{aligned}
 \chi_R(t) &= \frac {\ti} {\hbar} \Theta(t)\sum_{m,n}P_{mn}Q_{nm} e^{\ti (\omega_m-\omega_n)t} (f_m-f_n) \\
-\chi_R(\omega) &= \frac 1 {\hbar\sqrt{2\pi}} \sum_{m,n} P_{mn}Q_{nm} \frac {f_m-f_n} {\omega_n-\omega_m-\omega -\ti \epsilon}
+\chi_R(\omega) &= \frac 1 {\hbar} \sum_{m,n} P_{mn}Q_{nm} \frac {f_m-f_n} {\omega_n-\omega_m-\omega -\ti \epsilon}
 \end{aligned}$$
 
 Where \(f_m\) is the Fermi-Dirac distribution function: \(f_m=(e^{\beta(\hbar\omega_n -\mu)}+1)^{-1}\)
@@ -384,7 +384,9 @@ $$\begin{aligned}
 &=\frac {\ti} {\hbar } \Theta(t) \sum_{m,n} P_{mn} Q_{nm} e^{\ti(\omega_m-\omega_n)t} (f_m-f_n)
 \end{aligned}$$
 
-The expression with respect to frequency can also be obtained.
+The expression with respect to frequency can also be obtained with:
+
+$$\int \td t \ \Theta(t) e^{\ti \omega t} = \int_0^{\infty} e^{-\epsilon t + \ti \omega t} \td t= - \frac 1 {\ti \omega-\epsilon}$$
 
 {{%/fold%}}
 
@@ -405,22 +407,22 @@ $$\delta\langle \hat n\rangle (\bm{r},t)=\int_{-\infty}^{\infty} \td t'\int \td^
 One can also introduce the Fourier transformation of the functions:
 
 $$\begin{aligned}
-\chi_R(\bm{r},\bm{r}',t-t')&=\int \frac {\td \omega} {\sqrt{2\pi}} e^{-\ti \omega (t-t')}\int \frac {\td^3 \bm{k}} {(2\pi)^{d/2}} \frac {\td^3 \bm{k}'} {(2\pi)^{d/2}}e^{\ti \bm{k}\cdot \bm{r}} e^{-\ti \bm{k}'\cdot \bm{r}'} \chi_R(\bm{k},\bm{k}',\omega)\\
-\chi_R(\bm{k},\bm{k}',\omega)&=\int \frac {\td t} {\sqrt{2\pi}}e^{\ti \omega t}\int \frac {\td^3 \bm{r}} {(2\pi)^{d/2}} \frac {\td^3 \bm{r}'} {(2\pi)^{d/2}} e^{-\ti \bm{k}\cdot \bm{r}} e^{\ti \bm{k'}\cdot \bm{r'}} \chi_R(\bm{r},\bm{r}',t)\\
-&=\int \frac {\td t} {\sqrt{2\pi}} e^{\ti \omega t} \frac {\ti} {\hbar} \langle [\hat n(\bm{k},t) , \hat n(-\bm{k'},0)]\rangle \Theta(t)
+\chi_R(\bm{r},\bm{r}',t-t')&=\int \frac {\td \omega} {2\pi} e^{-\ti \omega (t-t')}\int \frac {\td^3 \bm{k}} {(2\pi)^{3}} \frac {\td^3 \bm{k}'} {(2\pi)^{3}}e^{\ti \bm{k}\cdot \bm{r}} e^{-\ti \bm{k}'\cdot \bm{r}'} \chi_R(\bm{k},\bm{k}',\omega)\\
+\chi_R(\bm{k},\bm{k}',\omega)&=\int\td t \ e^{\ti \omega t}\int\td^3 \bm{r}\td^3 \bm{r}' \ e^{-\ti \bm{k}\cdot \bm{r}} e^{\ti \bm{k'}\cdot \bm{r'}} \chi_R(\bm{r},\bm{r}',t)\\
+&=\int \td t \ e^{\ti \omega t} \frac {\ti} {\hbar} \langle [\hat n(\bm{k},t) , \hat n(-\bm{k'},0)]\rangle \Theta(t)
 \end{aligned}$$
 
-Where \(\hat n(\bm{k},t)=\int \frac {\td^3 \bm{r}} {(2\pi)^{d/2}} e^{-\ti \bm{k}\cdot \bm{r}} \hat n(\bm{r},t)\) is the Fourier transformation of density operator. And we added a new parameter \(d\) denoting the dimension of the system.
+Where \(\hat n(\bm{k},t)=\int \td^3 \bm{r} \  {(2\pi)^{3}} e^{-\ti \bm{k}\cdot \bm{r}} \hat n(\bm{r},t)\) is the Fourier transformation of density operator. It is lightly different from the standard definition in mathematics textbooks, because of \(\hat n\) contains two field operators: \(\hat n = \hat \psi^\dagger \hat \psi\).
 
 Up to now these formulas are derived for general case. Then we will apply what we have obtained for non-interacting system.
 
-_[Theorem]_ : If the system has translation invariance, \(\chi_R\) should be a function of \(\bm{r}-\bm{r}'\) . Then we have: \(\chi_R(\bm{k},\bm{k}',\omega)=(2\pi)^{d/2} \delta(\bm{k}-\bm{k}')\chi_R(\bm{k},\omega)\) . Then apply the conclusion on the `uniform non-interacting electron gas` , we have:
+_[Theorem]_ : If the system has translation invariance, \(\chi_R\) should be a function of \(\bm{r}-\bm{r}'\) . Then we have: \(\chi_R(\bm{k},\bm{k}',\omega)=(2\pi)^{3} \delta(\bm{k}-\bm{k}')\chi_R(\bm{k},\omega)\) . Then apply the conclusion on the `uniform non-interacting electron gas` , we have:
 
-$$\chi_R(\bm{q},\omega)=\frac 1 {\sqrt{2\pi}\hbar}\sum_\alpha \int \frac {\td^3 \bm{k}} {(2\pi)^{d/2}} \frac {f_{\bm{k},\alpha}-f_{\bm{k}+\bm{q},\alpha}} {\omega+\omega_{\bm{k},\alpha}-\omega_{\bm{k}+\bm{q},\alpha}+\ti \epsilon}$$
+$$\chi_R(\bm{q},\omega)=\frac 1 {\hbar}\sum_\alpha \int \frac {\td^3 \bm{k}} {(2\pi)^{3}} \frac {f_{\bm{k},\alpha}-f_{\bm{k}+\bm{q},\alpha}} {\omega+\omega_{\bm{k},\alpha}-\omega_{\bm{k}+\bm{q},\alpha}+\ti \epsilon}$$
 
 Where \(\alpha\) denotes the degree of freedom of spin. And \(f_{\bm{k},\alpha}=(1+e^{\beta(\hbar \omega_{\bm{k},\alpha}-\mu)})^{-1}\) . And \(\omega_{\bm{k},\alpha}=\frac {\hbar} {2m} \bm{k}^2\) if the Hamiltonian does not contain the terms coupling with spin. And in this situation, the response function can be simplified further:
 
-$$\chi_R(\bm{q},\omega)=\frac {g_s} {\sqrt{2\pi}\hbar} \int \frac {\td^3 \bm{k}} {(2\pi)^{d/2}} \frac {f_{\bm{k}}-f_{\bm{k}+\bm{q}}} {\omega+\omega_{\bm{k}}-\omega_{\bm{k}+\bm{q}}+\ti \epsilon}$$
+$$\chi_R(\bm{q},\omega)=\frac {g_s} {\hbar} \int \frac {\td^3 \bm{k}} {(2\pi)^{3}} \frac {f_{\bm{k}}-f_{\bm{k}+\bm{q}}} {\omega+\omega_{\bm{k}}-\omega_{\bm{k}+\bm{q}}+\ti \epsilon}$$
 
 Where \(g_s=2\) is the spin degeneracy.
 
@@ -428,40 +430,48 @@ Where \(g_s=2\) is the spin degeneracy.
 
 With the discussion we made for non-interacting system, we have:
 
-$$\chi_R(\bm{k},\bm{k'},\omega)=\frac {-1} {\sqrt{2\pi}\hbar} \sum_{m,n} n_{mn}(\bm{k})n_{nm}(-\bm{k}')\frac {f_m-f_n} {\omega_n-\omega_m-\omega-\ti\epsilon}$$
+$$\chi_R(\bm{k},\bm{k'},\omega)=\frac {-1} {\hbar} \sum_{m,n} n_{mn}(\bm{k})n_{nm}(-\bm{k}')\frac {f_m-f_n} {\omega_n-\omega_m-\omega-\ti\epsilon}$$
 
 There is an additional minus sign, because of the perturbation Hamiltonian is different from the minus sign like what we discussed before. The operator of density of many body state can be written as the sum over all single particle states:
 
 $$\hat n(\bm{r})=\sum_i \delta(\bm{r}-\hat {\bm{x}}_i)$$
 
-Where \(\hat {\bm{x}}_i\) is the position operator of \(i\)-th electron. Let we consider the second quantization procedure.
+Where \(\hat {\bm{x}}_i\) is the position operator of \(i\)-th electron. Let we consider the second quantization procedure:
 
 $$\begin{aligned}
-\hat n(\bm{r}) &= \sum_{\alpha,\alpha'} \int \td\bm{k}\td^3 \bm{k'} \bra{\bm{k},\alpha} \delta(\bm{r}-\hat{\bm{x}})\ket{\bm{k'},\alpha'} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
-&=\sum_{\alpha,\alpha'} \int \td\bm{k}\td^3 \bm{k'} \bra{\bm{k},\alpha} \delta(\bm{r}-\hat{\bm{x}})\sum_\beta\int \td^3 \bm{x}\ket{\bm{x},\beta}\langle \bm{x},\beta\ket{\bm{k'},\alpha'} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
-&=\sum_{\alpha,\alpha'} \int \td\bm{k}\td^3 \bm{k'} \bra{\bm{k},\alpha} \delta(\bm{r}-\hat{\bm{x}})\int \td^3 \bm{x}\ket{\bm{x},\alpha'}\frac 1 {(2\pi)^{d/2}} e^{\ti \bm{k'}\cdot \bm{x}} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
-&=\sum_{\alpha,\alpha'} \int \td\bm{k}\td^3 \bm{k'} \bra{\bm{k},\alpha} \bm{r},\alpha'\rangle\frac 1 {(2\pi)^{d/2}} e^{\ti \bm{k'}\cdot \bm{r}} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
-&=\sum_{\alpha,\alpha'} \int \frac {\td\bm{k}\td^3 \bm{k'}} {(2\pi)^{d}} \delta_{\alpha,\alpha'} e^{\ti (\bm{k'}-\bm{k})\cdot \bm{r}} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
+\hat n(\bm{r}) &= \sum_{\alpha,\alpha'} \sum_{\bm{k},\bm{k'}} \bra{\bm{k},\alpha} \delta(\bm{r}-\hat{\bm{x}})\ket{\bm{k'},\alpha'} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
+&=\sum_{\alpha,\alpha'} \sum_{\bm{k},\bm{k'}} \bra{\bm{k},\alpha} \delta(\bm{r}-\hat{\bm{x}})\sum_\beta\int \td^3 \bm{x}\ket{\bm{x},\beta}\langle \bm{x},\beta\ket{\bm{k'},\alpha'} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
+&=\sum_{\alpha,\alpha'} \sum_{\bm{k},\bm{k'}}\bra{\bm{k},\alpha} \delta(\bm{r}-\hat{\bm{x}})\int \td^3 \bm{x}\ket{\bm{x},\alpha'}\frac 1 {\sqrt{V}} e^{\ti \bm{k'}\cdot \bm{x}} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
+&=\sum_{\alpha,\alpha'} \int \td\bm{k}\td^3 \bm{k'} \bra{\bm{k},\alpha} \bm{r},\alpha'\rangle\frac 1 {\sqrt{V}} e^{\ti \bm{k'}\cdot \bm{r}} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
+&=\sum_{\alpha,\alpha'} \sum_{\bm{k},\bm{k'}} \frac 1 V \delta_{\alpha,\alpha'} e^{\ti (\bm{k'}-\bm{k})\cdot \bm{r}} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha'} \\
 \end{aligned}$$
 
 And:
 
-$$\hat n(\bm{q})=\int \frac {\td^3 \bm{r}} {(2\pi)^{d/2}} e^{-\ti \bm{q}\cdot \bm{r}}\hat n(\bm{r})=\sum_\alpha \int \frac {\td^3 \bm{k}\td^3 \bm{k'}} {(2\pi)^{d/2}}\delta(\bm{k'}-\bm{k}-\bm{q})\hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha}=\sum_\alpha\int \frac {\td^3 \bm{k}} {(2\pi)^{d/2}}\hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k}+\bm{q},\alpha}$$
+$$\hat n(\bm{q})=\int \td^3 \bm{r} \ e^{-\ti \bm{q}\cdot \bm{r}}\hat n(\bm{r})=\sum_\alpha \sum_{\bm{k},\bm{k'}} \delta_{\bm{k'},\bm{k}+\bm{q}}\hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k'},\alpha}=\sum_\alpha\sum_{\bm{k}} \hat a_{\bm{k},\alpha}^\dagger \hat a_{\bm{k}+\bm{q},\alpha}$$
 
 For the energy eigenstates of non-interacting electron system is the single particle state \(\ket{\bm{k},\alpha}\) , we can directly write down:
 
-$$n_{\bm{k},\alpha;\bm{k'},\alpha'}(\bm{q})=(2\pi)^{d/2}\delta_{\alpha\alpha'}\delta(\bm{k'}-\bm{k}-\bm{q})$$
+$$n_{\bm{k},\alpha;\bm{k'},\alpha'}(\bm{q})=\delta_{\alpha\alpha'}\delta_{\bm{k'},\bm{k}+\bm{q}}$$
 
 Then:
 
 $$\begin{aligned}
-\chi_R(\bm{k},\bm{k'},\omega)&=\frac {-1} {\sqrt{2\pi}\hbar} \sum_{\alpha,\alpha'}\int \td^3 \bm{q}\td^3 \bm{q'} \delta_{\alpha,\alpha'}\delta_{\alpha',\alpha}\delta(\bm{q'}-\bm{q}-\bm{k})\delta(\bm{q}-\bm{q'}+\bm{k'}) \frac {f_{\bm{q},\alpha}-f_{\bm{q'},\alpha'}} {\omega_{\bm{q'},\alpha'}-\omega_{\bm{q},\alpha}-\omega-\ti\epsilon}\\
-&=\frac {-1} {\sqrt{2\pi}\hbar} \sum_{\alpha} \int \td^3 \bm{q} \ \delta(\bm{k}-\bm{k'})\frac {f_{\bm{q},\alpha}-f_{\bm{q}+\bm{k},\alpha}} {\omega_{\bm{q}+\bm{k},\alpha}-\omega_{\bm{q},\alpha}-\omega-\ti\epsilon}
+\chi_R(\bm{k},\bm{k'},\omega)&=\frac {-1} {\hbar} \sum_{\alpha,\alpha'}\sum_{\bm{q},\bm{q'}} \delta_{\alpha,\alpha'}\delta_{\alpha',\alpha}\delta_{\bm{q'}-\bm{q}-\bm{k}}\delta_{\bm{q}-\bm{q'}+\bm{k'}} \frac {f_{\bm{q},\alpha}-f_{\bm{q'},\alpha'}} {\omega_{\bm{q'},\alpha'}-\omega_{\bm{q},\alpha}-\omega-\ti\epsilon}\\
+&=\frac {-1} {\hbar} \sum_{\alpha} \sum_{\bm{q}} \ \delta_{\bm{k},\bm{k'}}\frac {f_{\bm{q},\alpha}-f_{\bm{q}+\bm{k},\alpha}} {\omega_{\bm{q}+\bm{k},\alpha}-\omega_{\bm{q},\alpha}-\omega-\ti\epsilon}
 \end{aligned}$$
 
-Apply the property of translation invariance \(\chi_R(\bm{k},\bm{k}',\omega)=(2\pi)^{d/2} \delta(\bm{k}-\bm{k}')\chi_R(\bm{k},\omega)\) on this expression, we have:
+Here, we need to convert the summation over all energy levels to integral in \(\bm{k}\)-space, consider the electron gas in finite volume \(V\), the \(\bm{k}\) variables are discretized as \(k_i = 2\pi n /L_i\), so as \(L_i\rightarrow \infty\), the summation and the integral have the relationship:
 
-$$\chi_R(\bm{k},\omega)=\frac {-1} {\sqrt{2\pi}\hbar}\sum_\alpha \int \frac {\td^3 \bm{q}} {(2\pi)^{d/2}} \frac {f_{\bm{q},\alpha}-f_{\bm{q}+\bm{k},\alpha}} {\omega_{\bm{q}+\bm{k},\alpha}-\omega_{\bm{q},\alpha}-\omega-\ti\epsilon}$$
+$$\frac {(2\pi)^3} V\sum_{\bm{k}} \sim \int \td^3 \bm{k} \ ; \ \delta_{\bm{k},\bm{k'}} \sim \frac {(2\pi)^3} {V} \delta(\bm{k}-\bm{k'})$$
+
+Then we have the integral form of \(\chi_R(\bm{k},\bm{k'},\omega)\):
+
+$$\chi_R(\bm{k},\bm{k'},\omega) =\delta(\bm{k}-\bm{k'}) \frac {-1} {\hbar} \sum_{\alpha} \int \td^3 \bm{q}\ \frac {f_{\bm{q},\alpha}-f_{\bm{q}+\bm{k},\alpha}} {\omega_{\bm{q}+\bm{k},\alpha}-\omega_{\bm{q},\alpha}-\omega-\ti\epsilon}$$
+
+Apply the property of translation invariance \(\chi_R(\bm{k},\bm{k}',\omega)=(2\pi)^{3} \delta(\bm{k}-\bm{k}')\chi_R(\bm{k},\omega)\): on this expression, we have:
+
+$$\chi_R(\bm{k},\omega)=\frac {-1} {\hbar}\sum_\alpha \int \frac {\td^3 \bm{q}} {(2\pi)^{3}} \frac {f_{\bm{q},\alpha}-f_{\bm{q}+\bm{k},\alpha}} {\omega_{\bm{q}+\bm{k},\alpha}-\omega_{\bm{q},\alpha}-\omega-\ti\epsilon}$$
 
 q.e.d.
 
@@ -523,6 +533,20 @@ $$A^{(T=0)}(\bm{q},\omega)=\frac {g_s g(0)\pi} {8x} \Big\{\Big(1-(\frac {u} x+x)
 Where \(u=\omega/4\omega_F\).
 
 {{%/fold%}}
+
+## Spin Density Response
+
+In the presence of a Zeeman field:
+
+$$\hat H' = - \frac 1 2 g_e \mu_B \bm{B}\cdot \bm{\sigma}$$
+
+where \(\bm{\sigma} = \sum_{i=1}^3 \bm{e}_i \sigma^i\) and \(g_e\) is the gyromagnetic ratio of an electron(g-factor). In this section, we show the method to treat the density and spin-density responses within a unified framework. A general external field reads:
+
+$$F(x) = (e\phi(x), - \frac 1 2 g_e \mu_B \bm{B}(x)) \equiv (F^0, F^1, F^2, F^3)$$
+
+Then the generalized density operator is:
+
+$$\hat H' = - \int \td^3 \bm{r}$$
 
 # Current Response
 
