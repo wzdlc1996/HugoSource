@@ -57,7 +57,7 @@ $$\bra{\psi(t)} \hat v_{\bm{k}}\ket{\psi(t)}=\frac 1 \hbar \nabla_{\bm{k}}\epsil
 
 Where \(\ket{\psi(t)}\) is the time-dependent ket governed by the Hamiltonian of \(\bm{k}(t)\) which moves adiabatically in the Brillouin zone. At time \(t=0\) it starts at state \(\ket{n}\).
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 Let us consider the adiabatic evolution of \(\ket{\psi(t)}\) up to the first order, noting that \(\ket{u_{n,\bm{k}}}\) is the instantaneous eigenstate of \(\hat H_{\bm{k}}\) with \(\bm{k}=\bm{k}(t)\). The solution should has the following form:
 
@@ -99,7 +99,7 @@ $$\begin{aligned}
 &=
 \end{aligned}$$
 
-{{% /fold%}}
+{{< /fold>}}
 
 # The Su-Schrieffer-Heeger Model
 
@@ -143,7 +143,7 @@ $$\hat H=\sum_{<i,j>}(-t)\big(\hat a_i^\dagger \hat b_j+\hat b_j^\dagger\hat a_i
 
 Where \(t\sim 2.7\text{eV}\) . With the following set up, \(A,B\) are inequivalent atoms in the lattice, and \(\bm{a}_i \cdot \bm{b}_j=2\pi \delta_{ij}\) :
 
-{{% center %}}<img name="preview" src="/imgs/notes/CondPhy/graphene.png" />{{% /center %}}
+{{< center >}}<img name="preview" src="/imgs/notes/CondPhy/graphene.png" />{{< /center >}}
 
 ![](/home/leonard/Documents/Blog/HugoSource/static/imgs/notes/CondPhy/graphene.png)
 
@@ -166,7 +166,7 @@ $$\hat H=\hat \Psi_{\bm{k}}^\dagger \begin{bmatrix} 0 & t_{\bm{k}} \\ t_{-\bm{k}
 
 Where \(t_{\bm{k}}=-t \sum_{\bm{\Delta}\in\{\bm{\delta}_1,\bm{\delta}_2,\bm{\delta}_3\}} e^{\ti \bm{k}\cdot \bm{\Delta}}\) and \(\hat \Psi_{\bm{k}}^\dagger = (\hat a_{\bm{k}}^\dagger ,\hat b_{\bm{k}}^\dagger)\).
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 With the Fourier transformation of the field operators:
 
@@ -204,7 +204,7 @@ $$\hat H=\hat \Psi_{\bm{k}}^\dagger \begin{bmatrix} 0 & t_{\bm{k}} \\ t_{-\bm{k}
 
 q.e.d.
 
-{{% /fold %}}
+{{< /fold >}}
 
 The energy level of such Hamiltonian is given by:
 
@@ -212,7 +212,7 @@ $$\epsilon(\bm{k})=\pm|t_{\bm{k}}|$$
 
 Where we used the fact that \(t_{\bm{k}}^*=t_{-\bm{k}}\) . And one can draw the band in \(\bm{k}\) space like:
 
-{{% center %}}<img name="preview" src="/imgs/notes/CondPhy/graphene_band.png" />{{% /center %}}
+{{< center >}}<img name="preview" src="/imgs/notes/CondPhy/graphene_band.png" />{{< /center >}}
 
 ![](/home/leonard/Documents/Blog/HugoSource/static/imgs/notes/CondPhy/graphene_band.png)
 

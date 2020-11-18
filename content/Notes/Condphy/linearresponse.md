@@ -23,7 +23,7 @@ To do so, consider the perturbation \(H'=-F A\) , where \(F\) is an external fie
 
 $$\bar A(t)-\langle A\rangle = \beta F \langle \delta A(t;x)\delta A(t=0;x)\rangle+\mathcal{O}(F^2)$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Note that As \(t\gt 0\) , \(A(t;x)\) is equal to \(A(x(t))\) , where \(x=x(t=0)\) , and the dynamics is governed by the Hamiltonian \(H\).
 Model Setup
@@ -38,7 +38,7 @@ Noting that \(H'(x)=-FA(x)\) , and let \(\delta A(t;x)=A(t;x)-\langle A(x)\rangl
 
 $$\bar A(t)-\langle A\rangle = \beta F \langle \delta A(t;x)\delta A(0;x)\rangle+\mathcal{O}(F^2)$$
 
-{{%/fold%}}
+{{</fold>}}
 
 This equation, referred to as the fluctuation-dissipation theorem, contains the precise meaning of <mark>the regression hypothesis</mark> : the relaxation of macroscopic displacement out of equilibrium obeys the same laws as the regression of spontaneous microscopic fluctuations in an equilibrium system.
 
@@ -112,7 +112,7 @@ $$\chi_R(t-t')=\text{Tr}\int_0^{\beta} \td \tau \hat \rho_0 (\partial_t \hat Q_I
 
 Where \(\hat \rho_0 = \frac 1 Z e^{-\beta \hat H_0}\) is the canonical density matrix
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 We need only prove the identity:
 
@@ -130,7 +130,7 @@ l.h.s. &=\frac 1 Z \text{Tr} e^{-\beta \hat H_0} e^{\ti \hat H_0 t/\hbar} \hat P
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 # Spectral Representation
 
@@ -140,7 +140,7 @@ _[Definition]_ : The `Spectral representation` , or the `spectral decomposition`
 
 $$\chi_R(\omega)=\int \td t \  e^{-\ti \omega t} \chi_R(t)=\frac 1 {\hbar } \int_{-\infty}^{\infty} \frac {\td u \ (1-e^{-\beta \hbar u})} {u-\omega-\ti\epsilon} \sum_{m,n}\frac {\exp(-\beta \hbar \omega_m)} {Z} P_{mn}Q_{nm}\delta\big(u-(\omega_n-\omega_m)\big)$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 If we treat the average \(\langle \cdots \rangle\) as thermal average. Then:
 
@@ -179,7 +179,7 @@ Then we can write it with the integral and delta function:
 
 $$\chi_R(\omega) = \frac 1 {\hbar} \int_{-\infty}^{\infty} \frac {\td u \ (1-e^{-\beta \hbar u})} {u-\omega-\ti\epsilon} \sum_{m,n}\frac {\exp(-\beta \hbar \omega_m)} {Z} P_{mn}Q_{nm}\delta\big(u-(\omega_n-\omega_m)\big)$$
 
-{{%/fold%}}
+{{</fold>}}
 
 _[Definition]_ : the `Spectral function` is defined as :
 
@@ -197,7 +197,7 @@ $$S(\omega)=2\hbar (1+f_{BE}(\hbar \omega))A(\omega)$$
 
 In which \(f_{BE}(x)=(e^{\beta x}-1)^{-1}\), is the Bose-Einstein distribution function. Where \(S\) represents the correlation in the ground state \(T=0\) or equilibrium \(T\gt 0\) , and \(A(\omega)\) is the imaginary parti of the retarded response function that represents the dissipation of a system in an external field.
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 We have:
 
@@ -219,7 +219,7 @@ Then we have:
 
 $$S(\omega)=2\hbar (1+f_{BE}(\hbar \omega)) A(\omega)$$
 
-{{%/fold%}}
+{{</fold>}}
 
 ## Symmetry of Retard Correlation Function
 
@@ -230,7 +230,7 @@ $$\begin{aligned}
 \chi_R(\omega)_{\hat P\hat Q} &= \chi_R(\omega)_{\hat Q^T \hat P^T}
 \end{aligned}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 With the spectral decomposition:
 
@@ -254,13 +254,13 @@ $$\begin{aligned}
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 _[Theorem]_ : In the presence of magnetic field \(\bm{B}\) , time reversal amounts to reversing the direction of the magnetic field such that \(\hat T \hat H(\bm{B})\hat T^{-1}=\hat H(-\bm{B})\) . For electron, \(\hat T=-\ti \sigma^y \hat K\) where \(\hat K\) is the conjugation operator. Andthe reciprocal relation for `spin-independent` operators \(\hat P,\hat Q\) is then:
 
 $$\chi_R(\omega;\bm{B})_{\hat P\hat Q}=\chi_R(\omega;-\bm{B})_{\hat Q^T\hat P^T}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 For the energy eigenstates \(\hat H(\bm{B})\ket{n(\bm{B})}=\hbar\omega_n(\bm{B})\ket{n(\bm{B})}\) , under the time-reversal we have:
 
@@ -301,7 +301,7 @@ $$\begin{aligned}
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 # Density Responses
 
@@ -319,7 +319,7 @@ Then the retard correlation function (response function) is:
 
 $$\chi_R(t) = \frac {\ti} {\hbar } \Theta(t) \sum_{m,n,k,l} P_{mn}Q_{kl} e^{\ti(\omega_m-\omega_n)t} \langle [\hat a_m^\dagger \hat a_n, \hat a_k^\dagger \hat a_l]\rangle$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 The operators in the interaction picture is:
 
@@ -342,7 +342,7 @@ $$\begin{aligned}
 &= \langle [\hat P_I(t-t'),\hat Q_I(0)]\rangle
 \end{aligned}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 Compute the thermal average with Wick's Theorem, at last we find:
 
@@ -353,7 +353,7 @@ $$\begin{aligned}
 
 Where \(f_m\) is the Fermi-Dirac distribution function: \(f_m=(e^{\beta(\hbar\omega_n -\mu)}+1)^{-1}\)
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 With the Fermion operators' commutation relation, we have:
 
@@ -388,7 +388,7 @@ The expression with respect to frequency can also be obtained with:
 
 $$\int \td t \ \Theta(t) e^{\ti \omega t} = \int_0^{\infty} e^{-\epsilon t + \ti \omega t} \td t= - \frac 1 {\ti \omega-\epsilon}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 ## Lindhard Function
 
@@ -426,7 +426,7 @@ $$\chi_R(\bm{q},\omega)=\frac {g_s} {\hbar} \int \frac {\td^3 \bm{k}} {(2\pi)^{3
 
 Where \(g_s=2\) is the spin degeneracy.
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 With the discussion we made for non-interacting system, we have:
 
@@ -475,11 +475,11 @@ $$\chi_R(\bm{k},\omega)=\frac {-1} {\hbar}\sum_\alpha \int \frac {\td^3 \bm{q}} 
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 The response function for a uniform non-interacting electron gas is known as the `Lindhard function`. Let's discuss its behavior here. <mark>This block is technical and full of mathematical computation.</mark>
 
-{{%fold "Technical details of Lindhard Function"%}}
+{{<fold "Technical details of Lindhard Function">}}
 
 With the dispersion relation of free-electron gas: \(\hbar\omega_{\bm{k}}=\frac {\hbar^2 \bm{k}^2} {2m}\), the response function can be written as:
 
@@ -532,7 +532,7 @@ $$A^{(T=0)}(\bm{q},\omega)=\frac {g_s g(0)\pi} {8x} \Big\{\Big(1-(\frac {u} x+x)
 
 Where \(u=\omega/4\omega_F\).
 
-{{%/fold%}}
+{{</fold>}}
 
 ## Spin Density Response
 

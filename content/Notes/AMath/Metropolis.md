@@ -43,7 +43,7 @@ _[Theorem]_ : **Chapman-Kolmogorov equation** , for a Markov process, one has:
 
 $$\mathbb{P}(X_n=j|X_0=i) = \sum_k \mathbb{P}(X_n=j | X_m = k)\mathbb{P}(X_m = k|X_0=i) \ ; \ 1\leq m \leq n-1 $$
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 According to the Markov property of \(X_n\) , one has:
 
@@ -71,7 +71,7 @@ Where we used the fact that:
 
 $$\sum_{k}\mathbb{P}(X_n=j|X_{n-1}=k)\mathbb{P}(X_{n-1}=k|X_{n-2}=k') = \mathbb{P}(X_{n}=j|X_{n-2}=k')$$
 
-{{% /fold%}}
+{{< /fold>}}
 
 _[Definition]_ : A Markov chain is called **stationary** or **time-homogeneous** , if \(p_{j,k}(n)\) is independent of \(n\). **From now on we will discuss only stationary Markov chain**. And let \(\bm{P}\) be the matrix whose \((i,j)\)-th element is `transition probability` \(p_{i,j}\) , that is why \(\bm{P}\) is called the `Transition Probability Matrix`(TPM)
 
@@ -154,7 +154,7 @@ _[Theorem]_ : TPM of a Markov chain is \(\bm{P}\), then:
 1.  If \(\bm{P}\) is `irreducible` , then there exists exactly one invariant distribution
 2.  If \(\bm{P}\) is `reducible`, then there might be infinity many invariant distributions
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 First of all, let us consider the spectral radius of \(\bm{P}\) :
 
@@ -186,7 +186,7 @@ If there are more than 1 stochastic matrices in these \(\{\bm{A}_i\}\), we can f
 
 Obviously, such argument might be not true if \(\bm{U}\) does not have more than 1 stochastic matrices in its block diagonal, i.e., reducibility is not a sufficient condition for the non-uniqueness of the invariant distribution.
 
-{{% /fold%}}
+{{< /fold>}}
 
 _[Theorem]_ : If the TPM is primitive, (\(\exists s \in \mathbb{N}\Rightarrow \forall i,j; (\bm{P}^s)_{ij} \gt 0\)), then:
 
@@ -196,7 +196,7 @@ _[Theorem]_ : If the TPM is primitive, (\(\exists s \in \mathbb{N}\Rightarrow \f
 
     $$\bm{\mu}_n = \bm{\mu}_0 \bm{P}^n \rightarrow \bm{\pi} \ , \ \text{exponentially fast as } n \rightarrow \infty$$
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 We need only to prove the second assertion, because the first has been proved by Perron-Frobenius theorem if we notice \(\text{primitive}\Rightarrow \text{irreducible}\)
 
@@ -247,7 +247,7 @@ $$d(\bm{\mu}_{n},\bm{\pi}) \leq d(\bm{\mu}_{n-sk},\bm{\pi})(1-\alpha)^k\leq (1-\
 
 That is to say, the sequence converges exponentially.
 
-{{% /fold%}}
+{{< /fold>}}
 
 This theorem hold for a weaker condition(irreducible):
 
@@ -259,10 +259,10 @@ _[Theorem]_ : If the TPM is irreducible, (\(\forall i,j;\exists s \in \mathbb{N}
 
     $$\bm{\pi}_n  = \frac 1 n \sum_{j=1}^n \bm{\mu}_0 \bm{P}^j \rightarrow \bm{\pi} \ , \ \text{exponentially fast as } n\rightarrow \infty$$
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 We need only to prove the second assertion because the first one has been proved to be true by Perron-Frobenius theorem.
 
 For the second assertion, we should point out 
 
-{{% /fold %}}
+{{< /fold >}}

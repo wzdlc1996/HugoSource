@@ -27,7 +27,7 @@ _[Theorem]_ : For the special case of all \(\bm{h}_i=0\) , the average of local 
 
 $$\langle \bm{I}_i\rangle \Big|_{\bm{h}_j=0} =0$$
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 Because the Hamiltonian now is only dependent of \(\theta_i-\theta_j\) , so we know that it should be invariant under the transformation of: \(\theta_i\rightarrow \theta_i+\pi\) . Which means:
 
@@ -39,7 +39,7 @@ $$\begin{aligned}
 
 q.e.d.
 
-{{% /fold%}}
+{{< /fold>}}
 
 Such theorem have a generalized form for arbitrary system:
 

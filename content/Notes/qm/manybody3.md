@@ -13,328 +13,407 @@ summary: "Classnote for the class in PKU: 'Quantum Theory for Manybody System'. 
 
 `Path integral formalism` is similar to the Huygens principle in optics. The wave function, or complex probability amplitude should be equal to the interference among all possible path:
 
-<div>$$\psi \propto \sum_{\text{path}} e^{\ti \phi(\text{path})}$$</div>
+{{< mathjax >}}
+$$\psi \propto \sum_{\text{path}} e^{\ti \phi(\text{path})}$$
+{{< /mathjax >}}
 
 We will use this to introduce the field theory but not from the equal time commutation relationship. First of all, we take a short review for the path integral.
 
 ## Path Integral of 1-D System
 
-Consider the 1-D Hamiltonian: `$\hat H=\frac {\hat p^2} {2m} +V(\hat x)$` . The propagator can be written as functional integral with the time-slicing technique:
+Consider the 1-D Hamiltonian: $\hat H=\frac {\hat p^2} {2m} +V(\hat x)$ . The propagator can be written as functional integral with the time-slicing technique:
 
-<div>$$U(x,t;x',t')=\bra{x}\hat U(t,t')\ket{x'}=\int \td q_{M-1}\cdots \td q_1 \bra{x}\hat U(t,t_{M-1})\ket{q_{M-1}}\cdots \bra{q_1}\hat U(t_1,t')\ket{x'}$$</div>
+{{< mathjax >}}
+$$U(x,t;x',t')=\bra{x}\hat U(t,t')\ket{x'}=\int \td q_{M-1}\cdots \td q_1 \bra{x}\hat U(t,t_{M-1})\ket{q_{M-1}}\cdots \bra{q_1}\hat U(t_1,t')\ket{x'}$$
+{{< /mathjax >}}
 
-Where `$t_i=t'+ i \Delta t$` , and `$\Delta t=(t-t')/M$`. So `$t_M=t, t_0=t'$` . Let `$q_M=x, q_0=x'$` , we have the generic form of the elements of matrix:
+Where $t_i=t'+ i \Delta t$ , and $\Delta t=(t-t')/M$. So $t_M=t, t_0=t'$ . Let $q_M=x, q_0=x'$ , we have the generic form of the elements of matrix:
 
-<div>$$\bra{q_{n+1}}\hat U(t_{n+1},t_n)\ket{q_n} = \int \frac {\td p_{n+1}} {2\pi\hbar} \exp\Big\{\frac {\ti\Delta t} {\hbar} \Big(p_{n+1} \cdot \frac {q_{n+1}-q_n} {\Delta t}-H(p_{n+1},q_n)\Big)\Big\}$$</div>
+{{< mathjax >}}
+$$\bra{q_{n+1}}\hat U(t_{n+1},t_n)\ket{q_n} = \int \frac {\td p_{n+1}} {2\pi\hbar} \exp\Big\{\frac {\ti\Delta t} {\hbar} \Big(p_{n+1} \cdot \frac {q_{n+1}-q_n} {\Delta t}-H(p_{n+1},q_n)\Big)\Big\}$$
+{{< /mathjax >}}
 
 So, in such way one can write the propagator as the functional integral for infinite dimensional momentum and coordinate:
 
-<div>$$U(x,t;x',t')=\int_{q(t')=x'}^{q(t)=x} \mathcal{D}[q]\mathcal{D}[p] \ \exp\Big(\frac \ti \hbar S[p,q]\Big)$$</div>
+{{< mathjax >}}
+$$U(x,t;x',t')=\int_{q(t')=x'}^{q(t)=x} \mathcal{D}[q]\mathcal{D}[p] \ \exp\Big(\frac \ti \hbar S[p,q]\Big)$$
+{{< /mathjax >}}
 
-Where `$\mathcal{D}[p]\mathcal{D}[q]=(2\pi\hbar)^{-M}\td q_{M-1}\cdots \td q_1 \td p_{M}\cdots \td p_1$` , and:
+Where $\mathcal{D}[p]\mathcal{D}[q]=(2\pi\hbar)^{-M}\td q_{M-1}\cdots \td q_1 \td p_{M}\cdots \td p_1$ , and:
 
-<div>$$S[p,q]=\int_{t'}^t \td t \ p(t) \cdot \flo{q}(t) - H\big(p(t),q(t)\big)$$</div>
+{{< mathjax >}}
+$$S[p,q]=\int_{t'}^t \td t \ p(t) \cdot \flo{q}(t) - H\big(p(t),q(t)\big)$$
+{{< /mathjax >}}
 
 One can also write it as the form:
 
-<div>$$U(x,t;x',t')=\int_{q(t')=x'}^{q(t)=x} \mathcal{D}[q] \ \exp\Big(\frac \ti \hbar \int_{t'}^t \td t \ \big(\frac 1 {2m} \flo q^2 -V(q)\big)\Big)$$</div>
+{{< mathjax >}}
+$$U(x,t;x',t')=\int_{q(t')=x'}^{q(t)=x} \mathcal{D}[q] \ \exp\Big(\frac \ti \hbar \int_{t'}^t \td t \ \big(\frac 1 {2m} \flo q^2 -V(q)\big)\Big)$$
+{{< /mathjax >}}
 
-Where `$\mathcal{D}[q]=\big(\frac {m} {2\pi\hbar\ti\Delta t}\big)^{M/2}\td q_{M-1}\cdots \td q_1$` . For detail see: [propagator-and-path-integral]({{< ref "/Notes/qm/dynamics.md#propagator-and-path-integral">}})
+Where $\mathcal{D}[q]=\big(\frac {m} {2\pi\hbar\ti\Delta t}\big)^{M/2}\td q_{M-1}\cdots \td q_1$ . For detail see: [propagator-and-path-integral]({{< ref "/Notes/qm/dynamics.md#propagator-and-path-integral">}})
 
 ## Imaginary Time Path Integral and the Partition Function
 
 According to the statistical physics, the `canonical partition function` can be written as:
 
-<div>$$\mathcal{Z}=\text{Tr} e^{-\beta \hat H}=\int \td x \ \bra{x}e^{-\beta \hat H}\ket{x}\sim \int \td x  \ U(x,-\ti\hbar\beta,x,0)$$</div>
+{{< mathjax >}}
+$$\mathcal{Z}=\text{Tr} e^{-\beta \hat H}=\int \td x \ \bra{x}e^{-\beta \hat H}\ket{x}\sim \int \td x  \ U(x,-\ti\hbar\beta,x,0)$$
+{{< /mathjax >}}
 
-Which has a semblance form as the path integral, but the time variable and the integral of initial/final coordinates. Here we introduce the Wick rotation, which is also known as the imaginary time transform: `$t=-\ti\tau$`.
+Which has a semblance form as the path integral, but the time variable and the integral of initial/final coordinates. Here we introduce the Wick rotation, which is also known as the imaginary time transform: $t=-\ti\tau$.
 
 So we have:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \mathcal{Z}&=\int \prod_{k=1}^M \frac {\td p_k \td q_k} {2\pi\hbar} \ \exp\Big\{\frac 1 \hbar \int_0^{\hbar\beta} \td \tau \ \Big(\ti p \cdot \frac {\td q} {\td \tau} - H(p,q)\Big)  \Big\} \\
 &=\int_{q(\beta\hbar)=q(0)} \mathcal{D}[q] \ \exp\Big\{-\frac 1 \hbar \int_0^{\beta\hbar} \td \tau \Big(\frac 1 {2m} \flo q^2 +V(q)\Big) \Big\}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Where the integral contains the coordinate `$q_M=q_0$`. And the second equality is come from the form of Hamiltonian `$H(q,p)=\frac {p^2} {2m} + V(q)$` with integrating out all momentum: `$\mathcal{D}[q]=\big(\frac m {2\pi\hbar \Delta \tau}\big)^{M/2} \td q_M\cdots \td q_1$`.
+Where the integral contains the coordinate $q_M=q_0$. And the second equality is come from the form of Hamiltonian $H(q,p)=\frac {p^2} {2m} + V(q)$ with integrating out all momentum: $\mathcal{D}[q]=\big(\frac m {2\pi\hbar \Delta \tau}\big)^{M/2} \td q_M\cdots \td q_1$.
 
-One should always note that, <mark>all above functional integral should be calculated by their definition of discrete version.</mark> And take limit of `$\Delta t ( \Delta \tau)\rightarrow 0$` at the end.
+One should always note that, <mark>all above functional integral should be calculated by their definition of discrete version.</mark> And take limit of $\Delta t ( \Delta \tau)\rightarrow 0$ at the end.
 
 # Coherent State Path Integral
 
-For many-body system, we need a closure relation like `$\int \td^3 \bm{x} \ \ket{\bm{x}}\bra{\bm{x}}=1$` to develop a path integral formalism. Here we choose the set of coherent state, which has the closure relation:
+For many-body system, we need a closure relation like $\int \td^3 \bm{x} \ \ket{\bm{x}}\bra{\bm{x}}=1$ to develop a path integral formalism. Here we choose the set of coherent state, which has the closure relation:
 
-<div>$$\int \td\phi^*\td\phi  \ e^{-\phi^*\cdot \phi} \ket{\phi}\bra{\phi}=1$$</div>
+{{< mathjax >}}
+$$\int \td\phi^*\td\phi  \ e^{-\phi^*\cdot \phi} \ket{\phi}\bra{\phi}=1$$
+{{< /mathjax >}}
 
-Where `$\phi=(\phi_1,\cdots,\phi_\alpha,\cdots)$` is vector of complex numbers or Grassmann variables
+Where $\phi=(\phi_1,\cdots,\phi_\alpha,\cdots)$ is vector of complex numbers or Grassmann variables
 
 Which holds for
-1.  Boson when `$\phi_\alpha$` are complex numbers and integral measure `$\td\phi^*\td\phi=\prod_\alpha \frac {\td\text{Re}\phi_\alpha\td \text{Im}\phi_\alpha} {\pi}$`
-2.  Fermion when `$\phi_\alpha$` are Grassman variables and integral measure `$\td\phi^*\td\phi=\prod_\alpha \td\phi_\alpha^*\td \phi_\alpha$`
+1.  Boson when $\phi_\alpha$ are complex numbers and integral measure $\td\phi^*\td\phi=\prod_\alpha \frac {\td\text{Re}\phi_\alpha\td \text{Im}\phi_\alpha} {\pi}$
+2.  Fermion when $\phi_\alpha$ are Grassman variables and integral measure $\td\phi^*\td\phi=\prod_\alpha \td\phi_\alpha^*\td \phi_\alpha$
 
-In the following we do not distinguish the Fermion and Boson, and `$\phi$` is the vector of complex numbers or Grassman variables without bold.
+In the following we do not distinguish the Fermion and Boson, and $\phi$ is the vector of complex numbers or Grassman variables without bold.
 
-Assuming Hamiltonian has the normal ordered form: `$\hat H=H(\hat{\bm{a}}^\dagger,\hat{\bm{a}})$`
+Assuming Hamiltonian has the normal ordered form: $\hat H=H(\hat{\bm{a}}^\dagger,\hat{\bm{a}})$
 
 Like we did before, with time splicing we have the propagator with Coherent Path integral:
 
 _[Theorem]_ : The propagator has the form:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 U(\phi_f^*,t_f;\phi_i,t_i) &\equiv \bra{\phi_f} \hat U(t_f,t_i)\ket{\phi_i} \\
 &= \lim_{M\rightarrow \infty} \int_{\phi_0=\phi_i}^{\phi_M^*=\phi_f^*} \prod_{k=1}^{M-1} \td \phi_k^*\td\phi_k \ \exp\Big\{\phi_M^* \cdot \phi_{M-1} - \ti \frac {\Delta t H(\phi_M^*,\phi_{M-1})} {\hbar} + \frac {\ti \Delta t} {\hbar} \sum_{k=1}^{M-1} \ti \hbar \phi_k^* \cdot \frac {\phi_k-\phi_{k-1}} {\Delta t} - H(\phi_k^*,\phi_{k-1})\Big\} \\
 &\equiv \int_{\phi(t_i)=\phi_i}^{\phi^*(t_f)=\phi_f^*} \mathcal{D}[\phi^*(t)]\mathcal{D}[\phi(t)] \ \exp\Big\{\phi_f^*\cdot\phi_f+\frac {\ti } \hbar \int_{t_i}^{t_f}\td t \ \Big(\ti\hbar \phi^*(t) \cdot \frac {\td \phi(t)} {\td t} -H\big(\phi^*(t),\phi(t)\big)\Big) \Big\}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
 Note the subscripts index in the time slices.
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
-We slice time into `$M$` intervals, which has the length `$\Delta t=\frac {t_f-t_i} M$` , and `$t_k=t_i+k \Delta t$` . So `$t_0=t_i, t_M=t_f$` . Like we did above we insert closure relation of coherent state and then have:
+We slice time into $M$ intervals, which has the length $\Delta t=\frac {t_f-t_i} M$ , and $t_k=t_i+k \Delta t$ . So $t_0=t_i, t_M=t_f$ . Like we did above we insert closure relation of coherent state and then have:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 U(\phi_f^*,t_f;\phi_i,t_i)&\equiv \bra{\phi_f}\hat U(t_f,t_i)\ket{\phi_i} \\
 &= \bra{\phi_f} \hat U(t_M,t_{M-1})\hat U(t_{M-1},t_{M-2})\cdots \hat U(t_2,t_1)\ket{\phi_i} \\
 &=\bra{\phi_M}\hat U(t_M,t_{M-1}) \int \td\phi_{M-1}^* \td \phi_{M-1} e^{-\phi_{M-1}^*\cdot \phi_{M-1}} \ket{\phi_{M-1}}\bra{\phi_{M-1}}\cdots \ket{\phi_0}\\
 &=\int_{\phi_0=\phi_i}^{\phi_M^*=\phi_f^*} \prod_{k=1}^{M-1} \Big(\td \phi_k^* \td \phi_k \ e^{-\phi_k^*\cdot \phi_k}\Big) \bra{\phi_M}\hat U(t_M,t_{M-1})\ket{\phi_{M-1}}\cdots \bra{\phi_1}\hat U(t_1,t_0)\ket{\phi_0}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
 Where we used the fact that a pair of Grassmann variable is commutable to any Grassmann number. So this equality hold also for Fermion system.
 
 Then for one matrix element of the time-evolution operator:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \bra{\phi_{k+1}}\hat U(t_{k+1},t_k)\ket{\phi_k} &= \bra{\phi_{k+1}} e^{-\ti \hat H \Delta t/\hbar} \ket{\phi_k} \\
 &=\bra{\phi_{k+1}} 1 -\frac {\ti \Delta t} {\hbar} H(\hat{\bm{a}}^\dagger,\hat{\bm{a}}) + \mathcal{O}(\Delta t^2)\ket{\phi_k} \\
 &=e^{\phi_{k+1}^* \cdot \phi_k}\big(1 - \frac {\ti \Delta t} {\hbar} H(\phi_{k+1}^*,\phi_k) +\mathcal{O}(\Delta t^2)\big) \\
 &\approx \exp\Big(\phi_{k+1}^*\cdot \phi_k-\frac {\ti \Delta t} {\hbar} H(\phi_{k+1}^*,\phi_k)\Big)
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
 So, the product of all matrix elements of time-evolution operator should be (also used the fact that a pair of Grassmann number is commutative to others)
 
-<div>$$\bra{\phi_M}\hat U(t_M,t_{M-1})\ket{\phi_{M-1}}\cdots \bra{\phi_1}\hat U(t_1,t_0)\ket{\phi_0}\approx\exp\Big(\sum_{k=1}^{M} \phi_{k}^*\cdot \phi_{k-1}-\frac {\ti \Delta t} \hbar \sum_{k=1}^{M} H(\phi_k^*,\phi_{k-1})\Big)$$</div>
+{{< mathjax >}}
+$$\bra{\phi_M}\hat U(t_M,t_{M-1})\ket{\phi_{M-1}}\cdots \bra{\phi_1}\hat U(t_1,t_0)\ket{\phi_0}\approx\exp\Big(\sum_{k=1}^{M} \phi_{k}^*\cdot \phi_{k-1}-\frac {\ti \Delta t} \hbar \sum_{k=1}^{M} H(\phi_k^*,\phi_{k-1})\Big)$$
+{{< /mathjax >}}
 
 Then we have:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 U(\phi_f^*,t_f;\phi_i,t_i)&=\int_{\phi_0=\phi_i}^{\phi_M^*=\phi_f^*} \prod_{k=1}^{M-1} \td \phi_k^* \td \phi_k \ \exp\Big(-\sum_{k=1}^{M-1} \phi_k^*\cdot \phi_k +\sum_{k=1}^M \phi_k^*\cdot \phi_{k-1} - \frac {\ti \Delta t} {\hbar} \sum_{k=1}^M H(\phi_k^*,\phi_{k-1})\Big) \\
 &=\int_{\phi_0=\phi_i}^{\phi_M^*=\phi_f^*} \prod_{k=1}^{M-1} \td \phi_k^* \td \phi_k \ \exp\Big(\phi_M^*\cdot \phi_{M-1}+\frac {\ti \Delta t} {\hbar}\sum_{k=1}^{M-1}\ti \hbar \phi_k^* \cdot \frac {\phi_{k}-\phi_{k-1}} {\Delta t} - \frac {\ti \Delta t} {\hbar} \sum_{k=1}^M H(\phi_k^*,\phi_{k-1})\Big) \\
 &=\int_{\phi_0=\phi_i}^{\phi_M^*=\phi_f^*} \prod_{k=1}^{M-1} \td \phi_k^*\td\phi_k \ \exp\Big\{\phi_M^* \cdot \phi_{M-1} - \ti \frac {\Delta t H(\phi_M^*,\phi_{M-1})} {\hbar} + \frac {\ti \Delta t} {\hbar} \sum_{k=1}^{M-1} \ti \hbar \phi_k^* \cdot \frac {\phi_k-\phi_{k-1}} {\Delta t} - H(\phi_k^*,\phi_{k-1})\Big\}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Then with the `$M\rightarrow \infty$` , we can write down the form of functional integral:
+Then with the $M\rightarrow \infty$ , we can write down the form of functional integral:
 
-<div>$$U(\phi_f^*,t_f;\phi_i,t_i)=\int_{\phi(t_i)=\phi_i}^{\phi^*(t_f)=\phi_f^*} \mathcal{D}[\phi^*(t)]\mathcal{D}[\phi(t)] \ \exp\Big\{\phi_f^*\cdot\phi_f+\frac {\ti } \hbar \int_{t_i}^{t_f}\td t \ \Big(\ti\hbar \phi^*(t) \cdot \frac {\td \phi(t)} {\td t} -H\big(\phi^*(t),\phi(t)\big)\Big) \Big\}$$</div>
+{{< mathjax >}}
+$$U(\phi_f^*,t_f;\phi_i,t_i)=\int_{\phi(t_i)=\phi_i}^{\phi^*(t_f)=\phi_f^*} \mathcal{D}[\phi^*(t)]\mathcal{D}[\phi(t)] \ \exp\Big\{\phi_f^*\cdot\phi_f+\frac {\ti } \hbar \int_{t_i}^{t_f}\td t \ \Big(\ti\hbar \phi^*(t) \cdot \frac {\td \phi(t)} {\td t} -H\big(\phi^*(t),\phi(t)\big)\Big) \Big\}$$
+{{< /mathjax >}}
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 ## Partition Function and Green's Function
 
 Use the wick rotation, one can also express Partition function and Green's function with path integral:
 
-_[Theorem]_ : For coherent state, trace requires a `different boundary` condition for Fermion: `$\phi_0=\phi , \phi_M^*=\zeta \phi$` . For detail see [Coherent-State]({{< ref "/Notes/qm/manybody1.md" >}}). With this in mind, one has:
+_[Theorem]_ : For coherent state, trace requires a `different boundary` condition for Fermion: $\phi_0=\phi , \phi_M^*=\zeta \phi$ . For detail see [Coherent-State]({{< ref "/Notes/qm/manybody1.md" >}}). With this in mind, one has:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \mathcal{Z} &\equiv \text{Tr} e^{-\beta \hat K} = \int \td \phi^* \td\phi \ e^{-\phi^*\cdot \phi} \bra{\zeta \phi} e^{-\beta\hat K}\ket{\phi} \\
 &=\lim_{M\rightarrow\infty} \int \prod_{k=1}^M \td \phi_k^* \td \phi_k \ \exp\Big(-\Delta t\sum_{k=1}^M \phi_k^* \big(\frac {\phi_k-\phi_{k-1}} {\Delta t}-\frac {\mu\phi_{k-1}} {\hbar}\big) +H(\phi_k^*,\phi_{k-1}) /\hbar\Big) \\
 &\equiv \int_{\phi(\beta\hbar)=\zeta \phi(0)} \mathcal{D}[\phi^*(\tau)]\mathcal{D}[\phi(\tau)] \ \exp\Big(-\int_0^{\beta\hbar} \td \tau \ \phi^*(\tau)\cdot \big(\frac {\td } {\td \tau}-\frac {\mu} {\hbar}\big)\phi(\tau)+\frac 1 \hbar H(\phi^*(\tau),\phi(\tau))\Big)
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
-Similarly to the propagator, with the Wick rotation `$t=-\ti \tau$` , we have `$e^{-\beta \hat K}= e^{-\ti \hat K(-\ti \beta\hbar)/\hbar}$`
+Similarly to the propagator, with the Wick rotation $t=-\ti \tau$ , we have $e^{-\beta \hat K}= e^{-\ti \hat K(-\ti \beta\hbar)/\hbar}$
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \bra{\zeta\phi} e^{-\beta\hat K} \ket{\phi} &\approx \int_{\phi_0=\phi_i}^{\phi_M^*=\zeta \phi^*} \prod_{k=1}^{M-1} \td \phi_k^*\td \phi_k \ \exp\Big(\phi_M^*\cdot \phi_{M-1}+\frac {\ti (-\ti)\Delta \tau} {\hbar}\sum_{k=1}^{M-1}\ti \hbar \phi_k^*\cdot \frac {\phi_k-\phi_{k-1}} {-\ti\Delta \tau} -\frac {\ti (-\ti\Delta \tau)} {\hbar}\sum_{k=1}^M K(\phi_k^*,\phi_{k-1})\Big) \\
 &=\int_{\phi_0=\phi_i}^{\phi_M^*=\zeta \phi^*} \prod_{k=1}^{M-1} \td \phi_k^*\td \phi_k \ \exp\Big(\phi_M^*\cdot \phi_{M-1}-\frac {\Delta \tau} {\hbar}\sum_{k=1}^{M-1}\hbar \phi_k^*\cdot \frac {\phi_k-\phi_{k-1}} {\Delta \tau} -\frac {\Delta \tau} {\hbar}\sum_{k=1}^M H(\phi_k^*,\phi_{k-1})-\mu \phi_k^*\cdot \phi_{k-1}\Big) \\
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
 So the trace:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \mathcal{Z}&\approx \int \td \phi^* \td \phi \ e^{-\phi^*\cdot \phi}\bra{\zeta \phi}e^{-\beta \hat K}\ket{\phi} \\
 &= \int \prod_{k=1}^M \td\phi_k^*\td\phi_k \exp\Big(-\phi_M^*\cdot (\phi_M-\phi_{M-1})-\frac {\Delta \tau} {\hbar}\sum_{k=1}^{M-1}\hbar \phi_k^*\cdot \frac {\phi_k-\phi_{k-1}} {\Delta \tau} -\frac {\Delta \tau} {\hbar}\sum_{k=1}^M H(\phi_k^*,\phi_{k-1})-\mu \phi_k^*\cdot \phi_{k-1}\Big)\\
 &=\int \prod_{k=1}^M \td\phi_k^*\td\phi_k \exp\Big\{-\frac {\Delta \tau} {\hbar} \sum_{k=1}^M \hbar \phi_k^* \cdot \Big( \frac {\phi_k-\phi_{k-1}} {\Delta \tau} -\frac {\mu} \hbar \phi_{k-1}\Big)+ H(\phi_k^*,\phi_{k-1})\Big\}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Take the limit of `$M\rightarrow \infty$` , finally we have:
+Take the limit of $M\rightarrow \infty$ , finally we have:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \mathcal{Z}&=\lim_{M\rightarrow\infty} \int_{\phi_M=\zeta \phi_0} \prod_{k=1}^M \td \phi_k^*\td \phi_k \ \exp\Big\{-\frac {\Delta \tau} {\hbar} \sum_{k=1}^M \hbar \phi_k^* \cdot \Big( \frac {\phi_k-\phi_{k-1}} {\Delta \tau} -\frac {\mu} \hbar \phi_{k-1}\Big)+ H(\phi_k^*,\phi_{k-1})\Big\}\\
 &=\int_{\phi(\beta\hbar)=\zeta\phi(0)} \mathcal{D}[\phi^*(\tau)]\mathcal{D}[\phi(\tau)] \ \exp\Big\{-\int_0^{\beta\hbar}\td \tau \ \Big(\phi^*(\tau)\cdot \big(\frac {\td} {\td\tau} - \frac {\mu} {\hbar}\big)\phi(\tau)+\frac 1 {\hbar} H(\phi^*(\tau),\phi(\tau))\Big) \Big\}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 Before we introduce the path integral formalism of Green's function, we introduce the following theorem first, which shows the relation between time-ordered expectation value and path integral.
 
-_[Theorem]_ : For a set of annihilation/creation operators `$\hat a_{\alpha_i}(t) , \hat a_{\alpha_i'}^\dagger(t)$` , the time-ordered element of matrix is equal to the path integral:
+_[Theorem]_ : For a set of annihilation/creation operators $\hat a_{\alpha_i}(t) , \hat a_{\alpha_i'}^\dagger(t)$ , the time-ordered element of matrix is equal to the path integral:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \bra{\phi_f}\hat U(t_f,0)\mathcal{T}\Big\{\hat a_{\alpha_1}(t_1)&\cdots \hat a_{\alpha_n}(t_n)\hat a_{\alpha'_1}^\dagger(t'_1)\cdots \hat a_{\alpha'_n}(t'_n) \Big\}\hat U(0,t_i)\ket{\phi_i}\\
 &=\int_{\phi(t_i)=\phi_i}^{\phi^*(t_f)=\phi_f^*} \mathcal{D}[\phi^*(t)]\mathcal{D}[\phi(t)] \ \phi_{\alpha_1}(t_1)\cdots \phi_{\alpha_n}(t_n)\phi^*_{\alpha'_1}(t'_1)\cdots \phi^*_{\alpha'_n}(t_n') e^{\frac {\ti} {\hbar} S[\phi^*(t),\phi(t)]}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Let us begin with a simpler question: How to compute the matrix elements of a single field operator with Path Integral? . The answer is
 
-_[Lemma]_ : For a single field operator (or annihilation/creation operator), with the condition `$t_i\lt t\lt t_f$`, one has:
+_[Lemma]_ : For a single field operator (or annihilation/creation operator), with the condition $t_i\lt t\lt t_f$, one has:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \bra{\phi_f}\hat U(t_f,0) \hat a_\alpha(t)\hat U(0,t_i)\ket{\phi_i}&=\int_{\phi(t_i)=\phi_i}^{\phi^*(t_f)=\phi_f^*}\mathcal{D}[\phi^*(t)]\mathcal{D}[\phi(t)] \ \phi(t)e^{\frac \ti \hbar S[\phi^*(t),\phi(t)]} \\
 \bra{\phi_f}\hat U(t_f,0) \hat a_\alpha^\dagger(t)\hat U(0,t_i)\ket{\phi_i}&=\int_{\phi(t_i)=\phi_i}^{\phi^*(t_f)=\phi_f^*}\mathcal{D}[\phi^*(t)]\mathcal{D}[\phi(t)] \ \phi_\alpha^*(t)e^{\frac \ti \hbar S[\phi^*(t),\phi(t)]}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Where `$\hat O(t)=\hat U(0,t)\hat O\hat U(t,0)$` is its Heisenberg form. We will proof this lemma first:
+Where $\hat O(t)=\hat U(0,t)\hat O\hat U(t,0)$ is its Heisenberg form. We will proof this lemma first:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \bra{\phi_f}\hat U(t_f,0) \hat O(t)\hat U(0,t_i)\ket{\phi_i} =& \bra{\phi_f}\hat U(t_f,0)\hat U(0,t)\hat O \hat U(t,0)\hat U(0,t_i)\ket{\phi_i} \\
 =& \int \td \phi^*\td\phi e^{-\phi^*\cdot \phi} \int \td \phi'^*\td\phi' e^{-\phi'^*\cdot \phi'} \Big\{U(\phi_f^*,t_f;\phi,t) e^{\phi^*\cdot \phi'}O(\phi^*,\phi')U(\phi'^*,t;\phi_i,t_i)\Big\}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Remember, we do not need to constraint `$t_i\lt t\lt t_f$` as long as we do not expand the propagator into path integral. So the expression above works for arbitrary `$t_i,t,t_f$` .
+Remember, we do not need to constraint $t_i\lt t\lt t_f$ as long as we do not expand the propagator into path integral. So the expression above works for arbitrary $t_i,t,t_f$ .
 
-1.  Let us consider the case of Boson. So the integral measure `$\td\phi^*\td\phi=\prod_\alpha \frac {\td \phi_\alpha^* \td \phi_\alpha} {2\pi\ti}$` and `$\phi_\alpha$` are c-numbers. Let us first consider a little more general case:
+1.  Let us consider the case of Boson. So the integral measure $\td\phi^*\td\phi=\prod_\alpha \frac {\td \phi_\alpha^* \td \phi_\alpha} {2\pi\ti}$ and $\phi_\alpha$ are c-numbers. Let us first consider a little more general case:
 
-    If `$O$` is just a function of `$\hat{\bm{a}}$` . That is `$O(\phi^*,\phi')=O(\phi')$` . So we can firstly complete the integral of `$\phi^*,\phi$` . Main part is:
+    If $O$ is just a function of $\hat{\bm{a}}$ . That is $O(\phi^*,\phi')=O(\phi')$ . So we can firstly complete the integral of $\phi^*,\phi$ . Main part is:
 
-    <div>$$\begin{aligned}
+    {{< mathjax >}}
+$$\begin{aligned}
     \int \td \phi^* \td\phi \ e^{-\phi^*\cdot \phi} e^{\phi^*\cdot \phi'} U(\phi_f^*,t_f;\phi,t) &= \bra{\phi_f}\hat U(t_f,t)\int \td \phi^* \td\phi \ e^{-\phi^*\cdot \phi} e^{\phi^*\cdot \phi'} \ket{\phi}
-    \end{aligned}$$</div>
+    \end{aligned}$$
+{{< /mathjax >}}
 
-    We will show that the above integral `$\int \td\phi^*\td\phi e^{-\phi^*\cdot(\phi-\phi')}\ket{\phi} = \ket{\phi'}$` . Let `$\bra{z}$` is an arbitrary coherent state:
+    We will show that the above integral $\int \td\phi^*\td\phi e^{-\phi^*\cdot(\phi-\phi')}\ket{\phi} = \ket{\phi'}$ . Let $\bra{z}$ is an arbitrary coherent state:
 
-    <div>$$\begin{aligned}
+    {{< mathjax >}}
+$$\begin{aligned}
     \bra{z}\int \td \phi^* \td\phi \ e^{-\phi^*\cdot \phi} e^{\phi^*\cdot \phi'}\ket{\phi} &= \int \td\phi^* \td\phi \ e^{-\phi^*\cdot \phi+\phi^*\cdot \phi'+z^*\cdot \phi} \\
     &=e^{z^*\cdot \phi'} = \bra{z} \phi'\rangle
-    \end{aligned}$$</div>
+    \end{aligned}$$
+{{< /mathjax >}}
 
     Where we used the Gaussian integral for c-numbers:
 
-    <div>$$\int \prod_\alpha \frac {\td z_\alpha^*\td z_\alpha} {2\pi\ti} \exp\Big(-\bm{z}^\dagger \bm{H}\bm{z}+\bm{J}^\dagger\bm{z}+\bm{z}^\dagger\bm{J}\Big)=(\det \bm{H})^{-1}e^{-\bm{J}^\dagger\bm{H}\bm{J}}$$</div>
+    {{< mathjax >}}
+$$\int \prod_\alpha \frac {\td z_\alpha^*\td z_\alpha} {2\pi\ti} \exp\Big(-\bm{z}^\dagger \bm{H}\bm{z}+\bm{J}^\dagger\bm{z}+\bm{z}^\dagger\bm{J}\Big)=(\det \bm{H})^{-1}e^{-\bm{J}^\dagger\bm{H}\bm{J}}$$
+{{< /mathjax >}}
 
     With such conclusion, we can write the integral as:
 
-    <div>$$\bra{\phi_f}\hat U(t_f,0)\hat O(t)\hat U(0,t_i)\ket{\phi_i}=\int \td\phi^*\td\phi \ U(\phi_f^*,t_f;\phi,t)O(\phi)U(\phi^*,t;\phi_i,t_i)$$</div>
+    {{< mathjax >}}
+$$\bra{\phi_f}\hat U(t_f,0)\hat O(t)\hat U(0,t_i)\ket{\phi_i}=\int \td\phi^*\td\phi \ U(\phi_f^*,t_f;\phi,t)O(\phi)U(\phi^*,t;\phi_i,t_i)$$
+{{< /mathjax >}}
 
-    Then if `$O$` is just a function of `$\hat{\bm{a}}^\dagger$`, or `$O(\phi^*,\phi')=O(\phi^*)$` . So we can complete the integral of `$\phi'^*,\phi'$` first, which is nothing but:
+    Then if $O$ is just a function of $\hat{\bm{a}}^\dagger$, or $O(\phi^*,\phi')=O(\phi^*)$ . So we can complete the integral of $\phi'^*,\phi'$ first, which is nothing but:
 
-    <div>$$\begin{aligned}
+    {{< mathjax >}}
+$$\begin{aligned}
     \int \td\phi'^*\td\phi' e^{-\phi'^*\cdot\phi'}e^{\phi^*\cdot \phi'}U(\phi'^*,t;\phi_i,t_i)&= \int \td\phi'^*\td\phi' e^{-\phi'^*\cdot\phi'} e^{\phi^*\cdot\phi'} \bra{\phi'} \hat U(t,t_i)\ket{\phi_i} \\
     &=\bra{\phi}\hat U(t,t_i)\ket{\phi_i}=U(\phi^*,t;\phi_i,t_i)
-    \end{aligned}$$</div>
+    \end{aligned}$$
+{{< /mathjax >}}
 
     So we have:
 
-    <div>$$\bra{\phi_f}\hat U(t_f,0)\hat O(t)\hat U(0,t_i)\ket{\phi_i}=\int \td\phi^*\td\phi \ U(\phi_f^*,t_f;\phi,t)O(\phi^*)U(\phi^*,t;\phi_i,t_i)$$</div>
+    {{< mathjax >}}
+$$\bra{\phi_f}\hat U(t_f,0)\hat O(t)\hat U(0,t_i)\ket{\phi_i}=\int \td\phi^*\td\phi \ U(\phi_f^*,t_f;\phi,t)O(\phi^*)U(\phi^*,t;\phi_i,t_i)$$
+{{< /mathjax >}}
 
-    For the general case of `$\hat O=O(\hat{\bm{a}}^\dagger,\hat{\bm{a}})$` , it has the form of:
+    For the general case of $\hat O=O(\hat{\bm{a}}^\dagger,\hat{\bm{a}})$ , it has the form of:
 
-    <div>$$\hat O=\sum_{m,n}O_{m,n}\prod_\alpha \hat a_\alpha^{\dagger m_\alpha}\prod_\beta \hat a_\beta^{n_\beta}$$</div>
+    {{< mathjax >}}
+$$\hat O=\sum_{m,n}O_{m,n}\prod_\alpha \hat a_\alpha^{\dagger m_\alpha}\prod_\beta \hat a_\beta^{n_\beta}$$
+{{< /mathjax >}}
 
     So:
 
-    <div>$$\begin{aligned}
+    {{< mathjax >}}
+$$\begin{aligned}
     \bra{\phi_f}\hat U(t_f,0)\hat O(t)\hat U(0,t_i)\ket{\phi_i} &=\sum_{m,n} O_{m,n} \int \td\phi^*\td\phi \ e^{-\phi^*\cdot\phi} \bra{\phi_f}\hat U(t_f,t) \prod_\alpha \hat a_{\alpha}^{\dagger m_\alpha} \ket{\phi}\\
     &\indent \times \bra{\phi}\prod_{\beta}\hat a_{\beta}^{n_\beta} \hat U(t,t_i)\ket{\phi_i} \\
     &=\sum_{m,n} O_{m,n}\int \td\phi^*\td\phi \ e^{-\phi^*\cdot \phi}\Big\{\int \td\phi_1^*\td\phi_1 \ U(\phi_f^*,t_f;\phi_1,t) O_m(\phi_1^*)U(\phi_1^*,t;\phi,0)\\
     &\indent \times \int \td \phi_2^*\td\phi_2 \ U(\phi^*,0;\phi_2,t)O_n(\phi_2)U(\phi_2^*,t;\phi_i,t_i)\Big\}\\
     &=\sum_{m,n}O_{m,n}\int \td\phi_1^*\td\phi_1 \int \td\phi_2^*\td\phi_2 \ U(\phi_f^*,t_f;\phi_1,t)O_m(\phi_1^*)O_n(\phi_2)U(\phi_2^*,t;\phi_i,t_i) \\
     &\indent \times U(\phi_1^*,t;\phi_2,t)
-    \end{aligned}$$</div>
+    \end{aligned}$$
+{{< /mathjax >}}
 
     Since the matrix elemens of time-evolution operator:
 
-    <div>$$U(\phi_1^*,t;\phi_2,t)=\bra{\phi_1}\phi_2\rangle = e^{\phi_1^*\cdot\phi_2}$$</div>
+    {{< mathjax >}}
+$$U(\phi_1^*,t;\phi_2,t)=\bra{\phi_1}\phi_2\rangle = e^{\phi_1^*\cdot\phi_2}$$
+{{< /mathjax >}}
 
     We can see, for the reason that coherent states are not orthogonal, so we cannot write it with PI for arbitrary operators.
 
 2.  For Fermions, properties above are usable because we just use the Gaussian integral formula, which is similar for Grassmann variables.
 
-So generally, we have the Lemma works for no matter Boson or Fermion. Then we consider the case of `$n=1$` . Cases of `$n\gt 1$` can be easily got by induction.
+So generally, we have the Lemma works for no matter Boson or Fermion. Then we consider the case of $n=1$ . Cases of $n\gt 1$ can be easily got by induction.
 
-For the case of `$t_i\lt t_1\lt t_1'\lt t_f$` , one has:
+For the case of $t_i\lt t_1\lt t_1'\lt t_f$ , one has:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 &\bra{\phi_f}\hat U(t_f,0) \mathcal{T}\Big\{\hat a_{\alpha_1}(t_1)\hat a_{\alpha_1'}^\dagger(t_1')\Big\}\hat U(0,t_i)\ket{\phi_i} \\
 =&\zeta \bra{\phi_f}\hat U(t_f,0)\hat U(0,t_1')\hat a_{\alpha_1'}^\dagger \hat U(t_1',0)\hat U(0,t_1)\hat a_{\alpha_1}\hat U(t_1,0)\hat U(0,t_i)\ket{\phi_i} \\
 =&\zeta \int \td \phi_1^*\td\phi_1 \int \td \phi_2^*\td \phi_2 \ \Big\{U(\phi_f^*,t_f;\phi_2,t_1') \phi_{2,\alpha_1'}^*U(\phi_2^*,t_1';\phi_1,t_1)\phi_{1,\alpha_1}U(\phi_1^*,t_1;\phi_i,t_i)\Big\} \\
 =&\zeta \int_{\phi(t_i)=\phi_i}^{\phi(t_f)^*=\phi_f^*}\mathcal{D}[\phi^*(t)]\mathcal{D}[\phi(t)] \ \phi_{\alpha_1'}(t_1')\phi_{\alpha_1}(t_1) \ e^{\frac {\ti} \hbar S[\phi^*(t),\phi(t)]} \\
 =&\int_{\phi(t_i)=\phi_i}^{\phi(t_f)^*=\phi_f^*}\mathcal{D}[\phi^*(t)]\mathcal{D}[\phi(t)] \ \phi_{\alpha_1}(t_1) \phi_{\alpha_1'}(t_1') \ e^{\frac {\ti} \hbar S[\phi^*(t),\phi(t)]} \\
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Note that the anti-commutation relationship between two Grassmann variables `$\phi_{\alpha_1},\phi_{\alpha_1'}$` omits the factor `$\zeta$`. The case of `$t_i\lt t_1'\lt t_1\lt t_f$` can also be checked simply.
+Note that the anti-commutation relationship between two Grassmann variables $\phi_{\alpha_1},\phi_{\alpha_1'}$ omits the factor $\zeta$. The case of $t_i\lt t_1'\lt t_1\lt t_f$ can also be checked simply.
 
-{{%/fold%}}
+{{</fold>}}
 
 This theorem connects the `time-ordered correlation function` of `Field operators` and the `path integral` . With this in mind, one can finally write down the equality between Green's function and path integral:
 
 _[Theorem]_ : Here we just write down the path integral formalism for thermal Green's function. Real time Green's function can be simply obtained by the analytical extension. As for the real time Green's function for a specific state, the theorem above can be directly applied.
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \mathcal{G}^{(n)}(\alpha_1,\tau_1;\cdots , \alpha_n,\tau_n;&\alpha_1',\tau_1';\cdots,\alpha_n',\tau_n')\equiv (-1)^n \Big\langle \mathcal{T}\big\{\hat a_{\alpha_1}(\tau_1)\cdots\hat a_{\alpha_n}(\tau_n)\hat a_{\alpha_1'}^\dagger(\tau_1')\cdots \hat a_{\alpha_n'}^\dagger(\tau_n')\big\}\Big\rangle \\
 &=\frac {(-1)^n} {\mathcal{Z}} \int_{\phi(\beta\hbar)=\zeta \phi(0)} \mathcal{D}[\phi^*(\tau)]\mathcal{D}[\phi(\tau)] \ \exp\Big(-\frac 1 \hbar \int_0^{\beta\hbar} \td \tau \ \phi^*(\tau)\cdot \big(\hbar \frac {\td} {\td\tau}-\mu\big)\phi(\tau)+H(\phi^*(\tau),\phi(\tau))\Big) \\
 &\indent \times \phi_{\alpha_1}(\tau_1)\cdots \phi_{\alpha_n}(\tau_n)\phi_{\alpha_1'}^*(\tau_1')\cdots\phi_{\alpha_n'}^*(\tau_n')
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-As usual, `$\tau_1,\cdots$` are in the interval `$[0,\beta\hbar]$` .
+As usual, $\tau_1,\cdots$ are in the interval $[0,\beta\hbar]$ .
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Thermal Green's function is calculated on the thermal state or the thermal ensemble:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \mathcal{G}^{(n)}(\alpha_1,\tau_1;\cdots , \alpha_n,\tau_n;\alpha_1',\tau_1';\cdots,\alpha_n',\tau_n')&=\frac {(-1)^n} {\mathcal{Z}} \text{Tr} \ e^{-\beta \hat K} \mathcal{T}\big\{\hat a_{\alpha_1}(\tau_1)\cdots\hat a_{\alpha_n}(\tau_n)\hat a_{\alpha_1'}^\dagger(\tau_1')\cdots \hat a_{\alpha_n'}^\dagger(\tau_n')\big\} \\
 &=\frac {(-1)^n} {\mathcal{Z}} \int \td \phi^*\td\phi \ e^{-\phi^*\cdot\phi} \ \bra{\zeta \phi} \hat U(-\ti \beta\hbar,0)\mathcal{T}\big\{\hat a_{\alpha_1}(\tau_1)\cdots\hat a_{\alpha_n}(\tau_n)\hat a_{\alpha_1'}^\dagger(\tau_1')\cdots \hat a_{\alpha_n'}^\dagger(\tau_n')\big\}\ket{\phi}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
 Where the integrand can be compute with the theorem above, one need only make the Wich rotation for all time variables:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 &\frac {(-1)^n} {\mathcal{Z}} \int \td \phi^*\td\phi \ e^{-\phi^*\cdot\phi} \ \bra{\zeta \phi} \hat U(-\ti \beta\hbar,0)\mathcal{T}\big\{\hat a_{\alpha_1}(\tau_1)\cdots\hat a_{\alpha_n}(\tau_n)\hat a_{\alpha_1'}^\dagger(\tau_1')\cdots \hat a_{\alpha_n'}^\dagger(\tau_n')\big\}\ket{\phi} \\
 =&\frac {(-1)^n}{\mathcal{Z}} \int \td\phi^*\td\phi \ e^{-\phi^*\cdot\phi} \int_{\phi(0)=\phi}^{\phi^*(\beta\hbar)=\zeta\phi^*}\mathcal{D}[\phi^*(\tau)]\mathcal{D}[\phi(\tau)] \ \exp\Big(-\frac 1 \hbar \int_0^{\beta\hbar} \td \tau \ \phi^*(\tau)\cdot \big(\hbar \frac {\td} {\td\tau}-\mu\big)\phi(\tau)+H(\phi^*(\tau),\phi(\tau))\Big) \\
 &\indent \times \phi_{\alpha_1}(\tau_1)\cdots \phi_{\alpha_n}(\tau_n)\phi_{\alpha_1'}^*(\tau_1')\cdots\phi_{\alpha_n'}^*(\tau_n') \\
 =&\frac {(-1)^n}{\mathcal{Z}} \int_{\phi(0)=\zeta\phi(\beta\hbar)}\mathcal{D}[\phi^*(\tau)]\mathcal{D}[\phi(\tau)] \ \exp\Big(-\frac 1 \hbar \int_0^{\beta\hbar} \td \tau \ \phi^*(\tau)\cdot \big(\hbar \frac {\td} {\td\tau}-\mu\big)\phi(\tau)+H(\phi^*(\tau),\phi(\tau))\Big) \\
 &\indent \times \phi_{\alpha_1}(\tau_1)\cdots \phi_{\alpha_n}(\tau_n)\phi_{\alpha_1'}^*(\tau_1')\cdots\phi_{\alpha_n'}^*(\tau_n') \\
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Where we used the same strategy to absorb the integral of `$\td\phi^*\td\phi$` into the path integral `$\mathcal{D}[\phi^*(\tau)]\mathcal{D}[\phi(\tau)]$` , just like what we did for the partition function.
+Where we used the same strategy to absorb the integral of $\td\phi^*\td\phi$ into the path integral $\mathcal{D}[\phi^*(\tau)]\mathcal{D}[\phi(\tau)]$ , just like what we did for the partition function.
 
-{{%/fold%}}
+{{</fold>}}
 
 ## Non-interacting System
 
 We compute some quantities of `non-interacting system` to show how to apply the Path integral formalism on solving physics question. The non-interacting systems usually have a quadratic Hamiltonian. In the basis of energy eigenstates, we can write the Hamiltonian as the diagonal form:
 
-<div>$$\hat H=\sum_\alpha \epsilon_\alpha \hat a_\alpha^\dagger \hat a$$</div>
+{{< mathjax >}}
+$$\hat H=\sum_\alpha \epsilon_\alpha \hat a_\alpha^\dagger \hat a$$
+{{< /mathjax >}}
 
 ### Partition function
 
 Partition function (of Grand ensemble) of the non-interacting system is:
 
-<div>$$\mathcal{Z}=\prod_\alpha \Big(1-\zeta e^{-\beta(\epsilon_\alpha-\mu)}\Big)^{-\zeta}$$</div>
+{{< mathjax >}}
+$$\mathcal{Z}=\prod_\alpha \Big(1-\zeta e^{-\beta(\epsilon_\alpha-\mu)}\Big)^{-\zeta}$$
+{{< /mathjax >}}
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Using the path integral formalism, partition function can be obtained by:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \mathcal{Z}&=\int_{\phi(\beta\hbar)=\phi(0)}\mathcal{D}[\phi^*(\tau)]\mathcal{D}[\phi(\tau)] \ \exp\Big(-\frac 1 \hbar \int_0^{\beta\hbar}\td \tau \ \phi^*(\tau)\cdot \big(\hbar \frac {\td } {\td \tau}-\mu\big)\phi(\tau)+H(\phi^*(\tau),\phi(\tau))\Big) \\
 &=\lim_{M\rightarrow \infty} \int_{\phi_0=\zeta\phi_M} \prod_{k=1}^M \td \phi_k^*\td\phi_k \ \exp\Big\{-\frac {\Delta \tau} {\hbar} \sum_{k=1}^M \hbar \phi_k^*\cdot \Big(\frac {\phi_k-\phi_{k-1}} {\Delta\tau} - \frac \mu \hbar \phi_{k-1}\Big)+H(\phi_k^*,\phi_{k-1})\Big\}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
 With the diagonal form of the non-interacting system, we have:
 
-<div>$$H(\phi_k^*,\phi_k)=\sum_{\alpha} \epsilon_\alpha \phi^*_{k,\alpha}\phi_{k-1,\alpha}$$</div>
+{{< mathjax >}}
+$$H(\phi_k^*,\phi_k)=\sum_{\alpha} \epsilon_\alpha \phi^*_{k,\alpha}\phi_{k-1,\alpha}$$
+{{< /mathjax >}}
 
-So the integral is nothing but a Gaussian integral for c-number (Boson) or for Grassmann variable (Fermion). The exponent can be written as quadratic form of the vector `$(\phi_1,\cdots,\phi_M)^T$`:
+So the integral is nothing but a Gaussian integral for c-number (Boson) or for Grassmann variable (Fermion). The exponent can be written as quadratic form of the vector $(\phi_1,\cdots,\phi_M)^T$:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \sum_{k=1}^M \phi_{k}^*\cdot \Big(\hbar\frac {\phi_k-\phi_{k-1}} {\Delta \tau}-\mu \phi_{k-1}\Big)+H(\phi_k^*,\phi_{k-1}) &= \sum_{\alpha} \Big\{\sum_{k=1}^M \phi_{k,\alpha}^*\Big(\hbar \frac {\phi_{k,\alpha}-\phi_{k-1,\alpha}} {\Delta \tau}-\mu\phi_{k-1,\alpha}\Big)+\epsilon_\alpha \phi_{k,\alpha}^* \phi_{k-1,\alpha}\Big\} \\
 &=\frac {\hbar} {\Delta\tau} \sum_\alpha [\phi_{1,\alpha}^*,\cdots,\phi_{M,\alpha}^*]\begin{bmatrix}
 1 & 0 & 0 & \cdots & -\zeta a \\
@@ -343,13 +422,15 @@ So the integral is nothing but a Gaussian integral for c-number (Boson) or for G
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & 0 & \cdots & 1
 \end{bmatrix}\begin{bmatrix} \phi_{1,\alpha} \\ \vdots \\ \phi_{M,\alpha}\end{bmatrix}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Where `$a = 1-\frac {\Delta \tau} {\hbar} (\epsilon_\alpha -\mu)$`
+Where $a = 1-\frac {\Delta \tau} {\hbar} (\epsilon_\alpha -\mu)$
 
 Then we can evaluate the Gaussian integral and obtain:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \mathcal{Z}&=\lim_{M\rightarrow \infty} \prod_{\alpha}\Big(\det\begin{bmatrix}
 1 & 0 & 0 & \cdots & -\zeta a \\
 -a & 1 & 0 & \cdots & 0 \\
@@ -359,120 +440,157 @@ Then we can evaluate the Gaussian integral and obtain:
 \end{bmatrix} \Big)^{-\zeta} \\
 &=\lim_{M\rightarrow \infty} \prod_\alpha \Big(1+(-1)^{M+1}(-\zeta a)(-a)^{M-1}\Big)^{- \zeta}\\
 &=\lim_{M\rightarrow \infty} \prod_\alpha \Big(1-\zeta a^M\Big)^{- \zeta}\\
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
 As the limit:
 
-<div>$$\lim_{M\rightarrow \infty} \Big(1-\frac {\Delta \tau} {\hbar}(\epsilon_\alpha-\mu)\Big)^M\equiv\lim_{M\rightarrow \infty} \Big(1-\frac {\beta} {M}(\epsilon_\alpha-\mu)\Big)^M=e^{\beta(\mu-\epsilon_\alpha)}$$</div>
+{{< mathjax >}}
+$$\lim_{M\rightarrow \infty} \Big(1-\frac {\Delta \tau} {\hbar}(\epsilon_\alpha-\mu)\Big)^M\equiv\lim_{M\rightarrow \infty} \Big(1-\frac {\beta} {M}(\epsilon_\alpha-\mu)\Big)^M=e^{\beta(\mu-\epsilon_\alpha)}$$
+{{< /mathjax >}}
 
 The partition function has an explicit form:
 
-<div>$$\mathcal{Z}=\prod_\alpha \Big(1-\zeta e^{-\beta(\epsilon_\alpha-\mu)}\Big)^{-\zeta}$$</div>
+{{< mathjax >}}
+$$\mathcal{Z}=\prod_\alpha \Big(1-\zeta e^{-\beta(\epsilon_\alpha-\mu)}\Big)^{-\zeta}$$
+{{< /mathjax >}}
 
-Which is the same as the result of `$\sum_{\{n_\alpha\}} e^{-\beta \sum_\alpha \epsilon_\alpha n_\alpha +\mu\beta \sum_\alpha n_\alpha}$`.
+Which is the same as the result of $\sum_{\{n_\alpha\}} e^{-\beta \sum_\alpha \epsilon_\alpha n_\alpha +\mu\beta \sum_\alpha n_\alpha}$.
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 ### Green's function
 
 Thermal Green's function of the non-interacting system is:
 
-<div>$$\mathcal{G}(\alpha,\tau;\alpha',\tau')=-\delta_{\alpha,\alpha'}e^{-(\epsilon_\alpha-\mu)(\tau-\tau')/\hbar}\Big(\Theta(\tau-\tau')(1+\zeta n_\alpha)+\zeta \Theta(\tau'-\tau)n_\alpha\Big)$$</div>
+{{< mathjax >}}
+$$\mathcal{G}(\alpha,\tau;\alpha',\tau')=-\delta_{\alpha,\alpha'}e^{-(\epsilon_\alpha-\mu)(\tau-\tau')/\hbar}\Big(\Theta(\tau-\tau')(1+\zeta n_\alpha)+\zeta \Theta(\tau'-\tau)n_\alpha\Big)$$
+{{< /mathjax >}}
 
-Where `$n_\alpha$` is the particle number distribution function:
+Where $n_\alpha$ is the particle number distribution function:
 
-<div>$$n_\alpha=\frac 1 {e^{\beta(\epsilon_\alpha-\mu)}-\zeta}$$</div>
+{{< mathjax >}}
+$$n_\alpha=\frac 1 {e^{\beta(\epsilon_\alpha-\mu)}-\zeta}$$
+{{< /mathjax >}}
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 We have two methods to prove this conclusion:
 
 1.  **Auxiliary field method**
     Using the connection between Green's function and path integral, we have the equality:
 
-    <div>$$\begin{aligned}
+    {{< mathjax >}}
+$$\begin{aligned}
     \mathcal{G}(\alpha,\tau;\alpha',\tau') &= \frac {-1} {\mathcal{Z}}\zeta\frac {\partial^2} {\partial J_\alpha(\tau)^* \partial J_{\alpha'}(\tau')}\int \mathcal{D}\phi^*\mathcal{D}\phi \ \exp\Big(-\sum_{\nu}\bm{\phi}_\nu^\dagger \bm{S}_{\nu}\bm{\phi}_\nu+\bm{J}_\nu^\dagger\cdot \bm{\phi}_\nu+\bm{\phi}_{\nu}^\dagger \cdot\bm{J}_\nu \Big)\Bigg|_{\bm{J}=\bm{J}^\dagger =0} \\
     &=\frac {-\zeta} {\mathcal{Z}} \frac {\partial^2} {\partial J_\alpha(\tau)^* \partial J_{\alpha'}(\tau')} \mathcal{Z} e^{-\sum_\nu\bm{J}_\nu^\dagger \bm{S}_{\nu}^{-1} \bm{J}_\nu}\Bigg|_{\bm{J}=\bm{J}^\dagger =0} \\
     &=-\delta_{\alpha,\alpha'} \big(\bm{S}_{\alpha}^{-1}\big)_{\tau,\tau'}
-    \end{aligned}$$</div>
+    \end{aligned}$$
+{{< /mathjax >}}
 
     Where:
 
-    <div>$$\bm{S}_\alpha=\begin{bmatrix}
+    {{< mathjax >}}
+$$\bm{S}_\alpha=\begin{bmatrix}
     1 & 0 & 0 & \cdots & -\zeta a \\
     -a & 1 & 0 & \cdots & 0 \\
     0 & -a & 1 & \cdots & 0 \\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
     0 & 0 & 0 & \cdots & 1
-    \end{bmatrix}$$</div>
+    \end{bmatrix}$$
+{{< /mathjax >}}
 
-    and `$a=1-\frac {\Delta \tau} {\hbar}(\epsilon_\alpha-\mu)$` . So:
+    and $a=1-\frac {\Delta \tau} {\hbar}(\epsilon_\alpha-\mu)$ . So:
 
-    <div>$$\begin{aligned}
+    {{< mathjax >}}
+$$\begin{aligned}
     (\bm{S}_\alpha^{-1})_{\tau,\tau'} &= (\bm{S}_\alpha^{-1})_{1+\tau/\Delta \tau,1+\tau'/\Delta \tau} \\
     &= (-1)^{(\tau+\tau')/\Delta \tau} \det \Big(\bm{S}_\alpha | (1+\tau'/\Delta\tau,1+\tau/\Delta \tau)\Big) \text{ which means omit the row and column }(\cdot,\cdot)
-    \end{aligned}$$</div>
+    \end{aligned}$$
+{{< /mathjax >}}
 
     But it is not convenient to calculate.
 
 2.  **Fourier transform method**
-    To fulfill the boundary condition `$\phi(\beta\hbar)=\zeta \phi(0)$` , the discrete field has the Fourier series:
+    To fulfill the boundary condition $\phi(\beta\hbar)=\zeta \phi(0)$ , the discrete field has the Fourier series:
 
-    <div>$$\phi_{\alpha,k}=\frac 1 {\sqrt{M}} \sum_{n=0}^{M-1} e^{-\ti \omega_n k\Delta \tau} \tilde{\phi}_{\alpha,n}$$</div>
+    {{< mathjax >}}
+$$\phi_{\alpha,k}=\frac 1 {\sqrt{M}} \sum_{n=0}^{M-1} e^{-\ti \omega_n k\Delta \tau} \tilde{\phi}_{\alpha,n}$$
+{{< /mathjax >}}
 
-    Where `$\omega_n=\begin{cases} \frac {(2n+1)\pi} {\hbar\beta} & \zeta=-1 \\ \frac {2n\pi} {\beta\hbar} & \zeta= 1\end{cases}$` is called `Matsubara frequency`. Obviously such Fourier transform is unitary therefore the integral measure is invariant:
+    Where $\omega_n=\begin{cases} \frac {(2n+1)\pi} {\hbar\beta} & \zeta=-1 \\ \frac {2n\pi} {\beta\hbar} & \zeta= 1\end{cases}$ is called `Matsubara frequency`. Obviously such Fourier transform is unitary therefore the integral measure is invariant:
 
-    <div>$$\mathcal{D}\phi^*\mathcal{D}\phi = \mathcal{D}\tilde{\phi}^*\mathcal{D}\tilde{\phi}$$</div>
+    {{< mathjax >}}
+$$\mathcal{D}\phi^*\mathcal{D}\phi = \mathcal{D}\tilde{\phi}^*\mathcal{D}\tilde{\phi}$$
+{{< /mathjax >}}
 
     So the action:
 
-    <div>$$S/\hbar=\bm{\phi}_\alpha^\dagger \bm{S}_\alpha \bm{\phi}_\alpha=\Delta \tau \sum_n \Big(\frac {1-e^{\ti\omega_n\Delta \tau}} {\Delta \tau}+\frac {\epsilon_\alpha -\mu} {\hbar} e^{\ti\omega_n\Delta\tau}\Big)|\tilde{\phi}_{n,\alpha}|^2$$</div>
+    {{< mathjax >}}
+$$S/\hbar=\bm{\phi}_\alpha^\dagger \bm{S}_\alpha \bm{\phi}_\alpha=\Delta \tau \sum_n \Big(\frac {1-e^{\ti\omega_n\Delta \tau}} {\Delta \tau}+\frac {\epsilon_\alpha -\mu} {\hbar} e^{\ti\omega_n\Delta\tau}\Big)|\tilde{\phi}_{n,\alpha}|^2$$
+{{< /mathjax >}}
 
     With the Fourier transformation of Green's function:
 
-    <div>$$\begin{aligned}
+    {{< mathjax >}}
+$$\begin{aligned}
     \mathcal{G}(\alpha,\alpha';\ti\omega_n)&= \int_{0}^{\beta\hbar}\td \tau \ e^{\ti\omega_n\tau}\mathcal{G}(\alpha,\tau,\alpha',0) \\
     &=\int_0^{\beta\hbar}\td\tau \ e^{\ti\omega_n\tau} \Big(\frac {-1} {\mathcal{Z}}\int_{\phi(\beta\hbar)=\zeta\phi(0)}\mathcal{D}\phi^*\mathcal{D}\phi \ e^{-S/\hbar} \phi_{\alpha}(\tau)\phi_{\alpha'}^*(0)\Big) \\
     &=\frac {-1} {\mathcal{Z}}\int \mathcal{D}\tilde{\phi}^*\mathcal{D}\tilde{\phi} \ e^{-S/\hbar} \phi_{n,\alpha} \sum_m \phi_{m,\alpha'}^* \\
     &=-\delta_{\alpha,\alpha'}\lim_{\Delta \tau\rightarrow 0} \frac 1 {\frac {1-e^{\ti\omega_n\Delta \tau}} {\Delta \tau}+\frac {\epsilon_\alpha -\mu} {\hbar} e^{\ti\omega_n\Delta\tau}} \\
     &=\frac { \delta_{\alpha,\alpha'} } {\ti\omega_n - \frac {\epsilon_\alpha-\mu} {\hbar}}
-    \end{aligned}$$</div>
+    \end{aligned}$$
+{{< /mathjax >}}
 
     It is easy to compute because the action is diagonalized by the Fourier transformation. Then we have:
 
-    <div>$$\mathcal{G}(\alpha,\tau;\alpha',\tau')=\frac 1 {\beta\hbar} \sum_{\omega_n} e^{-\ti\omega_n(\tau-\tau')}\mathcal{G}(\alpha,\alpha';\ti\omega_n)$$</div>
+    {{< mathjax >}}
+$$\mathcal{G}(\alpha,\tau;\alpha',\tau')=\frac 1 {\beta\hbar} \sum_{\omega_n} e^{-\ti\omega_n(\tau-\tau')}\mathcal{G}(\alpha,\alpha';\ti\omega_n)$$
+{{< /mathjax >}}
 
     with the frequency sums formula:
 
-    <div>$$\frac 1 {\beta\hbar} \sum_{\omega_n} f(\ti\omega_n) =\frac 1 {2\pi\ti\beta\hbar}\oint \td z \ f(z) h_\zeta^{\pm}(z)$$</div>
+    {{< mathjax >}}
+$$\frac 1 {\beta\hbar} \sum_{\omega_n} f(\ti\omega_n) =\frac 1 {2\pi\ti\beta\hbar}\oint \td z \ f(z) h_\zeta^{\pm}(z)$$
+{{< /mathjax >}}
 
     Where:
 
-    <div>$$\begin{cases}
+    {{< mathjax >}}
+$$\begin{cases}
     h_{+1}^+(z) = \frac {-\beta\hbar} {1-e^{\beta\hbar z}} & \text{controls the convergence of } \text{Re} z \gt 0 \\
     h_{+1}^-(z) = \frac {\beta\hbar} {1-e^{-\beta\hbar z}} & \text{controls the convergence of } \text{Re} z \lt 0 \\
     h_{1}^+(z) = \frac {-\beta\hbar} {1+e^{\beta\hbar z}} & \text{controls the convergence of } \text{Re} z \gt 0 \\
     h_{+1}^-(z) = \frac {\beta\hbar} {1+e^{-\beta\hbar z}} & \text{controls the convergence of } \text{Re} z \lt 0
-    \end{cases}$$</div>
+    \end{cases}$$
+{{< /mathjax >}}
 
     Here we use the corollary:
 
-    <div>$$\frac 1 {\hbar\beta} \sum_{\omega_n} \frac {e^{\ti\omega_n \Delta}} {\ti\omega_n-x}=-\frac {\zeta e^{\Delta\times x}} {e^{\beta\hbar x}-\zeta} \ ; \ \text{ for }\Delta \gt 0$$</div>
+    {{< mathjax >}}
+$$\frac 1 {\hbar\beta} \sum_{\omega_n} \frac {e^{\ti\omega_n \Delta}} {\ti\omega_n-x}=-\frac {\zeta e^{\Delta\times x}} {e^{\beta\hbar x}-\zeta} \ ; \ \text{ for }\Delta \gt 0$$
+{{< /mathjax >}}
 
     So we have:
 
-    <div>$$\Theta(\tau'-\tau)\mathcal{G}(\alpha,\tau;\alpha',\tau')=-\delta_{\alpha,\alpha'}\zeta e^{-(\epsilon_\alpha-\mu)(\tau-\tau')/\hbar}n_\alpha$$</div>
+    {{< mathjax >}}
+$$\Theta(\tau'-\tau)\mathcal{G}(\alpha,\tau;\alpha',\tau')=-\delta_{\alpha,\alpha'}\zeta e^{-(\epsilon_\alpha-\mu)(\tau-\tau')/\hbar}n_\alpha$$
+{{< /mathjax >}}
 
-    Using the periodicity of thermal Green's function, if `$\tau\gt \tau'$`:
+    Using the periodicity of thermal Green's function, if $\tau\gt \tau'$:
 
-    <div>$$\mathcal{G}(\alpha,\tau;\alpha',\tau')=\zeta\mathcal{G}(\alpha,\tau-\tau';\alpha',\beta\hbar)=- \delta_{\alpha,\alpha'}e^{-(\epsilon_\alpha-\mu)(\tau-\tau')/\hbar}e^{\beta(\epsilon_\alpha-\mu)}n_\alpha$$</div>
+    {{< mathjax >}}
+$$\mathcal{G}(\alpha,\tau;\alpha',\tau')=\zeta\mathcal{G}(\alpha,\tau-\tau';\alpha',\beta\hbar)=- \delta_{\alpha,\alpha'}e^{-(\epsilon_\alpha-\mu)(\tau-\tau')/\hbar}e^{\beta(\epsilon_\alpha-\mu)}n_\alpha$$
+{{< /mathjax >}}
 
     So we finally have:
 
-    <div>$$\mathcal{G}(\alpha,\tau;\alpha',\tau')=-\delta_{\alpha,\alpha'}e^{-(\epsilon_\alpha-\mu)(\tau-\tau')/\hbar}\Big(\Theta(\tau-\tau')(1+\zeta n_\alpha)+\zeta \Theta(\tau'-\tau)n_\alpha\Big)$$</div>
+    {{< mathjax >}}
+$$\mathcal{G}(\alpha,\tau;\alpha',\tau')=-\delta_{\alpha,\alpha'}e^{-(\epsilon_\alpha-\mu)(\tau-\tau')/\hbar}\Big(\Theta(\tau-\tau')(1+\zeta n_\alpha)+\zeta \Theta(\tau'-\tau)n_\alpha\Big)$$
+{{< /mathjax >}}
 
     q.e.d.
 
-{{%/fold%}}
+{{</fold>}}

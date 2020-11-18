@@ -27,98 +27,126 @@ We will discuss the concept `unstable system` first of all. Generally speaking, 
 
 _[Definition]_ : To describe the rate of decay of unstable system, we can use `survival probability` :
 
-<div>$$P(t) = |\bra{\psi(t=0)}\psi(t)\rangle|^2$$</div>
+{{< mathjax >}}
+$$P(t) = |\bra{\psi(t=0)}\psi(t)\rangle|^2$$
+{{< /mathjax >}}
 
-With a set of basis, usually marked by energy and other conserved quantities: `$\ket{E,a}$` . They hold the identity operator:
+With a set of basis, usually marked by energy and other conserved quantities: $\ket{E,a}$ . They hold the identity operator:
 
-<div>$$1=\int \td E \td a \ \ket{E,a}\bra{E,a}$$</div>
+{{< mathjax >}}
+$$1=\int \td E \td a \ \ket{E,a}\bra{E,a}$$
+{{< /mathjax >}}
 
-Then we have the expansion of `$P(t)$` , with a  necessary assumption that `there is a below boundary of energy` , so that there is a ground state of the system:
+Then we have the expansion of $P(t)$ , with a  necessary assumption that `there is a below boundary of energy` , so that there is a ground state of the system:
 
-<div>$$P(t)=\int_{E_{\text{min}}}^{+\infty} \td E \  \omega(E) e^{-\ti E t/\hbar} \ ; \ \omega(E)=\int \td a |\bra{E,a}\psi(t=0)\rangle|^2$$</div>
+{{< mathjax >}}
+$$P(t)=\int_{E_{\text{min}}}^{+\infty} \td E \  \omega(E) e^{-\ti E t/\hbar} \ ; \ \omega(E)=\int \td a |\bra{E,a}\psi(t=0)\rangle|^2$$
+{{< /mathjax >}}
 
 Or with the Heaviside Theta:
 
-<div>$$P(t)=\int_{-\infty}^{\infty} \td E \omega(E)\Theta(E-E_{\min}) e^{-\ti Et /\hbar} \equiv \int \td E \  f(E) e^{-\ti E t /\hbar}$$</div>
+{{< mathjax >}}
+$$P(t)=\int_{-\infty}^{\infty} \td E \omega(E)\Theta(E-E_{\min}) e^{-\ti Et /\hbar} \equiv \int \td E \  f(E) e^{-\ti E t /\hbar}$$
+{{< /mathjax >}}
 
 
 ## Large Time
 
-The behavior of `$P(t)$` in long run had been investigated in 1950~1960. [[Fonda 1978][7]] . They got asymptotically a power law of the type: `$P(t)\sim t^{-n}$`
+The behavior of $P(t)$ in long run had been investigated in 1950~1960. [[Fonda 1978][7]] . They got asymptotically a power law of the type: $P(t)\sim t^{-n}$
 
 Here we introduce a weaker conclusion:
 
-_[Theorem]_ : If `$f(E)$` is `$L^1$` function, namely the Lebesgue integral `$\int |f(E)|\td E \lt \infty$` , we have:
+_[Theorem]_ : If $f(E)$ is $L^1$ function, namely the Lebesgue integral $\int |f(E)|\td E \lt \infty$ , we have:
 
-<div>$$\lim_{t\rightarrow\infty} P(t) =0$$</div>
+{{< mathjax >}}
+$$\lim_{t\rightarrow\infty} P(t) =0$$
+{{< /mathjax >}}
 
 This property was firstly pointed out by Krylov and Fock at 1947 [[Fonda 1978][7]]
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
-_[Lemma(Riemann-Lebesgue)]_ : if `$f$` is `$L^1$` integrable on `$\mathbb{R}^d$` , that is to say , if the Lebesgue integral of `$|f|$` is finite. Then the Fourier transform of `$f$` satisfies:
+_[Lemma(Riemann-Lebesgue)]_ : if $f$ is $L^1$ integrable on $\mathbb{R}^d$ , that is to say , if the Lebesgue integral of $|f|$ is finite. Then the Fourier transform of $f$ satisfies:
 
-<div>$$F(z)\equiv \int_{\mathbb{R}^d} f(x) e^{-\ti z\cdot x} \td x\rightarrow 0 \text{ as } |z|\rightarrow \infty$$</div>
+{{< mathjax >}}
+$$F(z)\equiv \int_{\mathbb{R}^d} f(x) e^{-\ti z\cdot x} \td x\rightarrow 0 \text{ as } |z|\rightarrow \infty$$
+{{< /mathjax >}}
 
 The proof is followed what is posted on the Wikipedia [Wiki page][8]:
 
 For the 1-dimension case:
 
-First suppose that `$f(x)=\chi_{(a,b)}(x)$` is the `characteristic function` of open interval `$(a,b)$` . Then we have the explicit form of its Fourier transform:
+First suppose that $f(x)=\chi_{(a,b)}(x)$ is the `characteristic function` of open interval $(a,b)$ . Then we have the explicit form of its Fourier transform:
 
-<div>$$\int f(x)e^{-\ti z x}\td x = \frac {e^{-\ti zb}-e^{-\ti za}} {-\ti z }\rightarrow 0 \text{ as } |z|\rightarrow \infty$$</div>
+{{< mathjax >}}
+$$\int f(x)e^{-\ti z x}\td x = \frac {e^{-\ti zb}-e^{-\ti za}} {-\ti z }\rightarrow 0 \text{ as } |z|\rightarrow \infty$$
+{{< /mathjax >}}
 
-For function on `$\mathbb{R}^d$` this property still hold. Then consider `$f$` is a `$L^1$` function on `$\mathbb{R}^d$` , there exists a `simple function` `$g$` as the linear combination of characteristic functions of open interval such that:
+For function on $\mathbb{R}^d$ this property still hold. Then consider $f$ is a $L^1$ function on $\mathbb{R}^d$ , there exists a `simple function` $g$ as the linear combination of characteristic functions of open interval such that:
 
-<div>$$\int |f(x)-g(x)|\td x \lt \epsilon$$</div>
+{{< mathjax >}}
+$$\int |f(x)-g(x)|\td x \lt \epsilon$$
+{{< /mathjax >}}
 
-And `$g$` has the property above: there exists a number `$N(\epsilon)$` , for all `$|\xi|\gt N(\epsilon)$` we have:
+And $g$ has the property above: there exists a number $N(\epsilon)$ , for all $|\xi|\gt N(\epsilon)$ we have:
 
-<div>$$\Bigg|\int_{\mathbb{R}^d} g(x)e^{-\ti \xi \cdot x}\td x\Bigg|\lt \epsilon$$</div>
+{{< mathjax >}}
+$$\Bigg|\int_{\mathbb{R}^d} g(x)e^{-\ti \xi \cdot x}\td x\Bigg|\lt \epsilon$$
+{{< /mathjax >}}
 
 Then for that:
 
-<div>$$\Bigg|\int_{\mathbb{R}^d} f(x)e^{-\ti z\cdot x}\td x\Bigg|\leq \int_{\mathbb{R}^d} |f(x)-g(x)|\td x + \Bigg|\int_{\mathbb{R}^d} g(x)e^{-\ti z \cdot x} \Bigg| $$</div>
+{{< mathjax >}}
+$$\Bigg|\int_{\mathbb{R}^d} f(x)e^{-\ti z\cdot x}\td x\Bigg|\leq \int_{\mathbb{R}^d} |f(x)-g(x)|\td x + \Bigg|\int_{\mathbb{R}^d} g(x)e^{-\ti z \cdot x} \Bigg| $$
+{{< /mathjax >}}
 
-And the right-hand-side is bounded by `$2\epsilon$` with an arbitrary `$\epsilon$` . Then we have:
+And the right-hand-side is bounded by $2\epsilon$ with an arbitrary $\epsilon$ . Then we have:
 
-<div>$$\lim_{|z|\rightarrow \infty} \int_{\mathbb{R}^d} f(x)e^{-\ti z\cdot x}\td x = 0 $$</div>
+{{< mathjax >}}
+$$\lim_{|z|\rightarrow \infty} \int_{\mathbb{R}^d} f(x)e^{-\ti z\cdot x}\td x = 0 $$
+{{< /mathjax >}}
 
-For arbitrary `$f\in L^1$`
+For arbitrary $f\in L^1$
 
 q.e.d.
 
-Usually `$f(E)$` is `$L^1$` function for:
+Usually $f(E)$ is $L^1$ function for:
 
-<div>$$\int |f(E)|\td E=\int_{E_{\min}}^{\infty} \td E \int \td a \ |\bra{E,a}\psi(t=0)\rangle|^2 = |\bra{\psi(t=0)}\psi(t=0)\rangle|=1  $$</div>
+{{< mathjax >}}
+$$\int |f(E)|\td E=\int_{E_{\min}}^{\infty} \td E \int \td a \ |\bra{E,a}\psi(t=0)\rangle|^2 = |\bra{\psi(t=0)}\psi(t=0)\rangle|=1  $$
+{{< /mathjax >}}
 
-However, sometimes when we discuss the discrete spectrum, we will let `$f$` be a linear combination of some `Dirac-Delta function` . We need to note that Delta function is `NOT` `$L^1$` function. In fact it is kind of a functional.
+However, sometimes when we discuss the discrete spectrum, we will let $f$ be a linear combination of some `Dirac-Delta function` . We need to note that Delta function is `NOT` $L^1$ function. In fact it is kind of a functional.
 
 For example [Stackexchange page][9] :
 
-The set `$S=\{x\ : \ \delta(x)\neq 0\}=\{0\}$` is countable hence has Lebesgue measure of 0. That is to say we should have `$\int \delta(x)\td x =0$` , but we know that the integral is `$1$`. Then we know that `$\delta(x)$` is `NOT` a `$L^1$` function.
+The set $S=\{x\ : \ \delta(x)\neq 0\}=\{0\}$ is countable hence has Lebesgue measure of 0. That is to say we should have $\int \delta(x)\td x =0$ , but we know that the integral is $1$. Then we know that $\delta(x)$ is `NOT` a $L^1$ function.
 
-{{%/fold%}}
+{{</fold>}}
 
-This property shows that `$P(t)$` will `usually`(not discrete spectrum) vanish at time goes too long. But not show the asymptotical behavior of `$P(t)$` .
+This property shows that $P(t)$ will `usually`(not discrete spectrum) vanish at time goes too long. But not show the asymptotical behavior of $P(t)$ .
 
 ## Short Time
 
-The behavior of `$P(t)$` in short run had been investigated in 1970~, [[Fonda 1978][7]]. One of the most important properties is as following:
+The behavior of $P(t)$ in short run had been investigated in 1970~, [[Fonda 1978][7]]. One of the most important properties is as following:
 
-_[Theorem]_ : The time derivative of `$P(t)$` vanishes at `$t=0$`
+_[Theorem]_ : The time derivative of $P(t)$ vanishes at $t=0$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
-According to the definition of `$P(t)$` , with `$A(t) = \bra{\psi(t=0)}\psi(t)\rangle$` , that is to say `$P(t)=|A(t)|^2 = A(t) A(-t)$` , then we have:
+According to the definition of $P(t)$ , with $A(t) = \bra{\psi(t=0)}\psi(t)\rangle$ , that is to say $P(t)=|A(t)|^2 = A(t) A(-t)$ , then we have:
 
-<div>$$\frac {\td P(t)} {\td t}\Bigg|_{t=0} = \frac {\td A(t)} {\td t}\Bigg|_{t=0} A(0) - A(0) \frac {\td A(t)} {\td t}\Bigg|_{t=0}=0 $$</div>
+{{< mathjax >}}
+$$\frac {\td P(t)} {\td t}\Bigg|_{t=0} = \frac {\td A(t)} {\td t}\Bigg|_{t=0} A(0) - A(0) \frac {\td A(t)} {\td t}\Bigg|_{t=0}=0 $$
+{{< /mathjax >}}
 
-{{%/fold%}}
+{{</fold>}}
 
-This property shows that the short time behavior of `$P(t)$` is :
+This property shows that the short time behavior of $P(t)$ is :
 
-<div>$$P(t\sim 0) \sim o(t) $$</div>
+{{< mathjax >}}
+$$P(t\sim 0) \sim o(t) $$
+{{< /mathjax >}}
 
 And this is the base of Quantum Zeno Effect.
 
@@ -130,42 +158,52 @@ And this is the base of Quantum Zeno Effect.
 ### Model Setup
 First, we study a special case of QZE, which is the simplest one and is convenience to explain the QZE mechanism.
 
-The system is at the state `$\ket{\psi}$` at the initial time. The apparatus perform the measurement of the observable:
+The system is at the state $\ket{\psi}$ at the initial time. The apparatus perform the measurement of the observable:
 
-<div>$$\hat P = \ket{\psi}\bra{\psi} $$</div>
+{{< mathjax >}}
+$$\hat P = \ket{\psi}\bra{\psi} $$
+{{< /mathjax >}}
 
-It has only two possible results: `$1$` when the system is still on `$\ket{\psi}$` , and `$0$` when the system decays to other states. Namely, apparatus `$\hat P$` is a `Yes/No experiment`
+It has only two possible results: $1$ when the system is still on $\ket{\psi}$ , and $0$ when the system decays to other states. Namely, apparatus $\hat P$ is a `Yes/No experiment`
 
-The measurement will be performed at time `$t=n\tau , n\in \mathbb{N}^{+}$` (measurement performed at time `$t=0$` has no effect), and the evolution in the time interval `$\big((n-1)\tau,n\tau\big)$` is described by the unitary operator `$\hat U(t)=\exp(-\ti \hat H t/\hbar)$` .
+The measurement will be performed at time $t=n\tau , n\in \mathbb{N}^{+}$ (measurement performed at time $t=0$ has no effect), and the evolution in the time interval $\big((n-1)\tau,n\tau\big)$ is described by the unitary operator $\hat U(t)=\exp(-\ti \hat H t/\hbar)$ .
 
-The result of every measurement is a random variable `$x_n\in\{0,1\}$`, actually `$\{x_n\}$` is a stochastic process.
+The result of every measurement is a random variable $x_n\in\{0,1\}$, actually $\{x_n\}$ is a stochastic process.
 
-Here we can construct the sample space as `$\Omega=[0,1)$` , and the filteration:
+Here we can construct the sample space as $\Omega=[0,1)$ , and the filteration:
 
-<div>$$\mathcal{F}_n = \mathcal{F}_{n-1}\bigcup\Big( \bigcup_{\omega\in\mathcal{F}_{n-1}}\text{Part}(\omega)\Big) \ ; \ \mathcal{F}_1=\{[0,1/2),[1/2,1)\}=\text{Part}(\Omega) $$</div>
+{{< mathjax >}}
+$$\mathcal{F}_n = \mathcal{F}_{n-1}\bigcup\Big( \bigcup_{\omega\in\mathcal{F}_{n-1}}\text{Part}(\omega)\Big) \ ; \ \mathcal{F}_1=\{[0,1/2),[1/2,1)\}=\text{Part}(\Omega) $$
+{{< /mathjax >}}
 
-Where the `partition function` is defined as `$\text{Part}([a,b))=\{[a,(a+b)/2),[(a+b)/2,b)\}$` , with the probability measure `$\mathbb{P}(\omega)=|\omega|$` is the `Borel measure`.
+Where the `partition function` is defined as $\text{Part}([a,b))=\{[a,(a+b)/2),[(a+b)/2,b)\}$ , with the probability measure $\mathbb{P}(\omega)=|\omega|$ is the `Borel measure`.
 
-Obviously that `$\mathcal{F}_{s\lt t}\subset \mathcal{F}_t$` , that is to say `$(\Omega,\mathcal{F}_t,\mathbb{P})$` is a `filtered probability space`
+Obviously that $\mathcal{F}_{s\lt t}\subset \mathcal{F}_t$ , that is to say $(\Omega,\mathcal{F}_t,\mathbb{P})$ is a `filtered probability space`
 
 ### Solution
-The solution of this question is the probability `$\mathbb{P}(x_n=1)$` of the result of the `$n$`-th measurement is `$x=1$` .
+The solution of this question is the probability $\mathbb{P}(x_n=1)$ of the result of the $n$-th measurement is $x=1$ .
 
-According to the definition of `$\hat P$` we have the recursion equation:
+According to the definition of $\hat P$ we have the recursion equation:
 
-<div>$$\mathbb{P}(x_n=1|x_{n-1}=1)=\mathbb{P}(x_1=1)= P(\tau)\equiv |\bra{\psi}\hat U(\tau)\ket{\psi}|^2 $$</div>
+{{< mathjax >}}
+$$\mathbb{P}(x_n=1|x_{n-1}=1)=\mathbb{P}(x_1=1)= P(\tau)\equiv |\bra{\psi}\hat U(\tau)\ket{\psi}|^2 $$
+{{< /mathjax >}}
 
-If we only care about if the system will decay, we can make a `cut off` that `$\mathbb{P}(x_n=1|x_{n-1}=0)=0$` .
+If we only care about if the system will decay, we can make a `cut off` that $\mathbb{P}(x_n=1|x_{n-1}=0)=0$ .
 
-This cut off let us ignore the oscillation of survival probability `$P(t)$`. With this cut off, the stochastic process `$\{x_n\}$` is a `Markov process`
+This cut off let us ignore the oscillation of survival probability $P(t)$. With this cut off, the stochastic process $\{x_n\}$ is a `Markov process`
 
-We care about the probability that at finite time `$T=N\tau$` , `$x_N=1$` :
+We care about the probability that at finite time $T=N\tau$ , $x_N=1$ :
 
-<div>$$\mathbb{P}(x_N=1) = \mathbb{P}(x_1=1) \prod_{l=2}^N \mathbb{P}(x_l=1|x_{l-1}=1)=\big(P(\tau) \big)^{T/\tau} \sim \big(1-\alpha \tau^2 \big)^{T/\tau} $$</div>
+{{< mathjax >}}
+$$\mathbb{P}(x_N=1) = \mathbb{P}(x_1=1) \prod_{l=2}^N \mathbb{P}(x_l=1|x_{l-1}=1)=\big(P(\tau) \big)^{T/\tau} \sim \big(1-\alpha \tau^2 \big)^{T/\tau} $$
+{{< /mathjax >}}
 
 We find that :
 
-<div>$$\lim_{\tau\rightarrow 0} \mathbb{P}(x_N=1) = 1$$</div>
+{{< mathjax >}}
+$$\lim_{\tau\rightarrow 0} \mathbb{P}(x_N=1) = 1$$
+{{< /mathjax >}}
 
 This is the Quantum Zeno Effect.
 
@@ -181,74 +219,92 @@ The first experiment which observed the Zeno effect is made by Itano's group[[It
 
 ### Model Setup
 
-They used a 3-level ions system(with the interaction can be ignored), each ion's levels are noted as `$\ket{1},\ket{2},\ket{3}$` , with `$\ket{2}$` is a `metastable` level, which means that the spontaneous decay from it to `$\ket{1}$` is negligible. But `$\ket{3}$` can decay only to `$\ket{1}$` easily and fast.
+They used a 3-level ions system(with the interaction can be ignored), each ion's levels are noted as $\ket{1},\ket{2},\ket{3}$ , with $\ket{2}$ is a `metastable` level, which means that the spontaneous decay from it to $\ket{1}$ is negligible. But $\ket{3}$ can decay only to $\ket{1}$ easily and fast.
 
-The system can be described with a density matrix: `$\hat \rho$` , and the components of `$\ket{3}$` can be negligible because ions at that level is much too easy to decay to `$\ket{1}$` . That is:
+The system can be described with a density matrix: $\hat \rho$ , and the components of $\ket{3}$ can be negligible because ions at that level is much too easy to decay to $\ket{1}$ . That is:
 
-<div>$$\hat \rho = \rho_{11}\ket{1}\bra{1}+\rho_{12}\ket{1}\bra{2}+\rho_{21}\ket{2}\bra{1}+\rho_{22}\ket{2}\bra{2} \sim \begin{bmatrix} \rho_{11}&\rho_{12}\\ \rho_{21}&\rho_{22}\end{bmatrix}=\bm{\rho}$$</div>
+{{< mathjax >}}
+$$\hat \rho = \rho_{11}\ket{1}\bra{1}+\rho_{12}\ket{1}\bra{2}+\rho_{21}\ket{2}\bra{1}+\rho_{22}\ket{2}\bra{2} \sim \begin{bmatrix} \rho_{11}&\rho_{12}\\ \rho_{21}&\rho_{22}\end{bmatrix}=\bm{\rho}$$
+{{< /mathjax >}}
 
 The system is coupled with a field and is a Rabi oscillator. That is to say the Hamiltonian of the system is:
 
-<div>$$\hat H =\hbar \Omega\ket{1}\bra{2}+\hbar\Omega\ket{2}\bra{1} \sim \begin{bmatrix} 0 & \hbar \Omega \\ \hbar \Omega & 0\end{bmatrix}=\bm{H}$$</div>
+{{< mathjax >}}
+$$\hat H =\hbar \Omega\ket{1}\bra{2}+\hbar\Omega\ket{2}\bra{1} \sim \begin{bmatrix} 0 & \hbar \Omega \\ \hbar \Omega & 0\end{bmatrix}=\bm{H}$$
+{{< /mathjax >}}
 
 The first half period of the Rabi oscillation is like the decay region of an unstable system.
 
 ### Measurement Sequence
 
-The measurement sequence is constructed by a optical pulse sequence, with the photon can excite ions from level `$1$` to level `$3$` , but leave those at level `$2$` unchanged. The excitation  and the decay from `$3$` to `$1$` can be treated as instantaneous.
+The measurement sequence is constructed by a optical pulse sequence, with the photon can excite ions from level $1$ to level $3$ , but leave those at level $2$ unchanged. The excitation  and the decay from $3$ to $1$ can be treated as instantaneous.
 
-For a single ion (pure state) `$\ket{\psi}=u\ket{1}+v\ket{2}$` with `$|u|^2+|v|^2=1$` , one pulse leads to the following process:
+For a single ion (pure state) $\ket{\psi}=u\ket{1}+v\ket{2}$ with $|u|^2+|v|^2=1$ , one pulse leads to the following process:
 
-<div>$$\ket{\psi} \rightarrow_{\text{pulse}} \big\{\ket{3}:|u|^2,\ket{2}:|v|^2\big\}\rightarrow_{\text{decay}} \big\{\ket{1}\otimes\ket{\text{photon}}:|u|^2,\ket{2}:|v|^2 \big\}$$</div>
+{{< mathjax >}}
+$$\ket{\psi} \rightarrow_{\text{pulse}} \big\{\ket{3}:|u|^2,\ket{2}:|v|^2\big\}\rightarrow_{\text{decay}} \big\{\ket{1}\otimes\ket{\text{photon}}:|u|^2,\ket{2}:|v|^2 \big\}$$
+{{< /mathjax >}}
 
 The duration of this process is much less than the time interval between two neighbor pulses.
 
-And after each measurement, the coherence will be zero, namely `$\rho_{12}=\rho_{21}=0$` . Because the measurement will let every ion be at `$\ket{1}$` or `$\ket{2}$` . And `$\rho_{11},\rho_{22}$` are left unchanged in the measurement.
+And after each measurement, the coherence will be zero, namely $\rho_{12}=\rho_{21}=0$ . Because the measurement will let every ion be at $\ket{1}$ or $\ket{2}$ . And $\rho_{11},\rho_{22}$ are left unchanged in the measurement.
 
-The measurement pulse sequence is operated at the first half period (`$T=\pi/\Omega$`), in which all ions transit from `$\ket{1}$` to `$\ket{2}$` . And there will be `$n+1$` pulses in the time `$T$` (in the close interval `$[0,T]$`), then the interval `$\tau =T/n=\pi/n\Omega$`.
+The measurement pulse sequence is operated at the first half period ($T=\pi/\Omega$), in which all ions transit from $\ket{1}$ to $\ket{2}$ . And there will be $n+1$ pulses in the time $T$ (in the close interval $[0,T]$), then the interval $\tau =T/n=\pi/n\Omega$.
 
-The measurement operated at time `$t=0$` has no effect, and the one operated at time `$t=T$` will let the density matrix diagonal.
+The measurement operated at time $t=0$ has no effect, and the one operated at time $t=T$ will let the density matrix diagonal.
 
 ### Solution
 
 We have the equation of motion(without measurement sequence):
 
-<div>$$\ti \hbar \frac {\td \hat \rho} {\td t} = [\hat H , \hat \rho] \Rightarrow \ti \frac {\td} {\td t} \begin{bmatrix} \rho_{11}&\rho_{12}\\ \rho_{21}&\rho_{22}\end{bmatrix} = \begin{bmatrix} -\Omega (\rho_{12}-\rho_{21}) & \Omega(\rho_{22}-\rho_{11}) \\ -\Omega(\rho_{22}-\rho_{11}) & \Omega (\rho_{12}-\rho_{21})\end{bmatrix}$$</div>
+{{< mathjax >}}
+$$\ti \hbar \frac {\td \hat \rho} {\td t} = [\hat H , \hat \rho] \Rightarrow \ti \frac {\td} {\td t} \begin{bmatrix} \rho_{11}&\rho_{12}\\ \rho_{21}&\rho_{22}\end{bmatrix} = \begin{bmatrix} -\Omega (\rho_{12}-\rho_{21}) & \Omega(\rho_{22}-\rho_{11}) \\ -\Omega(\rho_{22}-\rho_{11}) & \Omega (\rho_{12}-\rho_{21})\end{bmatrix}$$
+{{< /mathjax >}}
 
 With the transform:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 R_1 &= \rho_{12}+\rho_{21} \\
 R_2 &= \ti( \rho_{12} - \rho_{21}) \\
 R_3 &= \rho_{22}-\rho_{11}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Because the `$\bm{\rho}$` is Hermitian matrix, they are real valued. Moreover, because `$\text{Tr}\bm{\rho}=1$` , we know that these three real valued number are complete to discribe the density matrix. That is to say, the map is one to one.
+Because the $\bm{\rho}$ is Hermitian matrix, they are real valued. Moreover, because $\text{Tr}\bm{\rho}=1$ , we know that these three real valued number are complete to discribe the density matrix. That is to say, the map is one to one.
 
-Then we have the equation of motion respect to `$\bm{R}=(R_1,R_2,R_3)^T$` :
+Then we have the equation of motion respect to $\bm{R}=(R_1,R_2,R_3)^T$ :
 
-<div>$$\frac {\td \bm{R}} {\td t} = \begin{bmatrix}0 & 0 & 0 \\ 0 & 0 & -2\Omega \\ 0 & 2\Omega & 0 \end{bmatrix}\bm{R} = \bm{\omega} \times  \bm{R} $$</div>
+{{< mathjax >}}
+$$\frac {\td \bm{R}} {\td t} = \begin{bmatrix}0 & 0 & 0 \\ 0 & 0 & -2\Omega \\ 0 & 2\Omega & 0 \end{bmatrix}\bm{R} = \bm{\omega} \times  \bm{R} $$
+{{< /mathjax >}}
 
-Where `$\bm{\omega} = (2\Omega,0,0)$` , and initially, `$\bm{R}(t=0)=(0,0,-1)^T$` , which means that all ions are at level `$1$` .
+Where $\bm{\omega} = (2\Omega,0,0)$ , and initially, $\bm{R}(t=0)=(0,0,-1)^T$ , which means that all ions are at level $1$ .
 
-The measurement will let vector `$\bm{R}$` 's first two components be zero with the third one unchanged. Then after the half period `$T=\pi/\Omega$` with the measurement sequence, we have:
+The measurement will let vector $\bm{R}$ 's first two components be zero with the third one unchanged. Then after the half period $T=\pi/\Omega$ with the measurement sequence, we have:
 
-<div>$$\bm{R}_{\text{meas}}(T)=(0,0,-\cos^n (\pi/n))$$</div>
+{{< mathjax >}}
+$$\bm{R}_{\text{meas}}(T)=(0,0,-\cos^n (\pi/n))$$
+{{< /mathjax >}}
 
 and if there is no measurement sequence:
 
-<div>$$\bm{R}_{\text{no-meas}}(T)=(0,0,1)$$</div>
+{{< mathjax >}}
+$$\bm{R}_{\text{no-meas}}(T)=(0,0,1)$$
+{{< /mathjax >}}
 
-Then test how many ions are at level `$1$` at time `$t=T$` , which can be realized by excite them to level `$3$` and measure the intensity of the spontaneous radiation. And comparing it with the theoretical prediction:
+Then test how many ions are at level $1$ at time $t=T$ , which can be realized by excite them to level $3$ and measure the intensity of the spontaneous radiation. And comparing it with the theoretical prediction:
 
-<div>$$P_1(T) = \rho_{11}(T)=\frac 1 2 (1+\cos^n(\pi/n))$$</div>
+{{< mathjax >}}
+$$P_1(T) = \rho_{11}(T)=\frac 1 2 (1+\cos^n(\pi/n))$$
+{{< /mathjax >}}
 
-When `$\tau\rightarrow 0$` or `$n\rightarrow \infty$` , we will find that `$P_1(T)=1$` , which is the QZE.
+When $\tau\rightarrow 0$ or $n\rightarrow \infty$ , we will find that $P_1(T)=1$ , which is the QZE.
 
 
 ## Anti-Zeno Effect
 
-When the time interval `$\tau\rightarrow 0$` , the system will never decay. But with finite `$\tau$` , the measurement sequence will accelerate the decay or slow it down, which depend on the time interval `$\tau$` .
+When the time interval $\tau\rightarrow 0$ , the system will never decay. But with finite $\tau$ , the measurement sequence will accelerate the decay or slow it down, which depend on the time interval $\tau$ .
 
 `Quantum Anti-Zeno Effect` , also known as `Inverse Zeno Effect`, is the phenomenon that the periodic measurements accelerates the decay of unstable system [[Facchi 2000][5]].
 
@@ -267,13 +323,17 @@ In MWI, there are myriads of worlds in the Universe in addition to the world we 
 
 However, the RSI, as the prototype of the MWI, does not need the "worlds" argument. Actually, in the Everett's original paper, RSI has two rules: [[Everett 1957][10]]
 
-1.  The observation of observable `$\hat A$` with eigenstates `$\ket{a_i}$` , in the system `$S$` and observer `$O$` , transforms the total state `$\ket{\psi}\otimes \ket{O}$` according to:
+1.  The observation of observable $\hat A$ with eigenstates $\ket{a_i}$ , in the system $S$ and observer $O$ , transforms the total state $\ket{\psi}\otimes \ket{O}$ according to:
 
-    <div>$$\ket{\psi}\otimes \ket{O}\rightarrow \sum_{i} (\bra{a_i}\psi\rangle) \ket{a_i}\otimes \ket{O:a_i} $$</div>
+    {{< mathjax >}}
+$$\ket{\psi}\otimes \ket{O}\rightarrow \sum_{i} (\bra{a_i}\psi\rangle) \ket{a_i}\otimes \ket{O:a_i} $$
+{{< /mathjax >}}
 
 2.  For the observation in more than one observables in more than one systems (non-interaction) with the same observer, the rule 1 should be linearly applied on the direct product state:
 
-    <div>$$\big(\bigotimes_{i=1}^n \ket{\psi_i^{S_i}}\big) \otimes \ket{O}\rightarrow \sum_{j_1,\cdots,j_n} \Big(\prod_{i=1}^n \bra{\hat A_i=a_{i,j_i}}\psi_i^{S_i}\rangle\Big)\Big(\bigotimes_{i=1}^n \ket{\hat A_i=a_{i,j_i}}\ket{O:a_{1,j_1},a_{2,j_2},\cdots,a_{n,j_n}}\Big)$$</div>
+    {{< mathjax >}}
+$$\big(\bigotimes_{i=1}^n \ket{\psi_i^{S_i}}\big) \otimes \ket{O}\rightarrow \sum_{j_1,\cdots,j_n} \Big(\prod_{i=1}^n \bra{\hat A_i=a_{i,j_i}}\psi_i^{S_i}\rangle\Big)\Big(\bigotimes_{i=1}^n \ket{\hat A_i=a_{i,j_i}}\ket{O:a_{1,j_1},a_{2,j_2},\cdots,a_{n,j_n}}\Big)$$
+{{< /mathjax >}}
 
 The probability, according to Everett, does not need to be introduced first.
 
@@ -281,25 +341,33 @@ In fact, there are many versions of MWI and RSI, here, we just discuss the Zeno 
 
 ## QZE in RSI
 
-Consider a unstable system with unstable state `$\ket{u}$` , and with the time evolution it might decay to stable state `$\ket{s}$` (never back to `$\ket{u}$`) with overlap `$x(\tau)=\bra{s} \hat U(\tau)\ket{u}$` . And we introduce a observer who frequently check whether the system decay or not. The interaction between observer and system is ideal, and irrelevant to the history of observation.
+Consider a unstable system with unstable state $\ket{u}$ , and with the time evolution it might decay to stable state $\ket{s}$ (never back to $\ket{u}$) with overlap $x(\tau)=\bra{s} \hat U(\tau)\ket{u}$ . And we introduce a observer who frequently check whether the system decay or not. The interaction between observer and system is ideal, and irrelevant to the history of observation.
 
-<div>$$\ket{\psi}\ket{O}\rightarrow \bra{u}\psi\rangle \ket{u} \ket{O:0}+\bra{s}\psi\rangle \ket{s}\ket{O:1}$$</div>
+{{< mathjax >}}
+$$\ket{\psi}\ket{O}\rightarrow \bra{u}\psi\rangle \ket{u} \ket{O:0}+\bra{s}\psi\rangle \ket{s}\ket{O:1}$$
+{{< /mathjax >}}
 
-Initially, the total state is `$\ket{u}\ket{O}$` , then we have:
+Initially, the total state is $\ket{u}\ket{O}$ , then we have:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \ket{u}\ket{O} &\rightarrow_{\tau} x(\tau)\ket{s}\ket{O:1}+\sqrt{1-|x(\tau)|^2} \ket{u}\ket{O:0} \\
 & \rightarrow_\tau x(\tau)\ket{s}\ket{O:1} + \sqrt{1-|x(\tau)|^2}x(\tau)\ket{s}\ket{O:0,1}+(1-|x(\tau)|^2)^{2/2} \ket{u}\ket{O:0,0} \\
 & \cdots
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-With `$N$` measurements, that is to say with `$N$` maps on `$\ket{u}\ket{O}$` . With rearrange all `$\ket{O:\cdots,1}$` together as `$\ket{O:\text{decayed}}$` we have:
+With $N$ measurements, that is to say with $N$ maps on $\ket{u}\ket{O}$ . With rearrange all $\ket{O:\cdots,1}$ together as $\ket{O:\text{decayed}}$ we have:
 
-<div>$$\ket{u}\ket{O} \rightarrow_{N\tau} x(\tau)\sum_{k=0}^{N-1} (1-|x(\tau)|^2)^{k/2} \ket{s}\ket{O:\text{decayed}} + (1-|x(\tau)|^2)^{N/2} \ket{u}\ket{O:\text{undecayed}} $$</div>
+{{< mathjax >}}
+$$\ket{u}\ket{O} \rightarrow_{N\tau} x(\tau)\sum_{k=0}^{N-1} (1-|x(\tau)|^2)^{k/2} \ket{s}\ket{O:\text{decayed}} + (1-|x(\tau)|^2)^{N/2} \ket{u}\ket{O:\text{undecayed}} $$
+{{< /mathjax >}}
 
-With `$1-|x(\tau)|^2 = |\bra{u}\hat U(\tau)\ket{u}|^2=P(\tau)\sim 1-\alpha \tau^2$` , we still obtain that:
+With $1-|x(\tau)|^2 = |\bra{u}\hat U(\tau)\ket{u}|^2=P(\tau)\sim 1-\alpha \tau^2$ , we still obtain that:
 
-<div>$$\ket{u}\ket{O} \rightarrow_{N\tau;\tau\rightarrow 0} \frac {\alpha T \tau} 2 \ket{s}\ket{O:\text{decayed}} + (1-\frac {\alpha T \tau} 2)\ket{u}\ket{O:\text{undecayed}} = \ket{u}\ket{O:\text{undecayed}} $$</div>
+{{< mathjax >}}
+$$\ket{u}\ket{O} \rightarrow_{N\tau;\tau\rightarrow 0} \frac {\alpha T \tau} 2 \ket{s}\ket{O:\text{decayed}} + (1-\frac {\alpha T \tau} 2)\ket{u}\ket{O:\text{undecayed}} = \ket{u}\ket{O:\text{undecayed}} $$
+{{< /mathjax >}}
 
 That is QZE.
 
@@ -307,29 +375,35 @@ That is QZE.
 
 In the comment article by L.E.Ballentine [[Ballentine 1991][12]] , he disagreed with the "wavefunction collapse postulate" in Itano's experiment and paper. Ballentine's argument is consistent to the RSI but in his original paper he did not cite the word of Everett.
 
-Here we will introduce his argument. We will begin with the initial states of ions are all `$\ket{1}$` , and also assume that the decay from `$\ket{3}$` to `$\ket{1}$` is extremely fast. With a photon detector `$\ket{\{\cdots\}}$` (where the `$\cdots$` notes the history of the detector) we will have the "measurement" process, or the entanglement process of ion and detector:
+Here we will introduce his argument. We will begin with the initial states of ions are all $\ket{1}$ , and also assume that the decay from $\ket{3}$ to $\ket{1}$ is extremely fast. With a photon detector $\ket{\{\cdots\}}$ (where the $\cdots$ notes the history of the detector) we will have the "measurement" process, or the entanglement process of ion and detector:
 
-<div>$$\ket{1^n ,2^{N-n}}\otimes \ket{\{\cdots\}}\rightarrow \ket{1^n,2^{N-n}}\otimes\ket{\{n,\cdots\}}$$</div>
+{{< mathjax >}}
+$$\ket{1^n ,2^{N-n}}\otimes \ket{\{\cdots\}}\rightarrow \ket{1^n,2^{N-n}}\otimes\ket{\{n,\cdots\}}$$
+{{< /mathjax >}}
 
-Then for the Rabi oscillation between `$\ket{1}$` and `$\ket{2}$` , we have the evolution of the system in the `$\tau$` (in occupation basis and let `$\Omega\tau=\xi$`) :
+Then for the Rabi oscillation between $\ket{1}$ and $\ket{2}$ , we have the evolution of the system in the $\tau$ (in occupation basis and let $\Omega\tau=\xi$) :
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \ket{1^m,2^n} &\rightarrow_{\tau} (\cos\Omega\tau \ket{1}-\ti\sin\Omega\tau\ket{2})^{\otimes m}(-\ti\sin\Omega\tau\ket{1}+\cos\Omega\tau\ket{2})^{\otimes n} \\
 &=\sum_{j=0}^m\sum_{k=0}^n C_m^j C_n^k \cos^{j+n-k} \xi(-\ti\sin\xi)^{m-j+k} \ket{1^{j+k},2^{m+n-j-k}} \\
 &=\sum_{l=0}^{m+n}R_{l;m,n}(\xi)\ket{1^l,2^{m+n-l}}
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-Where `$R_{l;m,n}(\xi)=\sum_{j=0}^l C_m^j  C_n^{l-j} \cos^{2j+n-l}\xi (-\ti\sin\xi)^{m+l-2j}$` , in which invalid binomial coefficient should be zero.
+Where $R_{l;m,n}(\xi)=\sum_{j=0}^l C_m^j  C_n^{l-j} \cos^{2j+n-l}\xi (-\ti\sin\xi)^{m+l-2j}$ , in which invalid binomial coefficient should be zero.
 
 Then we can write the evolution of the system and detector:
 
-<div>$$\begin{aligned}
+{{< mathjax >}}
+$$\begin{aligned}
 \ket{1^N,2^0}\otimes\ket{\{\}} & \rightarrow_{\tau} \sum_{n=0}^N R_{n;N,0}(\xi)\ket{1^n,2^{N-n}}\otimes \ket{\{n\}} \\
 \ket{1^N,2^0}\otimes\ket{\{\}}& \rightarrow_{2\tau} \sum_{n=0}^N R_{n;N,0}(\xi) \sum_{n'=0}^N R_{n';n,N-n}(\xi) \ket{1^{n'},2^{N-n'}}\otimes \ket{\{n',n\}} \\
 \cdots
-\end{aligned}$$</div>
+\end{aligned}$$
+{{< /mathjax >}}
 
-In the special situation where `$N=1$` , it is reduced to what we discussed in the last section: the Zeno effect for a pure state in RSI. And for general situation, we know that `$R_{l;m,n}(\xi)$` is a representation of the `dynamics semi-group` of Quantum mechanics. According to the original word of Misra [[Misra 1977][2]] , the conclusion is the same.
+In the special situation where $N=1$ , it is reduced to what we discussed in the last section: the Zeno effect for a pure state in RSI. And for general situation, we know that $R_{l;m,n}(\xi)$ is a representation of the `dynamics semi-group` of Quantum mechanics. According to the original word of Misra [[Misra 1977][2]] , the conclusion is the same.
 
 We need to point out, the `photon detector` might not be a classical apparatus. In fact, the decoherence of the state is caused by the spontaneous emission. And in that it does not need a "detector" actually. It can be find in Petrosky's paper [[Petrosky 1990][3]]. They discussed the Hamiltonian of the total system together with the spontaneous emission and photon absorption to excite the ion.
 

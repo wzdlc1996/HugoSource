@@ -10,7 +10,7 @@ hasCJKLanguage             = true
 summaryLength              = 50
 Paginate                   = 3
 
-theme                      = "coder"
+theme                      = "AllinOne"
 title                      = "Leonard"
 pygmentsuseclasses         = true
 
@@ -30,12 +30,12 @@ pygmentsuseclasses         = true
     name                   = "Notes"
     #weight                 = -110
     identifier             = "Notes"
-    url                    = "notes/"
+    url                    = "/notes/"
 
   [[menu.main]]
     name                   = "Articles"
     identifier             = "Articles"
-    url                    = "artic/"
+    url                    = "/artic/"
 
 
 
@@ -61,7 +61,7 @@ pygmentsuseclasses         = true
     highlightjs              = true
 
     # latex
-    katex                    = false
+    mathjax                  = true
 
     # links
     email                    = "wzdlc1996@gmail.com"
@@ -72,7 +72,12 @@ pygmentsuseclasses         = true
 #    twitter                  = "//twitter.com/you"
 #    px500                    = "//px500"
 #    instagram                = "//instagram.com/you"
-    include_rss              = true                          # include RSS <link> tag in <head> and show RSS icon
+    include_rss              = false                          # include RSS <link> tag in <head> and show RSS icon
 
     # analytics
     googleAnalytics = "UA-128644147-1"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

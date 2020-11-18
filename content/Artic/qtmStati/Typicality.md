@@ -49,13 +49,13 @@ $$\mathbb{E}(F(z))=\frac 1 N \text{Tr}_{\mathcal{H}(N)}\hat A = \frac 1 N \text{
 
 Where \(\hat P_{\mathcal{H}(N)}\) is the projector towards \(\mathcal{H}(N)\equiv\text{span}\{\xi_i\}\) .
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 If \(i\neq j\) , \(\mathbb{E}(z_i^* z_j)=0\) because of it is an odd function. And if \(i=j\) , it is \(\mathbb{E}(|z_i|^2)=\frac {\Gamma(N)\Gamma(2)} {\Gamma(1+N)}=\frac 1 {N}\) , Then:
 
 $$\mathbb{E}(F(z))=\frac 1 N \sum_{i,j=1}^N A_{ij}\delta_{ij}=\frac 1 N \text{Tr}_{\mathcal{H}(N)} \hat A$$
 
-{{%/fold%}}
+{{</fold>}}
 
 _[Theorem]_ : The n-th moment of \(F(z)\) is:
 
@@ -63,7 +63,7 @@ $$\mathbb{E}\Big(\big(F(z)-\mathbb{E}F(z)\big)^n\Big)=\frac {\Gamma(n+1)\Gamma(N
 
 Where \(\lambda_i\) is the eigenvalue of matrix: \(B_{ij}=A_{ij}-\mathbb{E}(F(z))\delta_{ij}\).
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Let \(\hat B = \hat A-\mathbb{E}(F(z))\), then one has \(F(z)-\mathbb{E}F(z)=\bra{\psi}\hat B\ket{\psi}\) . That is to say, we need only compute the moment: \(\mathbb{E}(|\bra{\psi}\hat B\ket{\psi}|^n)\) with \(\ket{\psi}\) is random variable.
 
@@ -86,7 +86,7 @@ If \(x\lt 1/(\max |\lambda_i|)\) . And:
 
 $$R_n(\{\lambda_i\})=\frac 1 {n!} \frac {\td^n} {\td x^n} G\{\lambda_i\}(x)\Bigg|_{x=0}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 ### Variance
 
@@ -116,7 +116,7 @@ $$\mathbb{E}S(z)= \Psi_0(N+1)-\Psi_0(2)\sim_{N\gg 1} \ \log N-1+\gamma$$
 
 Where \(\Psi_0(x)=\frac {\td \Gamma(x)} {\Gamma(x)\td x}\) is the Digamma function.
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 One can check that:
 
@@ -130,7 +130,7 @@ With the asymptotic expansion, one can check that as \(N\rightarrow \infty\) :
 
 $$\mathbb{E}S(z)= \log N -1 +\gamma + \mathcal{O} (N^{-1})$$
 
-{{%/fold%}}
+{{</fold>}}
 
 It is similar to the form of `Boltzmann Entropy` defined by the `number of microscopic states`
 
@@ -140,7 +140,7 @@ _[Theorem]_ : The variance of \(S(z)\) is:
 
 $$\mathbb{E}\Big(|S(z)-\mathbb{E}S(z)|^2\Big)=\frac 1 {N+1}\Big(\frac {\pi^2} 3 -2\Big)-\Psi_1(N+1)$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 One can check that:
 
@@ -160,7 +160,7 @@ One maybe need to use the property (\(\Psi(x)=\frac {\td \log \Gamma(x)} {\td x}
 
 $$\Psi(z+1)=\Psi(z)+\frac 1 {z}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 # Thermalization and Relaxation Time
 
@@ -213,7 +213,7 @@ $$\begin{aligned}
 \sigma_A^2 (\{c_{E,a}\})+ \mu_A^2 &= \sum_{E_1-E_1'+E_2-E_2'=0}\sum_{a,a';b,b'} A_{E_1,a;E_1',a'}c_{E_1',a'}c_{E_1,a}^* A_{E_2,b;E_2',b'}c_{E_2',b'}c_{E_2,b}^*
 \end{aligned}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 With the definition of quantities of time-statistic:
 
@@ -236,7 +236,7 @@ $$\begin{aligned}
 
 If we treated the initial state \(\ket{\psi}\) as the random vector in \(\mathcal{H}(N)\) , then these two quantities are random variables.
 
-{{%/fold%}}
+{{</fold>}}
 
 _[Theorem]_ : The mean and variance of random variable \(\mu_A\) are:
 
@@ -249,7 +249,7 @@ Where \(\text{Tr}_{E-\text{subspace}}\hat A^2\) means:
 
 $$\text{Tr}_{E-\text{subspace}} \hat A^2 = \sum_{a,a'}\bra{E,a}\hat A \ket{E,a'}\bra{E,a'}\hat A\ket{E,a}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 First, to compute the mean of \(\mu_A\) , we need:
 
@@ -290,7 +290,7 @@ $$\begin{aligned}
 &=\frac {\sum_E \text{Tr}_{E-\text{subspace}} \hat A^2} {N(N+1)}-\frac {\big(\text{Tr}_{\mathcal{H}(N)}\hat A\big)^2} {N^2(N+1)}
 \end{aligned}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 The mean of time-mean is the same as the statical case. And is consistent with the equal-priori principle. If the variance of it has the limit zero (as \(N\rightarrow \infty\)), one can say that: there is an overwhelming large probability to find a state whose time-mean is equal to the prediction of equal-priori principle, or the statistical mechanics' prediction.
 
@@ -298,7 +298,7 @@ _[Theorem]_ : The mean and variance of random variable \(\sigma_A^2\) are:
 
 $$\mathbb{E}\sigma_A^2 = \text{Var}(\sigma_A^2)=0$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 First, compute the mean of \(\sigma_A\):
 
@@ -332,7 +332,7 @@ $$\begin{aligned}
 &= \frac 1 {N(N+1)}\text{Tr}_{\mathcal{H}(N)}\Big(\hat A^2-\hat A\hat P_E\hat A\Big)
 \end{aligned}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 ## Relaxation of Entropy
 
@@ -350,7 +350,7 @@ $$S(t,\ket{\psi}):=\mathbb{E}_{\{\ket{\psi}^\bot\}}\Big(S\big(\hat U(t)\ket{\psi
 
 Where \(P(t)=|\bra{\psi}\hat U(t)\ket{\psi}|^2\) is so called as `survival probability` , it is a quantity in \([0,1]\) . And \(f(x)=x\log x+(1-x)\log (1-x)\).
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Let \(\{\ket{\psi}^\bot\}=\{\ket{\phi_1},\cdots,\ket{\phi_{N-1}}\}\) , then we have the expansion of \(\ket{\psi(t)}=\hat U(t)\ket{\psi(t)}\):
 
@@ -371,7 +371,7 @@ $$S(t,\ket{\psi}):=\mathbb{E}_{\{\ket{\psi}^\bot\}}\Big(S\big(\hat U(t)\ket{\psi
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 Then \(f(P(t))\sim\mathcal{O}(1)\) , which means when the dimension of Hilbert space \(N\) is sufficient large, we can simply approximate the function as:
 
@@ -404,7 +404,7 @@ $$\begin{aligned}
 
 Where \(p(E)=\sum_{a=1}^{d(E)} |c_{E,a}|^2\) is the probability of initial state is in the \(E\)-subspace.
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 The time-mean is easily to be obtained with the definition of time-statistic. And the variance is:
 
 $$\begin{aligned}
@@ -416,7 +416,7 @@ $$\begin{aligned}
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 _[Theorem]_ : The mean and variance of random variable \(\mu_s\) are:
 
@@ -425,7 +425,7 @@ $$\begin{aligned}
 \mathbb{E}\big(|\mu_s-\mathbb{E}\mu_s|^2\big) &=
 \end{aligned}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 To compute the \(\mathbb{E}(p(E)^2)\) we need the 4-point function:
 
@@ -504,7 +504,7 @@ When \(D_n=N^n\) , that means the energy levels are full-degeneracy, then the va
 
 $$\mathbb{E}\big(|\mu_s-\mathbb{E}\mu_s|^2\big)\sim \frac 4 {N^3}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 # Density Matrix of Sub-system
 
@@ -582,7 +582,7 @@ $$\Big\langle \big(\sum_{i=1}^{n_1} x_{i}^2\big)^{\alpha_1}\cdots\big(\sum_{i=n_
 
 Where \(\langle F\rangle_{S^{n-1}}\equiv \frac {\int_{S^{n-1}}F \td \sigma_{n-1}}{ \int_{S^{n-1}}\td \sigma_{n-1}}\)
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 With the Baker's theorem, one can prove a corollary, which connects the integral in unit ball and sphere of a homogeneous function of degree \(\rho\): \(f(kx)=k^\rho f(x)\).
 
@@ -621,7 +621,7 @@ We have:
 
 $$\Big\langle \big(\sum_{i=1}^{n_1} x_{i}^2\big)^{\alpha_1}\cdots\big(\sum_{i=n_1+\cdots+n_{m-1}+1}^{n} x_{i}^2\big)^{\alpha_m}\Big\rangle_{S^{n-1}} = \frac {\Gamma(\frac n 2)\Gamma(\alpha_1+\frac {n_1}2)\cdots \Gamma(\alpha_m+\frac {n_m} 2)} {\Gamma(\frac {n_1} 2)\cdots \Gamma(\frac {n_m} 2)\Gamma(\alpha+\frac {n} 2)} $$
 
-{{%/fold%}}
+{{</fold>}}
 
 _[Corollary 1]_ : For the mean of monomial on complex sphere \(\mathcal{H}_{N}\) , is similar to that \(n_i=2\) and \(n=2N\) real sphere:
 
@@ -635,7 +635,7 @@ _[Theorem]_ : `multi-point correlation function computing` If function \(f:\math
 
 $$\langle f\rangle = \frac {\int e^{-\sum_i x_i^2} f(x)\td^n x } {\int_{S^{n-1}}\td \sigma_{n-1}\int_0^{\infty} e^{-r^2} r^{n-1+\alpha}\td r }= \frac {\Gamma(\frac n 2)\int e^{-\sum_i x_i^2} f(x)\td^n x } {\pi^{n/2}\Gamma(\frac {n+\alpha} 2)}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 It can be easily proven by substituting \(\exp(-\sum_i x_i^2)f\) into Baker's theorem. We have:
 
@@ -648,13 +648,13 @@ $$\begin{aligned}
 
 q.e.d.
 
-{{%/fold%}}
+{{</fold>}}
 
 _[Corollary 1]_ : `Generic multi-point correlation function on complex sphere` \(\mathcal{H}_N\) .
 
 $$\Big\langle \prod_{j=1}^{n}z_{i_j}^{\alpha_j}z_{i_j}^{*\beta_j}\Big\rangle_{\mathcal{H}_N}=\frac {\Gamma(N)} {\Gamma\big(N+(\sum_j \alpha_j+\beta_j)/2\big)}\prod_{j=1}^n\partial_{w_{i_j}}^{\beta_j}\partial_{w_{i_j}^*}^{\alpha_j} \exp\big(\sum_{i=1}^N w_i w_i^*\big)\Bigg|_{\bm{w}=0}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 It can be handled in \(2N\)-real sphere, then function \(f\):
 
@@ -671,7 +671,7 @@ $$\begin{aligned}
 
 Where the gaussian integral can be easily checked.
 
-{{%/fold%}}
+{{</fold>}}
 
 _[Corollary 2]_ : `A special case of multi-point function on complex sphere` \(\mathcal{H}_N\) . The special case means that all indices are \(1\), and the number of normal complex variables is equal to that of their conjugations:
 

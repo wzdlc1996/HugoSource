@@ -58,7 +58,7 @@ With the expansion of Landau functional above:
 
 $$\bar{m}\propto \begin{cases}\pm (-t)^{1/2} & T\lt T_c , H=H_c \\ h^{1/3} & T= T_c\end{cases}$$
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 With the mean-field approximation, Landau functional has the form of:
 
@@ -72,7 +72,7 @@ So with \(T\lt T_c , H=H_c\) , it is \(2d_2 t \bar{m} +4 b_4 \bar{m}^3 = 0\) . A
 
 q.e.d.
 
-{{% /fold %}}
+{{< /fold >}}
 
 # BEC and Superfluidity
 
@@ -88,7 +88,7 @@ One can further obtain the condensate density:
 
 $$\rho_c(T)=\rho \Big(1-\big(\frac T {T_c}\big)^{3/2}\Big)$$
 
-{{% fold "Proof" %}}
+{{< fold "Proof" >}}
 
 With the density of states of free Boson gas: \(D(E)=\frac {2s+1} {(2\pi)^2} \Big(\frac {2m} {\hbar^2}\Big)^{3/2} V \sqrt{E}\) . Where factor \(2s+1\) comes from degree freedom of spin. For \(D(E=0)=0\) , so in order to discuss the BEC we need to count the number of particle on ground state separately:
 
@@ -114,7 +114,7 @@ So we have the condensate density:
 
 $$\rho_c(T)=\rho\Big(1-\big(\frac{T} {T_c}\big)^{3/2}\Big)$$
 
-{{% /fold %}}
+{{< /fold >}}
 
 Now let us consider a Boson system with a repulsive contact interaction \(v(\bm{r}-\bm{r'})=g\delta(\bm{r}-\bm{r'})\) where \(g\gt0\). The action is (with \(\phi\) are complex valued field):
 
@@ -140,7 +140,7 @@ Where \(\rho_c=\mu/g\) is the mean-field solution. Such transformation is non-tr
 
 $$S[\rho,\varphi]=\int \td^d \bm{r}\int \td \tau \Big\{\ti\hbar \rho\partial_{\tau}\varphi+\frac {\hbar^2|\nabla \rho|^2} {8m(\rho_c+\rho)}+\frac {\hbar^2 (\rho_c+\rho)} {2m} |\nabla \varphi|^2+\frac g 2 \rho^2\Big\}-\frac {\hbar\beta\mu N_c} 2 +\ti\hbar N_c 2\pi n$$
 
-{{% fold "Proof" %}}
+{{< fold "Proof" >}}
 
 For the quadratic part, with \(\phi=r e^{\ti \varphi}\)
 
@@ -172,13 +172,13 @@ $$S=\int \td^d \bm{r}\int \td \tau \Big\{\ti\hbar \rho\partial_{\tau}\varphi+\fr
 
 Let \(\rho_c V =N_c\) we have proved it.
 
-{{% /fold %}}
+{{< /fold >}}
 
 Make the approximation of the action, up to the second order of \(\rho,\varphi\) so that the path integral is a Gaussian integral. Then integrate out \(\rho\), we have the reduced action of \(\varphi\) like:
 
 $$S[\varphi]=-\frac 1 2\int\td^d \bm{k}\int\td \tau\Big\{\Big(g+\frac {\hbar^2\bm{k}^2} {4m\rho_c}\Big)^{-1}|\partial_{\tau}\varphi_{\bm{k}}|^2-\frac {\hbar^2 \bm{k}^2 \rho_c} {m} |\varphi_{\bm{k}}|^2\Big\}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Up to the second order of \(\rho\) , the action is:
 
@@ -204,7 +204,7 @@ So we have the reduced action: (ignoring the constant term)
 
 $$S[\varphi]=-\frac 1 2\int\td^d \bm{k}\int\td \tau\Big\{\Big(g+\frac {\hbar^2\bm{k}^2} {4m\rho_c}\Big)^{-1}|\partial_{\tau}\varphi_{\bm{k}}|^2-\frac {\hbar^2 \bm{k}^2 \rho_c} {m} |\varphi_{\bm{k}}|^2\Big\}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 Which describes a collective excitation with the dispersion:
 

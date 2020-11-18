@@ -41,7 +41,7 @@ In order that the integral is convergent, one need that \(\mu\leq 0\) . So the e
 
 $$\mathcal{Z}=\prod_{n,\bm{k}}\frac 1 {-\ti\omega_n-\mu+\bm{k}^2/2m}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Firstly, we check the integral measure. In path integral, we have:
 
@@ -80,7 +80,7 @@ $$\begin{aligned}
 &=\prod_{n,\bm{k}} \frac 1 {-\ti\omega_n-\mu+\bm{k}^2/2m}
 \end{aligned}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 Or the Grand potential:
 
@@ -111,7 +111,7 @@ Introducing the real fields \(A, P\) for \(\phi_1\) by writing \(\phi_1=A+\ti P\
 
 $$S=S_0+\int_0^\beta \td \tau \int\td^d \bm{r} \ \Big\{A\Big(-\frac {\nabla^2} {2m}+2g\phi_0^2\Big)A+ P\Big(-\frac {\nabla^2} {2m}\Big)P +2\ti A\partial_\tau P\Big\}$$
 
-{{%fold "Proof"%}}
+{{<fold "Proof">}}
 
 Firstly, use the fact \(\phi_0\) is the minimum point so \(\phi_0^2=\mu/g\) , or \(\mu=g \phi_0^2\) , it can make some simplification.
 
@@ -140,7 +140,7 @@ $$\int_0^\beta \td \tau X \partial_\tau X=\frac 1 2 X^2\Big|_{0}^\beta=0 \ ; \ \
 If \(X(\beta)=X(0)\) , and the identity \(A\nabla^2 P-P\nabla^2 A=\nabla\cdot(A\nabla P-P-\nabla A)\) . So some terms should be zero. And finally, we have:
 
 $$S_2=\int_0^\beta \td \tau \int\td^d \bm{r} \ \Big\{A\Big(-\frac {\nabla^2} {2m}+2g\phi_0^2\Big)A+ P\Big(-\frac {\nabla^2} {2m}\Big)P +2\ti A\partial_\tau P\Big\}$$
-{{%/fold%}}
+{{</fold>}}
 
 Such introduced fields \(A,P\) has different influence on \(\phi_0\) . For the generic case of \(\phi_0\in \mathbb{C}\) , \(A\) is the term which variates \(\text{Re}\phi_0\) , and \(P\) is the term which variates \(\text{Im}\phi_0\) . So our discussion can be also applied to such generic case with the reinterpretation of the definition of \(A\) and \(P\).
 
@@ -148,7 +148,7 @@ As the \(S_2\) is a quadratic form of the field \(A,P\) , we can rewrite it in t
 
 $$S=S_0 + \sum_{\omega_n}\int \td^d \bm{k} \ \begin{bmatrix}A(-\bm{k},-\ti \omega_n) \\ P(-\bm{k},-\ti\omega_n)\end{bmatrix}^{T}\begin{bmatrix}\frac {\bm{k}^2} {2m} +2g\phi_0^2 & \omega_n \\ -\omega_n & \frac {\bm{k}^2} {2m} \end{bmatrix} \begin{bmatrix}A(\bm{k},\ti \omega_n) \\ P(\bm{k},\ti\omega_n)\end{bmatrix}$$
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 With the Fourier transformation:
 
@@ -165,13 +165,13 @@ $$\begin{aligned}
 
 With these equalities in mind, one can simply prove the Fourier transform of action.
 
-{{% /fold %}}
+{{< /fold >}}
 
 Then one can evaluate the thermal Green's function with the momentum-frequency argument:
 
 $$-\Big\langle \begin{bmatrix} A(\bm{k},\ti\omega_n) \\ P(\bm{k},\ti\omega_n)\end{bmatrix} \begin{bmatrix}A(-\bm{k},-\ti\omega_n) & P(-\bm{k},-\ti\omega_n) \end{bmatrix} \Big\rangle =-\frac 1 2 \frac 1 {\frac {\bm{k}^2} {2m}\big(\frac {\bm{k}^2} {2m}+2g\phi_0^2\big)+\omega_n^2}\begin{bmatrix} \bm{k}^2/2m & -\omega_n \\ \omega_n & \bm{k}^2/2m+2g\phi_0^2 \end{bmatrix}$$
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 We have known that the Green's function of system with spatial translation symmetry in frequency-momentum representation should be:
 
@@ -244,7 +244,7 @@ Where the factor \(1/2\) comes from the sum in the exponent of the action is ove
 
 q.e.d.
 
-{{% /fold %}}
+{{< /fold >}}
 
 Then we find that the Green's function has a first-order pole at:
 
@@ -252,7 +252,7 @@ $$\ti\omega_n=\pm \sqrt{\frac {\bm{k}^2} {2m}\Big(\frac {\bm{k}^2} {2m}+2g\phi_0
 
 As we know, first-order pole of the Green's function shows the dispersion relation of the excited states. Bogoliubov was the first to derive this, showing that owing to the interaction \(g\), it is a dispersion proportional to \(\bm{k}^2\) alters to the dispersion of `acoustic waves` which is proportional to \(\bm{k}\) . And <mark>this fact leads to superfluidity</mark>.
 
-{{% fold "Follow-up" %}}
+{{< fold "Follow-up" >}}
 
 As the final process, let us determine \(\mu\) and \(\phi_0\) using the saddle-node approach:
 
@@ -279,7 +279,7 @@ $$N=V \phi_0^2+\sum_{\bm{k}}\Delta N_{\bm{k}}=V\Big(\phi_0^2+\frac {(mg)^{3/2}} 
 
 Then together with the bifurcation condition \(\phi_0^2=\mu/g\) . We have determined all parameters in the statistical theory of such interacting Bose gas.
 
-{{% /fold %}}
+{{< /fold >}}
 
 The solution above is also called `Bogoliubov theory` which is appropriate in the dilute limit or when the coupling is small. <mark>The main idea is that fluctuation around the classical, symmetry breaking solution \(\phi_0\) are assumed to be small. So the path integral can be approximation evaluated by the Gaussian integral. </mark>
 
@@ -295,7 +295,7 @@ Substitute these into the action functional we have:
 
 $$S=\int_0^\beta \td\tau\int\td^d\bm{r}\Big\{\ti\rho \partial_{\tau} \theta+\frac 1 {2m}\Big(\frac 1 {4\rho} (\nabla\rho)^2+\rho (\nabla \theta)^2\Big)-\mu\rho +\frac 1 2 g\rho^2\Big\}$$
 
-{{% fold "Proof" %}}
+{{< fold "Proof" >}}
 
 we need to check the time-derivative and kinetic energy term:
 
@@ -312,7 +312,7 @@ Also we eliminate the terms \(\nabla^2\rho,\partial_{\tau}\rho\) because they co
 
 $$S=\int_0^\beta\td\tau \int\td^d \bm{r} \Big\{\ti\rho\partial_{\tau}\theta + \frac 1 {2m}\Big(\frac 1 {4\rho}(\nabla \rho)^2+\rho (\nabla\theta)^2\Big)-\mu\rho +\frac 1 2 g\rho^2\Big\}$$
 
-{{%/fold%}}
+{{</fold>}}
 
 Now we rewrite the chemical potential as \(\mu\rightarrow \mu+x(\bm{r},\tau)\) mathematically. \(x\) is a test field which helps us extract the information about \(\rho\) . And expand \(\rho\) up to the first order, zero order should also be the mean field contribution: \(\rho=\mu/g+\delta\rho\) . On the other hand, we are interested in the case of low energy, so we assume \(\omega_n,\bm{k}\) or \(\partial_{\tau},\nabla\) to be small . Then write them up to second order, noting \(\int \td\tau\int\bm{r} \delta\rho=\int \td\tau\int \bm{r} x=0\):
 
@@ -327,7 +327,7 @@ And the current density is:
 
 $$\bm{j}(\bm{r},\tau)=\frac 1 {2m\ti}\big(\phi^*(\bm{r},\tau)\nabla \phi(\bm{r},\tau)-\nabla\phi^*(\bm{r},\tau)\phi(\bm{r},\tau)\big)$$
 
-{{% fold "Proof"%}}
+{{< fold "Proof">}}
 
 In the second quantization , current density operator (without magnetic field) should be:
 
@@ -341,7 +341,7 @@ For detial see [The proof for relation between operator expectation value and pa
 
 That is why we say , the current density should have the form above.
 
-{{%/fold%}}
+{{</fold>}}
 
 For this system, it is:
 

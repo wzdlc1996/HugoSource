@@ -46,9 +46,9 @@ And one can simply use it with TOML front file to generate the JSON file:
 hugo-algolia --config ./config.toml
 ```
 
-It will generate a JSON file in the `$hugoroot/public` folder, in which all posts in `$hugoroot/content` will be listed.
+It will generate a JSON file in the $hugoroot/public` folder, in which all posts in $hugoroot/content` will be listed.
 
-One can also use the `-s` flag to send them to Algolia. However this tool can not read the `appID` and `key` in `TOML` file, we can make some hack on it. A temporal adjustment is edit the file `$node_modules_prefix/lib/node_modules/hugo-algolia/lib/index.js`, rewrite the function `HugoAlgolia.prototype.setCredentials` :
+One can also use the `-s` flag to send them to Algolia. However this tool can not read the `appID` and `key` in `TOML` file, we can make some hack on it. A temporal adjustment is edit the file $node_modules_prefix/lib/node_modules/hugo-algolia/lib/index.js`, rewrite the function `HugoAlgolia.prototype.setCredentials` :
 
 ```js
 //$node_modules_prefix/lib/node_modules/hugo-algolia/lib/index.js
@@ -101,7 +101,7 @@ Now we have submitted posts we want to Algolia. Then we need to make a front-end
 
 we will add a little icon which is a `<a>` element actually, and when one click on it, there will be a `modal` subpage by the `bootstrap 4` library. And there will be a input dialog in it. Then we can use it to search the posts.
 
-We need to add the `bootstrap 4` in the site, and because of the dependence, we need also add the `jquery` lib. Edit the `$themepath/layouts/partials/head.html` file:
+We need to add the `bootstrap 4` in the site, and because of the dependence, we need also add the `jquery` lib. Edit the $themepath/layouts/partials/head.html` file:
 
 ```html
 <!--$themepath/layouts/partials/head.html-->
@@ -115,7 +115,7 @@ One need to remove the origin `bootstrap css` importation if exists.
 
 Then we can make the front-end ui:
 
-First we need to add a file like `$themepath/layouts/partials/search.html`:
+First we need to add a file like $themepath/layouts/partials/search.html`:
 
 ```html
 <!--$themepath/layouts/partials/search.html-->
@@ -125,6 +125,7 @@ First we need to add a file like `$themepath/layouts/partials/search.html`:
     <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
         <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
     </svg>
+
 </div>
 <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js" | absURL }}"></script>
 <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js" | absURL }}"></script>
@@ -150,7 +151,7 @@ autocomplete('#aa-search-input',
 
 Where the `svg` element is a little magnifier icon.
 
-Then we need to make a entry. For `AllinOne` theme: [[AllinOne homepage][6]] , we will set it on the left of `navbar`. Edit the file `$themepath/layouts/partials/site-navbar.html` , add this `<a>` element at the end of the `<div>` in the label `<nav>` , before the last `</div>` notation.
+Then we need to make a entry. For `AllinOne` theme: [[AllinOne homepage][6]] , we will set it on the left of `navbar`. Edit the file $themepath/layouts/partials/site-navbar.html` , add this `<a>` element at the end of the `<div>` in the label `<nav>` , before the last `</div>` notation.
 
 ```html
 <!--$themepath/layouts/partials/site-navbar.html-->
@@ -174,9 +175,10 @@ And add the following `<div>` after the `<nav>` :
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+
       </div>
       <div class="modal-body">
-        {{ partial "search.html" . }}
+          {{ partial "search.html" . }}
       </div>
     </div>
   </div>
@@ -185,7 +187,7 @@ And add the following `<div>` after the `<nav>` :
 
 You need also add a `CSS` file in which to assign the style of these elements:
 
-{{%fold "CSS file"%}}
+{{<fold "CSS file">}}
 
 ```CSS
 /*#themepath/static/css/search.css*/
@@ -290,9 +292,9 @@ You need also add a `CSS` file in which to assign the style of these elements:
 }
 ```
 
-{{%/fold%}}
+{{</fold>}}
 
-And add it to the `$themepath/layouts/partials/head.html` to let it contain the css file:
+And add it to the $themepath/layouts/partials/head.html` to let it contain the css file:
 
 ```html
 <!--$themepath/layouts/partials/head.html-->
@@ -300,7 +302,7 @@ And add it to the `$themepath/layouts/partials/head.html` to let it contain the 
 <link rel="stylesheet" href="{{ "css/search.css" | absURL }}" />
 ```
 
-There might be a little bug of the bootstrap modal, which let the `padding-right` of `body` increase at each time to use the modal. To correct this, we can add a line to the `$themepath/static/css/main.css` :
+There might be a little bug of the bootstrap modal, which let the `padding-right` of `body` increase at each time to use the modal. To correct this, we can add a line to the $themepath/static/css/main.css` :
 
 ```CSS
 body {
@@ -312,7 +314,7 @@ body {
 
 After all, we will have a search icon in the left of the navigation bar. It will be looked like:
 
-{{% center %}}<img name="preview" src="/imgs/artics/hugo/InsiteSearch_1.png"/>{{% /center %}}
+{{< center >}}<img name="preview" src="/imgs/artics/hugo/InsiteSearch_1.png"/>{{< /center >}}
 
 # Reference
 
