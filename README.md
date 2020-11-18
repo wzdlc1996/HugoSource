@@ -4,6 +4,20 @@ Is the source files of my [Blog on Github](https://wzdlc1996.github.io).
 
 ## MathJax Adjust
 
+The [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) has been solved after recent update of Hugo. But now it renders character `\\` as `\`. To resolve this, a new shortcode `mathjax` is defined:
+
+1.  Inline formula should been stored as `$...$`.
+2.  Block math environment should be written as:
+    ```markdown
+    {{< other-shortcodes >}}
+      {{< mathjax >}}
+      $$ formulas $$
+      {{< /mathjax >}}
+    {{< /other-shortcodes >}}
+    ```
+
+<details>
+<summary>For the above issue (hugo <= 0.55)</summary>
 For the known [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) about the the different handling about character `_` in markdown and MathJax, we use the same solution in that article. In the content files, one need to do some adjustment like:
 
 1. inline formula should been stored in <code>\`\$...\$\`</code> , while block math environment should been stored in <code>\<div\>\$\$...\$\$\</div\></code>
@@ -23,6 +37,7 @@ For the known [issue](https://gohugo.io/content-management/formats/#mathjax-with
     2. From adjusted content files to markdown _(where do *NOT* need reg-exp)_ :
        Inline: <code>\`\$</code> to `$` or `\(` (depend on plugin-config) and <code>\$\`</code> to `$` or `\)`
        Block: `<div>$$` to `$$` and `$$</div>` to `$$`
+</details>
 
 ## Content Arrangement
 

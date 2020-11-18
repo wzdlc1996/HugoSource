@@ -601,7 +601,7 @@ We can use Dirac spinor to construct some quantities, with $\bar{\psi} = \psi^\d
 
     {{< mathjax >}}
 $$S = \bar{\psi}\psi \ ; \ V^\mu = \bar{\psi}\gamma^\mu\psi$$
-{{< /mathjax >}}
+    {{< /mathjax >}}
 
     This shows that the matrices in spinor space $\gamma^\mu$ seem like a vector in Minkowski spacetime.
 
@@ -623,7 +623,7 @@ $$\psi \rightarrow \psi' = \begin{bmatrix} \Lambda_L & 0 \\ 0 & \Lambda_R \end{b
 
 Where $\omega_{\mu\nu}$ are the parameters of $\Lambda$
 
-{{<fold "Proof">}}
+{{< fold "Proof" >}}
 
 Similar to what we have done before, we need only check the equalities of generators:
 
@@ -672,4 +672,4 @@ $$\begin{aligned}
 
 The equalities are checked.
 
-{{</fold>}}
+{{< /fold >}}
