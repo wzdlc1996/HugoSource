@@ -90,7 +90,7 @@ go/
 
 ### GOPROXY
 
-`GOPROXY` 环境变量某种意义上对于中国大陆的用户有着重要的地位. 它可以被理解为下载 Go 模块的地址. 因此在中国大陆使用 `VS Code` 的 `Golang` 相关功能时, 它会试图从默认仓库拉取代码并报错. 而如果换用中国大陆能够访问的[仓库][6]则可以顺利并且快速进行:
+`GOPROXY` 环境变量某种意义上对于中国大陆的用户有着重要的地位. 它可以被理解为下载 Go 模块的地址. 因此在中国大陆使用 `VS Code` 的 `Golang` 相关功能时, 它会试图从默认仓库拉取代码并报错. 而如果换用中国大陆能够访问的[仓库][6]则可以顺利并且快速进行(事实上, 用户也可以手动下载这些 `go-tools` 的依赖项并本地安装, 参考[文章][8]):
 
 ```bash
 ~$ go env -w GOPROXY="https://goproxy.cn,direct"
@@ -106,3 +106,4 @@ go/
 [5]: https://golang.google.cn/dl/
 [6]: https://goproxy.cn/
 [7]: https://blog.golang.org/module-mirror-launch
+[8]: https://zhuanlan.zhihu.com/p/53566172
