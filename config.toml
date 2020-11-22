@@ -60,6 +60,9 @@ pygmentsuseclasses         = true
     # highlighting
     highlightjs              = true
 
+    # lightbox
+    lightbox                 = true
+
     # latex
     mathjax                  = true
 

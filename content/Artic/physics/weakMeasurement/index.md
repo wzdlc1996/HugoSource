@@ -263,7 +263,7 @@ Here, following the discussion in [[Dressel 2014][6]] , we show how to measure a
 
 The experiment can be illustrated by the following three pictures
 
-{{< center >}}<img name="preview" src="/imgs/artics/qtmmsmt/weak_1.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/weak_1.png"/>{{< /center >}}
 
 The main experiment system is shown in figure a): A Gaussian beam from a single model fiber is collimated by a lens and prepared in an initial polarization state by a quarter-wave plate(QWP) and half-wave plate(HWP). A polarizer postselects the beam on a final polarization state. And a charge coupled device(CCD) measures the position-dependent beam intensity.
 

@@ -187,9 +187,9 @@ And add the following `<div>` after the `<nav>` :
 
 You need also add a `CSS` file in which to assign the style of these elements:
 
-{{<fold "CSS file">}}
+{{% fold "CSS file" %}}
 
-```CSS
+```css3
 /*#themepath/static/css/search.css*/
 @import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
 .aa-input-container {
@@ -292,7 +292,7 @@ You need also add a `CSS` file in which to assign the style of these elements:
 }
 ```
 
-{{</fold>}}
+{{% /fold %}}
 
 And add it to the $themepath/layouts/partials/head.html` to let it contain the css file:
 
@@ -314,7 +314,7 @@ body {
 
 After all, we will have a search icon in the left of the navigation bar. It will be looked like:
 
-{{< center >}}<img name="preview" src="/imgs/artics/hugo/InsiteSearch_1.png"/>{{< /center >}}
+{{% center %}}<img name="preview" src="./Figs/InsiteSearch_1.png"/>{{% /center %}}
 
 # Reference
 

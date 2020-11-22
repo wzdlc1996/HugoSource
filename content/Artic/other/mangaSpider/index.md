@@ -12,7 +12,7 @@ summary: "最近在准备可视化课程的大作业, 正好学习一下python�
 
 [漫画柜](https://www.manhuagui.com/) 上的每本漫画都有一个属于自己的 `mangaID` , 我们选择一部漫画点进去从链接名称上就能看出来: 像[终将成为你](https://www.manhuagui.com/comic/17201) 的链接就是 `"https://www.manhuagui.com/comic/17201"` . 而点进去之后我们可以看到章节列表. 使用浏览器的 `Develop tools` (一般来说热键是 `f12` ), 我们可以看看它的页面布局:
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_9.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_9.png"/>{{< /center >}}
 
 这些章节都被存放在有着 `id=chapter-list-0` 的 `<div>` 中, 来用 `python` 获取一下看看:
 
@@ -33,7 +33,7 @@ Output: [<div class="chapter-list cf mt10" id="chapter-list-0"><ul style="displa
 
 同刚才不同, 漫画柜并不是静态地将漫画图片呈现给用户的. 如果点进去一部漫画的某个章节, 使用浏览器的 `Develop tools` 我们会看到如下的界面:
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_1.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_1.png"/>{{< /center >}}
 
 立即看到它有一个用 `id=mangaBox` 标记的 `<div>` 节点来放置图片, 并且 `<img>` 标签上就是我们要的图片链接. 看起来如果我们直接下载这个链接就可以了. 事不宜迟, 我们上 `requests.get` 来看看:
 
@@ -46,7 +46,7 @@ soup.findAll(id='mangaBox')
 
 这段代码会帮助我们找到刚才看到的页面里的所有 `id=mangaBox` 的标签, 那么结果是什么呢?
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_2.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_2.png"/>{{< /center >}}
 
 标签找到了, 但里边没有东西. 这说明页面里边这个图片是动态呈现的. 而 `requests.get` 并不能帮助我们完成这个工作. 一些人可能会选择 `selenium` 通过调用一个无头浏览器来绕过去这一部分, 就像真实地使用浏览器打开一样, 获取到图片的信息. 但这里并不打算这么做.
 
@@ -54,7 +54,7 @@ soup.findAll(id='mangaBox')
 
 既然是靠 js 来加载的, 那要么是使用 `load` 事件完成的, 要么这段代码就在放漫画的 `div` 后边. 看了一眼 `html` 的事件列表, 并没有发现和呈现漫画有关的代码. 而 `div` 之后的 `script` 标签只有两个, 其中一个还是 `jQuery` 的压缩代码. 但另一个就有的瞧了:
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_3.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_3.png"/>{{< /center >}}
 
 这么长一段太值得怀疑了, 还使用了 `\x` 的 `utf-8` 编码来掩饰自己, 用 python 来解码一下:
 
@@ -65,7 +65,7 @@ Out := 'eval'
 
 不是别的, 这段代码开头的正是 `window.eval` 方法! 那答案已经很明显了, 把它执行的部分放进 `console` 里跑跑看, 注意加上括号告诉这个匿名函数是要被执行的:
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_4.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_4.png"/>{{< /center >}}
 
 终于找到你了!
 
@@ -73,7 +73,7 @@ Out := 'eval'
 
 接下来的问题是, 这段代码有没有调用别的函数, 检查起来很容易, 新开一个标签页用 `console` 跑一下就可以了. 如果能成功运行的话就意味着这个代码是独立的片段, 我们要的所有信息都可以通过运行它来得到.
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_5.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_5.png"/>{{< /center >}}
 
 看来并没有那么简单啊. 不过很奇怪, 提示的错误的这个 `splic` 是什么东西, 代码里好像没出现啊. 不要着急, 看看它前面调用这个方法的对象, 不就是那串乱七八糟的字符么. 它后边有个同样用 `utf-8` 编码做了掩饰, 老规矩, 解码看看
 
@@ -84,11 +84,11 @@ Out := 'splic'
 
 找到了. 怪不得无法运行, 这个东西不是 js 字符串的标准方法, 应该是来自于之前页面的代码定义的. 这里就没有什么好办法了, 只能打开刚才页面里的 js 来搜索这个函数. 除了 `splic` 同样也要用 `'\x73\x70\x6c\x69\x63'` 来找.
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_6.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_6.png"/>{{< /center >}}
 
 还真被找着了!. 又是大段大段的 `utf-8` 编码, 但问题不大, 我们只要看看这个含有这串字符的段落是什么东西就够了. 一个简单的方案就是把它复制进浏览器的 `Console` 运行一下就够了, 但一定要完整地复制. 比如这里, 我们就需要从 `(function(i,k,a,n,m,an){...` 复制到最后一个分号. 当然也可以先复制进文件里再用 python 解码. 最终我们得到了这个:
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_7.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_7.png"/>{{< /center >}}
 
 一切都明了了, 原来 `splic` 正是:
 
@@ -107,7 +107,7 @@ Output: '||jpg|webp|17201|第01回|pic_014|pic_015|pic_017|pic_016|pic_013|pic_0
 
 再把这串解码后的字符串放回到原来的位置, 当然要把 `.split('|')` 加上, 再在空白的标签页里跑跑看:
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_8.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_8.png"/>{{< /center >}}
 
 完美.
 
@@ -146,7 +146,7 @@ imgURL = "https://i.hamreus.com"
 
 ```python
 def getChapterList(url):
-    with open("./config.json",'r') as f:
+    with open("./Figs/config.json",'r') as f:
         conf = json.load(f)
     baseSite = requests.get(url, headers = {"User-Agent": conf["User-Agent"]})
     formatedSite = bs4.BeautifulSoup(baseSite.content, features="lxml")
@@ -166,7 +166,7 @@ def getChapterList(url):
 
 ```python
 def getCoreInfo(url):
-    with open("./config.json", "r") as f:
+    with open("./Figs/config.json", "r") as f:
         conf = json.load(f)
     getSite = bs4.BeautifulSoup(requests.get(url, headers = {"User-Agent": conf["User-Agent"]}).content, features="lxml")
     jsSlic = re.search(r">window.*(\(function\(p.*?)</script>", str(getSite)).group(1)
@@ -191,7 +191,7 @@ def getDlSetting(url):
 
 这个部分有一个坑是试图获取图片的时候, 发现直接使用 `requests.get` 会报 `403` 错误, 研究发现是没有加入 `requests headers` 信息. 对于漫画柜来说, 这部分只要加入 `User-Agent` 和 `Referer` 信息就可以了. 这似乎是最基本的反爬机制, 但这里显然还是十分简单的. 这部分信息可以在浏览器的 `Develop tools` 中找到, 注意它在 `Network` 标签下:
 
-{{< center >}}<img name="preview" src="/imgs/artics/other/mangaspider_10.png"/>{{< /center >}}
+{{< center >}}<img name="preview" src="./Figs/mangaspider_10.png"/>{{< /center >}}
 
 ## 分章节存放漫画分页图片
 
@@ -210,7 +210,7 @@ import random
 import progressbar
 
 url = "https://www.manhuagui.com/comic/17201/"
-foldpref = "./test/"
+foldpref = "./Figs/test/"
 
 class dlManga(object):
     def __init__(self, fold, opt):
@@ -222,7 +222,7 @@ class dlManga(object):
         with open(self.fold+dic["Name"]+".jpg","wb") as f:
             f.write(getFile)
 
-with open("./config.json","r") as f:
+with open("./Figs/config.json","r") as f:
     conf = json.load(f)
 
 chapList = ps.getChapterList(url)
