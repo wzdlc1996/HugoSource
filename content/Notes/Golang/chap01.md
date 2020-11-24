@@ -94,6 +94,7 @@ go/
 
 ```bash
 ~$ go env -w GOPROXY="https://goproxy.cn,direct"
+~$ go env -w GO111MODULE="on"
 ```
 
 而关于设置 `GOPROXY` 的根本用意与它同 Go 模块(module) 的联系则可以参考[文章][7]
