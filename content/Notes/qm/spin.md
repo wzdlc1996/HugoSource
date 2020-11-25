@@ -184,10 +184,77 @@ e^{-\ti \frac {\theta} 2 \bm{n}\cdot \bm{\sigma}} (\bm{\sigma}\cdot \bm{x}) e^{\
 
 q.e.d.
 
-{{</fold>}}
+{{< /fold >}}
 
 1.  This map is `two-to-one` mapping from SU(2) to SO(3) . For $\bm{U},-\bm{U}\mapsto \bm{R}_{\bm{n}}(\theta)$ . Namely: $\text{SO}(3) \simeq \text{SU}(2)/\mathbb{Z}_2$
 2.  SO(3) manifold is `real projective space` : $\text{RP}^3 = S^3/\mathbb{Z}_2$
+
+A generalized conclusion is also hold, works for higher order representation of SU(2), reads:
+
+_[Theorem]_ : The `representation` of SU(2) element of arbitrary order: $\hat{\bm{S}}$, which obeys the Lie algebra: $[\hat S_a,\hat S_b] = \ti \epsilon_{abc} \hat S_c$. Then unitary operator $e^{-\ti \theta \bm{n}\cdot \hat{\bm{S}}}$ performs on generators like a 3x3 rotation matrix $\bm{R}_{\bm{n}}(\theta)$ :
+
+{{< mathjax >}}
+$$e^{-\ti \theta \bm{n}\cdot \hat{\bm{S}}} (\hat{\bm{S}}\cdot \bm{x}) e^{\ti \theta \bm{n}\cdot \hat{\bm{S}}} = \hat{\bm{S}} \cdot (\bm{R}_{\bm{n}}(\theta)\bm{x})$$
+{{< /mathjax >}}
+
+{{< fold "Proof" >}}
+
+
+With the commutator:
+
+{{< mathjax >}}
+$$\begin{aligned}
+[\hat S_a, \hat S_b] &= \ti \epsilon_{abc}\hat S_c
+\end{aligned}, $$
+{{< /mathjax >}}
+
+we have the rotation in 3-D Euclidean space described by \(\bm{R}_{\bm{n}}(\theta)\) which means:
+
+{{< mathjax >}}
+$$\bm{R}_{\bm{n}}(\theta)\bm{x} = (\bm{x}\cdot \bm{n})\bm{n} +  \bm{n}\times \bm{x} \sin\theta + (\bm{x}-(\bm{x}\cdot \bm{n})\bm{n})\cos \theta .$$
+{{< /mathjax >}}
+
+Then, we consider the rotation unitary operator reads
+
+{{< mathjax >}}
+$$\hat U(\bm{n},\theta) = \exp\Big(-\ti \theta \bm{n} \cdot \hat{\bm{S}}\Big) .$$
+{{< /mathjax >}}
+
+Note that the commutator:
+
+{{< mathjax >}}
+$$\begin{aligned}
+[\bm{x} \cdot \hat {\bm{S}}, \bm{n} \cdot \hat {\bm{S}} ] &= x_an_b \ti \epsilon_{abc}  \hat S_c = \ti (\bm{x}\times \bm{n})\cdot \hat{\bm{S}} \\
+[[\bm{x}\cdot\hat {\bm{S}}, \bm{n} \cdot \hat {\bm{S}}], \bm{n}\cdot \hat {\bm{S}}] &= (\ti)^2 ((\bm{x} \times \bm{n})\times \bm{n})\cdot \hat{\bm{S}} \\
+&=\ti^2 ((\bm{x}\cdot \bm{n})\bm{n} - \bm{x})\cdot \hat{\bm{S}} \\
+[[[\bm{x}\cdot\hat {\bm{S}}, \bm{n} \cdot \hat {\bm{S}}], \bm{n}\cdot \hat {\bm{S}}], \bm{n}\cdot\hat{\bm{S}}] &= \ti^3 (-\bm{x}\times \bm{n})\cdot \hat S \\
+&\cdots
+\end{aligned}$$
+{{< /mathjax >}}
+
+Thus, together with the Baker-Hausdorff formula:
+
+{{< mathjax >}}
+$$\begin{aligned}
+\hat U(\bm{n},\theta) (\bm{x}\cdot \hat{\bm{S}})\hat U(\bm{n},\theta)^\dagger &= (\bm{x}\cdot \hat{\bm{S}}) + (\ti \theta)[\bm{x}\cdot \hat {\bm{S}}, \bm{n}\cdot \hat{\bm{S}}/\hbar] + (\ti\theta)^2 [[\bm{x}\cdot \hat{\bm{S}}, \bm{n}\cdot \hat {\bm{S}}/\hbar],\bm{n}\cdot \hat {\bm{S}}/\hbar] / 2! + \cdots \\
+&= (\bm{x}\cdot \hat{\bm{S}}) - \theta (\bm{x}\times \bm{n})\cdot \hat{\bm{S}} + (-\theta)^2 ((\bm{x}\times \bm{n})\times \bm{n})\cdot \hat{\bm{S}} / 2! +\cdots \\
+&= (\bm{x}\cdot \hat{\bm{S}}) (1 - \frac {\theta^2} {2!} + \frac {\theta^4} {4!}) + (\bm{x}\cdot \bm{n}) (\bm{n}\cdot \bm{S}) (\frac {\theta^2} {2!} - \frac {\theta^4} {4!} +\cdots) \\
+& \indent + (\bm{x}\times \bm{n}) \cdot \hat{\bm{S}}(-\theta + \frac {\theta^3} {3!} + \cdots) \\
+&= \Big(\bm{x} \cos\theta + (\bm{x}\cdot \bm{n})\bm{n}(1-\cos\theta) - (\bm{x}\times \bm{n})\sin\theta\Big)\cdot \hat{\bm{S}} \\
+&= (\bm{R}_{\bm{n}}(\theta)\bm{x}) \cdot \hat{\bm{S}}
+\end{aligned}$$
+{{< /mathjax >}}
+
+Then we have the equality:
+
+{{< mathjax >}}
+$$\exp\Big(-\ti \theta \bm{n}\cdot \hat{\bm{S}} \Big)(\hat{\bm{S}} \cdot \bm{x}) \exp\Big(\ti \theta \bm{n} \cdot \hat{\bm{S}}\Big) = (\hat{\bm{S}} \cdot (\bm{R}_{\bm{n}}(\theta) \bm{x})) $$
+{{< /mathjax >}}
+
+q.e.d.
+
+
+{{< /fold >}}
 
 ## Haar Measure
 
