@@ -741,7 +741,7 @@ $$\begin{aligned}
 
 q.e.d.
 
-{{</fold>}}
+{{< /fold >}}
 
 _[Theorem]_ : `Rotation` of polarization in $\mathcal{H}_{1/2}$ : if $\ket{z_1,z_2}$ is the state with polarization of $\bm{n}$ , and:
 
@@ -749,13 +749,13 @@ _[Theorem]_ : `Rotation` of polarization in $\mathcal{H}_{1/2}$ : if $\ket{z_1,z
 $$e^{-\ti \frac \theta 2 \bm{n'}\cdot \bm \sigma}\begin{bmatrix}z_1 \\ z_2 \end{bmatrix}=\begin{bmatrix}z'_1 \\ z'_2 \end{bmatrix}$$
 {{< /mathjax >}}
 
-Then $\ket{z'_1,z'_2}$ is the state with polarization of $\bm{R}_{\bm{n}'}(\theta)\bm{n}$ , that is to say:
+Then $\ket{z'_ 1,z'_ 2}$ is the state with polarization of $\bm{R}_{\bm{n}'}(\theta)\bm{n}$ , that is to say:
 
 {{< mathjax >}}
 $$(\bm{R}_{\bm{n}'}(\theta)\bm{n})\cdot \hat{\bm{S}}\ket{z'_1,z'_2}=\frac 1 2 \ket{z_1,z_2}$$
 {{< /mathjax >}}
 
-{{<fold "Proof">}}
+{{< fold "Proof" >}}
 
 One needs only prove that:
 
