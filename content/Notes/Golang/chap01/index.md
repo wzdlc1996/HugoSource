@@ -1,8 +1,8 @@
 ---
 title: "Go的安装与环境配置"
 date: 2020-11-22T22:04:41+08:00
-#lastmod: "2018-12-11T17:11:00+08:00"
-draft: true
+lastmod: "2020-11-27T02:19:00+08:00"
+draft: false
 tags: ["go"]
 series: ["Go-Learning"]
 categories: ["tools"]
