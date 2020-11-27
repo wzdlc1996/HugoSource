@@ -155,8 +155,18 @@ Go 中同样有着常用的面向过程编程的工具, 如:
     }
 
     // for with iterative built-in type
-    for key, val in range mapData {
+    for key, val := range mapData {
         // Operation with key, val
+    }
+
+    // for works like while
+    for check {
+        // Operation when check == true
+    }
+
+    // infinity for loop
+    for {
+        // Operation
     }
     ```
 
