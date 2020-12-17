@@ -76,3 +76,4 @@ func (la *lattice) calSum() float32 {
 
 当我们需要为子类重写同名元素或者方法时, 调用父类的元素或方法就必须显式地调用, 比如上面的 `la.twoInts.getFirst()`. 在 `go` 中, 形如 `.` 的操作符总是从外向里寻找.
 
+# Interface: Go 中的抽象
