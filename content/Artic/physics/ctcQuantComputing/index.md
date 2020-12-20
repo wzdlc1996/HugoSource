@@ -1,7 +1,7 @@
 ---
 title: "Time Travel and Quantum Computation"
 date: 2020-09-27T15:54:07+08:00
-lastmod: 2020-02-10T18:00:00+08:00
+lastmod: 2020-12-10T18:00:00+08:00
 draft: false
 tags: ["quantum"]
 categories: ["Reviews"]
