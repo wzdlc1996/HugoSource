@@ -45,7 +45,24 @@ Roughly speaking, there are three parts for data science: data collection, data 
     -  Data: delayed feedback signal(reward) after action. Like the win/lose in a chess game
     -  Goal: learning an optimal policy(i.e. how to act). Like learn how to play a chess game
 
-Though we list these classes of machine learning, the modern development are not distinct in this level. To solve the complex problems in the real-world we need the cooperation of different technologies for their own parts. To classify such the mixed projects are difficult and meaningless. Machine learning as a popular and growing technology, there are many new contents will enter this field and the old can not be invariant. Open your mind and be prepared, 
+Though we list these classes of machine learning, the modern development are not distinct in this level. To solve the complex problems in the real-world we need the cooperation of different technologies for their own parts. To classify such the mixed projects are difficult and meaningless. As a popular and growing technology, there will be many new contents enter the field of machine learning. Just open your mind and be prepared.
+
+# Quantum Tech to Data Science
+
+Quantum technology has been one of the most important concepts in the world now. Some people call the control and application of the quantum systems [the Second Quantum Revolution](3), to distinguish against the establishment of quantum mechanics in the early 20th century. To data science, the impact of quantum tech is well described by the following figure from [wiki/Quantum-machine-learning](4).
+
+{{< center >}}<img name="preview" src="./Figs/img01.png"/>{{< /center >}}
+
+As quantum tech comes into our sight, a new type of data now is needed to be considering. Classical data is encoded by classical physical systems and its values are deterministic at each stage of processing. The information we touch in the daily life are all classical data, like this report, logical variables by whether voltage in the wire of computer is greater than a threshold or not, and much other analog data. Quantum data is encoded by quantum systems. Like the entities in the Hilbert space(the state of qubit), such data is quiet different from the classical one especially in the read/write rule. By the high representability of digits, we can still simulate the quantum data on classical computer. But since the dimension of Hilbert space (amounts of quantum variables) are exponential to the number of classical variables, this approach is incapably expensive. 
+
+Another aspect of the figure above is the type of algorithm. It is not only means the software we handle the data, but also the hardware we used to realize the program. This part contains the storage and processing. The former is qubits and quantum gates, which has been proved to be universal to simulate any quantum system and their evolution, just like the classical bits and classical gates. However, the quantum nature of qubits makes it possible to handle quantum data with polynomial scaling cost(if we can prepare and hold the qubits as easy as we do for classical bits in the sense of scaling). The algorithm or software is the analog of the classical algorithm and programs running on the classical computer. There are two paradigms for quantum algorithm, one can be represented as the combination of a set of quantum gates,  while the other way is based on the adiabatic theorem ([wiki/Adiabatic-quantum-computation](5)). These two approaches has been proved to be equivalent ([D.Aharonov 2005](6), [H.Yu 2018](7)). 
+
+# 
 
 [1]: https://en.wikipedia.org/wiki/Data_science
 [2]: https://www.sciencedirect.com/topics/engineering/keplers-law
+[3]: https://www.nist.gov/topics/physics/introduction-new-quantum-revolution/second-quantum-revolution
+[4]: https://en.wikipedia.org/wiki/Quantum_machine_learning
+[5]: https://en.wikipedia.org/wiki/Adiabatic_quantum_computation
+[6]: https://arxiv.org/abs/quant-ph/0405098
+[7]: https://arxiv.org/abs/1706.07646
