@@ -57,7 +57,7 @@ As quantum tech comes into our sight, a new type of data now is needed to be con
 
 Another aspect of the figure above is the type of algorithm. It is not only means the software we handle the data, but also the hardware we used to realize the program. This part contains the storage and processing. The former is qubits and quantum gates, which has been proved to be universal to simulate any quantum system and their evolution, just like the classical bits and classical gates. However, the quantum nature of qubits makes it possible to handle quantum data with polynomial scaling cost(if we can prepare and hold the qubits as easy as we do for classical bits in the sense of scaling). The algorithm or software is the analog of the classical algorithm and programs running on the classical computer. There are two paradigms for quantum algorithm, one can be represented as the combination of a set of quantum gates,  while the other way is based on the adiabatic theorem ([wiki/Adiabatic-quantum-computation](5)). These two approaches has been proved to be equivalent ([D.Aharonov 2005](6), [H.Yu 2018](7)). 
 
-# Classical Ml
+# Classical ML 
 
 [1]: https://en.wikipedia.org/wiki/Data_science
 [2]: https://www.sciencedirect.com/topics/engineering/keplers-law
