@@ -70,6 +70,8 @@ func (la *lattice) calSum() float32 {
     la.sum = la.twoInts.int1 + la.twoInts.int2
     // In fact, parents' method is callable, so we can also use:
     // la.sum = la.getFirst() + la.twoInts.int2
+    // or
+    // la.sum = la.getFirst() + la.int2
     return la.sum
 }
 ```
@@ -78,4 +80,30 @@ func (la *lattice) calSum() float32 {
 
 # Interface: Go 中的抽象
 
-`Go` 中的 `Interface` 是一种自定义数据结构, 它可以被理解为一种别名, 用于描述一组实现了给定方法集合的类. 
+`Go` 中的 `interface` 是一种自定义数据结构, 它可以被理解为一种别名, 用于描述一组实现了给定方法集合的类. 可以理解为, 在 `Go` 中我们使用 `interface` 来抽象一类对象. 这种抽象根据对象的行为(即方法)来进行区分. 这种思维方式很类似于我们在设计时通过为不同的类实现同名方法来让函数能够接收不同的对象作为参数这种多态. 定义一个 `interface` 类型的语法如下:
+
+```go
+type vector interface{
+    getFirst() int
+}
+
+// Declare vector object
+var a twoInts = twoInt{1, 2}
+var z vector = a
+```
+
+我们会看到, 为了初始化 `interface` 对象, 我们需要有一个实现了该 `interface` 的变量存放其值. 但值得注意的是, 同其他类型变量不同, `interface` 对象的变量能够储存任意类型的值, 只要该类型实现了这些方法. 而由于任何类型都实现了一个空的 `interface` (即没有实现任何方法), 因此这样的变量类似于 `C` 中的 `void` 类型能够存储任意值. 此外, `interface` 同样支持上面 `struct` 中提到的匿名字段写法.
+
+## Interface 变量储存的类型
+
+有时我们需要根据 `interface` 变量的类型来决定函数的行为, 为此我们可以使用如下的写法:
+
+```go
+// typename should be a name of types who implements the interface of var:
+// value, ok := var.(typename)
+// ok will be whether var is of this typename
+// if ok, then value is the value of var, else value is a zero value of typename
+
+value, ok := z.(twoInts) // value is twoInt{1,2}, ok is true
+value, ok := z.(lattice) // value is lattice{{0,0}, 0}, ok is false
+```
