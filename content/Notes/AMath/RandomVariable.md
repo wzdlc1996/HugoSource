@@ -408,4 +408,4 @@ $$\mathbb{P}(X_i\in[x,x+\td x]) = \mathbb{P}(Z_i \in [\frac {F(x)} A , \frac {F(
 
 q.e.d.
 
-{{</fold >}}
+{{< /fold >}}

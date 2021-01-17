@@ -3,7 +3,7 @@ title: "Setup an In-Site Search"
 date: 2018-12-09T14:56:40+08:00
 draft: false
 tags: ["front-end"]
-categories: ["tools"]
+categories: ["Techs"]
 toc: true
 summary: "How to add a search bar for in site posts in Hugo. We used the Algolia as the solution provider."
 ---

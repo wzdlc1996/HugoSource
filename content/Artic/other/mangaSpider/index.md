@@ -3,7 +3,7 @@ title: "对漫画柜页面加密的解析和漫画爬虫"
 date: 2019-11-22T19:24:24+08:00
 draft: false
 tags: ["python"]
-categories: ["tools"]
+categories: ["Techs"]
 toc: true
 summary: "最近在准备可视化课程的大作业, 正好学习一下python爬虫的知识并且实际地练练手. 就选择了漫画柜网站, 顺便也能够爬一点漫画下来到本地看. 这篇文章主要记录了一下对漫画柜网站的分析和js逆向的过程, 因为是拿来给自己看并且面向中文用户的, 所以就用中文来写了. 同时会分享一下用来下载漫画的爬虫代码. Recently during the preparation of the final project of Visualization class, I plan to learn python spider systematically. As a good choice for practice, I analyzed the logic of the website of Manhuagui(manhuagui.com) and write a simple code for download mangas efficiently. This article mainly covers the analyzation and reverses its javascript, which would be like a boring detective store. Because this article is written for Chinese web users, it is in Chinese. Sorry for those users of the English language."
 ---
