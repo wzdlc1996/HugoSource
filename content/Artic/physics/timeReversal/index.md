@@ -11,6 +11,8 @@ summary: "Time reversal symmetry is one of the fundamental requirement of most p
 
 # Time Reversal in Physics
 
+## Introduction
+
 In the historical view, the time reversal is firstly presented in the regime of classical motion of massive objects. A slightly modern model (but tricky) to understand it can be a rewind video. Imagine a ball falling freely and we record its motion, the rewind version of it will not make you feel wired. You may think that there is someone who throw it up from a lower height. **Time reversal** means such the transformation, we do not have a clear definition yet, which can map a motion to its rewind version. 
 
 Before further digging in this concept, let us do some critics to the understanding above. 
@@ -24,3 +26,12 @@ Before further digging in this concept, let us do some critics to the understand
     The word "stage during motion" is ambiguous here. In the sense of completely description of the configuration, each stage should be a group of real numbers for the positions of objects. Rewind just returns the time series of such stages in the reversed order. But once we notice that we should use position and momentum together in the dynamics, such re-ordering is different from the time reversal. 
     Moreover, in the modern physics, it is necessary to handle the motion of many new concepts like spin. Generally, they may have no correspondance like that velocity is actually the time direvative of position thus its sign should change.
 
+## General Discussion for Time Reversal
+
+## Time Reversal in Classical Mechanics
+
+## Time Reversal in Quantum Mechanics
+
+## Time Reversal in Field Theory
+
+## Reference
