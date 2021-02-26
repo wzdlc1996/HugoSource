@@ -28,6 +28,8 @@ Before further digging in this concept, let us do some critics to the understand
 
 ## General Discussion for Time Reversal
 
+Shit, how to write this section?
+
 ## Time Reversal in Classical Mechanics
 
 ## Time Reversal in Quantum Mechanics
