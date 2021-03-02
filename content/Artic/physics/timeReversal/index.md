@@ -28,7 +28,9 @@ Before further digging in this concept, let us do some critics to the understand
 
 ## General Discussion for Time Reversal
 
-Shit, how to write this section?
+The **symmetry** in physics, which can be used to describe a theory or a system, usually means it is invariant under a group of specific operations. Just like many other symmetries like spatial translation and permutation between identical particles, time reversal defines an operation on the theory, which is obviously dependent of the contents and mathematical form of the theory itself. This fact makes it difficult to find a general frame work for time reversal without the detail of physics theory. In this section, we will show a framework and the language for how to define a operation for a theory and what it means by saying the symmetry of a system. They would be based on some essential requirements of a physics theory. But note it could be too general to be useful. In the following sections, the detailed definition of time reversal would be given for commonly accepted theories like classical mechanics, quantum mechanics and field theory.
+
+One may argue that in quantum mechanics, we can directly point out that the Hamiltonian of $\sum_i \hat a_i \hat a_{i+1}+\text{c.c.}$ has the translation symmetry if the summation over $i$ is evaluated in a periodic boundary condition even the operators $\hat a$ is not given. But to make this statement one still assume that the spatial translation leaves $\hat a$ invariant! 
 
 ## Time Reversal in Classical Mechanics
 
