@@ -36,7 +36,17 @@ $$\frac {\td} {\td t} s(t) = D(s(t)).$$
 
 Time reversal should map $t$ to $T(t)$ which decreases over time. But besides reversing the time order, we need time reversal hold the duration between any two given moments. That means the time reversal acting on time should be $T(t) = t_0-t$. The center of reversal $t_0$ is arbitrary. However, it is widely admitted that physics should have time translation invariance, at least those theories for small scale of spacetime. Thus we let $t_0=0$. This is also why we assume $D(\cdot)$ is independent of time.
 
-It is impossible to specify how time reversal acts on state $s(t)$. 
+It is impossible to specify how time reversal acts on state $s(t)$. The time reversal on the state at time $t$ is denoted as $s(t)\rightarrow s'(t') = T(s(-t))$ in which $t' = T(t) = -t$. Thus, two sides of equation of motion under time reversal reads
+
+$$\begin{aligned}
+\frac {\td} {\td t} s(t) &\rightarrow \frac {\td} {\td t'} s'(t') = -\frac {\td} {\td t} T(s(-t)) \\
+D(s(t)) &\rightarrow D'(s'(t')) = D'(T(s(-t)))
+\end{aligned}.$$
+
+For the same reason of time reversal on state, $D'$ can still not determined. However, in many cases, $D$ describes how to find the the flow in tangent space of state space. This external rule should be left invariant under time reversal. For example, in classical mechanics, $D$ is related to the gradient of Hamiltonian with a symplectic matrix. The matrix is invariant while the Hamiltonian and its derivative is not. Another example is the Quantum mechanics, $D(s)$ is $\hat H \ket{\psi}$, in which $\hat H$ will changed while such linear form does not.
+
+The theory has time reversal symmetry means these two terms under time reversal are still equal such that the form of EOM holds. 
+
 
 One may argue that in quantum mechanics, we can directly point out that the Hamiltonian of $\sum_i \hat a_i \hat a_{i+1}+\text{c.c.}$ has the translation symmetry if the summation over $i$ is evaluated in a periodic boundary condition even the operators $\hat a$ is not given. But to make this statement one still assume that the spatial translation leaves $\hat a$ invariant! 
 
