@@ -57,6 +57,25 @@ Now let us begin with the most early systematic theory of nature. Time reversal 
 
 ### Time reversal in Newton's Law
 
+The core content related to time evolution in Newton's Laws of motion is his second law. The acceleration is proportional to the force acting on the massive point. The equation of motion reads
+
+$$m \frac {\td^2} {\td t^2} \bm{r} = \bm{F}.$$
+
+It is an ordinary differential equation of time dependent configuration $\bm{r}(t)$ of second order. To fit our form in general discussion we need introduce the velocity as an independent variable into the equation as
+
+$$\frac {\td } {\td t}\begin{bmatrix}\bm{r} \\ \bm{v} \end{bmatrix} = \begin{bmatrix}\bm{v} \\ \bm{F}/m \end{bmatrix}.$$
+
+However, since the detailed form of $\bm{F}$ is not given, this equation is not a complete description of the motion. And we cannot discuss whether Newton's theory is time reversal symmetric or not. As an example, when $\bm{F}=\bm{0}$, and assuming $\bm{r}$ and $\bm{F}=\bm{0}$ is invariant under time reversal, we have the state transforms as $(\bm{r}, \bm{v})\rightarrow (\bm{r}, -\bm{v})$. Following the discussion above, we have both sides of EOM as
+
+$$\begin{aligned}
+\frac {\td } {\td t} (\bm{r},\bm{v})^T &\rightarrow \frac {\td } {\td (-t)} (\bm{r},-\bm{v})^T = (-\frac {\td \bm{r}}{\td t} , \frac {\td\bm{v}} {\td t}) \\
+(\bm{v}, \bm{0})^T & \rightarrow (-\bm{v}, \bm{0})^T
+\end{aligned}$$
+
+These two sides is equal. Thus we have Newton's Law is time reversal symmetric when force vanishes. And the equivalent statement reads the free system has time reversal symmetry. Noting the assumptions we made for such assertion: coordinate is invariant under time reversal, the fact that force is zero is invariant under time reversal.
+
+### Time reversal in Canonical Formalism
+
 
 
 ## Time Reversal in Quantum Mechanics
