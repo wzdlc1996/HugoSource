@@ -72,7 +72,20 @@ $$\begin{aligned}
 (\bm{v}, \bm{0})^T & \rightarrow (-\bm{v}, \bm{0})^T
 \end{aligned}$$
 
-These two sides is equal. Thus we have Newton's Law is time reversal symmetric when force vanishes. And the equivalent statement reads the free system has time reversal symmetry. Noting the assumptions we made for such assertion: coordinate is invariant under time reversal, the fact that force is zero is invariant under time reversal.
+These two sides are equal. Thus we have Newton's Law is time reversal symmetric when force vanishes. And the equivalent statement reads the free system has time reversal symmetry. Noting the assumptions we made for such assertion: coordinate is invariant under time reversal, the fact that force is zero is invariant under time reversal.
+
+A more general case is electromagnetic field present, with scalar potential $\phi(\bm{r})$ and vector potential $\bm{A}(\bm{r})$ (notes they are independent of time), the equation of motion reads
+
+$$m \frac {\td^2} {\td t^2} \bm{r} = e\Big(-\nabla \phi +\bm{v} \times (\nabla \times \bm{A}) \Big).$$
+
+Under the time reversal, each sides become (omitting constants $m$ and $e$)
+
+$$\begin{aligned}
+\frac {\td } {\td t} (\bm{r},\bm{v})^T & \rightarrow  (-\frac {\td \bm{r}}{\td t} , \frac {\td\bm{v}} {\td t}) \\
+(\bm{v}, -\nabla \phi + \bm{v}\times (\nabla\times \bm{A}))& \rightarrow (-\bm{v}, -\nabla\phi -\bm{v}\times (\nabla \times \bm{A}))&
+\end{aligned}$$
+
+When magnetic field exists, these two sides are not equal and time reversal symmetry is lose. 
 
 ### Time reversal in Canonical Formalism
 
