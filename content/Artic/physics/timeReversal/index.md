@@ -85,7 +85,7 @@ $$\begin{aligned}
 (\bm{v}, -\nabla \phi + \bm{v}\times (\nabla\times \bm{A}))& \rightarrow (-\bm{v}, -\nabla\phi -\bm{v}\times (\nabla \times \bm{A}))&
 \end{aligned}$$
 
-When magnetic field exists, these two sides are not equal and time reversal symmetry is lose. 
+When magnetic field exists, these two sides are not equal and time reversal symmetry is lose. This issue of classical mechanics seems lack of time reversal symmetry can be resolved by considering electromagnetic field into the theory but not an external condition. We will make detailed discussion in the part of field theory. Here, we make a rough explanation by the view of fields are caused by motion of charged particles. The scalar potential should be invariant (but the time $t$ should become $-t$) and potential field $\bm{A}$ becomes $-\bm{A}$, for the electric current will change its direction. Thus, the combined theory of Newton's Law and Maxwell theory still holds the time reversal symmetry.
 
 ### Time reversal in Canonical Formalism
 
