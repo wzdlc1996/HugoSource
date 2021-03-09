@@ -97,13 +97,43 @@ $$\delta \int_{t_{\textrm{ini}}}^{t_{\textrm{fin}}} L(q(t), \dot{q}(t), t) = 0.$
 
 The pair of time $(t_{\textrm{ini}},t_{\textrm{fin}})$ denotes the start and end time of the motion, configurations (denoted as $n$ general coordinates $q(t)=(q_1(t),\cdots,q_n(t))$) at these times are fixed. The function $L$ is called Lagrangian of the system. The equation of motion in differential form is the Euler-Lagrange equation of $L$ as
 
-$$\frac {\td}{\td t} \frac {\partial L} {\partial \dot{q}_i} - \frac {\partial L} {\partial q_i} = 0$$
+$$\frac {\td}{\td t} \frac {\partial L} {\partial \dot{q}_i} - \frac {\partial L} {\partial q_i} = 0.$$
+
+{{< fold "Notes for this non-local equation w.r.t. time" >}}
 
 One should not be confused by the form of principle of stationary action. It seems that the motion is determined by a finite time interval, which violates our assumption that the flow is only depend on the present state and time. The object looks like to choose the path with stationary action by some experiment in which it traverses all possible paths. A short answer is that this variational principle is just an equivalent form of the equation of motion with local time dependence instead of the fundamental rule of the world. However, it actually the result of quantum mechanics in the limit of $\hbar$ getting close to zero. In the theory isolated with the structure of spacetime, we can safely claim that any form of non-local time dependence is equivalent to the equation of motion with local time dependence. At least, those three theories in this note have such property.
 
+{{< /fold >}}
+
 The Euler-Lagrange equation is usually an ordinary equation (group) of the second order. One approach to rewrite it into the form in general discussion is writing it as canonical form by the transformation of $p = \partial_{\dot{q}} L$ and $H = p\cdot \dot{q} - L$
 
-$$\frac {\td p} {\td t} = -\frac {\partial H} {\partial q} \ ; \ \frac {\td q} {\td t} = \frac {\partial H} {\partial p}$$
+$$\frac {\td p} {\td t} = -\frac {\partial H} {\partial q} \ ; \ \frac {\td q} {\td t} = \frac {\partial H} {\partial p}.$$
+
+A much compact way to write canonical equation is by the unit symplectic matrix which reads
+
+$$\bm{J} = \begin{bmatrix} \bm{0} & \bm{1} \\ -\bm{1} & \bm{0} \end{bmatrix}.$$
+
+It is a block matrix by $\bm{1}$ means $N$-identity matrix and $\bm{0}$ means $N$-zero matrix. Thus, with $2N$-vector $x=(q,p)$, the equation of motion can be written as
+
+$$\frac {\td x} {\td t} = \bm{J} \nabla_x H.$$
+
+{{< fold "Notes about the general discussion" >}}
+
+As the general discussion said, it is impossible to determine how time reversal acts on state space (here it is the set of $x$, in classical mechanics it is the cotangent bundle of the configuration space). Within canonical formalism, one can make this argument more clear. If we follow the result in Newton's Law, make the time reversal act like $T(q, p) = (q, -p), Tt = -t$, then we have the matrix representation of it by $\bm{T} = \sigma_z\otimes \bm{1}$. However, one can always find the canonical transformation by $C:x\mapsto C(x)$ on phase space with the form canonical equation invariant, if only the $C$'s Jacobian $\bm{J}_C$ is invertible and commutative with $\bm{J}$. The reason is as follows,
+
+$$\frac {\td C(x)} {\td t} = \bm{J}_C \frac {\td x} {\td t} = \bm{J}_C \bm{J} \bm{J} _C^{-1} \bm{J}_C \nabla _{x} H = \bm{J} \nabla _{C(x)} H. $$
+
+Generally, we have $C(Tx) \neq TC(x)$, which means the form of time reversal is not conserved by canonical transformation. Thus no one can answer whether the state $x=(q,p)$ appearing initially is the original coordinate and momentum in Newton's framework or it is actually the image of a canonical transformation. Then we cannot define $T(q,p) = (q,-p)$ without presuming.
+
+{{< /fold >}}
+
+In this part, we assume the time reversal $T(q,p) = \bm{T}x$ mentioned above. This actually makes the $(q,p)$ representation have a special position among those equivalent pairs in the sense of canonical transformation. This is kind of match our physical interaction with the nature: we do have a preferred coordinate. As a fundamental problem in physics, why there is the chosen one has not been answered yet. This problem exceeds this essay, now we just make it an assumption.
+
+
+
+
+
+Though we cannot determine the rule of how $(q,p)$ transforms under time reversal, the compare with Newton's formalism is helpful. It seems that under time reversal we have $(q,p)\rightarrow_{\textrm{Time Reversal}} (q, -p)$. However, note that the definition of time reversal has ambiguity in a general theory, this definition is not unique. One example is the theory of canonical transformation, which allow us exchange the place of momentum and coordinate by $(q,p)\rightarrow_{\textrm{C.T.}} (p, -q)$
 
 ## Time Reversal in Quantum Mechanics
 
