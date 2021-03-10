@@ -127,13 +127,26 @@ Generally, we have $C(Tx) \neq TC(x)$, which means the form of time reversal is 
 
 {{< /fold >}}
 
-In this part, we assume the time reversal $T(q,p) = \bm{T}x$ mentioned above. This actually makes the $(q,p)$ representation have a special position among those equivalent pairs in the sense of canonical transformation. This is kind of match our physical interaction with the nature: we do have a preferred coordinate. As a fundamental problem in physics, why there is the chosen one has not been answered yet. This problem exceeds this essay, now we just make it an assumption.
+In this part, we assume the time reversal $T(q,p) = \bm{T}x = (q, -p)$ and leave the form of Hamiltonian invariant (i.e. $H(q,p, t) \rightarrow_{\textrm{Time Reversal}} H(q, -p, -t)$). This actually makes the $(q,p)$ representation have a special position among those equivalent pairs in the sense of canonical transformation. This is kind of match our physical interaction with the nature: we do have a preferred coordinate. As a fundamental problem in physics, why there is the chosen one has not been answered yet. This problem exceeds this essay, now we just make it an assumption.
 
+Time reversal makes each sides of canonical equation changed into
 
+$$
+\begin{aligned}
+\frac {\td x} {\td t} &\rightarrow \frac {\td x'} {\td t'} = \frac {\td \bm{T}x} {\td (-t)} = -\bm{T} \frac {\td x} {\td t} \\
+\bm{J}\nabla_x H &\rightarrow \bm{J}\nabla_{x'} H = \bm{J} \frac {\partial x} {\partial x'} \nabla_x H = \bm{J}\bm{T}\nabla_x H(-t)
+\end{aligned} 
+$$
 
+The symbol $\partial x/ \partial x'$ is the Jacobian of time reversal transformation. Since $\bm{T}^{-1} \bm{J} \bm{T}  =- \bm{J}$, the only way to preserve the equality between each sides is that Hamiltonian $H$ is not explicitly dependent of time. Equivalently, $\partial_t H = 0$
 
+This is our main result in this part: the following two statement is equivalent.
 
-Though we cannot determine the rule of how $(q,p)$ transforms under time reversal, the compare with Newton's formalism is helpful. It seems that under time reversal we have $(q,p)\rightarrow_{\textrm{Time Reversal}} (q, -p)$. However, note that the definition of time reversal has ambiguity in a general theory, this definition is not unique. One example is the theory of canonical transformation, which allow us exchange the place of momentum and coordinate by $(q,p)\rightarrow_{\textrm{C.T.}} (p, -q)$
+1.  The theory (or system) of canonical equation of motion is time reversal symmetric
+2.  The Hamiltonian in the theory (or of the system) is independent of time.
+
+With the assumption of: (1) time reversal acts like $(q,p) \rightarrow (q,-p)$, (2) time reversal has no additional effects on Hamiltonian, but only change its arguments.
+
 
 ## Time Reversal in Quantum Mechanics
 
