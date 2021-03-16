@@ -179,10 +179,10 @@ We will discuss time reversal in this section with modern understanding about Qu
 
 It was firstly proven by Wigner in 1931 that any symmetry operation in quantum mechanics should be unitary or anti-unitary. Formally, the theorem reads:
 
-_[Theorem]_: If $\mathcal{H}$, $\mathcal{H'}$ are two Hilbert spaces and if:
+_[Theorem]_: If $\mathcal{H}$, $\mathcal{H'}$ are two Hilbert spaces and if
 
 $$
-T: \mathcal{H}\supset \psi = \{e^{\ti \alpha } \ket{\psi}: \alpha \in \mathbb{R}\}\mapsto \{e^{\ti \alpha } \ket{\psi'}: \alpha \in \mathbb{R}\}\subset \mathcal{H'}
+T: \mathcal{H}\supset \psi = \{e^{\ti \alpha } \ket{\psi}: \alpha \in \mathbb{R}\}\mapsto \{e^{\ti \alpha } \ket{\psi'}: \alpha \in \mathbb{R}\}\subset \mathcal{H'}\ .
 $$
 
 is a symmetry transformation (preserve the overlap(inner product)), then there exists a map $\hat V: \mathcal{H}\rightarrow \mathcal{H'}$ which is compatible with $T$ and such that $\hat V$ is either unitary or antiunitary if $\textrm{dim}\mathcal{H} \geq 2$. If $\textrm{dim} \mathcal{H} = 1$, there exists a unitary map and an antiunitary map both compatible with $T$.
@@ -190,10 +190,26 @@ is a symmetry transformation (preserve the overlap(inner product)), then there e
 The map $\hat V$ is compatible with $T$ means
 
 $$
-\forall \ket{v} \in \psi : \hat V\ket{v} \in T \psi
+\forall \ket{v} \in \psi : \hat V\ket{v} \in T \psi\ .
 $$
 
+{{< fold "Notes on Wigner theorem" >}}
 
+Wigner treat the physical states as **unit rays** in the Hilbert space. A unit ray is a set of normalized wavefunctions up to a global phase factor, as
+
+$$
+\psi = \{e^{\ti \alpha} \ket{\psi} : \alpha \in \mathbb{R}\}\ .
+$$
+
+A unit ray denotes a specific physical state. The prediction within quantum mechanics is in term of transition probability between two unit rays, i.e., the only measurable quantity in quantum mechanics is of
+
+$$
+S_{ij} = |(\psi_i,\psi_j)|^2 = |\braket{\psi_i|\psi_j}|^2\ .
+$$
+
+Thus, he defined the symmetry transformation as a set of one-to-one maps between unit rays with such quantity invariant, i.e., inner product preserved.
+
+{{< /fold >}}
 
 
 
@@ -204,4 +220,5 @@ $$
 ## Reference
 
 1.  Wigner, E. (1931). Gruppentheorie und ihre Anwendung auf die Quantenmechanik der Atomspektren. [doi:10.1007/978-3-663-02555-9](https://doi.org/10.1007/978-3-663-02555-9)
+2.  Shimony, Abner. Wigner on Foundations of Quantum Mechanics. Part I: Particles and Fields. Part II: Foundations of Quantum Mechanics (1997). [doi:10.1007/978-3-662-09203-3_41](https://doi.org/10.1007/978-3-662-09203-3_41)
 2.  Bargmann, V. (1964, July 01). Note on Wigner's theorem on Symmetry operations. [doi:10.1063/1.1704188 ](https://doi.org/10.1063/1.1704188 )
