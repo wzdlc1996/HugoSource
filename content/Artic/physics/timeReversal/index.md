@@ -140,6 +140,29 @@ $$
 
 The symbol $\partial x/ \partial x'$ is the Jacobian of time reversal transformation. Since $\bm{T}^{-1} \bm{J} \bm{T}  =- \bm{J}$, the only way to preserve the equality between each sides is that Hamiltonian $H$ is not explicitly dependent of time. Equivalently, $\partial_t H = 0$
 
+{{< fold "Return to Lagrangian" >}}
+
+The equivalent form of $\partial_t H = 0$ in Lagrangian formalism is $\partial_t L = 0$. This can be derived following
+
+$$
+\begin{aligned}
+\frac {\partial H} {\partial t} &= \frac {\td H} {\td t}\\
+&= \frac {\td } {\td t}\Big(\dot{q}\cdot p - L\Big)\\
+&= \frac {\td \dot{q}} {\td t} \cdot \frac {\partial L} {\partial \dot{q}} + \frac {\td q} {\td t} \cdot \frac {\td } {\td t}\frac {\partial L} {\partial \dot{q}} - \frac {\td q} {\td t}\cdot \frac {\partial L} {\partial q} - \frac {\td \dot{q}} {\td t}\cdot \frac {\partial L} {\partial \dot{q}} - \frac {\partial L} {\partial t}\\
+&= - \frac {\partial L} {\partial t}
+\end{aligned}
+$$
+
+in which we use the property of
+
+$$
+\frac {\td H} {\td t} = \frac {\partial H} {\partial t} +\frac {\td q} {\td t}\cdot \frac {\partial H} {\partial q} + \frac {\td p} {\td t}\cdot \frac {\partial H} {\partial p}
+$$
+
+and along the trajectory the canonical equation and Euler-Lagrangian should be hold.
+
+{{< /fold >}}
+
 This is our main result in this part: the following two statement is equivalent.
 
 1.  The theory (or system) of canonical equation of motion is time reversal symmetric
@@ -150,6 +173,35 @@ With the assumption of: (1) time reversal acts like $(q,p) \rightarrow (q,-p)$, 
 
 ## Time Reversal in Quantum Mechanics
 
+We will discuss time reversal in this section with modern understanding about Quantum Mechanics, i.e., we will not follow the historical development but start with Schrodinger equation and Dirac notation directly. Different from the classical theory, the main entity involved in quantal equation of motion is wavefunction, which cannot be measured in principle. Physical quantities, known as observables in quantum mechanics, are linear operators on the Hilbert space of wavefunctions. Such linear structure makes the form of time reversal be much more special than it is in classical theory. Just like the general discussion, it is unnecessary and impossible to discuss time reversal in a general dynamics theory from nothing. In this section, we inherit the knowledge in canonical form of mechanics: time reversal should leave coordinates invariant and change the sign of momentum.
+
+### Wigner Theorem on Symmetry Operations
+
+It was firstly proven by Wigner in 1931 that any symmetry operation in quantum mechanics should be unitary or anti-unitary. Formally, the theorem reads:
+
+_[Theorem]_: If $\mathcal{H}$, $\mathcal{H'}$ are two Hilbert spaces and if:
+
+$$
+T: \mathcal{H}\supset \psi = \{e^{\ti \alpha } \ket{\psi}: \alpha \in \mathbb{R}\}\mapsto \{e^{\ti \alpha } \ket{\psi'}: \alpha \in \mathbb{R}\}\subset \mathcal{H'}
+$$
+
+is a symmetry transformation (preserve the overlap(inner product)), then there exists a map $\hat V: \mathcal{H}\rightarrow \mathcal{H'}$ which is compatible with $T$ and such that $\hat V$ is either unitary or antiunitary if $\textrm{dim}\mathcal{H} \geq 2$. If $\textrm{dim} \mathcal{H} = 1$, there exists a unitary map and an antiunitary map both compatible with $T$.
+
+The map $\hat V$ is compatible with $T$ means
+
+$$
+\forall \ket{v} \in \psi : \hat V\ket{v} \in T \psi
+$$
+
+
+
+
+
+
+
 ## Time Reversal in Field Theory
 
 ## Reference
+
+1.  Wigner, E. (1931). Gruppentheorie und ihre Anwendung auf die Quantenmechanik der Atomspektren. [doi:10.1007/978-3-663-02555-9](https://doi.org/10.1007/978-3-663-02555-9)
+2.  Bargmann, V. (1964, July 01). Note on Wigner's theorem on Symmetry operations. [doi:10.1063/1.1704188 ](https://doi.org/10.1063/1.1704188 )
