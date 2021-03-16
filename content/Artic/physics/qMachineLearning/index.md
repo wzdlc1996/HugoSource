@@ -59,7 +59,21 @@ Another aspect of the figure above is the type of algorithm. It is not only mean
 
 # Quantum Speedup for Classical Machine Learning
 
-## Quantum Computing
+## Essential Techs for Applied Quantum Computing
+
+### Quantum I/O: qRAM
+
+### Quantum Linear Algebra
+
+## Quantum Machine Learning Algorithms
+
+### Quantum PCA
+
+### Quantum SVM
+
+### Quantum Neural Networks
+
+# Quantum Machine Learning for Quantum Data
 
 [1]: https://en.wikipedia.org/wiki/Data_science
 [2]: https://www.sciencedirect.com/topics/engineering/keplers-law
