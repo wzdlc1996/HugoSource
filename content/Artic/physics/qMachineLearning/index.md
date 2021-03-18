@@ -70,8 +70,10 @@ There are two essential technologies required in quantum machine learning. One i
 In classical machine learning, we store the dataset as $N$ $d$-vectors of $\{x_i\}_{i=1}^N$ where $x_i = (x_i^1,\cdots,x_i^d) \in\mathbb{R}^d$. The **quantum Random Accessible Memory(qRAM)** allow us to handle the data on a quantum computer just like we do on classical computer with RAM. Mathematically, qRAM implements the map of ([C. Ciliberto 2017](10))
 
 $$
-\{x_i\}_ {i=1}^N \mapsto \ket{x} = \sum_{}
+\{x_i\}_ {i=1}^N \mapsto \ket{x} = \frac 1 {\mathcal{A}}\sum_{i,d} x_i^d \ket{i, d}.
 $$
+
+i.e., encodes the $N\times d$ dataset on $\log Nd$ qubits. Then the left hand side coherent superposition state can be used in the unitary evolution along the circuit in quantum computer or other quantum devices.
 
 ### Quantum Linear Algebra
 
