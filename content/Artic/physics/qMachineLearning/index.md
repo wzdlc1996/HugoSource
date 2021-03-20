@@ -73,15 +73,17 @@ $$
 \{x_i\}_ {i=1}^N \mapsto \ket{x} = \frac 1 {\mathcal{A}}\sum_{i,d} x_i^d \ket{i, d}.
 $$
 
-i.e., encodes the $N\times d$ dataset on $\log Nd$ qubits. Then the left hand side coherent superposition state can be used in the unitary evolution along the circuit in quantum computer or other quantum devices.
+i.e., encodes the $N\times d$ dataset on $\log Nd$ qubits. Then the left hand side coherent superposition state can be used in the unitary evolution along the circuit in quantum computer or other quantum devices. 
 
 ### Quantum Linear Algebra
 
 ## Quantum Machine Learning Algorithms
 
-### Quantum PCA
-
 ### Quantum SVM
+
+**Support Vector Machine(SVM)** is one of the most important classical learning algorithm mainly for data classification. One of its advantages is that we understand how it works better than most black-box algorithms. 
+
+### Quantum PCA
 
 ### Quantum Neural Networks
 
@@ -97,3 +99,4 @@ i.e., encodes the $N\times d$ dataset on $\log Nd$ qubits. Then the left hand si
 [8]: https://arxiv.org/abs/2001.03622
 [9]: https://arxiv.org/abs/1804.11326
 [10]: https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.2017.0551
+[11]: https://arxiv.org/abs/1307.0411
