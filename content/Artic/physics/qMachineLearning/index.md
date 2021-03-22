@@ -83,6 +83,21 @@ i.e., encodes the $N\times d$ dataset on $\log Nd$ qubits. Then the left hand si
 
 **Support Vector Machine(SVM)** is one of the most important classical learning algorithm mainly for data classification. One of its advantages is that we understand how it works better than most black-box algorithms. 
 
+The training set has $M$ data points as $D=\{(x_j; y_j), x_j\in \mathbb{R}^d, y_j =\pm 1\}$. SVM tries to find a maximum-margin hyperplane with normal vector $w\in \mathbb{R}^d$ that divides these points into two classes. Formally, the point $x$ should be separated by the value of $w\cdot x + b$. If $w\cdot x + b \geq 1$, then this point is of class $y = 1$. While $w\cdot x + b \leq -1$ it should be of $y=-1$. Samples on the margin (i.e. $w\cdot x+b=\pm 1$ are usually called **support vectors**) The SVM training is to find parameters $w, b$ such that
+
+$$
+\forall (x_j; y_j) \in D : y_j(w\cdot x_j + b) \geq 1 .
+$$
+
+and makes the distance between these two classes distant largely enough, i.e., maximize $2/\|w\|$. Thus, the optimization form of SVM training reads
+
+$$
+\min_{w, b} \frac 1 2 \|w\|^2 \ \textrm{ s.t. } y_i(w\cdot x_i+b)\geq 1, i=1,\cdots,N 
+$$
+
+{{< center >}}<img name="preview" src="./Figs/img_svm.png"/>{{< /center >}}
+
+
 ### Quantum PCA
 
 ### Quantum Neural Networks
