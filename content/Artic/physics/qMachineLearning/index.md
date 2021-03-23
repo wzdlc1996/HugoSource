@@ -97,6 +97,90 @@ $$
 
 {{< center >}}<img name="preview" src="./Figs/img_svm.png"/>{{< /center >}}
 
+{{< fold "Note: Solution of SVM and time complexity" >}}
+
+With $y_i(w\cdot x_i+b) \geq 1$ being linear constraint for $w$ and $b$, the training of SVM is actually a convex optimization problem. The Slater's condition for convex optimization problem reads ([Stephen Boyd's textbook](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf))
+
+> Given convex optimization problem:
+$$
+\begin{aligned}
+\textrm{minimize}\indent & f(x)\\
+\textrm{subject to }\indent & u_i(x) \leq 0 \ , \ i=1,\cdots,m \\
+&v_i(x) = 0 \ , \ i=1,\cdots, p
+\end{aligned}
+$$
+in which $f, u_i$ are **convex function**, equality constraint functions $v_i(x) = a_i\cdot x + b_i$ are **affine**. 
+**Slater's condition** holds iff there exists an $x$ such that:
+$$
+u_i(x) \lt 0 \ , \ i=1,\cdots,m \ ; \ v_i(x) = 0 \ , \ i=1,\cdots,p
+$$
+**Slater's theorem** states that 
+$$
+\textrm{Slater's condition holds} \Rightarrow \textrm{Strong duality holds}
+$$
+i.e., the minimization of origin problem (primal problem) equals to the maximization of (Lagrangian) dual problem, which reads
+$$
+\begin{aligned}
+\textrm{maximize}\indent & g(\lambda, \nu) = \inf_x L(x,\lambda,\nu)\\
+\textrm{subject to} \indent & \lambda_i \leq 0 \ , \ i = 1,\cdots,m\\
+\end{aligned}
+$$
+(note that the infimum does not constrain $x$) in which
+$$
+L(x,\lambda,\nu) = f(x) - \sum_{i=1}^m\lambda_i u_i(x) - \sum_{i=1}^p\nu_i v_i(x)
+$$
+is the Lagrangian of primal problem. 
+
+An important relation between the optimal of primal problem and dual problem is that: if strong duality holds and a dual optimal solution $(\lambda^*,\nu^ *)$ exists, then $\forall x \in F=\{x:u_i(x) \leq 0, v_i(x)=0\}: \lambda_i u_i(x) \geq 0, \nu_i v_i(x)=0$. Thus
+
+$$
+\inf_x L(x,\lambda^ *, \nu^ *) = \min_{x\in F} f(x)\Rightarrow x^ * = \argmin_ {x\in F} f(x) = \argmin_ {x} L(x,\lambda^ *,\mu^ *)
+$$
+
+That is, solving the dual problem freely gives us the optimal of primal problem. 
+
+Now let us consider the optimization problem of SVM training. The objective function $\|w\|^2/2$ is convex, while the inequality constraints $1-y_i(w\cdot x_i+b)\leq 0$ are all convex. Thus, we can use Slater's theorem to demonstrate the training has strong duality (Only few support vectors are at the boundary of constraints). The Lagrangian:
+
+$$
+\begin{aligned}
+L(w,b,\lambda) &= \frac 1 2 \|w\|^2 - \sum_{i=1}^N\lambda_i (1-y_i(w\cdot x_i+b)) \\
+\Rightarrow g(\lambda) &= \inf_{w\in \mathbb{R}^d, b\in \mathbb{R}}L(w,b,\lambda) = -\sum_{i=1}^N \lambda_i - \frac 1 2 \sum_{i,j=1}^N \lambda_i\lambda_j y_iy_j (x_i\cdot x_j)
+\end{aligned}
+$$
+
+in which we optimize of quadratic from of $L(w,b,\lambda)$ with respect to $w,b$ by
+
+$$
+\begin{aligned}
+\frac {\partial L} {\partial w}\Bigg|_{w=w^*} = 0 &\Rightarrow w^ * = -\sum_{i=1}^N \lambda_i y_i x_i \\
+\frac {\partial L} {\partial b}\Bigg|_{b=b^*} = 0 &\Rightarrow 0 = \sum_i \lambda_i y_i
+\end{aligned}
+$$
+
+Then, primal optimization problem now transforms as dual problem:
+
+$$
+\begin{aligned}
+\textrm{maximize} \indent & -\frac 1 2 \lambda^T \bm{K} \lambda - 1^T \lambda \\
+\textrm{subject to} \indent & \lambda_i \leq 0 \ , \ i=1,\cdots,N \\
+& y \cdot \lambda = 0
+\end{aligned}
+$$
+
+in which, $(\bm{K})_{i,j} = y_i y_j (x_i\cdot x_j)$, $y=(y_1,\cdots,y_N)^T$, and $1=(1,\cdots,1)^T$
+
+The time complexity of classical training is made up with the following three steps:
+
+1.  $\mathcal{O}(N^2d)$. Construction of the dual problem: $\mathcal{O}(N^2)$ times inner product for $d$-vectors
+2.  $\mathcal{O}(N^3)$. For the convex quadratic programming. It can be accordingly faster with ([D. Coppersmith 1990](13))
+3.  $\mathcal{O}(Nd)$. For the recovery of $w,b$ from dual optimal.
+
+Thus, the total time complexity is of $\mathcal{O}(N^2(d+ N^\delta))$. The reason why use dual form but not primal form is to be capable to kernel tricks: replace $x_i\cdot x_j$ into $k(x_i,x_j)$ for nonlinear support.
+
+{{< /fold >}}
+
+In ([P. Rebentrost 2014](14)), the quantum speedup of SVM for big data classification is introduced. 
+
 
 ### Quantum PCA
 
@@ -115,3 +199,6 @@ $$
 [9]: https://arxiv.org/abs/1804.11326
 [10]: https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.2017.0551
 [11]: https://arxiv.org/abs/1307.0411
+[12]: https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf
+[13]: https://www.sciencedirect.com/science/article/pii/S0747717108800132?via%3Dihub
+[14]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.113.130503
