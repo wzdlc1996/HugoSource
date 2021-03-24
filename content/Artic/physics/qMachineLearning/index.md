@@ -153,7 +153,7 @@ in which we optimize of quadratic from of $L(w,b,\lambda)$ with respect to $w,b$
 $$
 \begin{aligned}
 \frac {\partial L} {\partial w}\Bigg|_{w=w^*} = 0 &\Rightarrow w^ * = -\sum_{i=1}^N \lambda_i y_i x_i \\
-\frac {\partial L} {\partial b}\Bigg|_{b=b^*} = 0 &\Rightarrow 0 = \sum_i \lambda_i y_i
+\frac {\partial L} {\partial b}\Bigg|_{b=b^*} = 0 &\Rightarrow 0 = \sum_{i=1}^N \lambda_i y_i
 \end{aligned}
 $$
 
@@ -161,25 +161,60 @@ Then, primal optimization problem now transforms as dual problem:
 
 $$
 \begin{aligned}
-\textrm{maximize} \indent & -\frac 1 2 \lambda^T \bm{K} \lambda - 1^T \lambda \\
+\textrm{maximize} \indent & -\frac 1 2 \lambda^T \bm{K} \lambda - \bm{1}^T \lambda \\
 \textrm{subject to} \indent & \lambda_i \leq 0 \ , \ i=1,\cdots,N \\
 & y \cdot \lambda = 0
 \end{aligned}
 $$
 
-in which, $(\bm{K})_{i,j} = y_i y_j (x_i\cdot x_j)$, $y=(y_1,\cdots,y_N)^T$, and $1=(1,\cdots,1)^T$
+in which, $(\bm{K})_{i,j} = y_i y_j (x_i\cdot x_j)$, $y=(y_1,\cdots,y_N)^T$, and $\bm{1}=(1,\cdots,1)^T$
 
 The time complexity of classical training is made up with the following three steps:
 
 1.  $\mathcal{O}(N^2d)$. Construction of the dual problem: $\mathcal{O}(N^2)$ times inner product for $d$-vectors
-2.  $\mathcal{O}(N^3)$. For the convex quadratic programming. It can be accordingly faster with ([D. Coppersmith 1990](13))
+2.  $\mathcal{O}(N^3)$. For the convex quadratic programming. 
 3.  $\mathcal{O}(Nd)$. For the recovery of $w,b$ from dual optimal.
 
-Thus, the total time complexity is of $\mathcal{O}(N^2(d+ N^\delta))$. The reason why use dual form but not primal form is to be capable to kernel tricks: replace $x_i\cdot x_j$ into $k(x_i,x_j)$ for nonlinear support.
+Thus, the total time complexity is of $\mathcal{O}(N^2(d+ N))$. The reason why use dual form but not primal form is to be capable to kernel tricks: replace $x_i\cdot x_j$ into $k(x_i,x_j)$ for nonlinear support.
 
 {{< /fold >}}
 
-In ([P. Rebentrost 2014](14)), the quantum speedup of SVM for big data classification is introduced. 
+In ([P. Rebentrost 2014](14)), the quantum speedup of SVM for big data classification is introduced. They use the **least squares support vector machine** introduced in ([J.A.K. Suykens 1999](15)), in which the model is trained by solving a linear system instead of a convex quadratic programming. The training (together with kernel trick) reads:
+
+$$
+\begin{aligned}
+\textrm{minimize} \indent & \frac 1 2 \|w\|^2 + \frac 1 2 \gamma\sum_{i=1}^N e_i^2 \\
+\textrm{subject to} \indent & w\cdot \phi(x_i)+b= (1 - e_i)y_i \ , \ i=1,\cdots,N 
+\end{aligned}
+$$
+
+Such optimization problem with equality constraints can be solved by
+
+$$
+\begin{aligned}
+\begin{cases}
+\partial_w L =0 & \Rightarrow w = -\sum_{i=1}^N \lambda_i \phi(x_i)\\
+\partial_b L =0 & \Rightarrow 0 = \sum_{i=1}^N \lambda_i \\
+\partial_e L = 0 &\Rightarrow \lambda_i y_i = -\gamma e_i \\
+\partial_\lambda L = 0 &\Rightarrow w\cdot \phi(x_i) + b = y_i-e_iy_i 
+\end{cases}
+& \Rightarrow
+\begin{bmatrix}
+\bm{I} & 0 & 0 & \bm Z \\
+0 & 0 & 0 &\bm{1}^T \\
+0 & 0 & \gamma \bm I & \textrm{diag}\bm{Y} \\
+\bm{Z}^T & \bm{1} & \textrm{diag}\bm{Y} & 0
+\end{bmatrix} \begin{bmatrix} w \\ b \\ e \\ \lambda \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ y \end{bmatrix} \\
+&\Rightarrow 
+\begin{bmatrix}
+0 & \bm{1}^T \\
+\bm{1} & -\gamma^{-1}\bm{I} - \bm{K}
+\end{bmatrix} \begin{bmatrix}b \\ \lambda\end{bmatrix} = \begin{bmatrix} 0 \\ y\end{bmatrix}
+\end{aligned}
+$$
+
+in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{diag}\{y_1,\cdots,y_N\}$, and $\bm{K} = \bm{Z}^T \bm{Z}\Rightarrow (\bm{K})_{ij} = \phi(x_i)\cdot \phi(x_j) = k(x_i,x_j)$ is the kernel matrix, when kernel trick is disabled, $k(x_i,x_j)=x_i\cdot x_j$. Solving this linear system has time complexity $\mathcal{O}(N^3)$ (or $\mathcal{O}(N^{2.3})$ for sparse coefficient matrix ([D. Coppersmith 1990](13))).
+
 
 
 ### Quantum PCA
@@ -202,3 +237,4 @@ In ([P. Rebentrost 2014](14)), the quantum speedup of SVM for big data classific
 [12]: https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf
 [13]: https://www.sciencedirect.com/science/article/pii/S0747717108800132?via%3Dihub
 [14]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.113.130503
+[15]: https://rd.springer.com/article/10.1023%2FA%3A1018628609742
