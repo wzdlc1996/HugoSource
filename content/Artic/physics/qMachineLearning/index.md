@@ -67,13 +67,40 @@ There are two essential technologies required in quantum machine learning. One i
 
 ### Quantum I/O: qRAM
 
-In classical machine learning, we store the dataset as $N$ $d$-vectors of $\{x_i\}_{i=1}^N$ where $x_i = (x_i^1,\cdots,x_i^d) \in\mathbb{R}^d$. The **quantum Random Accessible Memory(qRAM)** allow us to handle the data on a quantum computer just like we do on classical computer with RAM. Mathematically, qRAM implements the map of ([C. Ciliberto 2017](10))
+The **Random-Access Memory(RAM)** on classical computers provides essentially a tree structure for addressing. Such addressing 
+
+{{< fold "Classical RAM architecture" >}}
+
+Basically, a classical RAM is composed of a memory array of size $N$  serving $N$ bits to read and write, an input register(addressing register) and an output register. A normal memory call can be described as ([R. C. Jaeger, "Microelectronic Circuit Design"](17))
+
+1.  An $n$-bit string is read into input register. These $n\sim\log N$ bits store the address of the memory cell to be called, as the path along the tree. For bifurcation case, it is a series of $\{0,1\}$ with $n=\log_2 N$, and at $k$-th level of the tree, the $0, 1$ value at $k$-th bit denotes the left and right edge.
+2.  Along the addressing path, the output register stores the content of memory cell, or a write circuit would modify its value for the write operation.
+
+Within this procedure, the first addressing bit should control one gate at that node. However, the $k$-th bit must control all $2^{k-1}$ gates at the $k$-th level of the tree for all possible paths. Like: 
+
+{{< center >}}
+<img name="preview" src="./Figs/img_cram.png"/>
+{{< /center >}}
+
+from the paper ([V. Giovannetti](18)). 
+
+Thus, though classical RAM serves the $\mathcal{O}(1)$ time complexity (or $\mathcal{O}(\log N)$ for generic random addressing) for a memory call, it actually uses $\mathcal{O}(2^n)$ gates to implement it. 
+
+{{< /fold >}}
+
+In classical machine learning, we store the dataset as $N$ $d$-vectors of $\{x_i\}_{i=1}^N$ where $x_i = (x_i^1,\cdots,x_i^d) \in\mathbb{R}^d$. The **quantum Random Accessible Memory(qRAM)** allow us to handle the data on a quantum computer just like we do on classical computer with RAM but with a 
+
+
+
+Mathematically, qRAM implements the map of ([C. Ciliberto 2017](10))
 
 $$
 \{x_i\}_ {i=1}^N \mapsto \ket{x} = \frac 1 {\mathcal{A}}\sum_{i,d} x_i^d \ket{i, d}.
 $$
 
 i.e., encodes the $N\times d$ dataset on $\log Nd$ qubits. Then the left hand side coherent superposition state can be used in the unitary evolution along the circuit in quantum computer or other quantum devices. 
+
+One of the most famous architecture of qRAM is **bucket brigade** introduced in ([V. Giovannetti](16)). As they claimed, qRAM could offer 
 
 ### Quantum Linear Algebra
 
@@ -217,6 +244,7 @@ in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{
 
 
 
+
 ### Quantum PCA
 
 ### Quantum Neural Networks
@@ -238,3 +266,6 @@ in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{
 [13]: https://www.sciencedirect.com/science/article/pii/S0747717108800132?via%3Dihub
 [14]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.113.130503
 [15]: https://rd.springer.com/article/10.1023%2FA%3A1018628609742
+[16]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.100.160501
+[17]: https://ecedmans.files.wordpress.com/2014/03/microelectronic-circuit-design-4th-edition-jaeger.pdf
+[18]: https://journals.aps.org/pra/pdf/10.1103/PhysRevA.78.052310
