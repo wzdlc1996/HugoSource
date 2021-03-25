@@ -67,9 +67,9 @@ There are two essential technologies required in quantum machine learning. One i
 
 ### Quantum I/O: qRAM
 
-The **Random-Access Memory(RAM)** on classical computers provides essentially a tree structure for addressing. Such addressing 
+The **Random-Access Memory(RAM)** on classical computers provides essentially a tree structure for addressing. Such addressing with conventionally implementation would cost exponentially large energy. 
 
-{{< fold "Classical RAM architecture" >}}
+{{< fold "Conventional Classical RAM architecture" >}}
 
 Basically, a classical RAM is composed of a memory array of size $N$  serving $N$ bits to read and write, an input register(addressing register) and an output register. A normal memory call can be described as ([R. C. Jaeger, "Microelectronic Circuit Design"](17))
 
@@ -82,9 +82,19 @@ Within this procedure, the first addressing bit should control one gate at that 
 <img name="preview" src="./Figs/img_cram.png"/>
 {{< /center >}}
 
-from the paper ([V. Giovannetti](18)). 
+from the paper ([V. Giovannetti 2008](18)). 
 
 Thus, though classical RAM serves the $\mathcal{O}(1)$ time complexity (or $\mathcal{O}(\log N)$ for generic random addressing) for a memory call, it actually uses $\mathcal{O}(2^n)$ gates to implement it. 
+
+However, as they said in the introduction of the paper ([V. Giovannetti 2008](18)):
+
+> A classical RAM that uses the bucket-brigade (ps. introduced in this paper.) addressing schemes need only activate $\mathcal{O}(n= \log N)$ transistors in the course of a memory call, in contrast with a conventional RAM that activates $\mathcal{O}(2^n = N)$ transistors. As a result, a RAM that uses our design might operate with less dissipation and power consumption than a conventional RAM. **Note, however, that energy costs in the memory addressing are not sufficiently high in current RAM chips to justify an immediate adoption of the bucket brigade. Other source of inefficiencies and dissipations are currently predominant (mostly in the memory cells themselves).** However, new promising memory cell technologies are being developed (e.g., the "memristor" cells), which would drastically cut back cell dissipation, so that cutting back dissipation in the addressing may become important in the future.
+
+Their architecture can also offer advantages for classical RAM, but it cannot resolve the dominant problem of classical RAM. According to this ([stackexchange answer](19)):
+
+>I think that it would indeed work in classical RAM, but the hardware constraints didn't supply the 'evolutionary pressure' required for it to be develiped and implemented.
+
+currently bucket-brigade architecture is still focused on resolving the quantum issue, like resource efficiency and fault tolerance. ([A. Paler 2020](20))
 
 {{< /fold >}}
 
@@ -100,7 +110,7 @@ $$
 
 i.e., encodes the $N\times d$ dataset on $\log Nd$ qubits. Then the left hand side coherent superposition state can be used in the unitary evolution along the circuit in quantum computer or other quantum devices. 
 
-One of the most famous architecture of qRAM is **bucket brigade** introduced in ([V. Giovannetti](16)). As they claimed, qRAM could offer 
+One of the most famous architecture of qRAM is **bucket brigade** introduced in ([V. Giovannetti 2008](16)). As they claimed, qRAM could offer 
 
 ### Quantum Linear Algebra
 
@@ -269,3 +279,5 @@ in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{
 [16]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.100.160501
 [17]: https://ecedmans.files.wordpress.com/2014/03/microelectronic-circuit-design-4th-edition-jaeger.pdf
 [18]: https://journals.aps.org/pra/pdf/10.1103/PhysRevA.78.052310
+[19]: https://quantumcomputing.stackexchange.com/questions/2298/are-bucket-brigate-qram-architectures-also-advantageous-in-the-classical-case
+[20]: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.102.032608
