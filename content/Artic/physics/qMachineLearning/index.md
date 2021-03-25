@@ -84,7 +84,7 @@ Within this procedure, the first addressing bit should control one gate at that 
 
 from the paper ([V. Giovannetti 2008](18)). 
 
-Thus, though classical RAM serves the $\mathcal{O}(1)$ time complexity (or $\mathcal{O}(\log N)$ for generic random addressing) for a memory call, it actually uses $\mathcal{O}(2^n)$ gates to implement it. 
+Thus, though classical RAM serves the $\mathcal{O}(1)$ time complexity (or $\mathcal{O}(\log N)$ for generic random addressing) for a memory call, it actually **activates** $\mathcal{O}(2^n)$ gates to implement it. 
 
 However, as they said in the introduction of the paper ([V. Giovannetti 2008](18)):
 
@@ -97,6 +97,19 @@ Their architecture can also offer advantages for classical RAM, but it cannot re
 currently bucket-brigade architecture is still focused on resolving the quantum issue, like resource efficiency and fault tolerance. ([A. Paler 2020](20))
 
 {{< /fold >}}
+
+The **bucket-brigade** architecture is proposed to resolve the issue that in conventional one, there are always few addressing bits related to exponentially many transistors to control the path. Like the bits controlling the last level of the tree, which needs to control $2^{n-1}$ transistors. This property makes it hard to work in a quantal way, in which decoherence led by many body interaction should be forbidden. 
+
+**Bucket-Brigade** architecture modifies every nodes in the bifurcation tree into a (qu)trit, which could have three possible states. 
+
+{{< center >}}
+<img name="preview" src="https://raw.githubusercontent.com/qsharp-community/qram/master/docs/images/bb.gif"/>
+
+{{< /center >}}
+
+(The figure is cited from [github.com/qsharp-community/qram](https://github.com/qsharp-community/qram))The $\ket{0},\ket{1}$ state of qutrits shares the same operation of original switches: they indicate which next step to choose at this node (referred as $\ket{\textrm{left}}, \ket{\textrm{right}}$). While the other state, denoting as $\ket{\textrm{wait}}$, means a waiting node. When a $0,1$-valued bit encounters it, it "absorb" the information and switch itself into the same value, including the case that incoming bit is at a superposition state. In a memory call, the bits in input register is popped sequentially into a initialized tree (with all nodes at $\ket{\textrm{wait}}$ state). When the bit encounters a $\ket{0}, \ket{1}$ node it propagates into the next level. Thus, when the input register becomes empty, a path towards memory cells is constructed. When input register is in a superposition state, it is further a superposition state among many paths with the same amplitude. After the bus qubit has loaded the data, the nodes along addressing path would be recovered to $\ket{\textrm{wait}}$ for further usage.
+
+This architecture allows a memory call with $\mathcal{O}(n)$ gates activated. 
 
 In classical machine learning, we store the dataset as $N$ $d$-vectors of $\{x_i\}_{i=1}^N$ where $x_i = (x_i^1,\cdots,x_i^d) \in\mathbb{R}^d$. The **quantum Random Accessible Memory(qRAM)** allow us to handle the data on a quantum computer just like we do on classical computer with RAM but with a 
 
