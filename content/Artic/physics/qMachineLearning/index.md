@@ -69,7 +69,7 @@ There are two essential technologies required in quantum machine learning. One i
 
 The **Random-Access Memory(RAM)** on classical computers provides essentially a tree structure for addressing. Such addressing with conventionally implementation would cost exponentially large energy. 
 
-{{< fold "Conventional Classical RAM architecture" >}}
+{{% fold "Conventional Classical RAM architecture" %}}
 
 Basically, a classical RAM is composed of a memory array of size $N$  serving $N$ bits to read and write, an input register(addressing register) and an output register. A normal memory call can be described as ([R. C. Jaeger, "Microelectronic Circuit Design"](17))
 
@@ -96,7 +96,7 @@ Their architecture can also offer advantages for classical RAM, but it cannot re
 
 currently bucket-brigade architecture is still focused on resolving the quantum issue, like resource efficiency and fault tolerance. ([A. Paler 2020](20))
 
-{{< /fold >}}
+{{% /fold %}}
 
 The **bucket-brigade** architecture is proposed to resolve the issue that in conventional one, there are always few addressing bits related to exponentially many transistors to control the path. Like the bits controlling the last level of the tree, which needs to control $2^{n-1}$ transistors. This property makes it hard to work in a quantal way, in which decoherence led by many body interaction should be forbidden. 
 
@@ -138,12 +138,12 @@ Though this fast amplitude encoding is very exciting, however, unfortunately, th
 
 > **Sometimes.** You'll need a qRAM, or some more general means of _quantum state preparation_ in quantum machine learning (QML) algorithms that require you to load in classical data, or query an oracle that returns classical data. I've heard a number of stories of people working on QML being actively discouraged from doing so because "QML won't work without a qRAM". That's just not true, because _many QML algorithms do not need a qRAM._ Now, whether or not they yield any quantum advantage is a separate question, and won't be discussed here. The key point is that _some_ QML algorithms need a qRAM, and they will potentially run into trouble as per the next question.
 
-{{< fold "the next question mentioned" >}}
+{{% fold "the next question mentioned" %}}
 
 > **Can we design an efficient qRAM?**
 > **Maybe**. In the primer we'll take a look at proposals that will in principle run in polynomial depth, and others that scale far worse. There are some very interesting qubit-time tradeoffs one can explore, in particular if the data being stored has some sort of underlying structure. Regardless, even if we can design an efficient circuit, we'd also like something that is efficient in a fault-tolerant setting, and this is potentially very expensive.
 
-{{< /fold >}}
+{{% /fold %}}
 
 Another discussion can be found at the paper ([C. Ciliberto 2017](10)), in which the author list three issues for the current qRAM research:
 
@@ -173,49 +173,54 @@ $$
 
 {{< center >}}<img name="preview" src="./Figs/img_svm.png"/>{{< /center >}}
 
-{{< fold "Note: Solution of SVM and time complexity" >}}
+{{% fold "Note: Solution of SVM and time complexity" %}}
 
 With $y_i(w\cdot x_i+b) \geq 1$ being linear constraint for $w$ and $b$, the training of SVM is actually a convex optimization problem. The Slater's condition for convex optimization problem reads ([Stephen Boyd's textbook](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf))
 
 > Given convex optimization problem:
-$$
-\begin{aligned}
-\textrm{minimize}\indent & f(x)\\
-\textrm{subject to }\indent & u_i(x) \leq 0 \ , \ i=1,\cdots,m \\
-&v_i(x) = 0 \ , \ i=1,\cdots, p
-\end{aligned}
-$$
-in which $f, u_i$ are **convex function**, equality constraint functions $v_i(x) = a_i\cdot x + b_i$ are **affine**. 
-**Slater's condition** holds iff there exists an $x$ such that:
-$$
-u_i(x) \lt 0 \ , \ i=1,\cdots,m \ ; \ v_i(x) = 0 \ , \ i=1,\cdots,p
-$$
-**Slater's theorem** states that 
-$$
-\textrm{Slater's condition holds} \Rightarrow \textrm{Strong duality holds}
-$$
-i.e., the minimization of origin problem (primal problem) equals to the maximization of (Lagrangian) dual problem, which reads
-$$
-\begin{aligned}
-\textrm{maximize}\indent & g(\lambda, \nu) = \inf_x L(x,\lambda,\nu)\\
-\textrm{subject to} \indent & \lambda_i \leq 0 \ , \ i = 1,\cdots,m\\
-\end{aligned}
-$$
-(note that the infimum does not constrain $x$) in which
-$$
-L(x,\lambda,\nu) = f(x) - \sum_{i=1}^m\lambda_i u_i(x) - \sum_{i=1}^p\nu_i v_i(x)
-$$
-is the Lagrangian of primal problem. 
+>
+>$$
+>\begin{aligned}
+>\textrm{minimize}\indent & f(x)\\
+>\textrm{subject to }\indent & u_i(x) \leq 0 \ , \ i=1,\cdots,m \\
+>&v_i(x) = 0 \ , \ i=1,\cdots, p
+>\end{aligned}
+>$$
+>
+>in which $f, u_i$ are **convex function**, equality constraint functions $v_i(x) = a_i\cdot x + b_i$ are **affine**. 
+>**Slater's condition** holds iff there exists an $x$ such that:
+>$$
+>u_i(x) \lt 0 \ , \ i=1,\cdots,m \ ; \ v_i(x) = 0 \ , \ i=1,\cdots,p
+>$$
+>**Slater's theorem** states that 
+>$$
+>\textrm{Slater's condition holds} \Rightarrow \textrm{Strong duality holds}
+>$$
+>i.e., the minimization of origin problem (primal problem) equals to the maximization of (Lagrangian) dual problem, which reads
+>
+>$$
+>\begin{aligned}
+>\textrm{maximize}\indent & g(\lambda, \nu) = \inf_x L(x,\lambda,\nu)\\
+>\textrm{subject to} \indent & \lambda_i \leq 0 \ , \ i = 1,\cdots,m\\
+>\end{aligned}
+>$$
+>
+>(note that the infimum does not constrain $x$) in which
+>$$
+>L(x,\lambda,\nu) = f(x) - \sum_{i=1}^m\lambda_i u_i(x) - \sum_{i=1}^p\nu_i v_i(x)
+>$$
+>is the Lagrangian of primal problem. 
 
 An important relation between the optimal of primal problem and dual problem is that: if strong duality holds and a dual optimal solution $(\lambda^*,\nu^ *)$ exists, then $\forall x \in F=\{x:u_i(x) \leq 0, v_i(x)=0\}: \lambda_i u_i(x) \geq 0, \nu_i v_i(x)=0$. Thus
 
 $$
-\inf_x L(x,\lambda^ *, \nu^ *) = \min_{x\in F} f(x)\Rightarrow x^ * = \argmin_ {x\in F} f(x) = \argmin_ {x} L(x,\lambda^ *,\mu^ *)
+\inf_x L(x,\lambda^ *, \nu^ *) = \min_{x\in F} f(x)\Rightarrow x^ * = \arg\min_ {x\in F} f(x) = \arg\min_ {x} L(x,\lambda^ *,\mu^ *)
 $$
 
 That is, solving the dual problem freely gives us the optimal of primal problem. 
 
 Now let us consider the optimization problem of SVM training. The objective function $\|w\|^2/2$ is convex, while the inequality constraints $1-y_i(w\cdot x_i+b)\leq 0$ are all convex. Thus, we can use Slater's theorem to demonstrate the training has strong duality (Only few support vectors are at the boundary of constraints). The Lagrangian:
+
 
 $$
 \begin{aligned}
@@ -223,6 +228,7 @@ L(w,b,\lambda) &= \frac 1 2 \|w\|^2 - \sum_{i=1}^N\lambda_i (1-y_i(w\cdot x_i+b)
 \Rightarrow g(\lambda) &= \inf_{w\in \mathbb{R}^d, b\in \mathbb{R}}L(w,b,\lambda) = -\sum_{i=1}^N \lambda_i - \frac 1 2 \sum_{i,j=1}^N \lambda_i\lambda_j y_iy_j (x_i\cdot x_j)
 \end{aligned}
 $$
+
 
 in which we optimize of quadratic from of $L(w,b,\lambda)$ with respect to $w,b$ by
 
@@ -235,6 +241,7 @@ $$
 
 Then, primal optimization problem now transforms as dual problem:
 
+
 $$
 \begin{aligned}
 \textrm{maximize} \indent & -\frac 1 2 \lambda^T \bm{K} \lambda - \bm{1}^T \lambda \\
@@ -242,6 +249,7 @@ $$
 & y \cdot \lambda = 0
 \end{aligned}
 $$
+
 
 in which, $(\bm{K})_{i,j} = y_i y_j (x_i\cdot x_j)$, $y=(y_1,\cdots,y_N)^T$, and $\bm{1}=(1,\cdots,1)^T$
 
@@ -253,9 +261,10 @@ The time complexity of classical training is made up with the following three st
 
 Thus, the total time complexity is of $\mathcal{O}(N^2(d+ N))$. The reason why use dual form but not primal form is to be capable to kernel tricks: replace $x_i\cdot x_j$ into $k(x_i,x_j)$ for nonlinear support.
 
-{{< /fold >}}
+{{% /fold %}}
 
 In ([P. Rebentrost 2014](14)), the quantum speedup of SVM for big data classification is introduced. They use the **least squares support vector machine** introduced in ([J.A.K. Suykens 1999](15)), in which the model is trained by solving a linear system instead of a convex quadratic programming. The training (together with kernel trick) reads:
+
 
 $$
 \begin{aligned}
@@ -264,7 +273,9 @@ $$
 \end{aligned}
 $$
 
+
 Such optimization problem with equality constraints can be solved by
+
 
 $$
 \begin{aligned}
@@ -289,7 +300,13 @@ $$
 \end{aligned}
 $$
 
-in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{diag}\{y_1,\cdots,y_N\}$, and $\bm{K} = \bm{Z}^T \bm{Z}\Rightarrow (\bm{K})_{ij} = \phi(x_i)\cdot \phi(x_j) = k(x_i,x_j)$ is the kernel matrix, when kernel trick is disabled, $k(x_i,x_j)=x_i\cdot x_j$. Solving this linear system has time complexity $\mathcal{O}(N^3)$ (or $\mathcal{O}(N^{2.3})$ for sparse coefficient matrix ([D. Coppersmith 1990](13))).
+
+
+in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{diag} \{ y_1,\cdots,y_N \}$, and $\bm{K} = \bm{Z}^T \bm{Z}\Rightarrow (\bm{K})_{ij} = \phi(x_i)\cdot \phi(x_j) = k(x_i,x_j)$ is the kernel matrix, when kernel trick is disabled, $k(x_i,x_j)=x_i\cdot x_j$. Solving this linear system has time complexity $\mathcal{O}(N^3)$ (or $\mathcal{O}(N^{2.3})$ for sparse coefficient matrix ([D. Coppersmith 1990](13))).
+
+test
+
+\test
 
 
 

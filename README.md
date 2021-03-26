@@ -4,6 +4,8 @@ Is the source files of my [Blog on Github](https://wzdlc1996.github.io).
 
 ## MathJax Adjust
 
+The following strategy is massive. TODO: automaticall replace `\` into `\\` in every mathjax block.
+
 The [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) has been solved after recent update of Hugo. But now it renders character `\\` as `\`. To resolve this, a new shortcode `mathjax` is defined:
 
 1.  Inline formula should been stored as `$...$`.
