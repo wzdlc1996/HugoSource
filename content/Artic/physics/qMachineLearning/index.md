@@ -63,9 +63,9 @@ Quantum computing has been proven significantly more powerful than classical mac
 
 ## Essential Techs for Applied Quantum Computing
 
-There are two essential technologies required in quantum machine learning. One is the **quantum Random Accessible Memory**, which is usually mentioned as the hardware, and the other is the **quantum linear algebra algorithms** in software level. The former might be suspected to be essential, since there are actually many quantum machine learning algorithms that is free from qRAM. Recently, some new approaches have been studied for handling classical data in a quantum machine like quantum embedding ([S. Lloyd 2020](8)) and quantum feature map ([V. Havlicek 2018](9)). However, as a generic I/O layer of quantum machine learning, it is still valuable to discuss it mathematical here.
+There are two essential technologies required in quantum machine learning. One is the **quantum Random Accessible Memory**, which is usually mentioned as the hardware, and the other is the **quantum linear algebra algorithms** in software level. The former might be suspected to be essential, since there are actually many quantum machine learning algorithms being free from qRAM. Recently, some new approaches have been studied for handling classical data in a quantum machine like quantum embedding ([S. Lloyd 2020](8)) and quantum feature map ([V. Havlicek 2018](9)). However, as a generic data loader for quantum machine learning on classical data, it is still valuable to discuss it mathematically here.
 
-### Quantum I/O: qRAM
+### Data Loader: qRAM
 
 The **Random-Access Memory(RAM)** on classical computers provides essentially a tree structure for addressing. Such addressing with conventionally implementation would cost exponentially large energy. 
 
@@ -109,7 +109,13 @@ The **bucket-brigade** architecture is proposed to resolve the issue that in con
 
 (The figure is cited from [github.com/qsharp-community/qram](https://github.com/qsharp-community/qram))The $\ket{0},\ket{1}$ state of qutrits shares the same operation of original switches: they indicate which next step to choose at this node (referred as $\ket{\textrm{left}}, \ket{\textrm{right}}$). While the other state, denoting as $\ket{\textrm{wait}}$, means a waiting node. When a $0,1$-valued bit encounters it, it "absorb" the information and switch itself into the same value, including the case that incoming bit is at a superposition state. In a memory call, the bits in input register is popped sequentially into a initialized tree (with all nodes at $\ket{\textrm{wait}}$ state). When the bit encounters a $\ket{0}, \ket{1}$ node it propagates into the next level. Thus, when the input register becomes empty, a path towards memory cells is constructed. When input register is in a superposition state, it is further a superposition state among many paths with the same amplitude. After the bus qubit has loaded the data, the nodes along addressing path would be recovered to $\ket{\textrm{wait}}$ for further usage.
 
-This architecture allows a memory call with $\mathcal{O}(n)$ gates activated. 
+This architecture allows a memory call with $\mathcal{O}(n)$ gates activated, and **the superposition addressing is potentially supported.** Now we show how to use qRAM implement the state-preparation, or classical data loader for quantum computing. Mathematically, we want to achieve the map ([C. Ciliberto 2017](10), [A. Prakash 2014](21))
+
+$$
+\{x_i\}_ {i=1}^N \mapsto \ket{x} = \frac 1 {\mathcal{A}}\sum_{i,d} x_i^d \ket{i, d}.
+$$
+
+where $\mathcal{A}^{-1}$ is the normalization factor. This map encoded classical dataset onto the amplitudes instead of basis.  
 
 In classical machine learning, we store the dataset as $N$ $d$-vectors of $\{x_i\}_{i=1}^N$ where $x_i = (x_i^1,\cdots,x_i^d) \in\mathbb{R}^d$. The **quantum Random Accessible Memory(qRAM)** allow us to handle the data on a quantum computer just like we do on classical computer with RAM but with a 
 
@@ -294,3 +300,4 @@ in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{
 [18]: https://journals.aps.org/pra/pdf/10.1103/PhysRevA.78.052310
 [19]: https://quantumcomputing.stackexchange.com/questions/2298/are-bucket-brigate-qram-architectures-also-advantageous-in-the-classical-case
 [20]: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.102.032608
+[21]: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-211.pdf
