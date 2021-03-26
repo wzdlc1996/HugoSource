@@ -115,21 +115,41 @@ $$
 \{x_i\}_ {i=1}^N \mapsto \ket{x} = \frac 1 {\mathcal{A}}\sum_{i,d} x_i^d \ket{i, d}.
 $$
 
-where $\mathcal{A}^{-1}$ is the normalization factor. This map encoded classical dataset onto the amplitudes instead of basis.  
+where $\mathcal{A}^{-1}$ is the normalization factor. This map encoded classical dataset onto the amplitudes instead of basis. 
 
-In classical machine learning, we store the dataset as $N$ $d$-vectors of $\{x_i\}_{i=1}^N$ where $x_i = (x_i^1,\cdots,x_i^d) \in\mathbb{R}^d$. The **quantum Random Accessible Memory(qRAM)** allow us to handle the data on a quantum computer just like we do on classical computer with RAM but with a 
-
-
-
-Mathematically, qRAM implements the map of ([C. Ciliberto 2017](10))
+We begin with the vector $\{x_i\}_{i=0}^{N-1}$, with qRAM we can prepare the state (with uniform superposition addressing) with ancilla qubits (with the size of $\log N$)
 
 $$
-\{x_i\}_ {i=1}^N \mapsto \ket{x} = \frac 1 {\mathcal{A}}\sum_{i,d} x_i^d \ket{i, d}.
+\ket{\psi} \otimes \ket{0} = \frac 1 {\sqrt{N}}\sum_{i=0}^{N-1} \ket{i}\ket{x_i} \otimes \ket{0}
 $$
 
-i.e., encodes the $N\times d$ dataset on $\log Nd$ qubits. Then the left hand side coherent superposition state can be used in the unitary evolution along the circuit in quantum computer or other quantum devices. 
+Now we apply a rotation conditioned by the content in memory cells
 
-One of the most famous architecture of qRAM is **bucket brigade** introduced in ([V. Giovannetti 2008](16)). As they claimed, qRAM could offer 
+$$
+\begin{aligned}
+\ket{\tilde{x}} &=\exp\Big(-\ti t \sum_{i=0}^{N-1} (-x_i)\ket{i,x_i}\bra{i,x_i} \otimes \sigma_x\Big) \ket{\psi}\otimes \ket{0} \\
+&= \frac 1 {\sqrt{N}}\sum_{i=0}^{N-1} \ket{i}\ket{x_i} \Big(\ket{0} + \ti t x_i \ket{1} + \mathcal{O}(t^2)\Big)
+\end{aligned}
+$$
+
+Thus, with proper post-selection, we can prepare the state of $\sum_{i=0}^{N-1} x_i\ket{i}$. Similar procedure can also applied for general datasets.
+
+Though this fast amplitude encoding is very exciting, however, unfortunately, there is still no one has actually done this. As for do we need a qRAM, the following comment from [github.com/qsharp-community/qram](https://github.com/qsharp-community/qram) gives a nice answer
+
+> **Sometimes.** You'll need a qRAM, or some more general means of _quantum state preparation_ in quantum machine learning (QML) algorithms that require you to load in classical data, or query an oracle that returns classical data. I've heard a number of stories of people working on QML being actively discouraged from doing so because "QML won't work without a qRAM". That's just not true, because _many QML algorithms do not need a qRAM._ Now, whether or not they yield any quantum advantage is a separate question, and won't be discussed here. The key point is that _some_ QML algorithms need a qRAM, and they will potentially run into trouble as per the next question.
+
+{{< fold "the next question mentioned" >}}
+
+> **Can we design an efficient qRAM?**
+> **Maybe**. In the primer we'll take a look at proposals that will in principle run in polynomial depth, and others that scale far worse. There are some very interesting qubit-time tradeoffs one can explore, in particular if the data being stored has some sort of underlying structure. Regardless, even if we can design an efficient circuit, we'd also like something that is efficient in a fault-tolerant setting, and this is potentially very expensive.
+
+{{< /fold >}}
+
+Another discussion can be found at the paper ([C. Ciliberto 2017](10)), in which the author list three issues for the current qRAM research:
+
+1.  Do all components of the qRAM require to be error-corrected. If the answer is yes, such exponential physical resources would not be built in an experimental setting.
+2.  The comparison is thought as unfair ([D. Steiger's talk in 2016](http://pirsa.org/displayFlash.php?id=16080019)). The argument states that the benchmark should be done with the same hardware resources scaling, which might decrease the quantum-speedup. The qRAM-based algorithms should be carefully considered.
+3.  As pointed out in ([S. Aaronson 2015](22)), the fast state preparation based on qRAM requires the classical data distributed relatively uniform. However, in this case, classical random algorithm can be quite fast and reliable, which also makes the exponential-speedup disappeared. 
 
 ### Quantum Linear Algebra
 
@@ -301,3 +321,4 @@ in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{
 [19]: https://quantumcomputing.stackexchange.com/questions/2298/are-bucket-brigate-qram-architectures-also-advantageous-in-the-classical-case
 [20]: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.102.032608
 [21]: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-211.pdf
+[22]: https://www.nature.com/articles/nphys3272
