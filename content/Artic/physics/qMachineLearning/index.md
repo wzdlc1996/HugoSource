@@ -153,6 +153,8 @@ Another discussion can be found at the paper ([C. Ciliberto 2017](10)), in which
 
 ### Quantum Linear Algebra
 
+Though the idea about using quantum resources to enhance the learning algorithms had attracted much attention since 1990s, the rapid growth of quantum machine learning actually began in 2009, by the help of quantum algorithm for linear system. In this section we discuss the algorithm, named as HHL algorithm, after its inventor Harrow, Hassidim, and Lloyd. ([HHL 2009](23)). 
+
 ## Quantum Machine Learning Algorithms
 
 ### Quantum SVM
@@ -339,3 +341,4 @@ test
 [20]: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.102.032608
 [21]: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-211.pdf
 [22]: https://www.nature.com/articles/nphys3272
+[23]: https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.103.150502
