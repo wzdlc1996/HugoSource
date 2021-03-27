@@ -141,6 +141,7 @@ Though this fast amplitude encoding is very exciting, however, unfortunately, th
 {{% fold "the next question mentioned" %}}
 
 > **Can we design an efficient qRAM?**
+>
 > **Maybe**. In the primer we'll take a look at proposals that will in principle run in polynomial depth, and others that scale far worse. There are some very interesting qubit-time tradeoffs one can explore, in particular if the data being stored has some sort of underlying structure. Regardless, even if we can design an efficient circuit, we'd also like something that is efficient in a fault-tolerant setting, and this is potentially very expensive.
 
 {{% /fold %}}
@@ -154,6 +155,62 @@ Another discussion can be found at the paper ([C. Ciliberto 2017](10)), in which
 ### Quantum Linear Algebra
 
 Though the idea about using quantum resources to enhance the learning algorithms had attracted much attention since 1990s, the rapid growth of quantum machine learning actually began in 2009, by the help of quantum algorithm for linear system. In this section we discuss the algorithm, named as HHL algorithm, after its inventor Harrow, Hassidim, and Lloyd. ([HHL 2009](23)). 
+
+HHL algorithm try to solve the linear system reads
+
+$$
+\bm{A} \bm{x} = \bm{b} \Leftrightarrow \begin{bmatrix} \bm{0} & \bm{A} \\ \bm{A}^\dagger & \bm{0} \end{bmatrix} \begin{bmatrix}
+\bm{0}\\ \bm{x} 
+\end{bmatrix} = \begin{bmatrix} \bm{b} \\ \bm{0}\end{bmatrix}
+$$
+
+by the map, we can just consider the case of coefficients matrix to be **Hermitian.** The pseudo-code for HHL algorithm reads
+
+-  **Input**: $\ket{b} = \sum_{i=0}^{N-1} b_i \ket{i}$, unitary matrix $\hat U(t) = \exp(\ti t\sum_{i,j=0}^{N-1} A_{ij}\ket{i}\bra{j})\equiv \exp(\ti \hat A t)$
+-  **Output**: The amplitude-encoded solution $\ket{x} = \sum_{i=0}^{N-1} x_i \ket{i}$, in which $\|\bm{A} \bm{x} - \bm{b}\| \lt \epsilon$
+-  **Notation**: 
+-  **Start**:
+   1.  Prepare initial state $\ket{\psi_0}=\ket{0}_a\ket{0}_c\ket{b}$ with the subscript $a, c$ denoting ancilla and controlled
+
+   2.  Apply `Phase Estimate` unitary operator on the control register. 
+
+       $$
+       \ket{\psi_0} \rightarrow \ket{\psi_1}= \hat U_{\textrm{PE}}\ket{\psi_0}=\ket{0}_ a\otimes \sqrt{\frac 2 T} \sum_{\tau = 0}^{T-1} \sin \frac {\pi (\tau + 1/2)} T \ket{\tau}_c \otimes \ket{b}
+       $$
+
+   3.  Apply a `controlled evolution` of $\hat U_c = \sum_{\tau=0}^{T-1} \hat I_a\otimes (\ket{\tau}\bra{\tau})_c \otimes \hat U(\tau t_0/T)$.
+
+       $$
+       \ket{\psi_1}\rightarrow \ket{\psi_2}= \hat U_c \ket{\psi_1} = \sqrt{\frac {2}{T}}\sum_{\tau=0}^{T-1} \sin \frac {\pi (\tau+1/2)} {T}\ket{0}_a \ket{\tau}_c \sum _{j=0}^{N-1} e^{\ti \lambda_j \tau t_0/T} \ket{\lambda_j}\braket{\lambda_j|b}
+       $$
+       in which we assume $\hat A\ket{\lambda_j} = \lambda_j\ket{\lambda_j}$
+
+   4.  Apply the `Fourier transform` on the control register
+
+       $$
+       \ket{\psi_2}\rightarrow \ket{\psi_3}= \sum_{j=0}^{N-1} \sum_{\omega=0}^{T-1} \alpha_{\omega|j} \braket{\lambda_j|b} \ket{0}_a\ket{\omega}_c\ket{\lambda_j}
+       $$
+       
+       Note the amplitude $|\alpha_{\omega|j}|$ is significant only when $\lambda_j \approx 2\pi \omega /t_0 = \tilde{\lambda}_\omega$
+   5.  Apply a `controlled rotation` on ancilla qubit, controlled by $\omega$.
+
+       $$
+       \ket{\psi_3}\rightarrow \ket{\psi_4} = \sum_{j=0}^{N-1}\sum_{\omega=0}^{T-1} \alpha_{\omega|j}\braket{\lambda_j|b} \Big(\sqrt{1-\frac {C^2} {\tilde{\lambda}_\omega^2}}\ket{0}+\frac {C} {\tilde{\lambda}_{\omega}} \ket{1}\Big)_a \ket{\omega}_c\ket{\lambda_j}
+       $$
+   
+   6.  Initialize the control register and make post-selection that ancilla qubit should be $1$. Then the output register
+       
+       $$
+       \ket{x} \approx \sum_{j=0}^{N-1} \frac 1 {\lambda_j} \braket{\lambda_j|b} \ket{\lambda_j} = \ket{\bm{A}^{-1}\bm{b}}
+       $$
+-  **End**
+
+{{% fold "Phase Estimation" %}}
+
+
+{{% /fold %}}
+
+
 
 ## Quantum Machine Learning Algorithms
 
