@@ -172,16 +172,16 @@ by the map, we can just consider the case of coefficients matrix to be **Hermiti
 -  **Start**:
    1.  Prepare initial state $\ket{\psi_0}=\ket{0}_a\ket{0}_c\ket{b}$ with the subscript $a, c$ denoting ancilla and controlled
 
-   2.  Apply `Phase Estimate` unitary operator on the control register. 
+   2.  Apply $\log T$ Hadamard gates to make a uniform superposition control register
 
        $$
-       \ket{\psi_0} \rightarrow \ket{\psi_1}= \hat U_{\textrm{PE}}\ket{\psi_0}=\ket{0}_ a\otimes \sqrt{\frac 2 T} \sum_{\tau = 0}^{T-1} \sin \frac {\pi (\tau + 1/2)} T \ket{\tau}_c \otimes \ket{b}
+       \ket{\psi_0} \rightarrow \ket{\psi_1}=\ket{0}_ a\otimes \frac 1 {\sqrt{T}} \sum_{\tau = 0}^{T-1} \ket{\tau}_c \otimes \ket{b}
        $$
 
-   3.  Apply a `controlled evolution` of $\hat U_c = \sum_{\tau=0}^{T-1} \hat I_a\otimes (\ket{\tau}\bra{\tau})_c \otimes \hat U(\tau t_0/T)$.
+   3.  Apply a `controlled evolution` of $\hat U_c = \sum_{\tau=0}^{T-1} \hat I_a\otimes (\ket{\tau}\bra{\tau})_c \otimes \hat U(\tau z/T)$.
 
        $$
-       \ket{\psi_1}\rightarrow \ket{\psi_2}= \hat U_c \ket{\psi_1} = \sqrt{\frac {2}{T}}\sum_{\tau=0}^{T-1} \sin \frac {\pi (\tau+1/2)} {T}\ket{0}_a \ket{\tau}_c \sum _{j=0}^{N-1} e^{\ti \lambda_j \tau t_0/T} \ket{\lambda_j}\braket{\lambda_j|b}
+       \ket{\psi_1}\rightarrow \ket{\psi_2}= \hat U_c \ket{\psi_1} = \frac 1 {\sqrt{T}}\sum_{\tau=0}^{T-1} \ket{0}_a \ket{\tau}_c \sum _{j=0}^{N-1} e^{\ti \lambda_j \tau z/T} \ket{\lambda_j}\braket{\lambda_j|b}
        $$
        in which we assume $\hat A\ket{\lambda_j} = \lambda_j\ket{\lambda_j}$
 
@@ -191,7 +191,7 @@ by the map, we can just consider the case of coefficients matrix to be **Hermiti
        \ket{\psi_2}\rightarrow \ket{\psi_3}= \sum_{j=0}^{N-1} \sum_{\omega=0}^{T-1} \alpha_{\omega|j} \braket{\lambda_j|b} \ket{0}_a\ket{\omega}_c\ket{\lambda_j}
        $$
        
-       Note the amplitude $|\alpha_{\omega|j}|$ is significant only when $\lambda_j \approx 2\pi \omega /t_0 = \tilde{\lambda}_\omega$
+       Note the amplitude $|\alpha_{\omega|j}|$ is significant only when $\lambda_j \approx 2\pi \omega /z = \tilde{\lambda}_\omega$
    5.  Apply a `controlled rotation` on ancilla qubit, controlled by $\omega$.
 
        $$
@@ -207,8 +207,36 @@ by the map, we can just consider the case of coefficients matrix to be **Hermiti
 
 {{% fold "Phase Estimation" %}}
 
+The `Phase Estimation` algorithm try to find an eigenvalue of given unitary operator $\hat U$ and one of its eigenvector $\ket{\psi}$. i.e., to find the value of $\theta\in [0,1)$ in the equation([Wikipedia/Quantum_phase_estimation_algorithm](24))
+
+$$
+\hat U\ket{\psi} = e^{2\pi \ti \theta}\ket{\psi}
+$$
+
+The operation $\hat U_{\textrm{PE}}$ can be implemented by the following circuit. Given $n$-qubit register initialized by $n$ Hadamard gates as
+
+$$
+\ket{\textrm{ini}} = \Big(\frac 1 {\sqrt{2}} (\ket{0}+\ket{1})\Big)^{\otimes n} \otimes \ket{\psi}
+$$
+
+Then with $n$ controlled-$U$ gates operating as
+
+$$
+\begin{aligned}
+\ket{\textrm{ini}} &\rightarrow \bigotimes_{j=1}^n(\ket{0}\bra{0} \otimes \hat I+\ket{1}\bra{1} \hat U^{2^{n-j}})_{\textrm{on j-th}} \ket{\textrm{ini}} \\
+&= \bigotimes_{j=1}^n \frac 1 {\sqrt{2}}\big(\ket{0} + e^{\ti 2\pi \theta\times 2^{n-j}}\ket{1}\big) \otimes \ket{\psi} \\
+&= \frac 1 {2^{n/2}}\sum_{b_1 b_2\cdots b_n} \Big(\ket{b_1b_2\cdots b_{n}} \exp\big(\ti 2\pi \theta\times \sum_{l=1}^{n} b_l 2^{n-l}\big)\Big)\otimes \ket{\psi} \\
+&= \frac 1 {2^{n/2}} \sum_{k=0}^{2^n-1} e^{\ti 2\pi k \theta }\ket{k} \ket{\psi}
+\end{aligned}
+$$
+
+Then with quantum Fourier transformation on the $n$-qubit register to find the period of function $e^{\ti 2\pi \theta k}$ versus $k$, one gets the value of $\theta$. For error limit $\epsilon$, phase estimation needs $\mathcal{O}(\log 1/\epsilon)$ qubits and $\mathcal{O}(1/\epsilon)$ controlled-$\hat U$ gates.
+
+Thus, the core of HHL algorithm is to make a parallel version of phase estimation for $e^{\ti \hat A t}$, and by controlled rotation together with post-selection to prepare the inverse operator $\sum_{j} \ket{\lambda_j} (\lambda_j)^{-1} \bra{\lambda_j}$.
 
 {{% /fold %}}
+
+The key of HHL algorithm is the quality of phase estimation subroutine. **Ignoring the cost of preparation of $\ket{b}$**, the bottleneck of runtime is simulate the evolution of $e^{\ti \hat A t}$. In their original paper, they suggest the algorithm in ([D. Berry 2006](25)) for sparse matrix and HHL algorithm reaches $\mathcal{O}(\log N (\log^* N)^2)$ ([SuppInfo for HHL](26)). $\log^* N$ (read "log star") is a slow growth function ([Wikipedia/Iterated_logarithm](https://en.wikipedia.org/wiki/Iterated_logarithm)), so usually we thought HHL algorithms has a exponential speedup in this context. 
 
 
 
@@ -399,3 +427,6 @@ test
 [21]: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-211.pdf
 [22]: https://www.nature.com/articles/nphys3272
 [23]: https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.103.150502
+[24]: https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm
+[25]: https://link.springer.com/article/10.1007/s00220-006-0150-x
+[26]: https://journals.aps.org/prl/supplemental/10.1103/PhysRevLett.103.150502
