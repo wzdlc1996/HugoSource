@@ -11,7 +11,7 @@ summary: "Quantum machine learning is the integration of quantum algorithms with
 
 # Data Science and Machine Learning
 
-Formally, **Data science** is an **inter-disciplinary** field that uses scientific methods, processes, algorithms and systems to extract **knowledge** and insights from many structural and unstructured data[Wikipedia/Data_science](1). The core object of research in this field is data for the goal of knowledge. This approach is different from research of theoretical study like geometry by deductive reasoning. A nice example is [Kepler's Law](2), here we list two approaches to it in the following to show the difference between two paradigm.
+Formally, **Data science** is an **inter-disciplinary** field that uses scientific methods, processes, algorithms and systems to extract **knowledge** and insights from many structural and unstructured data[Wikipedia/Data_science][1]. The core object of research in this field is data for the goal of knowledge. This approach is different from research of theoretical study like geometry by deductive reasoning. A nice example is [Kepler's Law][2], here we list two approaches to it in the following to show the difference between two paradigm.
 
 1.  **Kepler type**
     -  Analyze the data from Tycho
@@ -49,13 +49,13 @@ Though we list these classes of machine learning, the modern development are not
 
 # Quantum Tech to Data Science
 
-Quantum technology has been one of the most important concepts in the world now. Some people call the control and application of the quantum systems [the Second Quantum Revolution](3), to distinguish against the establishment of quantum mechanics in the early 20th century. To data science, the impact of quantum tech is well described by the following figure from [wiki/Quantum-machine-learning](4).
+Quantum technology has been one of the most important concepts in the world now. Some people call the control and application of the quantum systems [the Second Quantum Revolution][3], to distinguish against the establishment of quantum mechanics in the early 20th century. To data science, the impact of quantum tech is well described by the following figure from [wiki/Quantum-machine-learning][4].
 
 {{< center >}}<img name="preview" src="./Figs/img01.png"/>{{< /center >}}
 
 As quantum tech comes into our sight, a new type of data now is needed to be considering. Classical data is encoded by classical physical systems and its values are deterministic at each stage of processing. The information we touch in the daily life are all classical data, like this report, logical variables by whether voltage in the wire of computer is greater than a threshold or not, and much other analog data. Quantum data is encoded by quantum systems. Like the entities in the Hilbert space(the state of qubit), such data is quiet different from the classical one especially in the read/write rule. By the high representability of digits, we can still simulate the quantum data on classical computer. But since the dimension of Hilbert space (amounts of quantum variables) are exponential to the number of classical variables, this approach is incapably expensive. 
 
-Another aspect of the figure above is the type of algorithm. It is not only means the software we handle the data, but also the hardware we used to implement the program. This part contains the storage and processing. The former is qubits and quantum gates, which has been proved to be universal to simulate any quantum system and their evolution, just like the classical bits and classical gates. However, the quantum nature of qubits makes it possible to handle quantum data with polynomial scaling cost(if we can prepare and hold the qubits as easy as we do for classical bits in the sense of scaling). The latter concept (processing), i.e. algorithm or software, is the analog of the classical algorithm and programs running on the classical computer. There are two paradigms for quantum algorithm, one can be represented as the combination of a set of quantum gates,  while the other way is based on the adiabatic theorem ([wiki/Adiabatic-quantum-computation](5)). These two approaches has been proved to be equivalent ([D.Aharonov 2005](6), [H.Yu 2018](7)). 
+Another aspect of the figure above is the type of algorithm. It is not only means the software we handle the data, but also the hardware we used to implement the program. This part contains the storage and processing. The former is qubits and quantum gates, which has been proved to be universal to simulate any quantum system and their evolution, just like the classical bits and classical gates. However, the quantum nature of qubits makes it possible to handle quantum data with polynomial scaling cost(if we can prepare and hold the qubits as easy as we do for classical bits in the sense of scaling). The latter concept (processing), i.e. algorithm or software, is the analog of the classical algorithm and programs running on the classical computer. There are two paradigms for quantum algorithm, one can be represented as the combination of a set of quantum gates,  while the other way is based on the adiabatic theorem ([wiki/Adiabatic-quantum-computation][5]). These two approaches has been proved to be equivalent ([D.Aharonov 2005][6], [H.Yu 2018][7]). 
 
 # Quantum Speedup for Classical Machine Learning
 
@@ -63,7 +63,7 @@ Quantum computing has been proven significantly more powerful than classical mac
 
 ## Essential Techs for Applied Quantum Computing
 
-There are two essential technologies required in quantum machine learning. One is the **quantum Random Accessible Memory**, which is usually mentioned as the hardware, and the other is the **quantum linear algebra algorithms** in software level. The former might be suspected to be essential, since there are actually many quantum machine learning algorithms being free from qRAM. Recently, some new approaches have been studied for handling classical data in a quantum machine like quantum embedding ([S. Lloyd 2020](8)) and quantum feature map ([V. Havlicek 2018](9)). However, as a generic data loader for quantum machine learning on classical data, it is still valuable to discuss it mathematically here.
+There are two essential technologies required in quantum machine learning. One is the **quantum Random Accessible Memory**, which is usually mentioned as the hardware, and the other is the **quantum linear algebra algorithms** in software level. The former might be suspected to be essential, since there are actually many quantum machine learning algorithms being free from qRAM. Recently, some new approaches have been studied for handling classical data in a quantum machine like quantum embedding ([S. Lloyd 2020][8]) and quantum feature map ([V. Havlicek 2018][9]). However, as a generic data loader for quantum machine learning on classical data, it is still valuable to discuss it mathematically here.
 
 ### Data Loader: qRAM
 
@@ -71,7 +71,7 @@ The **Random-Access Memory(RAM)** on classical computers provides essentially a 
 
 {{% fold "Conventional Classical RAM architecture" %}}
 
-Basically, a classical RAM is composed of a memory array of size $N$  serving $N$ bits to read and write, an input register(addressing register) and an output register. A normal memory call can be described as ([R. C. Jaeger, "Microelectronic Circuit Design"](17))
+Basically, a classical RAM is composed of a memory array of size $N$  serving $N$ bits to read and write, an input register(addressing register) and an output register. A normal memory call can be described as ([R. C. Jaeger, "Microelectronic Circuit Design"][17])
 
 1.  An $n$-bit string is read into input register. These $n\sim\log N$ bits store the address of the memory cell to be called, as the path along the tree. For bifurcation case, it is a series of $\{0,1\}$ with $n=\log_2 N$, and at $k$-th level of the tree, the $0, 1$ value at $k$-th bit denotes the left and right edge.
 2.  Along the addressing path, the output register stores the content of memory cell, or a write circuit would modify its value for the write operation.
@@ -82,19 +82,19 @@ Within this procedure, the first addressing bit should control one gate at that 
 <img name="preview" src="./Figs/img_cram.png"/>
 {{< /center >}}
 
-from the paper ([V. Giovannetti 2008](18)). 
+from the paper ([V. Giovannetti 2008][18]). 
 
 Thus, though classical RAM serves the $\mathcal{O}(1)$ time complexity (or $\mathcal{O}(\log N)$ for generic random addressing) for a memory call, it actually **activates** $\mathcal{O}(2^n)$ gates to implement it. 
 
-However, as they said in the introduction of the paper ([V. Giovannetti 2008](18)):
+However, as they said in the introduction of the paper ([V. Giovannetti 2008][18]):
 
 > A classical RAM that uses the bucket-brigade (ps. introduced in this paper.) addressing schemes need only activate $\mathcal{O}(n= \log N)$ transistors in the course of a memory call, in contrast with a conventional RAM that activates $\mathcal{O}(2^n = N)$ transistors. As a result, a RAM that uses our design might operate with less dissipation and power consumption than a conventional RAM. **Note, however, that energy costs in the memory addressing are not sufficiently high in current RAM chips to justify an immediate adoption of the bucket brigade. Other source of inefficiencies and dissipations are currently predominant (mostly in the memory cells themselves).** However, new promising memory cell technologies are being developed (e.g., the "memristor" cells), which would drastically cut back cell dissipation, so that cutting back dissipation in the addressing may become important in the future.
 
-Their architecture can also offer advantages for classical RAM, but it cannot resolve the dominant problem of classical RAM. According to this ([stackexchange answer](19)):
+Their architecture can also offer advantages for classical RAM, but it cannot resolve the dominant problem of classical RAM. According to this ([stackexchange answer][19]):
 
 >I think that it would indeed work in classical RAM, but the hardware constraints didn't supply the 'evolutionary pressure' required for it to be develiped and implemented.
 
-currently bucket-brigade architecture is still focused on resolving the quantum issue, like resource efficiency and fault tolerance. ([A. Paler 2020](20))
+currently bucket-brigade architecture is still focused on resolving the quantum issue, like resource efficiency and fault tolerance. ([A. Paler 2020][20])
 
 {{% /fold %}}
 
@@ -109,7 +109,7 @@ The **bucket-brigade** architecture is proposed to resolve the issue that in con
 
 (The figure is cited from [github.com/qsharp-community/qram](https://github.com/qsharp-community/qram))The $\ket{0},\ket{1}$ state of qutrits shares the same operation of original switches: they indicate which next step to choose at this node (referred as $\ket{\textrm{left}}, \ket{\textrm{right}}$). While the other state, denoting as $\ket{\textrm{wait}}$, means a waiting node. When a $0,1$-valued bit encounters it, it "absorb" the information and switch itself into the same value, including the case that incoming bit is at a superposition state. In a memory call, the bits in input register is popped sequentially into a initialized tree (with all nodes at $\ket{\textrm{wait}}$ state). When the bit encounters a $\ket{0}, \ket{1}$ node it propagates into the next level. Thus, when the input register becomes empty, a path towards memory cells is constructed. When input register is in a superposition state, it is further a superposition state among many paths with the same amplitude. After the bus qubit has loaded the data, the nodes along addressing path would be recovered to $\ket{\textrm{wait}}$ for further usage.
 
-This architecture allows a memory call with $\mathcal{O}(n)$ gates activated, and **the superposition addressing is potentially supported.** Now we show how to use qRAM implement the state-preparation, or classical data loader for quantum computing. Mathematically, we want to achieve the map ([C. Ciliberto 2017](10), [A. Prakash 2014](21))
+This architecture allows a memory call with $\mathcal{O}(n)$ gates activated, and **the superposition addressing is potentially supported.** Now we show how to use qRAM implement the state-preparation, or classical data loader for quantum computing. Mathematically, we want to achieve the map ([C. Ciliberto 2017][10], [A. Prakash 2014][21])
 
 $$
 \{x_i\}_ {i=1}^N \mapsto \ket{x} = \frac 1 {\mathcal{A}}\sum_{i,d} x_i^d \ket{i, d}.
@@ -146,15 +146,15 @@ Though this fast amplitude encoding is very exciting, however, unfortunately, th
 
 {{% /fold %}}
 
-Another discussion can be found at the paper ([C. Ciliberto 2017](10)), in which the author list three issues for the current qRAM research:
+Another discussion can be found at the paper ([C. Ciliberto 2017][10]), in which the author list three issues for the current qRAM research:
 
 1.  Do all components of the qRAM require to be error-corrected. If the answer is yes, such exponential physical resources would not be built in an experimental setting.
 2.  The comparison is thought as unfair ([D. Steiger's talk in 2016](http://pirsa.org/displayFlash.php?id=16080019)). The argument states that the benchmark should be done with the same hardware resources scaling, which might decrease the quantum-speedup. The qRAM-based algorithms should be carefully considered.
-3.  As pointed out in ([S. Aaronson 2015](22)), the fast state preparation based on qRAM requires the classical data distributed relatively uniform. However, in this case, classical random algorithm can be quite fast and reliable, which also makes the exponential-speedup disappeared. 
+3.  As pointed out in ([S. Aaronson 2015][22]), the fast state preparation based on qRAM requires the classical data distributed relatively uniform. However, in this case, classical random algorithm can be quite fast and reliable, which also makes the exponential-speedup disappeared. 
 
 ### Quantum Linear Algebra
 
-Though the idea about using quantum resources to enhance the learning algorithms had attracted much attention since 1990s, the rapid growth of quantum machine learning actually began in 2009, by the help of quantum algorithm for linear system. In this section we discuss the algorithm, named as HHL algorithm, after its inventor Harrow, Hassidim, and Lloyd. ([HHL 2009](23)). 
+Though the idea about using quantum resources to enhance the learning algorithms had attracted much attention since 1990s, the rapid growth of quantum machine learning actually began in 2009, by the help of quantum algorithm for linear system. In this section we discuss the algorithm, named as HHL algorithm, after its inventor Harrow, Hassidim, and Lloyd. ([HHL 2009][23]). 
 
 HHL algorithm try to solve the linear system reads
 
@@ -207,7 +207,7 @@ by the map, we can just consider the case of coefficients matrix to be **Hermiti
 
 {{% fold "Phase Estimation" %}}
 
-The `Phase Estimation` algorithm try to find an eigenvalue of given unitary operator $\hat U$ and one of its eigenvector $\ket{\psi}$. i.e., to find the value of $\theta\in [0,1)$ in the equation([Wikipedia/Quantum_phase_estimation_algorithm](24))
+The `Phase Estimation` algorithm try to find an eigenvalue of given unitary operator $\hat U$ and one of its eigenvector $\ket{\psi}$. i.e., to find the value of $\theta\in [0,1)$ in the equation([Wikipedia/Quantum_phase_estimation_algorithm][24])
 
 $$
 \hat U\ket{\psi} = e^{2\pi \ti \theta}\ket{\psi}
@@ -236,7 +236,16 @@ Thus, the core of HHL algorithm is to make a parallel version of phase estimatio
 
 {{% /fold %}}
 
-The key of HHL algorithm is the quality of phase estimation subroutine. **Ignoring the cost of preparation of $\ket{b}$**, the bottleneck of runtime is simulate the evolution of $e^{\ti \hat A t}$. In their original paper, they suggest the algorithm in ([D. Berry 2006](25)) for sparse matrix and HHL algorithm reaches $\mathcal{O}(\log N (\log^* N)^2)$ ([SuppInfo for HHL](26)). $\log^* N$ (read "log star") is a slow growth function ([Wikipedia/Iterated_logarithm](https://en.wikipedia.org/wiki/Iterated_logarithm)), so usually we thought HHL algorithms has a exponential speedup in this context. 
+The key of HHL algorithm is the quality of phase estimation subroutine. **Ignoring the cost of preparation of $\ket{b}$**, the bottleneck of runtime is simulate the evolution of $e^{\ti \hat A t}$. In their original paper, they suggest the algorithm in ([D. Berry 2006][25]) for sparse matrix and HHL algorithm reaches $\mathcal{O}(\log N (\log^* N)^2)$ ([SuppInfo for HHL][26]). $\log^* N$ (read "log star") is a slow growth function ([Wikipedia/Iterated_logarithm](https://en.wikipedia.org/wiki/Iterated_logarithm)), so usually we thought HHL algorithms has a exponential speedup in this context. 
+
+HHL algorithm does have some caveats which make it not an efficient quantum algorithm for linear solver. As discussed in ([S. Aaronson 2015][22]), there are at least four critical issues in HHL algorithm
+
+1.  The preparation of $\ket{b} = \sum b_j \ket{i}$. 
+2.  The simulation for general $\bm{A}$ driving quantum evolution. (in ([L. Wossnig 2018][27]), an algorithm for dense matrix with complexity of $\tilde{\mathcal{O}}(\sqrt{n})$. For soft-O notation see [Wikipedia/Big_O_notation](https://en.wikipedia.org/w/index.php?title=Big_O_notation&section=22#Extensions_to_the_Bachmann.E2.80.93Landau_notations))
+3.  The robustness of inverse the matrix $\bm{A}$
+4.  How to extract information encoded in $\ket{x}$. (For the application of compute $\bm{x}^T \bm{M} \bm{x}$, the classical computer can make an estimate within $\mathcal{O}(N)$ time.)
+
+Though with these caveats, HHL algorithm works well as an approximately method for preparation of the solution of $\bm{A}\bm{x} = \bm{b}$ in an amplitude encoded manner. It can be good enough for some  applications (for optimization subroutine) like finite element method ([A. Montanaro 2016][28]) and linear fitting ([N. Wiebe][29])
 
 
 
@@ -350,7 +359,7 @@ Thus, the total time complexity is of $\mathcal{O}(N^2(d+ N))$. The reason why u
 
 {{% /fold %}}
 
-In ([P. Rebentrost 2014](14)), the quantum speedup of SVM for big data classification is introduced. They use the **least squares support vector machine** introduced in ([J.A.K. Suykens 1999](15)), in which the model is trained by solving a linear system instead of a convex quadratic programming. The training (together with kernel trick) reads:
+In ([P. Rebentrost 2014][14]), the quantum speedup of SVM for big data classification is introduced. They use the **least squares support vector machine** introduced in ([J.A.K. Suykens 1999][15]), in which the model is trained by solving a linear system instead of a convex quadratic programming. The training (together with kernel trick) reads:
 
 
 $$
@@ -383,19 +392,21 @@ $$
 \begin{bmatrix}
 0 & \bm{1}^T \\
 \bm{1} & -\gamma^{-1}\bm{I} - \bm{K}
-\end{bmatrix} \begin{bmatrix}b \\ \lambda\end{bmatrix} = \begin{bmatrix} 0 \\ y\end{bmatrix}
+\end{bmatrix} \begin{bmatrix}b \\ \lambda\end{bmatrix} = \begin{bmatrix} 0 \\ y\end{bmatrix} \\
+&\Rightarrow
+\bm{F} \begin{bmatrix}b \\ \lambda\end{bmatrix} = \begin{bmatrix} 0 \\ y\end{bmatrix}
 \end{aligned}
 $$
 
+in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{diag} \{ y_1,\cdots,y_N \}$, and $\bm{K} = \bm{Z}^T \bm{Z}\Rightarrow (\bm{K})_{ij} = \phi(x_i)\cdot \phi(x_j) = k(x_i,x_j)$ is the kernel matrix, when kernel trick is disabled, $k(x_i,x_j)=x_i\cdot x_j$. Solving this linear system has time complexity $\mathcal{O}(N^3)$ (or $\mathcal{O}(N^{2.3})$ for sparse coefficient matrix ([D. Coppersmith 1990][13])).
+
+The quantum SVM use HHL algorithm to find the solution of above linear system in a normalized form as $\hat F \ket{b,\lambda} = \ket{y}$, in which with the encoding $\bra{i}\hat F\ket{j} = (\bm{F}/\textrm{Tr}\bm{F})_{ij}$, $\ket{y}=\sum_{i=1}^N y_i\ket{i}$, and $\ket{b,\lambda} = b\ket{0} + \sum_{i=1}^N \lambda_i \ket{i}$
+
+{{% fold "Simulate quantum evolution driven by $\hat F$" %}}
 
 
-in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{diag} \{ y_1,\cdots,y_N \}$, and $\bm{K} = \bm{Z}^T \bm{Z}\Rightarrow (\bm{K})_{ij} = \phi(x_i)\cdot \phi(x_j) = k(x_i,x_j)$ is the kernel matrix, when kernel trick is disabled, $k(x_i,x_j)=x_i\cdot x_j$. Solving this linear system has time complexity $\mathcal{O}(N^3)$ (or $\mathcal{O}(N^{2.3})$ for sparse coefficient matrix ([D. Coppersmith 1990](13))).
 
-test
-
-\test
-
-
+{{% /fold %}}
 
 
 ### Quantum PCA
@@ -430,3 +441,6 @@ test
 [24]: https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm
 [25]: https://link.springer.com/article/10.1007/s00220-006-0150-x
 [26]: https://journals.aps.org/prl/supplemental/10.1103/PhysRevLett.103.150502
+[27]: https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.120.050502
+[28]: https://arxiv.org/pdf/1512.05903.pdf
+[29]: https://ui.adsabs.harvard.edu/abs/2012PhRvL.109e0505W
