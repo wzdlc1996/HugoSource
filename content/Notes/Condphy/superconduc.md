@@ -15,7 +15,7 @@ summary: "Phase transition is an important part of the theory for solid state. U
 
 Consider the Hamiltonian for the \(d\)-dimensional `dilute Bose gas` , with \(\hbar=1\) here:
 
-$$\hat H=\int \td^d \bm{r} \Big\{ -\hat \psi^\dagger(\bm{r},t)\frac {\nabla^2} {2m}\hat \psi(\bm{r},t)+\frac 1 2 g \hat \psi^\dagger(\bm{r},t)\hat \psi^\dagger(\bm{r},t)\hat \psi(\bm{r},t)\hat \psi(\bm{r},t)\Big\}$$
+$$\hat H=\int \td^d \bm{r} \Big\\{-\hat \psi^\dagger(\bm{r},t)\frac {\nabla^2} {2m}\hat \psi(\bm{r},t)+\frac 1 2 g \hat \psi^\dagger(\bm{r},t)\hat \psi^\dagger(\bm{r},t)\hat \psi(\bm{r},t)\hat \psi(\bm{r},t)\Big\\}$$
 
 With the coherent state set \(\ket{\phi(\bm{r},t)}\) , we have the thermal `action` in path integral. For detail see [Path-Integral-for-Many-body-System]({{< ref "Notes/qm/manybody3.md" >}}) :
 

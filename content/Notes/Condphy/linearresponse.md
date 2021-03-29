@@ -23,7 +23,7 @@ To do so, consider the perturbation \(H'=-F A\) , where \(F\) is an external fie
 
 $$\bar A(t)-\langle A\rangle = \beta F \langle \delta A(t;x)\delta A(t=0;x)\rangle+\mathcal{O}(F^2)$$
 
-{{<fold "Proof">}}
+{{< fold "Proof" >}}
 
 Note that As \(t\gt 0\) , \(A(t;x)\) is equal to \(A(x(t))\) , where \(x=x(t=0)\) , and the dynamics is governed by the Hamiltonian \(H\).
 Model Setup
@@ -38,7 +38,7 @@ Noting that \(H'(x)=-FA(x)\) , and let \(\delta A(t;x)=A(t;x)-\langle A(x)\rangl
 
 $$\bar A(t)-\langle A\rangle = \beta F \langle \delta A(t;x)\delta A(0;x)\rangle+\mathcal{O}(F^2)$$
 
-{{</fold>}}
+{{< /fold >}}
 
 This equation, referred to as the fluctuation-dissipation theorem, contains the precise meaning of <mark>the regression hypothesis</mark> : the relaxation of macroscopic displacement out of equilibrium obeys the same laws as the regression of spontaneous microscopic fluctuations in an equilibrium system.
 

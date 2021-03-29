@@ -96,12 +96,12 @@ Where $g(t)$ is a sharp time-dependent function, to characterize the time interv
 
 The initial state of $S,M$ are expressed in the representation of $\hat A$ and $\hat Q$, assume the former has a discrete spectrum, and the later one has a continuous spectrum.
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 \ket{\psi_S}&=\sum_i c_i \ket{a_i} \\
 \ket{\psi_M}&= \int \td q \frac 1 {(2\pi\sigma^2)^{1/4}} e^{-q^2/{4\sigma^2}} \ket{q}
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 The wavefunction of meter is a Gaussian wave packet initially.
 
@@ -113,14 +113,14 @@ $$\hat U=\exp\big(-\frac \ti \hbar \int \td t \ g(t) \hat A\otimes \hat P\big)=\
 
 Then the final state should be:
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 \ket{\text{final}} &= \hat U \ket{\psi_S}\otimes \ket{\psi_M} \\
 &= \sum_i \int \td q \frac 1 {(2\pi\sigma^2)^{1/4}} e^{-q^2/4\sigma^2} c_i \hat U \ket{a_i}\otimes \ket{q} \\
 &= \sum_i \int \td q \frac 1 {(2\pi\sigma^2)^{1/4}} e^{-q^2/4\sigma^2} c_i \exp\big(-\frac \ti \hbar \gamma a_i \hat I \otimes \hat P\big) \ket{a_i}\otimes \ket{q} \\
 &=\sum_i \int \td q \frac 1 {(2\pi\sigma^2)^{1/4}} e^{-q^2/4\sigma^2} c_i \ket{a_i}\otimes \ket{q+\gamma a_i} \\
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 Where we used the fact that:
 
@@ -136,13 +136,13 @@ If $\sigma$ is much smaller than the difference of the spectrum of $\hat A$ , or
 
 If $\sigma$ is much bigger than all $\gamma a_i$ , or the coupling is very weak. We can apply the following approximation:
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 \mathbb{P}(q=x) &\approx \frac 1 {\sqrt{2\pi\sigma^2}} \sum_i |c_i|^2  \Big(1-\frac {(x-\gamma a_i)^2} {2\sigma^2}\Big) \\
 &=\frac 1 {\sqrt{2\pi\sigma^2}} \Big(1-\frac {x^2 - 2x \gamma \sum_i a_i |c_i^2|+ \gamma^2 (\sum_i |c_i|^2 a_i)^2} {2\sigma^2}+\gamma^2\frac {(\sum_i |c_i|^2 a_i)^2-\sum_i |c_i|^2 a_i^2} {2\sigma^2}\Big) \\
 &\approx \frac 1 {\sqrt{2\pi\sigma^2}} \exp\Big(-\frac {(x-\gamma \langle \hat A\rangle)^2} {2\sigma^2}\Big)
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 Where $\langle \hat A\rangle =\bra{\psi_S}\hat A\ket{\psi_S} = \sum_i |c_i|^2 a_i$ . It is a Gaussian distribution with the center is proportional to $\langle \hat A\rangle$ , the expected value on initial state. However, one measurement cannot give any information because $\sigma \gg \gamma \langle \hat A\rangle$, the spread of the distribution is too large for us to get an exact value of its center.[[Aharonov 1988][3]]
 
@@ -174,7 +174,7 @@ $$ \ket{\phi_M} \approx \int \frac {\td q} {(2\pi\sigma^2)^{1/4}} \ket{q} \exp\B
 
 {{< fold "Proof" >}}
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 \ket{\phi_M}&= \bra{\psi_f}\hat U\ket{\psi_i}\otimes\ket{\psi_M}\\
 &=\sum_m c_{m,f}^*\bra{a_m} \Big(\sum_n \int \td q \frac 1 {(2\pi\sigma^2)^{1/4}} e^{-q^2/4\sigma^2} c_{n,i} e^{-\ti \gamma a_i \hat I\otimes \hat P /\hbar}\ket{a_i}\otimes \ket{q}\Big)\\
@@ -184,7 +184,7 @@ $$\begin{aligned}
 &\approx \int \td p \ket{p} \Big(\frac {2} {\pi \sigma^2}\Big)^{1/4} e^{-p^2 \sigma^2}  \exp\Big(-\ti \gamma A_w p\Big) \bra{\psi_f}\psi_i\rangle \\
 &= \int \frac {\td q} {(2\pi\sigma^2)^{1/4}} \ket{q} \exp\Big(-\frac {(q-\gamma A_w)^2} {4\sigma^2}\Big)
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 The approximation is based on the fact that, the Gaussian wave packet: $e^{-p^2\sigma^2}$ ensures that $p$ can only be sufficient non zero at the level:
 
@@ -232,7 +232,7 @@ $$\langle \cdots \rangle_{i} = \frac {\bra{\psi_M}\cdots \ket{\psi_M}} {\bra{\ps
 
 With the definition of final state $\ket{\phi_M}$  , we can easily compute, assuming $\bra{\psi_M}\psi_M\rangle=1$ :
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 \langle \hat M\rangle_f &= \frac {\bra {\psi_M} e^{\ti \gamma A_w^* \hat P/\hbar} \hat M e^{-\ti \gamma A_w \hat P/\hbar}\ket{\psi_M}} {\bra {\psi_M} e^{\ti \gamma A_w^* \hat P/\hbar} e^{-\ti \gamma A_w \hat P/\hbar}\ket{\psi_M}} \\
 &=\Big\{\bra{\psi_M}\Big(1+\frac \gamma \hbar(\ti A_w^* \hat P-\ti A_w \hat P)+\mathcal{O}(\gamma^2)\Big)\ket{\psi_M}\Big\}^{-1}\Big\{\bra{\psi_M}\Big(\hat M \\
@@ -240,7 +240,7 @@ $$\begin{aligned}
 &=\Big\{1-2 b \frac \gamma \hbar \langle \hat P\rangle_i+\mathcal{O}(\gamma^2)\Big\}\Big\{\langle \hat M\rangle_i +\ti a \frac \gamma \hbar \langle [\hat P,\hat M]\rangle_i+b\frac \gamma \hbar \langle\{\hat P,\hat M\}\rangle_i+\mathcal{O}(\gamma^2)\Big\}\\
 &=\langle \hat M\rangle_i +\ti \frac {\gamma a} {\hbar} \langle [\hat P,\hat M]\rangle_i+ \frac {\gamma b} {\hbar} \Big(\langle \{\hat P,\hat M\}\rangle_i - 2\langle \hat P\rangle_i \langle \hat M\rangle_i\Big) +\mathcal{O}(\gamma^2)
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 q.e.d.
 
@@ -248,12 +248,12 @@ q.e.d.
 
 Then substitute $\hat P,\hat Q$ as $\hat M$ , the influence of real and imaginary part of the weak value on the expected value shift can be shown:
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 \langle \hat P \rangle_f - \langle \hat P\rangle_i &= \frac {2\gamma} \hbar \text{Im} A_w \cdot (\Delta \hat P)_i^2 \\
 \langle \hat Q \rangle_f - \langle \hat Q\rangle_f &= \gamma \cdot \text{Re} A_w
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 # How Does One Measure a Weak Value
 
@@ -293,12 +293,12 @@ $$P(\gamma)=|\bra{f}\otimes \bra{\psi_f} \hat U(\gamma) \ket{i}\otimes \ket{\psi
 
 Our goal is to measure the weak value of $\hat S$ . Perform the Taylor expansion to $P(\gamma)$ with respect to $\gamma$ up to the first order:
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 P(\gamma)&= \Big|\bra{\psi_f}\bra{f}\Big(1-\ti \gamma \hat S\otimes \hat p+\mathcal{O}(\gamma^2)\Big)\ket{i}\ket{\psi_i}\Big|^2\\
 &=P\Big(1+\ti \gamma \big(S_w^* p_w^* - S_w p_w\big) +\mathcal{O}(\gamma^2)\Big)
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 When we directly measure with CCD, like figure b). We have that $\ket{\psi_f}=x$ . And:
 

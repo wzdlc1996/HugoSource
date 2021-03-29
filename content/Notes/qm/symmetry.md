@@ -29,9 +29,9 @@ Some concepts about Group are listed following:
 -   `Normal subgroup` : $H \unlhd G$ a `subgroup` satisfying $\forall g \in G \Rightarrow gH=Hg$
 -   `Quotient group` : $G/H$ is the group of cosets for normal subgroup $H$ of $G$:
 
-    {{< mathjax >}}
+    
 $$H\unlhd G \Rightarrow G/H := \{gH : g\in G \} \text{ with } a,b\in G/H \Rightarrow a\circ b :=g_a g_b H \in G/H$$
-{{< /mathjax >}}
+
 
 -   `Conjugacy class` : $f,h\in G$ are conjugate if $\exists g \in G \Rightarrow gfg^{-1}=h$ <br> all elements conjugate to $f$ form the `conjugacy class` of $f$
 -   `Direct product of groups` : $G\times H$ is the set of $(g,h)$ with $g\in G, h \in H$ , and $(g',h')\circ(g,h)=(g'g,h'h)\in G\times H$
@@ -40,9 +40,9 @@ $$H\unlhd G \Rightarrow G/H := \{gH : g\in G \} \text{ with } a,b\in G/H \Righta
 
 <em>[Definition]</em> : `Linear Representation` of group $G$ on `linear space` $V$ is a map $R:G\rightarrow \text{GL}(V)$ :
 
-{{< mathjax >}}
+
 $$\forall g,h\in G \Rightarrow R(g)R(h)=R(gh)$$
-{{< /mathjax >}}
+
 
 This property is usually called as `homomorphism`
 
@@ -50,9 +50,9 @@ This property is usually called as `homomorphism`
 
 <em>[Definition]</em> : `Adjoint Representation` of Lie groups: the representation space is the Lie Algebra $\text{L}G$ . The representation is defined as:
 
-{{< mathjax >}}
+
 $$g x g^{-1} = x R(g) \ \ \forall g\in G, x\in \text{L}G$$
-{{< /mathjax >}}
+
 
 Where $gxg^{-1} = -\ti \frac {\td} {\td t} (ge^{\ti t x}g^{-1})|_{t=0}$
 
@@ -62,38 +62,38 @@ Where $gxg^{-1} = -\ti \frac {\td} {\td t} (ge^{\ti t x}g^{-1})|_{t=0}$
 
 <em>[Theorem]</em> : for any two irreps of (finite) group $G$ , one has:
 
-{{< mathjax >}}
+
 $$\sum_{g\in G} R(g)^*_{ij}R'(g)_{i'j'} = \frac {|G|} {\text{dim}R} \delta_{ii'}\delta_{jj'}\delta_{R,R'}$$
-{{< /mathjax >}}
+
 
 Where $\delta_{R,R'}=1$ when $R,R'$ are equivalent, it is $0$ otherwise
 
 <em>[Note]</em> : For `Compact` Lie group, with the definition of `Haar measure` $\td\mu(g)$ (invariant under action of group elements: $\td\mu(g'g)=\td \mu(g)$) , then one has:
 
-{{< mathjax >}}
+
 $$\int \td \mu(g) R(g)^*_{ij}R'(g)_{i'j'} = \frac {\int \td \mu(g)} {\text{dim}R} \delta_{ii'}\delta_{jj'}\delta_{R,R'}$$
-{{< /mathjax >}}
+
 
 <em>[Definition]</em> : `Character` : $\chi_R(g) = \text{Tr}R(g)$ <br>
 Equivalent representations have the same character , and conjugacy class have the same character.
 
 <em>[Theorem]</em> :
 
-{{< mathjax >}}
+
 $$\sum_{g\in G} \chi_R(g)^*\chi_{R'}(g) = |G|\delta_{R,R'}$$
-{{< /mathjax >}}
+
 
 Where $\delta_{R,R'}=1$ when $R,R'$ are equivalent, it is $0$ otherwise
 
 <em>[Theorem]</em> : For `finite group` $G$ ,  let $n=|G|$ , $m$ is the `number of conjugacy classes` , $r$ is the `number of inequivalent irreps` , $d_i$ is the `dimemsions of irrep.` $i$ , then:
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 m&=r \\
 \sum_i d_i^2 &= n=|G| \\
 n &= k_i d_i \ \ k_i\in \mathbb{N}
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 ## Projection Operator
 
@@ -101,15 +101,15 @@ Given a possibly reducible representation $R$ of group $G$ , and the characters 
 
 1.  Denote the orthonormal basis of representation $R$ by $\ket{e_i} \ \ i=1,\cdots,\text{dim}R$ . The action of group element $g$ on the basis is:
 
-    {{< mathjax >}}
+    
 $$\hat g \ket{e_i} = \sum_j \ket{e_j}R(g)_{ji}$$
-{{< /mathjax >}}
+
 
 2.  Build new basis
 
-    {{< mathjax >}}
+    
 $$\ket{\tilde{e}_i} =\sum_{g\in G} \hat g\ket{e_i}\chi_{R'}^* (g) = \sum_{g\in G} \sum_j \ket{e_j}R(g)_{ji}\chi_{R'}^*(g) $$
-{{< /mathjax >}}
+
 
     These are usually `NOT` linearly independent and not orthonormal.
 
@@ -121,59 +121,59 @@ $$\ket{\tilde{e}_i} =\sum_{g\in G} \hat g\ket{e_i}\chi_{R'}^* (g) = \sum_{g\in G
 
 Think of a symmetry group $G$ acting on the coordinate space, and induces the transformation: $\bm{x}\rightarrow g\bm{x}$ , This shall induce unitary transformations let:
 
-{{< mathjax >}}
+
 $$\ket{\bm{x}}\rightarrow \ket{g\bm{x}}$$
-{{< /mathjax >}}
+
 
 Then we can derive the transformation on arbitary single-particle state:
 
 <em>[Theorem]</em> : For single-particle state $\ket{\psi}$ , when group $G$ 's element $g$ acts on coordinate space, it will be transformed to:
 
-{{< mathjax >}}
+
 $$(g\psi)(\bm{x}) = J^{-1}\psi(g^{-1}\bm{x})$$
-{{< /mathjax >}}
+
 
 Where $J =|\det \partial_i (g\bm{x})^j| $ is the Jacobian of the transformation.
 
 {{<fold "Proof">}}
 for single particle state $\ket{\psi}$ , it shall be transformed as:
 
-{{< mathjax >}}
+
 $$\ket{g\psi} = \int \td\bm{x}  \psi(\bm{x})\ket{g\bm{x}} = \int \psi(g^{-1}\bm{x}) \ket{\bm{x}} J^{-1}\td^3 \bm{x}$$
-{{< /mathjax >}}
+
 
 Then we have
 
-{{< mathjax >}}
+
 $$(g\psi)(\bm{x}) \equiv \langle \bm{x}\ket{g\psi} = J^{-1}\psi(g^{-1}\bm{x})$$
-{{< /mathjax >}}
+
 {{</fold>}}
 
 Usually, we assume $J=1$ so that we do not need to worry about normalization. <br>
 Then we can find that the operation satisfies the `Associativity` :
 
-{{< mathjax >}}
+
 $$(h(g\psi))(\bm{x}) = ((hg)\psi)(\bm{x})$$
-{{< /mathjax >}}
+
 
 Moreover , one can define the unitary operator of the operation $g$ with a orthonormal basis $\ket{e_i}$ :
 
-{{< mathjax >}}
+
 $$\hat g = \sum_i \ket{ge_i} \bra{e_i}$$
-{{< /mathjax >}}
+
 
 Then one can find that $\ket{g\psi} = \hat g \ket{\psi}$ <br>
 Then the matrix representation will be a `unitary representation` of $g$ :
 
-{{< mathjax >}}
+
 $$(\bm{U}(g))_{ij} = \bra{e_i} \hat g \ket{e_j} =\langle e_i \ket{ge_j}$$
-{{< /mathjax >}}
+
 
 It is easy to check that:
 
-{{< mathjax >}}
+
 $$\bm{U}(gh) = \bm{U}(g)\bm{U}(h)$$
-{{< /mathjax >}}
+
 
 ## Symmetry as Unitary Operator: Fock Space
 
@@ -187,58 +187,58 @@ One can also consider the symmetry operations on the annihilation/creation opera
 With this one can find that the particle number will be invariant under symmetry operation. <br>
 For fermion, on can find that:
 
-{{< mathjax >}}
+
 $$\prod_i \hat{ge_i}^{\dagger} = \det g \prod_i \hat e_i^{\dagger}$$
-{{< /mathjax >}}
+
 
 ## Symmetry as Unitary Operator: Action on Operators
 
 It is similar to the Heisenberg picture. The action of symmetry operation on state can be transfered to the action of operators:
 
-{{< mathjax >}}
+
 $$\hat O \rightarrow_g \hat {gO}$$
-{{< /mathjax >}}
+
 
 There are two convention usually used:
 
 1.  Like the Heisenberg picture, let the symmetry operation only acts on operator:
 
-    {{< mathjax >}}
+    
 $$\bra {g\psi} \hat O \ket{g\psi} = \bra{\psi} \hat {gO} \ket{\psi} \Rightarrow \hat{gO} = \hat g^{-1} \hat O \hat g$$
-{{< /mathjax >}}
+
 
 2.  Demand the matrix element to be invariant under symmetry operation:
 
-    {{< mathjax >}}
+    
 $$\bra{g\psi}\hat {gO} \ket{g\psi} = \bra{\psi}\hat O\ket{\psi} \Rightarrow \hat {gO} = \hat g \hat O \hat g^{-1}$$
-{{< /mathjax >}}
+
 
 The set of linear operators $\hat O_i$ can also form a linear representation of the group:
 
-{{< mathjax >}}
+
 $$\hat {gO_i} = \sum_j \hat {O_j} R(g)_{ji}$$
-{{< /mathjax >}}
+
 
 ## Symmetry Generators as Conserved Observables
 
 <em>[Theorem]</em> : The Hamiltonian is invariant under the action of $g$ , which means that:
 
-{{< mathjax >}}
+
 $$\bra{g\psi} \hat H \ket{g\phi} = \bra{\psi} \hat H \ket{\phi}$$
-{{< /mathjax >}}
+
 
 for all states $\psi,\phi$ , then for the unitary symmetry $\hat g$ , one have:
 
-{{< mathjax >}}
+
 $$[\hat H ,\hat g]=0$$
-{{< /mathjax >}}
+
 
 In quantum mechanics, the <mark>generators of continuous unitary symmetry corresponds to conserved observables</mark> . <br>
 For generator $X$, and unitary symmetry $\Phi : g \rightarrow \hat g \equiv \hat \Phi(g)$ , the corresponding observables is:
 
-{{< mathjax >}}
+
 $$\hat X = -\ti \hat \Phi(e^{\ti \theta X})^{-1} \frac {\td} {\td \theta} \hat \Phi(e^{\ti \theta X})$$
-{{< /mathjax >}}
+
 
 which is independent of $\theta$ value. <br>
 
@@ -248,15 +248,15 @@ $\hat X$ is an Hermitian, and it is commutative with $\hat H$ , which means that
 {{<fold "Proof">}}
 Using $\hat \Phi(e^{\ti\theta X})^{-1} \hat H \hat \Phi(e^{\ti\theta X}) = \hat H$ , take $\frac {\td} {\td \theta}$ at $\theta=0$ , and notice that
 
-{{< mathjax >}}
+
 $$\hat X = -\ti \frac {\td} {\td \theta} \hat \Phi(e^{\ti\theta X}) \Big|_{\theta=0} = \ti \frac {\td} {\td \theta} \hat \Phi(e^{\ti \theta X})^{-1} \Big|_{\theta=0}$$
-{{< /mathjax >}}
+
 
 one have:
 
-{{< mathjax >}}
+
 $$\ti \hat X \hat H -\ti \hat H \hat X =0 \Rightarrow [\hat H ,\hat X]=0$$
-{{< /mathjax >}}
+
 
 {{</fold>}}
 
@@ -268,9 +268,9 @@ Specially, nondegenerate energy eigenstates are 1-dimension representations.
 
 <em>[Theorem]</em> : The existence of non-commuting symmetry generators:
 
-{{< mathjax >}}
+
 $$\hat X, \hat Y \Rightarrow ([\hat H,\hat X]=[\hat H,\hat Y]=0 ) \text{ and } ([\hat X,\hat Y]\neq 0)$$
-{{< /mathjax >}}
+
 
 `usually` implies degeneracy of energy levels.
 
@@ -280,9 +280,9 @@ $$\hat X, \hat Y \Rightarrow ([\hat H,\hat X]=[\hat H,\hat Y]=0 ) \text{ and } (
 
 2.  If $[\hat X,\hat Y]$ is not a c-number, there may be a non-degeneracy energy level. `IF` the state is vanished by commutators of all order:
 
-    {{< mathjax >}}
+    
 $$0=[\hat X,\hat Y]\ket{E} = [\hat X,[\hat X,\hat Y]]\ket{E}=[\hat Y,[\hat X,\hat Y]]\ket{E}=\cdots$$
-{{< /mathjax >}}
+
     (ground state pf electron in hydrogen atom(ignore spin) with angular momentum $L=0$ , take $\hat X =\hat L_x, \hat Y=\hat L_y$)
 
 # Examples of Symmetry
@@ -292,9 +292,9 @@ $$0=[\hat X,\hat Y]\ket{E} = [\hat X,[\hat X,\hat Y]]\ket{E}=[\hat Y,[\hat X,\ha
 Continuous translation in 1D open space: $T_a : x\rightarrow x+1$ for all $a\in\mathbb{R}$ form a group: $T_aT_{a'}=T_{a+a'}$, which is `isomorphic` to $\mathbb{R}$ <br>
 The related unitary operator is:
 
-{{< mathjax >}}
+
 $$\hat T(a) = \int \ket{x+a}\bra{x}\td x$$
-{{< /mathjax >}}
+
 
 Or use momentum basis: $\hat T(a) = \exp^{-\ti a \hat p}$ . <br>
 This shows that the generator of translation is $\hat p$ . <br>
@@ -324,13 +324,13 @@ Then these matrix elements shall form a tensor product representation $R_f\otime
     $\bra{g\phi_i}=\bra{\phi_i}\hat g^{\dagger}=\sum_{i'}R_{\phi}^{*}(g)_{i'i}\bra{\phi_{i'}}$
 3.  $(f_k)_{ij}$ form a tensor represetntation in the sense that:
 
-    {{< mathjax >}}
+    
 $$\begin{aligned}
     (f_k)_{ij}&=\bra{\phi_i}\hat f_k \ket{\psi_j} \equiv \bra{\phi_i}\hat g^{-1}\hat g \hat f_k \hat g^{-1}\hat g \ket{\psi_j} \\
     &= \sum_{i',j',k'} R_{\phi}^{*}(g)_{i'i}R_f(g)_{k'k}R_{\psi}(g)_{j'j} \bra{\phi_{i'}} \hat f_{k'} \ket{\psi_{j'}} \\
     &= \sum_{i',j',k'} (f_{k'})_{i'j'} R_f(g)_{k'k}R_{\phi}^{*}(g)_{i'i}R_{\psi}(g)_{j'j}
     \end{aligned}$$
-{{< /mathjax >}}
+
 
 Sum over $g$, by the orthogonality theorem, we have:
 
@@ -364,20 +364,20 @@ There are some examples:
 -   `Point group symmetry`
     Generally, free particle Hamiltonian can be written as:
 
-    {{< mathjax >}}
+    
 $$\hat H = \int \hat {\bm{\psi}}^{\dagger}(\bm{k}) \bm{H}(\bm{k})\hat {\bm{\psi}}(\bm{k}) \td^3 \bm{k}$$
-{{< /mathjax >}}
+
 
     Where $\hat{\bm{\psi}}(\bm{k})$ is a column vector of annihilation operators.
 
     Under $g$ there is :
 
-    {{< mathjax >}}
+    
 $$\begin{aligned}
     \hat{\bm{\psi}}(\bm{k}) &\rightarrow_g R(g) \hat{\bm{\psi}}(g\bm{k}) \\
     \hat H &\rightarrow_g \int \hat {\bm{\psi}}^{\dagger}(g\bm{k})R(g)^{-1} \bm{H}(\bm{k})R(g)\hat {\bm{\psi}}(\bm{k}) \td^3 \bm{k}
     \end{aligned}$$
-{{< /mathjax >}}
+
 
     If $g$ is symmetry transformation, Hamiltonian should be invariant. Then $H(g\bm{k})=R(g)^{-1}H(\bm{k})R(g)$
     This will be one of the constraints of the Hamiltonian.

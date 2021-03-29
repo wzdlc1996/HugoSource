@@ -274,37 +274,33 @@ $$
 With $y_i(w\cdot x_i+b) \geq 1$ being linear constraint for $w$ and $b$, the training of SVM is actually a convex optimization problem. The Slater's condition for convex optimization problem reads ([Stephen Boyd's textbook](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf))
 
 > Given convex optimization problem:
->
->$$
->\begin{aligned}
->\textrm{minimize}\indent & f(x)\\
->\textrm{subject to }\indent & u_i(x) \leq 0 \ , \ i=1,\cdots,m \\
->&v_i(x) = 0 \ , \ i=1,\cdots, p
->\end{aligned}
->$$
->
+$$
+\begin{aligned}
+\textrm{minimize}\indent & f(x)\\
+\textrm{subject to }\indent & u_i(x) \leq 0 \ , \ i=1,\cdots,m \\
+&v_i(x) = 0 \ , \ i=1,\cdots, p
+\end{aligned}
+$$
 >in which $f, u_i$ are **convex function**, equality constraint functions $v_i(x) = a_i\cdot x + b_i$ are **affine**. 
 >**Slater's condition** holds iff there exists an $x$ such that:
->$$
->u_i(x) \lt 0 \ , \ i=1,\cdots,m \ ; \ v_i(x) = 0 \ , \ i=1,\cdots,p
->$$
+$$
+u_i(x) \lt 0 \ , \ i=1,\cdots,m \ ; \ v_i(x) = 0 \ , \ i=1,\cdots,p
+$$
 >**Slater's theorem** states that 
->$$
->\textrm{Slater's condition holds} \Rightarrow \textrm{Strong duality holds}
->$$
+$$
+\textrm{Slater's condition holds} \Rightarrow \textrm{Strong duality holds}
+$$
 >i.e., the minimization of origin problem (primal problem) equals to the maximization of (Lagrangian) dual problem, which reads
->
->$$
->\begin{aligned}
->\textrm{maximize}\indent & g(\lambda, \nu) = \inf_x L(x,\lambda,\nu)\\
->\textrm{subject to} \indent & \lambda_i \leq 0 \ , \ i = 1,\cdots,m\\
->\end{aligned}
->$$
->
+$$
+\begin{aligned}
+\textrm{maximize}\indent & g(\lambda, \nu) = \inf_x L(x,\lambda,\nu)\\
+\textrm{subject to} \indent & \lambda_i \leq 0 \ , \ i = 1,\cdots,m\\
+\end{aligned}
+$$
 >(note that the infimum does not constrain $x$) in which
->$$
->L(x,\lambda,\nu) = f(x) - \sum_{i=1}^m\lambda_i u_i(x) - \sum_{i=1}^p\nu_i v_i(x)
->$$
+$$
+L(x,\lambda,\nu) = f(x) - \sum_{i=1}^m\lambda_i u_i(x) - \sum_{i=1}^p\nu_i v_i(x)
+$$
 >is the Lagrangian of primal problem. 
 
 An important relation between the optimal of primal problem and dual problem is that: if strong duality holds and a dual optimal solution $(\lambda^*,\nu^ *)$ exists, then $\forall x \in F=\{x:u_i(x) \leq 0, v_i(x)=0\}: \lambda_i u_i(x) \geq 0, \nu_i v_i(x)=0$. Thus

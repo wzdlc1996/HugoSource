@@ -17,9 +17,9 @@ _[Definition]_ : A `Probability Space` is a triplet $(\Omega, \mathcal{F},\mathb
 
 _[Definition]_ : A `Measurable (real-valued) Function` on a `Measurable Space` $(\Omega,\mathcal{F})$ is a function $f:\Omega \rightarrow \mathbb{R}$, which has the property:
 
-{{< mathjax >}}
+
 $$\forall B \in \mathcal{B}(\mathbb{R}) \Rightarrow f^{-1}(B) = \{\omega\in\Omega : f(\omega) \in B\} \in \mathcal{F}$$
-{{< /mathjax >}}
+
 
 Where $\mathcal{B}(\mathbb{R})$ is the `natural Borel sigma Algebra` on $\mathbb{R}$.
 
@@ -27,43 +27,43 @@ _[Definition]_ : A `Random Variable` is a measurable function on a Probability S
 
 _[Definition]_ : The `Distribution` or `Law` of a random variable is a probability measure $\mu$ on $\mathbb{R}$ defined for any Borel set $B\in \mathcal{B}(\mathbb{R})$ by:
 
-{{< mathjax >}}
+
 $$\mu(B) = \mathbb{P}(X\in B)\equiv \mathbb{P}\{\omega \in \Omega : X(\omega) \in B\}$$
-{{< /mathjax >}}
+
 
 _[Definition]_ : The `Probability Density Function(pdf)` of a random variable is an integrable function $p(x)$ on $\mathbb{R}$ such that for any set $B\in\mathcal{B}(\mathbb{R})$:
 
-{{< mathjax >}}
+
 $$\mu(B) = \int_B p(x)\td x$$
-{{< /mathjax >}}
+
 
 _[Definition]_ : The `Mean` or `Expectation` of a random variable is the `Lebesgue Integral` of it with respect to probability measure $\mathbb{P}$ :
 
-{{< mathjax >}}
-$$\mathbb{E} (X) = \int_{\Omega} X(\omega) \mathbb{P}(\td \omega)\equiv \int_{\Omega} X\td \mathbb{P}$$
-{{< /mathjax >}}
 
-{{<fold "Notes">}}
+$$\mathbb{E} (X) = \int_{\Omega} X(\omega) \mathbb{P}(\td \omega)\equiv \int_{\Omega} X\td \mathbb{P}$$
+
+
+{{< fold "Notes">}}
 
 Consider the simplest random variable, which is the linear combination of `characteristic function` of sum subsets of $\Omega$ : $I(\omega;A)=\begin{cases} 1 & \omega\in A\\ 0 & \omega \notin A\end{cases}$
 
-{{< mathjax >}}
+
 $$X(\omega) = \sum_{i} x_i I(\omega;A_i)$$
-{{< /mathjax >}}
+
 
 So $X(\omega)$ is $x_i$ if $\omega \in A_i$. Here, $x_i\geq 0$ is required, the reason will be shown below.
 
 Then we define its expectation is:
 
-{{< mathjax >}}
+
 $$\mathbb{E}(X) := \sum_i x_i \mathbb{P}(A_i)$$
-{{< /mathjax >}}
+
 
 For any other **non-negative** random variable $X$, we can always construct a sequence of such "simple" random variables $X_n$ to "get close to" $X$, then we can define the expectation of $X$ is the limit of expectations of this sequence:
 
-{{< mathjax >}}
+
 $$\mathbb{E}(X) = \lim_{n\rightarrow \infty} \mathbb{E}(X_n)$$
-{{< /mathjax >}}
+
 
 The limit in r.h.s. is well-defined only when $x_{i,n}$ s are nonnegative by **Monotonous Convergence Theorem** . In general cases, the function is not non-negative, one can always separates it into positive-part and negative-part and then deals them isolatedly and computes the difference between them at last.
 
@@ -71,9 +71,9 @@ The limit in r.h.s. is well-defined only when $x_{i,n}$ s are nonnegative by **M
 
 _[Definition]_ : Two random variables $X,Y$ are mutually `Independent`, if for all continuous functions $f,g$ one has:
 
-{{< mathjax >}}
+
 $$\mathbb{E}(f(X)g(Y)) = \mathbb{E}(f(X))\mathbb{E}(g(Y))$$
-{{< /mathjax >}}
+
 
 ### Notions of Convergence
 
@@ -81,27 +81,27 @@ In this section, we denote the probability space is $(\Omega, \mathcal{F},\mathb
 
 _[Definition]_ : **Almost sure convergence**: $X_n$ converges to $X$ `almost surely` as $n\rightarrow \infty$ (denoted as $X_n \rightarrow X , \text{a.s.}$) if:
 
-{{< mathjax >}}
+
 $$\mathbb{P}\big(\{\omega \in \Omega : \lim_{n\rightarrow \infty} X_n(\omega) = X(\omega)\}\big) = 1$$
-{{< /mathjax >}}
+
 
 _[Definition]_ : **Convergence in probability**: $X_n$ converges to $X$ `in probability` (denoted as $X_n\rightarrow_p X$) if for any $\epsilon \gt 0$ :
 
-{{< mathjax >}}
+
 $$\lim_{n\rightarrow \infty}\mathbb{P}\big(\{\omega \in \Omega : |X_n(\omega) - X(\omega)| \gt \epsilon\}\big)  = 0$$
-{{< /mathjax >}}
+
 
 _[Definition]_ : **Convergence in distribution**: $X_n$ converges to $X$ in distribution (denoted as $X_n \rightarrow_d X$) (i.e. $\mu_n\rightarrow_d \mu$ , weak convergence), if for any bounded continuous function $f$ :
 
-{{< mathjax >}}
+
 $$\lim_{n\rightarrow \infty}\mathbb{E}(f(X_n)) = \mathbb{E}(f(X))$$
-{{< /mathjax >}}
+
 
 _[Definition]_ : **Convergence in $L^p$**: If $X_n, X\in L^p$, i.e., they are $p$-th power integrable. and:
 
-{{< mathjax >}}
+
 $$\lim_{n\rightarrow \infty}\mathbb{E}(|X_n-X|^p) = 0$$
-{{< /mathjax >}}
+
 
 If $p=1$ , that is `convergence in mean`; if $p=2$ that is `convergence in mean square`.
 
@@ -119,9 +119,9 @@ _[Definition]_ : For any random variable $X$ on probability space $(\Omega, \mat
 1.  $Z$ is a random variable which is measurable with respect to $\mathcal{G}$
 2.  For any set $A\in\mathcal{G}$ :
 
-    {{< mathjax >}}
+    
 $$\int_A Z\td \mathbb{P} = \int_A X \td \mathbb{P}$$
-{{< /mathjax >}}
+
 
 _[Theorem]_ : **Properties of conditional expectation** . Suppose $X,Y$ are random variables on probability space $(\Omega,\mathcal{F},\mathbb{P})$ , with $\mathbb{E}(|X|),\mathbb{E}(|Y|)\lt \infty, a,b\in \mathbb{R}$ , and $\mathcal{H}\subset \mathcal{G}\subset \mathcal{F}$ then (The following assertion is true in the sense of "almost surely"):
 
@@ -146,15 +146,15 @@ _[Theorem]_ : **Properties of conditional expectation** . Suppose $X,Y$ are rand
 
 6.  With random variable $X$ we can define a sigma algebra $\sigma(X)$ by subsets of $\Omega$: $\{A\ : \ \{X(\omega) : \omega \in A\}\in \mathcal{B}(\mathbb{R})\}$ , $\sigma(X)$ should be the smallest sigma algebra respect to which $X$ is measurable. Then $X$ is independent of $\mathcal{G}$ means that $\sigma(X)$ is independent of $\mathcal{G}$ :
 
-    {{< mathjax >}}
+    
 $$\forall A\in\sigma(X) \ , \ B\in\mathcal{G} \Rightarrow \mathbb{P}(A\cap B) = \mathbb{P}(A)\mathbb{P}(B)$$
-{{< /mathjax >}}
+
 
     So, $\forall B\in\mathcal{G}$ , we choose the characteristic function on $B$: $1_B$ , it is a $\mathcal{H}$-measurable random variable, then:
 
-    {{< mathjax >}}
+    
 $$\int_B X \td \mathbb{P} = \mathbb{E}(X1_B) = \mathbb{E}(X)\mathbb{E}(1_B) = \mathbb{E}(X)\int_B \td \mathbb{P} = \int_B \mathbb{E}(X)\td \mathbb{P}$$
-{{< /mathjax >}}
+
 
     So $\mathbb{E}(X|\mathcal{H})$ should be a constant function, it equals to $\mathbb{E}(X)$. i.e. $\mathbb{E}(X|\mathcal{H}) = \mathbb{E}(X)$
 
@@ -162,9 +162,9 @@ $$\int_B X \td \mathbb{P} = \mathbb{E}(X1_B) = \mathbb{E}(X)\mathbb{E}(1_B) = \m
 
     Consider the simplest case of $Y = 1_B$ where $B\in\mathcal{G}$ . So $Y$ is $\mathcal{G}$-measurable. Then we have: $1_B\mathbb{E}(Y|\mathcal{G})$ is $\mathcal{G}$-measurable, and for arbitrary $A\in\mathcal{G}$ we have:
 
-    {{< mathjax >}}
+    
 $$\int_A 1_B\mathbb{E}(Y|\mathcal{G})\td \mathbb{P} = \mathbb{E}\big(1_B \mathbb{E}(Y|\mathcal{G})1_A\big) = \mathbb{E}(\mathbb{E}(Y|\mathcal{G})1_{A\cap B}) = \mathbb{E}(Y 1_{A\cap B}) = \mathbb{E}(1_B Y 1_A) = \int_A 1_B Y\td \mathbb{P}$$
-{{< /mathjax >}}
+
 
     Where we used the property that $A\cap B \in \mathcal{G}$. Then $\mathbb{E}(\mathbb{E}(Y|\mathcal{G}) 1_{A\cap B}) = \int_{A\cap B}\mathbb{E}(Y|\mathcal{G})\td \mathbb{P} = \int_{A\cap B} Y\td \mathbb{P} = \mathbb{E}(Y1_{A\cap B})$ . So $\mathbb{E}(1_B Y |\mathcal{G}) = 1_B \mathbb{E}(Y|\mathcal{G})$. For the simplest case the theorem hold.
 
@@ -174,35 +174,35 @@ $$\int_A 1_B\mathbb{E}(Y|\mathcal{G})\td \mathbb{P} = \mathbb{E}\big(1_B \mathbb
 
 _[Theorem]_ : **Conditional Jensen's inequality** . Let $X$ be a random variable such that $\mathbb{E}(|X|) \lt \infty$ and $\phi : \mathbb{R}\rightarrow \mathbb{R}$ is a **convex function** ($\phi(\lambda x_1 + (1-\lambda) x_2) \leq \lambda \phi(x_1)+(1-\lambda)\phi(x_2) \ ; \ \lambda \in(0,1)$) . And $\mathbb{E}(|\phi(X)|)\lt \infty$ , then:
 
-{{< mathjax >}}
+
 $$\mathbb{E}\Big(\phi(X)|\mathcal{G}\Big) \geq \phi\Big(\mathbb{E}(X|\mathcal{G})\Big)$$
-{{< /mathjax >}}
+
 
 {{< fold "Proof">}}
 
 The convex function can be write as the form of:
 
-{{< mathjax >}}
+
 $$\phi(x) = \sup \{a_n + b_n x\}$$
-{{< /mathjax >}}
+
 
 Which can be understood in the way that convex function are always located at the region above its tangent line. So we need only to prove:
 
-{{< mathjax >}}
+
 $$\mathbb{E}\big(\sup\{a_n + b_n X\}|\mathcal{G}\big) \geq \sup\{a_n + b_n \mathbb{E}(X|\mathcal{G})\} = \sup\{\mathbb{E}(a_n + b_n X|\mathcal{G})\}$$
-{{< /mathjax >}}
+
 
 Which can be seen by the monotonicity of conditional expectation: $X \geq Y\Rightarrow \mathbb{E}(X|\mathcal{G}) \geq \mathbb{E}(Y|\mathcal{G})$ . So:
 
-{{< mathjax >}}
+
 $$\mathbb{E}(\sup\{a_n + b_n X\}|\mathcal{G})\geq \mathbb{E}(a_n+b_n X|\mathcal{G})$$
-{{< /mathjax >}}
+
 
 for arbitrary $a_n, b_n$ . So:
 
-{{< mathjax >}}
+
 $$\mathbb{E}(\sup(a_n + b_n X)|\mathcal{G}) \geq \sup \{\mathbb{E}(a_n + b_n X|\mathcal{G})\}$$
-{{< /mathjax >}}
+
 
 with the definition of supremum.
 
@@ -210,9 +210,9 @@ with the definition of supremum.
 
 _[Definition]_ : The **Conditional expectation of $X$ with respect of random variable $Y$** is defined as:
 
-{{< mathjax >}}
+
 $$\mathbb{E}(X|Y) = \mathbb{E}(X|\sigma(Y))$$
-{{< /mathjax >}}
+
 
 Where $\sigma(Y)$ is the sub-sigma algebra generated by $Y$ : $\sigma(Y) = \{Y^{-1}(B) : B \in\mathcal{B}(\mathbb{R})\}$
 
@@ -222,21 +222,21 @@ We can check this definition is equivalent to the definition of conditional expe
 
 In this case, the sample space can be decomposed as :
 
-{{< mathjax >}}
+
 $$\Omega = \bigcup_j \Omega_j$$
-{{< /mathjax >}}
+
 
 Where $\Omega_j = \{\omega : Y(\omega) = Y_j\}$ . And the $\sigma(Y)$ is simply all possible union of $\{\Omega_j\}$ . Then:
 
-{{< mathjax >}}
+
 $$\int_{\Omega_j}\mathbb{E}(X|Y)\td \mathbb{P} = \int_{\Omega_j}X\td \mathbb{P}$$
-{{< /mathjax >}}
+
 
 The measurability of $\mathbb{E}(X|Y)$ with respect to $\sigma(Y)$ ($\mathbb{E}(X|Y)$ has the same "structure" as $Y$, i.e., discrete valued.) means $\mathbb{E}(X|Y)$ takes constant on each $\Omega_j$ . So:
 
-{{< mathjax >}}
+
 $$\mathbb{E}(X|Y=Y_j) = \frac 1 {\mathbb{P}(\Omega_j)} \int_{\Omega_j} X\td \mathbb{P}$$
-{{< /mathjax >}}
+
 
 Which is what we learned in junior textbook.
 
@@ -244,28 +244,28 @@ Which is what we learned in junior textbook.
 
 _[Theorem]_ : Let $g(Y)$ be any measurable function of $Y$, then:
 
-{{< mathjax >}}
+
 $$\mathbb{E}\big((X-\mathbb{E}(X|Y))^2\big) \leq \mathbb{E}\big((X-g(Y))^2\big)$$
-{{< /mathjax >}}
+
 
 {{< fold "Proof">}}
 
 We have:
 
-{{< mathjax >}}
+
 $$\mathbb{E}\big((X-g(Y))^2\big) = \mathbb{E}\big((X-\mathbb{E}(X|Y))^2\big)+\mathbb{E}\big((\mathbb{E}(X|Y)-g(Y))^2\big)+2\mathbb{E}\big\{(X-\mathbb{E}(X|Y))(\mathbb{E}(X|Y)-g(Y))\big\}$$
-{{< /mathjax >}}
+
 
 And:
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 \mathbb{E}\big\{(X-\mathbb{E}(X|Y))(\mathbb{E}(X|Y)-g(Y))\big\} &= \mathbb{E}\Big\{\mathbb{E}\big\{(X-\mathbb{E}(X|Y))(\mathbb{E}(X|Y)-g(Y))\big\}\Big|Y\Big\} \\
 &=\mathbb{E}\Big\{(\mathbb{E}(X|Y)-g(Y))\mathbb{E}\big\{X-\mathbb{E}(X|Y)\big\}\Big|Y\Big\} \\
 &=\mathbb{E}\Big\{(\mathbb{E}(X|Y)-g(Y))\big(\mathbb{E}(X|Y)-\mathbb{E}(X|Y)\big)\Big\} \\
 &=0
 \end{aligned}$$
-{{< /mathjax >}}
+
 
 q.e.d.
 
@@ -281,9 +281,9 @@ The core of widely application of stochastic algorithms is the efficient method 
 
 LCG is the most commonly used **Pseudo-Random Number Generator(PRNG)** for uniformly distribution : $\mathcal{U}([0,1])$ . It has the following simple form:
 
-{{< mathjax >}}
+
 $$X_{n+1} = (aX_n + b) \mod m$$
-{{< /mathjax >}}
+
 
 Where $a,b,m$ are chosen natural numbers beforehand and $X_0$ is the seed. The obtained sequence $X_n/m$ is the desired pseudo-random number satisfies $\mathcal{U}([0,1])$ .
 
@@ -301,9 +301,9 @@ There is also a so-called **Minimal Standard Generator** which is a special case
 
 More general LCG takes the following form:
 
-{{< mathjax >}}
+
 $$X_{n+1}=(a_0 X_n + a_1 X_{n-1}+\cdots + a_j X_{n-j} + b) \mod m$$
-{{< /mathjax >}}
+
 
 Whose period can not proceed $m^{j+1}-1$.
 
@@ -323,29 +323,29 @@ _[Theorem]_ : (Inverse Transformation Method) . Suppose the distribution functio
 
 If $F(y)$ is strictly increasing, consider the $\hat Y = F^{-1}(X)$ we have:
 
-{{< mathjax >}}
+
 $$\mathbb{P}(\hat Y\leq y) = \mathbb{P}(F^{-1}(X)\leq y) = \mathbb{P}(X\leq F(y)) = F(y)$$
-{{< /mathjax >}}
+
 
 So $\hat Y$ and $Y$ have the same distribution.
 
 When $F(y)$ is only non-decreasing, like there are some parts on $\mathbb{R}$ have zero probability. Then we can define the generalized inverse $F^{-1}$ as:
 
-{{< mathjax >}}
+
 $$F^{-1}(u) = \inf \{x: F(x)\geq u\}$$
-{{< /mathjax >}}
+
 
 Then we have:
 
-{{< mathjax >}}
+
 $$F(F^{-1}(u)) \geq u \ ; \ F^{-1}(F(x)) \leq x$$
-{{< /mathjax >}}
+
 
 So: $\{(u,x) : F^{-1}(u)\leq x\} = \{(u,x) : F(x)\geq u\}$. And:
 
-{{< mathjax >}}
+
 $$\mathbb{P}(F^{-1}(X) \leq y) = \mathbb{P}(X \leq F(y)) = F(y)$$
-{{< /mathjax >}}
+
 
 q.e.d.
 
@@ -355,15 +355,15 @@ q.e.d.
 
 The core is the identity of the variable substitution:
 
-{{< mathjax >}}
+
 $$\frac 1 {2\pi} e^{-\frac {x_1^2+x_2^2} 2} \td x_1 \td x_2 = \frac {\td \theta} {2\pi} \cdot e^{-r^2/r} r\td r$$
-{{< /mathjax >}}
+
 
 So , $\td \theta/2\pi$ is the unit of $\mathcal{U}([0,2\pi])$ , and $e^{-r^2/2}r\td r$ corresponds to the distribution of $F(r) = 1-e^{-r^2/2}$ . So the Gaussian Random Variable can be generated with the following manner:
 
-{{< mathjax >}}
+
 $$Z = R \cos \Theta \ ; \ R=\sqrt{-2\log X} , \Theta = 2\pi Y \ X,Y\sim \mathcal{U}([0,1])$$
-{{< /mathjax >}}
+
 
 ### Acceptance-Rejection Method
 
@@ -379,9 +379,9 @@ _[Algorithm]_ : To generate $X$ of density $p(x)$:
 
 The procedure generates a uniformly distribution on $A=\{(x,y):x\in[a,b], y\in[0,p(x)]\}$ . So the $X$-marginal distribution
 
-{{< mathjax >}}
+
 $$\hat p(x) = \int_0^{p(x)}1 \td y = p(x)$$
-{{< /mathjax >}}
+
 
 q.e.d.
 
@@ -402,9 +402,9 @@ Where $f(x)$ is a curve which lies everywhere above the density $p(x)$, and $A =
 
 The probability of $X_i$ lies in interval $[x,x+\td x]$ is:
 
-{{< mathjax >}}
+
 $$\mathbb{P}(X_i\in[x,x+\td x]) = \mathbb{P}(Z_i \in [\frac {F(x)} A , \frac {F(x+\td x)} {A}])\mathbb{P}(\text{accept}) = \frac 1 A f(x)\td x \cdot \frac {p(x)} {f(x)} = \frac 1 A  p(x)\td x$$
-{{< /mathjax >}}
+
 
 q.e.d.
 

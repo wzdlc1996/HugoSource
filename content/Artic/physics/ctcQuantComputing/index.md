@@ -51,59 +51,59 @@ To illustrate his quantum framework for time travel, Deutsch introduced some par
 
     Where variables $x,y$ are binary valued, and circle "-1" means the time machine. From the bottum to the top is the time arrow in "laboratory", while along the arrow crossing gate $G$ is the **proper** time of the bit. The classical property is that our bits can only varies in the set of computational basis instead of the wavefunction on it. Our **computational grandfather paradox** happens when the gate $G$ operates "plus", i.e., $a+b \mod 2$, then we need that(Note time machine will not change the bit, it only transports the bit to the past):
 
-    {{< mathjax >}}
+    
     $$x+y \equiv y\mod 2$$
-    {{< /mathjax >}}
+    
     When we set $x=1$, then this equation has no solution, or there is no self-consistent path. But we can also set $x=0$, then no matter $y$'s value is, this procedure is self-consistent.
 
     Now we consider the quantum case, it is also the framework of Deutsch. Assume the state of $x$-channel is $\ket{\psi}$, a pure state and the state of $y$-channel, the older version of $\ket{\psi}$, is the density matrix $\hat \rho$ generally. So as they entering $G$, the state at that moment is:
 
-    {{< mathjax >}}
+    
     $$\ket{\psi}\bra{\psi}\otimes \hat \rho$$
-    {{< /mathjax >}}
+    
     The gate $G$, defined by a reversible computation procedure, can be write as a unitary operator $\hat U$ and has the simple form on the computational basis:
 
-    {{< mathjax >}}
+    
     $$\hat U = \sum_{x,y\in\mathbb{Z}_2}\ket{x+y}\bra{x}\otimes \ket{y}\bra{y}$$
-    {{< /mathjax >}}
+    
 
     Now the question is what is the time machine. Deutsch camp up with an equation for it based on the **kinematical consistency** : the output of the gate, partially traced out on channel, should be the same as $y$'s input:
 
-    {{< mathjax >}}
+    
     $$\hat \rho = \text{Tr}_y \Big(\hat U (\ket{\psi}\bra{\psi}\otimes \hat \rho)\hat U^\dagger\Big)$$
-    {{< /mathjax >}}
+    
 
     Where $\text{Tr}_y$ means the partial trace on the section of $y$-channel, i.e., the second ket in the direct product form of quantum states. For the generic $\hat \rho$:
 
-    {{< mathjax >}}
+    
     $$\hat \rho = \sum_{u,v\in\mathbb{Z}_2} c_{uv}\ket{u}\bra{v}$$
-    {{< /mathjax >}}
+    
 
     the self-consistent equation reads:
 
-    {{< mathjax >}}
+    
     $$\begin{aligned}
     \hat \rho &= \ket{0}\bra{0}\Big(c_{00}|\bra{0}\psi\rangle|^2 + c_{11}|\bra{1}\psi\rangle|^2\Big) \\
     &\indent + \ket{1}\bra{1} \Big(c_{00}|\bra{1}\psi\rangle|^2 + c_{11}|\bra{0}\psi\rangle|^2\Big) \\
     &\indent + \ket{0}\bra{1}\Big(c_{00}\bra{0}\psi\rangle\bra{\psi}1\rangle + c_{11}\bra{1}\psi\rangle\bra{\psi}0\rangle\Big) \\
     &\indent + \ket{1}\bra{0}\Big(c_{00}\bra{1}\psi\rangle \bra{\psi}0\rangle + c_{11}\bra{0}\psi\rangle\bra{\psi}1\rangle\Big)
     \end{aligned}$$
-    {{< /mathjax >}}
+    
 
     So there is at least one solution for the self-consistency equation:
 
-    {{< mathjax >}}
+    
     $$\hat \rho= \frac 1 2 + \text{Re}(\bra{0}\psi\rangle\bra{\psi}1\rangle)\Big(\ket{0}\bra{1}+\ket{1}\bra{0}\Big)$$
-    {{< /mathjax >}}
+    
 
     Meanwhile, the final state of the bit should be:
 
-    {{< mathjax >}}
+    
     $$\begin{aligned}
     \hat \rho_{\text{fin}} &= \text{Tr}_x \Big(\hat U (\ket{\psi}\bra{\psi}\otimes \hat \rho)\hat U^\dagger\Big) \\
     &= \frac 1 2 + 2(\text{Re}\bra{0}\psi\rangle\bra{\psi}1\rangle)^2 \Big(\ket{0}\bra{1}+\ket{1}\bra{0}\Big)
     \end{aligned}$$
-    {{< /mathjax >}}
+    
 
 2.  Time Travel and NP-Problem
 
@@ -111,44 +111,44 @@ To illustrate his quantum framework for time travel, Deutsch introduced some par
 
     The model is similar to that in 1, but now we use $n$ such carriers so that we can handle the problem of $n$ bits and let the effect of $G$ be:
 
-    {{< mathjax >}}
+    
     $$(x,y) \overset{G}\rightarrow (x+f(y), y) \ ; \ \forall x,y\in \mathbb{Z}_{2^n}$$
-    {{< /mathjax >}}
+    
 
     So the self-consistency requires that:
 
-    {{< mathjax >}}
+    
     $$y = x+f(y)$$
-    {{< /mathjax >}}
+    
 
     If our initial setup (**can only made for $x$**) is $x=0$, then this network will tell us the fixed point of function $f$, as the final output, which is in the class of $NP$, but our network seems a overwhelmingly powerful algorithm for it. We call this procedure paradoxical because there exists functions who has no fixed point, in this case it would be another version of grandfather paradox like we discussed in 1.
 
     Now what could happen in quantum region? similar to what we did before, quantum state in $y$-channel should satisfies that:
 
-    {{< mathjax >}}
+    
     $$\hat \rho = \text{Tr}_y\Big(\hat U (\ket{0}\bra{0}\otimes \hat \rho)\hat U^\dagger\Big)$$
-    {{< /mathjax >}}
+    
 
     where the gate $G$ is $\hat U=\sum_{x,y} \ket{x+f(y)}\bra{x}\otimes \ket{y}\bra{y}$. With simple algebra we can rewrite the self-consistent equation as:
 
-    {{< mathjax >}}
+    
     $$\begin{aligned}
     \hat \rho &= \sum_{x,x';z} \ket{x+f(z)}\bra{x}0\rangle\bra{0}x'\rangle \bra{x'+f(z)} \bra{z}\hat \rho \ket{z} \\
     &=\sum_{z \in \mathbb{Z}_{2^n}} \ket{f(z)}\bra{z} \hat \rho \ket{z}\bra{f(z)}
     \end{aligned}$$
-    {{< /mathjax >}}
+    
 
     Obviously if $f$ has non-empty fixed points set $F$, then any of form: $\sum_{x\in F}p_x \ket{x}\bra{x}$ will be a solution once $p_x$ is a probability distribution on $F$. But we can still find some other solutions just like in computational grandfather paradox, note that this equation requires that $\hat \rho$ be diagonal in computational basis:
 
-    {{< mathjax >}}
+    
     $$\hat \rho = \sum_{x\in \mathbb{Z}_{2^n}} p_x \ket{x}\bra{x}$$
-    {{< /mathjax >}}
+    
 
     then we have the equation for $p_x$, apart from the probability property $\sum_x p_x = 1$ and $0\leq p_x\leq 1$:
 
-    {{< mathjax >}}
+    
     $$p_x = \sum_{y\in \{y: x = f(y)\}} p_y$$
-    {{< /mathjax >}}
+    
 
     This condition is much weaker than the fixed point condition. If $f$ is invertible (which is not necessary for the evolution $\hat U$ to be unitary), there is always a solution of $\hat \rho = 1/2^n$.
 
@@ -158,9 +158,9 @@ Generally speaking, Deutsch's theory has the following form:
 
 Self-consistency requires that the state entering the CTC: $\hat \rho$ should be the same as it in the past even after the interaction with a "chronology-respecting" system in state $\hat \rho_A$:
 
-{{< mathjax >}}
+
 $$\hat \rho = \text{Tr}_A \Big(\hat U (\hat \rho \otimes \hat \rho_A)\hat U^\dagger\Big) \equiv \Phi(\hat \rho)$$
-{{< /mathjax >}}
+
 Such fixed point of $\Phi$ can be proved to exist, because map $\Phi$ is a [completely positive map](https://en.wikipedia.org/wiki/Completely_positive_map)
 
 As for which fixed point should happen in real world, Deutsch suggested the **maximum entropy rule**:
@@ -179,27 +179,27 @@ Here, we show one application of CTC on NP-complete problem, refered [Bacon2004]
 
 The self-consistent equation:
 
-{{< mathjax >}}
+
 $$\hat \rho_{CTC} = \text{Tr}_{CR}(\hat U(\hat \rho_{CR}\otimes \hat \rho_{CTC})\hat U^\dagger)$$
-{{< /mathjax >}}
+
 defined a non-linear evolution when we set:
 
-{{< mathjax >}}
+
 $$\hat U = \ket{00}\bra{00}+\ket{10}\bra{01}+\ket{11}\bra{10}+\ket{01}\bra{11}$$
-{{< /mathjax >}}
+
 and the generic $2\times 2$ density matrix:
 
-{{< mathjax >}}
+
 $$\hat \rho_{CR}\otimes \hat \rho_{CTC} = \frac 1 2 (1+\bm{n}\cdot \bm{\sigma})\otimes \frac 1 2 (1+\bm{m}\cdot \bm{\sigma})$$
-{{< /mathjax >}}
+
 Thus, the self-consistent equation reads:
 
-{{< mathjax >}}
+
 $$\frac 1 2 (1+\bm{m}\cdot \bm{\sigma}) = \begin{bmatrix}
 \frac {1+n_z} 2 & \frac 1 2 m_x(n_x-\ti n_y) \\
 \frac 1 2 m_x(n_x+\ti n_y) & \frac {1-n_z} 2
 \end{bmatrix}$$
-{{< /mathjax >}}
+
 That is:
 
 1.  when $n_x\neq 1$, there is only one solution of $m_x=m_y=0, m_z=n_z$
@@ -207,7 +207,7 @@ That is:
 
 So if we fix that $n_x\neq 1$, we do not need to worry about the maximum entropy rule because there is only one possible path, and the entire evolution is:
 
-{{< mathjax >}}
+
 $$\begin{aligned}
 R[\hat \rho_{CR}=\frac 1 2 (1+\bm{n}\cdot \bm{\sigma})] &= \text{Tr}_{CTC}(\hat U (\hat \rho_{CR}\otimes \hat \rho_{CTC,\text{self-consistent}})\hat U^\dagger) \\
 &= \begin{cases}
@@ -215,7 +215,7 @@ R[\hat \rho_{CR}=\frac 1 2 (1+\bm{n}\cdot \bm{\sigma})] &= \text{Tr}_{CTC}(\hat 
 \text{ambiguous} & n_x=1
 \end{cases}
 \end{aligned}$$
-{{< /mathjax >}}
+
 Now we apply this evolution $R$ on a NP-complete problem: [SAT](https://en.wikipedia.org/wiki/Boolean_satisfiability_problem):
 
 > Given a boolean function $f:\{0,1\}^n\rightarrow \{0,1\}$, specified in conjunctive normal form, the goal is to answer whether there is solution of $f(x)=1$ or not.
@@ -224,18 +224,18 @@ The algorithm reads:
 
 1.  Prepare the state of $\sum_{i\in \{0,1\}^n} \ket{i}\ket{f(i)}$ on $n+1$-spin, by oracle: $\sum_{i\in\{0,1\}^n} \ket{i}\bra{i}\otimes \sigma_x^{f(i)}$
 2.  traced out the first $n$ spins and get
-    {{< mathjax >}}
+    
     $$
     \hat \rho_0 = \frac 1 {2^n}\sum_{i\in \{0,1\}^n} \ket{f(i)}\bra{f(i)} = \frac 1 2 \Big(1-(1-\frac s {2^{n-1}})\sigma_z\Big)
     $$
-    {{< /mathjax >}}
+    
     where $s$ is the number of solutions of $f(x)=1$
 3.  Map $R$ on $\hat \rho_0$ $p$ times:
-    {{< mathjax >}}
+    
     $$
     R^n[\hat \rho_0] = \frac 1 2 \Big(1+(-1+\frac s {2^{n-1}})^{2^p}\sigma_z\Big)
     $$
-    {{< /mathjax >}}
+    
 And then:
 
 1.  if $s=2^n$, i.e., $f=1$, is a trivial case
