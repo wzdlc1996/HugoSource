@@ -35,9 +35,10 @@ AllinOne/layouts/partials/escapeMathjaxEq.html
 
 This replacement run automatically independent of the trigger in `config.toml`
 
-The past solutions:
+
 
 <details>
+<summary>previous solutions:</summary>
 The [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) has been solved after recent update of Hugo. But now it renders character `\\` as `\`. To resolve this, a new shortcode `mathjax` is defined:
 
 1.  Inline formula should been stored as `$...$`.
@@ -50,7 +51,6 @@ The [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) has
     {{< /other-shortcodes >}}
     ```
 
-<summary>For the above issue (hugo <= 0.55)</summary>
 For the known [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) about the the different handling about character `_` in markdown and MathJax, we use the same solution in that article. In the content files, one need to do some adjustment like:
 
 1. inline formula should been stored in <code>\`\$...\$\`</code> , while block math environment should been stored in <code>\<div\>\$\$...\$\$\</div\></code>
