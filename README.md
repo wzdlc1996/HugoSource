@@ -4,8 +4,40 @@ Is the source files of my [Blog on Github](https://wzdlc1996.github.io).
 
 ## MathJax Adjust
 
-The following strategy is massive. TODO: automaticall replace `\` into `\\` in every mathjax block.
+Now the theme is automatically support mathjax. One does not need any post-process!
 
+This function is implemented by the automatically replace all equations with neat form in `.RawContent` by:
+
+```
+AllinOne/layouts/partials/escapeMathjaxEq.html
+
+{{ $rawcont := .RawContent }}
+{{ $rddcont := .Content }}
+{{ $niceBlockEqs := findRE "[$][$][\\w\\W]+?[$][$]" .RawContent }}
+{{ $badBlockEqs := findRE "[$][$][\\w\\W]+?[$][$]" $rddcont }}
+{{ range $ind, $val := $niceBlockEqs }}
+    {{ $rddcont = replace $rddcont (index $badBlockEqs $ind) $val }}
+{{ end }}
+
+{{ $rddcont = $rddcont | replaceRE "([^\\$])([$][^\\$]+?[$])([^\\$])" "$1 $2 $3" }}
+
+
+
+{{ $niceInlineEqs := findRE "[^\\$][$][^\\$]+?[$][^\\$]" .RawContent }}
+{{ $badInlineEqs := findRE " [$][^\\$]+?[$] " $rddcont }}
+{{ range $ind, $val := $niceInlineEqs }}
+    {{ $newval := replaceRE "([$][^\\$]+?[$])" " $1 " $val }}
+    {{ $rddcont = replace $rddcont (index $badInlineEqs $ind) (substr $newval 1 -1) }}
+{{ end }}
+
+{{- $rddcont | safeHTML -}}
+```
+
+This replacement run automatically independent of the trigger in `config.toml`
+
+The past solutions:
+
+<details>
 The [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) has been solved after recent update of Hugo. But now it renders character `\\` as `\`. To resolve this, a new shortcode `mathjax` is defined:
 
 1.  Inline formula should been stored as `$...$`.
@@ -18,7 +50,6 @@ The [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) has
     {{< /other-shortcodes >}}
     ```
 
-<details>
 <summary>For the above issue (hugo <= 0.55)</summary>
 For the known [issue](https://gohugo.io/content-management/formats/#mathjax-with-hugo) about the the different handling about character `_` in markdown and MathJax, we use the same solution in that article. In the content files, one need to do some adjustment like:
 
