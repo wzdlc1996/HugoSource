@@ -255,7 +255,7 @@ Though with these caveats, HHL algorithm works well as an approximately method f
 
 **Support Vector Machine(SVM)** is one of the most important classical learning algorithm mainly for data classification. One of its advantages is that we understand how it works better than most black-box algorithms. 
 
-The training set has $M$ data points as $D=\{(x_j; y_j), x_j\in \mathbb{R}^d, y_j =\pm 1\}$. SVM tries to find a maximum-margin hyperplane with normal vector $w\in \mathbb{R}^d$ that divides these points into two classes. Formally, the point $x$ should be separated by the value of $w\cdot x + b$. If $w\cdot x + b \geq 1$, then this point is of class $y = 1$. While $w\cdot x + b \leq -1$ it should be of $y=-1$. Samples on the margin (i.e. $w\cdot x+b=\pm 1$ are usually called **support vectors**) The SVM training is to find parameters $w, b$ such that
+The training set has $N$ data points as $D=\{(x_j; y_j), x_j\in \mathbb{R}^d, y_j =\pm 1\}$. SVM tries to find a maximum-margin hyperplane with normal vector $w\in \mathbb{R}^d$ that divides these points into two classes. Formally, the point $x$ should be separated by the value of $w\cdot x + b$. If $w\cdot x + b \geq 1$, then this point is of class $y = 1$. While $w\cdot x + b \leq -1$ it should be of $y=-1$. Samples on the margin (i.e. $w\cdot x+b=\pm 1$ are usually called **support vectors**) The SVM training is to find parameters $w, b$ such that
 
 $$
 \forall (x_j; y_j) \in D : y_j(w\cdot x_j + b) \geq 1 .
@@ -396,17 +396,117 @@ $$
 
 in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{diag} \{ y_1,\cdots,y_N \}$, and $\bm{K} = \bm{Z}^T \bm{Z}\Rightarrow (\bm{K})_{ij} = \phi(x_i)\cdot \phi(x_j) = k(x_i,x_j)$ is the kernel matrix, when kernel trick is disabled, $k(x_i,x_j)=x_i\cdot x_j$. Solving this linear system has time complexity $\mathcal{O}(N^3)$ (or $\mathcal{O}(N^{2.3})$ for sparse coefficient matrix ([D. Coppersmith 1990][13])).
 
-The quantum SVM use HHL algorithm to find the solution of above linear system in a normalized form as $\hat F \ket{b,\lambda} = \ket{y}$, in which with the encoding $\bra{i}\hat F\ket{j} = (\bm{F}/\textrm{Tr}\bm{F})_{ij}$, $\ket{y}=\sum_{i=1}^N y_i\ket{i}$, and $\ket{b,\lambda} = b\ket{0} + \sum_{i=1}^N \lambda_i \ket{i}$. It would not influence the prediction because the sign of $w \cdot x +b$ is invariant by zooming $w, b$ (or $\lambda, b$) with the same factor.
+The quantum SVM use HHL algorithm to find the solution of above linear system in a normalized form as $\hat F \ket{b,\lambda} = \ket{y}$, in which with the encoding $\bra{i}\hat F\ket{j} = (\bm{F}/\textrm{Tr}\bm{F})_{ij}$, $\ket{y}=\sum_{i=1}^N y_i\ket{i}$, and $\ket{b,\lambda} = b\ket{0} + \sum_{i=1}^N \lambda_i \ket{i}$. It would not influence the prediction because the sign of $w \cdot x +b$ is invariant by zooming $w, b$ (or $\lambda, b$) with the same factor. As shown below, the time complexity of training a quantum SVM is $\tilde{\mathcal{O}}(\log N)$.
 
 {{% fold "Simulate quantum evolution driven by $\hat F$" %}}
 
 To implement HHL algorithm, we need simulate the unitary operator $e^{\ti \Delta t \hat F}$  efficiently. The second order approximation reads
 
 $$
-\bra{i}e^{\ti \Delta t \hat F}\ket{j} = e^{\ti \Delta t \bm{J}/\textrm{Tr}\bm{F}} \begin{bmatrix} 1 & 0 \\ 0 & e^{-\ti \gamma \Delta t /\textrm{Tr}\bm{F}} \bm{I} \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & e^{-\ti \Delta t \bm{K}/\textrm{Tr}\bm{F}} \bm{I} \end{bmatrix} + \mathcal{O}(\Delta t^2)
+\bra{i}e^{\ti \Delta t \hat F}\ket{j} = e^{\ti \Delta t \bm{J}/\textrm{Tr}\bm{F}} \begin{bmatrix} 1 & 0 \\ 0 & e^{-\ti \gamma \Delta t /\textrm{Tr}\bm{F}} \bm{I} \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & e^{-\ti \Delta t \bm{K}/\textrm{Tr}\bm{F}}\end{bmatrix} + \mathcal{O}(\Delta t^2)
 $$
 
+in which
+
+$$
+\bm{J} = \begin{bmatrix} 0 & \bm{1}^T \\ \bm{1} & \bm{0}\end{bmatrix}
+$$
+
+The evolution driven by $\bm{J}$ is straightforward. There are only two nonzero eigenvalues and the corresponding eigenvectors are
+
+$$
+\hat J \ket{J_{\pm}} \equiv \Big(\sum_{i=1}^N \ket{0}\bra{i} + \ket{i}\bra{0}\Big)\ket{J_{\pm}} = \pm\sqrt{N} \times \frac 1 {\sqrt{2}}\big(\ket{0} \pm \frac 1 {\sqrt{N}} \sum_{i=1}^N \ket{i}\big)
+$$
+
+The basis transformation to diagonalize matrix $\hat J$ can be achieved by the following strategy
+
+$$
+[\ket{0}, \ket{1},\cdots,\ket{N}]\rightarrow[\ket{0}, \ket{1},\cdots,\ket{N}]
+\left[
+\begin{array}{cc|c}
+1 & 0 & & \\
+\hline
+0 & 1/\sqrt{N} & & & \\
+\vdots & \vdots & & \bm{R} & \\
+0 & 1/\sqrt{N} & & & 
+\end{array}
+\right]
+\begin{bmatrix}
+\bm{H} & \\
+& \bm{I} 
+\end{bmatrix}
+$$
+
+in which $\bm{R}$ makes the first transformation unitary, $\bm{H}$ is a Hadamard gate for $\ket{0}, \ket{1}$ subspace. With the transform the evolution driven by $\bm{J}$ can be simulated.
+
+The evolution driven by $\gamma^{-1} \bm{I}$ is trivial, now let us consider how to simulate the evolution driven by $\bm{K}$. With qRAM, one can prepare the state of
+
+$$
+\ket{x} = \frac 1 {\sqrt{\sum_{i=1}^N \|x_i\|^2}} \sum_{i=1}^N x_i^r\ket{i}\ket{r} = \frac 1 {\sqrt{N}} \sum_{i=1}^N \ket{i}\ket{x_i}
+$$
+
+with $\ket{x_i} =\|x_i\|^{-1}\sum_{r=1}^d x_i^r\ket{r}$. Then with the controlled rotation, we can make it to be (like we did in state preparation by qRAM, but now we encode $\|x_i\|$ instead of $x_i^r$. If the norm of each data is stored in qRAM, this procedure is also efficient.)
+
+$$
+\ket{x} = \frac 1 {\sqrt{\sum_{i=1}^N \|x_i\|^2}} \sum_{i=1}^N \|x_i\| \ket{i}\ket{x_i}
+$$
+
+Now, if we discard the dataset register, i.e., partially trace out those $d$-dimensional kets, we obtain the kernel matrix as a density matrix
+
+$$
+\hat \rho = \textrm{Tr}_2 \ket{x}\bra{x} = \frac 1 {\sum_{i=1}^N \|x_i\|^2} \sum_{i,j=1}^N \braket{x_i|x_j} \|x_i\|\|x_j\| \ket{i}\bra{j}
+$$
+
+If the kernel function $k(x_i,x_j)=x_i\cdot x_j$, then it is the value of $\braket{x_i|x_j}\|x_i\|\|x_j\|$. With tensor encoding by $\ket{\phi(x_i)} = \ket{x_i}^{\otimes l}$, the coefficients are $\braket{\phi(x_i)|\phi(x_j)} = (\bra{x_i}x_j\rangle)^l$. Thus with this trick, one can prepare any polynomial kernel matrix. 
+
+Now we have the kernel matrix as $\hat \rho = \hat K / \textrm{Tr}\bm{K}$. Since $\textrm{Tr}\bm{K}/\textrm{Tr}\bm{F} \sim \mathcal{O}(1)$, this time factor would not hurt the efficiency of algorithm. The time evolution driven by $\hat \rho$ can be done with the following procedure
+
+$$
+\begin{aligned}
+\textrm{Tr}_1 e^{-\ti \Delta t \hat S} (\hat \rho \otimes \hat \mu) e^{\ti \Delta t \hat S}
+&= \hat \mu - \ti \Delta t[\hat S, \hat\rho \otimes \hat \mu] + \mathcal{O}(\Delta t^2) \\
+&= \hat \mu - \ti \Delta t [\hat \rho, \hat \mu] + \mathcal{O}(\Delta t^2) \\
+&\approx e^{-\ti \Delta t \hat \rho} \hat \mu e^{\ti \Delta t\hat \rho} 
+\end{aligned}
+$$
+
+in which we have $\hat S = \sum_{m,n=1}^N \ket{m}\bra{n}\otimes \ket{n}\bra{m}$. Thus, we can implement the evolution driven by $\hat \rho$ efficiently. As shown in ([D. Berry 2006][25]), the time complexity is of $\tilde{\mathcal{O}}(\log N \Delta t)$. The bottleneck is the preparation of kernel matrix.
+
 {{% /fold %}}
+
+After the training process, i.e., we obtain the amplitude encoding vector $\ket{b, \lambda}$, the prediction for a new item $\ket{x}$ can be done by following steps:
+
+1.  query the qRAM of training set with addressing register being $\ket{b, \lambda}$ then prepare the state of
+
+    $$
+    \ket{u} \propto b\ket{0}\ket{0} + \sum_{k=1}^N \lambda_k \|x_k\|\ket{k}\ket{x_k}
+    $$
+
+2.  Prepare the state of new item:
+
+    $$
+    \ket{\tilde{x}} \propto \ket{0}\ket{0} + \sum_{k=1}^N \|x\| y_k\ket{k}\ket{x}
+    $$
+
+3.  With an ancilla qubit, prepare the state of (this seems to be a non-trivial process, but it could be efficient on a well-structured qRAM.)
+
+    $$
+    \frac 1 {\sqrt{2}} \Big(\ket{0}\ket{u} + \ket{1} \ket{\tilde{x}}\Big)
+    $$
+
+4.  Make a measurement on ancilla qubit with the basis of $\ket{\pm} = 2^{1/2}(\ket{0}\pm\ket{1})$, the probability to find $\ket{+}$ is
+
+    $$
+    \begin{aligned}
+    \mathbb{P}(+) &= \frac {1+\textrm{Re}\braket{u|\tilde{x}}} 2 \\
+    \Rightarrow \mathbb{P}(+)-\frac 1 2 &\propto b+\sum_k \lambda_k \|x_k\|\|x\|\braket{x|x_k} \\
+    &= b+\sum_k \lambda_k y_k k(x,x_k) \\
+    &= b + w \cdot x
+    \end{aligned}
+    $$
+
+    So, the prediction of SVM is $\textrm{sgn}(\mathbb{P}(+)-1/2)$. 
+
 
 
 ### Quantum PCA

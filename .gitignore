@@ -2,3 +2,4 @@ public
 themes
 !.gitignore
 .vscode
+.DS_Store
