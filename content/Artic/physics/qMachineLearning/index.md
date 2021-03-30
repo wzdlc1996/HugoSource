@@ -396,11 +396,15 @@ $$
 
 in which $\bm{Z} = [\phi(x_1),\cdots, \phi(x_N)]$, $\textrm{diag}\bm{Y}=\textrm{diag} \{ y_1,\cdots,y_N \}$, and $\bm{K} = \bm{Z}^T \bm{Z}\Rightarrow (\bm{K})_{ij} = \phi(x_i)\cdot \phi(x_j) = k(x_i,x_j)$ is the kernel matrix, when kernel trick is disabled, $k(x_i,x_j)=x_i\cdot x_j$. Solving this linear system has time complexity $\mathcal{O}(N^3)$ (or $\mathcal{O}(N^{2.3})$ for sparse coefficient matrix ([D. Coppersmith 1990][13])).
 
-The quantum SVM use HHL algorithm to find the solution of above linear system in a normalized form as $\hat F \ket{b,\lambda} = \ket{y}$, in which with the encoding $\bra{i}\hat F\ket{j} = (\bm{F}/\textrm{Tr}\bm{F})_{ij}$, $\ket{y}=\sum_{i=1}^N y_i\ket{i}$, and $\ket{b,\lambda} = b\ket{0} + \sum_{i=1}^N \lambda_i \ket{i}$
+The quantum SVM use HHL algorithm to find the solution of above linear system in a normalized form as $\hat F \ket{b,\lambda} = \ket{y}$, in which with the encoding $\bra{i}\hat F\ket{j} = (\bm{F}/\textrm{Tr}\bm{F})_{ij}$, $\ket{y}=\sum_{i=1}^N y_i\ket{i}$, and $\ket{b,\lambda} = b\ket{0} + \sum_{i=1}^N \lambda_i \ket{i}$. It would not influence the prediction because the sign of $w \cdot x +b$ is invariant by zooming $w, b$ (or $\lambda, b$) with the same factor.
 
 {{% fold "Simulate quantum evolution driven by $\hat F$" %}}
 
+To implement HHL algorithm, we need simulate the unitary operator $e^{\ti \Delta t \hat F}$  efficiently. The second order approximation reads
 
+$$
+\bra{i}e^{\ti \Delta t \hat F}\ket{j} = e^{\ti \Delta t \bm{J}/\textrm{Tr}\bm{F}} \begin{bmatrix} 1 & 0 \\ 0 & e^{-\ti \gamma \Delta t /\textrm{Tr}\bm{F}} \bm{I} \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & e^{-\ti \Delta t \bm{K}/\textrm{Tr}\bm{F}} \bm{I} \end{bmatrix} + \mathcal{O}(\Delta t^2)
+$$
 
 {{% /fold %}}
 
