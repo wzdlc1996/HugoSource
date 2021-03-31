@@ -507,8 +507,6 @@ After the training process, i.e., we obtain the amplitude encoding vector $\ket{
 
     So, the prediction of SVM is $\textrm{sgn}(\mathbb{P}(+)-1/2)$. 
 
-
-
 ### Quantum PCA
 
 ### Quantum Neural Networks
