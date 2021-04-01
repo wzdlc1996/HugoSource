@@ -439,10 +439,10 @@ $$
 
 in which $\bm{R}$ makes the first transformation unitary, $\bm{H}$ is a Hadamard gate for $\ket{0}, \ket{1}$ subspace. With the transform the evolution driven by $\bm{J}$ can be simulated.
 
-The evolution driven by $\gamma^{-1} \bm{I}$ is trivial, now let us consider how to simulate the evolution driven by $\bm{K}$. With qRAM, one can prepare the state of
+The evolution driven by $\gamma^{-1} \bm{I}$ is trivial, now let us consider how to simulate the evolution driven by $\bm{K}$. With qRAM, one can prepare the state of (by double level addressing)
 
 $$
-\ket{x} = \frac 1 {\sqrt{\sum_{i=1}^N \|x_i\|^2}} \sum_{i=1}^N x_i^r\ket{i}\ket{r} = \frac 1 {\sqrt{N}} \sum_{i=1}^N \ket{i}\ket{x_i}
+\ket{x} = \frac 1 {\sqrt{N}} \sum_{i=1}^N \ket{i}\ket{x_i}
 $$
 
 with $\ket{x_i} =\|x_i\|^{-1}\sum_{r=1}^d x_i^r\ket{r}$. Then with the controlled rotation, we can make it to be (like we did in state preparation by qRAM, but now we encode $\|x_i\|$ instead of $x_i^r$. If the norm of each data is stored in qRAM, this procedure is also efficient.)
@@ -550,11 +550,27 @@ $$
 \hat \rho \otimes \ket{0}\bra{0} \xrightarrow{\textrm{qPCA}} \sum_{i=1}^{\mathcal{D}} p_i \ket{i}\bra{i}\otimes \ket{p_i}\bra{p_i}
 $$
 
-within exponentially short time complexity than classical case, if the number of copies of $\hat \rho$ is enough (dependent of the precision requirement). 
+within exponentially short time complexity than classical case, if the number of copies of $\hat \rho$ is enough (polynomially dependent of the precision requirement). 
 
 {{% fold "Implement qPCA on classical dataset "%}}
 
+For classical dataset, qPCA requires qRAM to load data and encode them into amplitude efficiently. When the center-shifted data (i.e., $\sum_{i=1}^N x_i = 0$) is loaded as 
+
+$$
+\frac 1 {\sqrt{N}} \sum_{r=1}^d \frac 1 {\|x^r\|} \sum_{i=1}^N x_i^r \ket{i}\ket{r} \xrightarrow[\textrm{post selection}]{\textrm{ancilla rotation}} \ket{D} = \frac 1 {\sqrt{\sum_{r=1}^d \|x^r\|^2}} \sum_{r=1}^d \|x^r\|\ket{r}\ket{x^r} 
+$$
+
+where $\ket{x^r} = \|x^r\|^{-1} \sum_{i=1}^N x_i^r\ket{i}$ and $\|x^r\|=\sum_{i=1}^N (x_i^r)^2$. Then by controlled rotation and partial trace (like we did in SVM, but here we exchange the indices of data entry and feature index), we can prepare the state of:
+
+$$
+\hat \rho = \textrm{Tr}_1 \ket{D}\bra{D} = \frac 1 {\sum_{r=1}^d \|x^r\|^2} \sum_{r,r'=1}^d \ket{r} (\sum_{i=1}^N x_i^r x_i^{r'})\bra{r'}
+$$
+
+Thus, use this state as the initial state of qPCA, we can implement the qPCA for classical data.
+
 {{% /fold %}}
+
+
 
 ### Quantum Neural Networks
 
