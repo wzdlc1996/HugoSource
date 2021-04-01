@@ -570,7 +570,60 @@ Thus, use this state as the initial state of qPCA, we can implement the qPCA for
 
 {{% /fold %}}
 
+In a recent paper ([T. Xin 2021][31]), an experimental protocol for quantum PCA has been proposed. Different from the above algorithm to find an approach for general density matrix, they use parameterized quantum circuit to find the decomposition for a fixed matrix by training set. With such variational and hybrid classical quantum approach, they claim their protocol could work well on near-term quantum device.
 
+The goal of their qPCA is to find the diagonalization of the given matrix $\hat \rho = \sum_{i=1}^{\mathcal{D}} p_i \ket{\psi_i}\bra{\psi_i}$ where $\ket{\psi_i}$ mutually orthogonal and $p_1\geq p_2\geq \cdots \geq p_{\mathcal{D}}$, i.e.
+
+$$
+\hat U \hat \rho \hat U^\dagger = \sum_{i=1}^{\mathcal{D}} p_i \ket{i}\bra{i}
+$$
+
+The theoretical support is:
+
+_[Theorem]_ : Given a semidefinite positive and non-degenerate Hermitian operator $\hat A = \sum_{j=1}^{\mathcal{D}} \lambda_j \ket{j}\bra{j}$ with $\ket{j}$ the eigenstate with eigenvalue $\lambda_j$, assuming $0\leq \lambda_1\lt \lambda_2\lt\cdots\lt \lambda_{\mathcal{D}}$ and $\sum_{j=1}^{\mathcal{D}} \lambda_j = 1$. One example is $\hat A = \frac 1 {N(N-1)} \sum_{j=1}^{\mathcal{D}} 2^{j-1} (\hat Z_j+1)$ in which $\hat Z_j$ is Pauli-$Z$ at $j$-th site. Then the solution of the following optimization problem
+
+$$
+\begin{aligned}
+\textrm{minimize} \indent & \textrm{Tr} (\hat U \hat \rho \hat U^\dagger \hat A) \\
+\textrm{subject to} \indent & \hat U^\dagger \hat U = \hat 1
+\end{aligned}
+$$
+
+would diagonalize $\hat \rho$ in the computational basis, i.e., $\hat U \hat \rho \hat U^\dagger = \sum_{i=1}^{\mathcal{D}} p_i\ket{i}\bra{i}$.
+
+{{% fold "Proof" %}}
+
+Given objection function
+
+$$
+\begin{aligned}
+L(\hat U) &= \textrm{Tr} (\hat U\hat \rho \hat U^\dagger \hat A)\\
+&= \sum_{i,j=1}^{\mathcal{D}} p_i \lambda_j \big|\bra{\psi_i}\hat U^\dagger \ket{j}\big|^2 \\
+&= \bm{p}^T \bm{\Pi}\bm{\lambda}
+\end{aligned}
+$$
+
+where $\bm{p}^T = (p_1,\cdots,p_{\mathcal{D}}), \bm{\lambda}^T=(\lambda_1,\cdots,\lambda_{\mathcal{D}})$, and $(\bm{\Pi})_{ij} = \big|\bra{\psi_i}\hat U^\dagger\ket{j}\big|^2$. By Birkhoff-von Neumann decomposition ([Wikipedia/Doubly_stochastic_matrix](https://en.wikipedia.org/wiki/Doubly_stochastic_matrix)), such matrix can be write as the weighted average of a set of permutation matrix. i.e.,
+
+$$
+\bm{\Pi} = \sum_{l=1}^k \theta_l \bm{P}_l
+$$
+
+in which $\bm{P}_l$ are permutation matrix, and $\theta_l\geq 0, \sum_{l=1}^k \theta_l=1$. Then with rearrangement iequality:
+
+$$
+x_1\leq x_2\leq\cdots\leq x_n\textrm{ and } y_1\leq \cdots y_n \Rightarrow \sum_{k=1}^n x_k y_{n+1-k} \leq \sum_{k=1}^n x_k y_{\sigma(k)} \leq \sum_{k=1}^n x_k y_k
+$$
+
+we have:
+
+$$
+L(\hat U) = \bm{p}^T \bm{\Pi}\bm{\lambda} = \sum_{l=1}^k\theta_l \bm{p}^T \bm{P}_l\bm{\lambda} \geq \bm{p}^T \bm{\lambda}
+$$
+
+Note that with the protocol, $\bm{\lambda}$ and $\bm{p}$ have the reverted order. And this lower bound is compact. With the condition that $\bm{\lambda}$ is non-degenerate, if $\hat \rho$ is also non-degenerate, the solution should be unique such that $\bra{\psi_i}\hat U^\dagger \ket{j} = \delta_{ij}$ holds. Otherwise, the permutation or re-combination in degenerated subspace is allowed, but it does not hurt the spectrum decomposition of $\hat \rho$. The theorem gets proved.
+
+{{% /fold %}}
 
 ### Quantum Neural Networks
 
@@ -606,3 +659,4 @@ Thus, use this state as the initial state of qPCA, we can implement the qPCA for
 [28]: https://arxiv.org/pdf/1512.05903.pdf
 [29]: https://ui.adsabs.harvard.edu/abs/2012PhRvL.109e0505W
 [30]: https://www.nature.com/articles/nphys3029.pdf
+[31]: https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.126.110502
