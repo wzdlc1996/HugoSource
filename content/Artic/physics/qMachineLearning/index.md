@@ -625,6 +625,12 @@ Note that with the protocol, $\bm{\lambda}$ and $\bm{p}$ have the reverted order
 
 {{% /fold %}}
 
+The qPCA via VQC (variational quantum circuit) is to minimize the objection function
+
+$$
+L(\bm{z}) = \textrm{Tr}(\hat U(\bm{z})\hat \rho \hat U(\bm{z})^\dagger \hat A)
+$$
+
 ### Quantum Neural Networks
 
 # Quantum Machine Learning for Quantum Data
