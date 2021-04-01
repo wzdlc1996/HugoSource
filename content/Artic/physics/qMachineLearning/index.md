@@ -509,7 +509,52 @@ After the training process, i.e., we obtain the amplitude encoding vector $\ket{
 
 ### Quantum PCA
 
+**Principal Component Analysis(PCA)** is a typical unsupervised learning algorithm in classical machine learning. For the given dataset $\{x_i^r\}_{i=1,\cdots,N; r=1,\cdots,d}$, PCA tries to find the principal axes of the ellipsoid determined by the distribution of dataset in $\mathbb{R}^d$. i.e., it finds the directions along which the variance of dataset projection is maximal ([Wikipedia/Principal_component_analysis](https://en.wikipedia.org/wiki/Principal_component_analysis)). Formally, the output of PCA is the solution of the following optimization problem
 
+$$
+\begin{aligned}
+\textrm{maximize} \indent & \Big((x_i - \frac 1 N \sum_{i=1}^N x_i) \cdot w\Big)^2 \\
+\textrm{subject to} \indent & w \in \mathbb{R}^d \\
+& \|w\| = 1
+\end{aligned}
+$$
+
+It can be reduced into an eigensystem problem, with omitting the principal components whose eigenvalues (variance along them) are below the threshold, PCA can also be applied for dimensionality reduction and low-rank approximation. 
+
+In 2014, S. Lloyd et al proposed the quantum version of PCA ([S. Lloyd 2014][30]). The algorithm is based on the HHL algorithm for matrix inversion, thus authors claim their algorithm is exponentially faster than classical case. (but it still sufferes the caveats of HHL algorithm). 
+
+The algorithm begins with a pure quantum way, different from SVM, qRAM is optional for qPCA. We follow the paper ([S. Lloyd 2014][30]), the relation between qPCA and classical case will be discussed at the end of this part. Given $n$ copies of quantum state $\hat \rho$, with the similar strategy in SVM, we can simulate the time evolution of
+
+$$
+\hat \mu(t) = e^{-\ti \hat \rho t} \hat \mu(0) e^{\ti \hat \rho t}
+$$
+
+efficiently. Thus, with the controlled time evolution and phase estimation, we can prepare the state of (with spectrum decomposition of $\hat \rho = \sum_{i=1}^{\mathcal{D}} p_i \ket{i}\bra{i}$):
+
+$$
+\begin{aligned}
+\sum_t \ket{t}\otimes \ket{\psi} &\rightarrow \sum_{\omega} \ket{\omega} \delta_{\omega,p_i}\otimes \sum_{i=1}^{\mathcal{D}} \ket{i}\bra{i}\psi\rangle \\
+&\rightarrow \sum_{i=1}^{\mathcal{D}} \ket{p_i}\otimes \ket{i}\bra{i}\psi\rangle
+\end{aligned}
+$$
+
+Apply this subroutine on initial state of $\hat \rho$, together with the controlled rotation, we actually achieve the state of
+
+$$
+\sum_{i=1}^{\mathcal{D}} p_i \ket{p_i}\bra{p_i}\otimes \ket{i}\bra{i} 
+$$
+
+The first part is the register storing the eigenvalue of $\hat \rho$. As an encapsulation, qPCA allows us to reach the map
+
+$$
+\hat \rho \otimes \ket{0}\bra{0} \xrightarrow{\textrm{qPCA}} \sum_{i=1}^{\mathcal{D}} p_i \ket{i}\bra{i}\otimes \ket{p_i}\bra{p_i}
+$$
+
+within exponentially short time complexity than classical case, if the number of copies of $\hat \rho$ is enough (dependent of the precision requirement). 
+
+{{% fold "Implement qPCA on classical dataset "%}}
+
+{{% /fold %}}
 
 ### Quantum Neural Networks
 
@@ -544,3 +589,4 @@ After the training process, i.e., we obtain the amplitude encoding vector $\ket{
 [27]: https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.120.050502
 [28]: https://arxiv.org/pdf/1512.05903.pdf
 [29]: https://ui.adsabs.harvard.edu/abs/2012PhRvL.109e0505W
+[30]: https://www.nature.com/articles/nphys3029.pdf
