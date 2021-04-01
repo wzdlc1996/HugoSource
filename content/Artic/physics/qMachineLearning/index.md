@@ -631,6 +631,48 @@ $$
 L(\bm{z}) = \textrm{Tr}(\hat U(\bm{z})\hat \rho \hat U(\bm{z})^\dagger \hat A)
 $$
 
+with the parameterized circuit $\hat U(\bm{z})$ by gradient descent. In their main text, they used three different type circuits to implement the algorithm. 
+
+{{% fold "Fast-grad for VQC" %}}
+
+In the paper, they used the VQC of form
+
+$$
+\hat U(\bm{z}) = \prod_i \textrm{CNOT}_{i,f(i)} \prod_i e^{\ti z_i \sigma^y_i}
+$$
+
+in which function $f$ denotes which two qubits are connected by $\textrm{CNOT}$ gate. This type can be easily to compute the gradient, with the property that: 
+
+$$
+\hat H^2 = \hat 1 \Rightarrow [\hat H, \hat O] = \ti\Big(e^{-\ti \hat H \pi/4}\hat O e^{\ti \hat H \pi/4} - e^{\ti\hat H \pi/4} \hat O e^{-\ti \hat H \pi/4}\Big)
+$$
+
+This can be proved by noticing $e^{-\ti \phi \hat H} = \cos\phi -\ti \sin \phi \hat H$
+
+$$
+\begin{aligned}
+\textrm{r.h.s.} &=\ti\Big(e^{-\ti \hat H \pi/4}\hat O e^{\ti \hat H \pi/4} - e^{\ti\hat H \pi/4} \hat O e^{-\ti \hat H \pi/4}\Big)  \\
+&=\ti\Big((\frac {\sqrt{2}} 2 - \ti \frac {\sqrt{2}} 2\hat H) \hat O (\frac {\sqrt{2}} 2 + \ti \frac {\sqrt{2}} 2\hat H) - (\frac {\sqrt{2}} 2 + \ti \frac {\sqrt{2}} 2\hat H)\hat O(\frac {\sqrt{2}} 2 - \ti \frac {\sqrt{2}} 2\hat H)\Big) \\
+&=\ti\Big(- \frac \ti 2 \hat H \hat O + \frac \ti 2 \hat O \hat H + \text{c.c.}\Big) \\
+&=[\hat H, \hat O] = \textrm{l.h.s.}
+\end{aligned}
+$$
+
+Thus, the gradient of objection with $F(\bm{z}) = \braket{\hat U^\dagger(\bm{z}) \hat O \hat U(\bm{z})}$ is
+
+$$
+\begin{aligned}
+\partial_j F(\bm{z}) &= \Big\langle\prod_{k=1}^{j-1}\hat U_k^\dagger(z_k) \partial_z \hat U_j^\dagger (z_j)\prod_{k=j+1}^K \hat U_k^\dagger(z_k) \hat O \hat U(\bm{z})\Big\rangle + \Big\langle\hat U^\dagger(\bm{z}) \hat O\prod_{k=j+1}^K \hat U_k^\dagger(z_k)\partial_z \hat U_j^\dagger (z_j)\prod_{k=1}^{j-1}\hat U_k^\dagger(z_k)  \Big\rangle \\
+&=-\ti \langle \hat U^\dagger_{1\rightarrow j-1} [\hat H_j, \hat U^\dagger_{j\rightarrow K}\hat O \hat U_{K\rightarrow j}] \hat U_{j-1\rightarrow 1}\rangle \\
+&=\langle \hat U^\dagger_{1\rightarrow j-1} \hat U^\dagger_j(\pi/4)\hat U^\dagger_{j\rightarrow K}\hat O \hat U_{K\rightarrow j}\hat U_j(\pi/4)  \hat U_{j-1\rightarrow 1} \rangle - (\pi/4\leftrightarrow -\pi/4) \\
+&= F(z_j + \pi/4) - F(z_j-\pi/4)
+\end{aligned} 
+$$
+
+Thus, the gradient can be obtained efficiently.
+
+{{% /fold %}}
+
 ### Quantum Neural Networks
 
 # Quantum Machine Learning for Quantum Data
