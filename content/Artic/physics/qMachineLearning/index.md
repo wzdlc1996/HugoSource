@@ -509,6 +509,8 @@ After the training process, i.e., we obtain the amplitude encoding vector $\ket{
 
 ### Quantum PCA
 
+
+
 ### Quantum Neural Networks
 
 # Quantum Machine Learning for Quantum Data
