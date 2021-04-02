@@ -673,8 +673,6 @@ Thus, the gradient can be obtained efficiently.
 
 {{% /fold %}}
 
-### Quantum Neural Networks
-
 # Quantum Machine Learning for Quantum Data
 
 [1]: https://en.wikipedia.org/wiki/Data_science
