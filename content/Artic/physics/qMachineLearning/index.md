@@ -1,12 +1,12 @@
 ---
-title: "Quantum Machine Learning"
+title: "Quantum Machine Learning: Quantum Algorithms to Classical Data"
 date: 2020-12-19T14:16:00+08:00
 lastmod: 2020-02-10T18:00:00+08:00
-draft: true
+draft: false
 tags: ["quantum"]
 categories: ["Reviews"]
 toc: true
-summary: "Quantum machine learning is the integration of quantum algorithms within machine learning programs. Generally, we have four different approaches for this purpose, by the type of data (quantum state/data or classical data) and type of algorithm or platform (quantum algorithm/computer or classical algorithm/computer). In this report, we will discuss the current state of quantum machine learning, and the potential application and further development in the NISQ(Noisy Intermediate-Scale Quantum) era."
+summary: "Quantum machine learning is the integration of quantum algorithms within machine learning programs. Generally, we have four different approaches for this purpose, by the type of data (quantum state/data or classical data) and type of algorithm or platform (quantum algorithm/computer or classical algorithm/computer). In this report, we focus on an elementary discussion about aspect of the quantum approach to classical data. The more attractive part about quantum approach to quantum data will be left for future posts."
 ---
 
 # Data Science and Machine Learning
@@ -207,13 +207,13 @@ by the map, we can just consider the case of coefficients matrix to be **Hermiti
 
 {{% fold "Phase Estimation" %}}
 
-The `Phase Estimation` algorithm try to find an eigenvalue of given unitary operator $\hat U$ and one of its eigenvector $\ket{\psi}$. i.e., to find the value of $\theta\in [0,1)$ in the equation([Wikipedia/Quantum_phase_estimation_algorithm][24])
+The `Phase Estimation` algorithm tries to find an eigenvalue of given unitary operator $\hat U$ with the eigenvector $\ket{\psi}$ given. i.e., to find the value of $\theta\in [0,1)$ in the equation([Wikipedia/Quantum_phase_estimation_algorithm][24])
 
 $$
 \hat U\ket{\psi} = e^{2\pi \ti \theta}\ket{\psi}
 $$
 
-The operation $\hat U_{\textrm{PE}}$ can be implemented by the following circuit. Given $n$-qubit register initialized by $n$ Hadamard gates as
+The operation can be implemented by the following circuit. Given $n$-qubit register initialized by $n$ Hadamard gates as
 
 $$
 \ket{\textrm{ini}} = \Big(\frac 1 {\sqrt{2}} (\ket{0}+\ket{1})\Big)^{\otimes n} \otimes \ket{\psi}
@@ -255,7 +255,7 @@ Though with these caveats, HHL algorithm works well as an approximately method f
 
 **Support Vector Machine(SVM)** is one of the most important classical learning algorithm mainly for data classification. One of its advantages is that we understand how it works better than most black-box algorithms. 
 
-The training set has $N$ data points as $D=\{(x_j; y_j), x_j\in \mathbb{R}^d, y_j =\pm 1\}$. SVM tries to find a maximum-margin hyperplane with normal vector $w\in \mathbb{R}^d$ that divides these points into two classes. Formally, the point $x$ should be separated by the value of $w\cdot x + b$. If $w\cdot x + b \geq 1$, then this point is of class $y = 1$. While $w\cdot x + b \leq -1$ it should be of $y=-1$. Samples on the margin (i.e. $w\cdot x+b=\pm 1$ are usually called **support vectors**) The SVM training is to find parameters $w, b$ such that
+The training set has $N$ data points as $D=\{(x_j; y_j): x_j\in \mathbb{R}^d, y_j =\pm 1\}$. SVM tries to find a maximum-margin hyperplane with normal vector $w\in \mathbb{R}^d$ that divides these points into two classes. Formally, the point $x$ should be separated by the value of $w\cdot x + b$. If $w\cdot x + b \geq 1$, then this point is of class $y = 1$. While $w\cdot x + b \leq -1$ it should be of $y=-1$. Samples on the margin (i.e. $w\cdot x+b=\pm 1$ are usually called **support vectors**) The SVM training is to find parameters $w, b$ such that
 
 $$
 \forall (x_j; y_j) \in D : y_j(w\cdot x_j + b) \geq 1 .
@@ -423,8 +423,8 @@ The basis transformation to diagonalize matrix $\hat J$ can be achieved by the f
 $$
 [\ket{0}, \ket{1},\cdots,\ket{N}]\rightarrow[\ket{0}, \ket{1},\cdots,\ket{N}]
 \left[
-\begin{array}{cc|c}
-1 & 0 & & \\
+\begin{array}{cc|ccc}
+1 & 0 & & & \\
 \hline
 0 & 1/\sqrt{N} & & & \\
 \vdots & \vdots & & \bm{R} & \\
@@ -439,7 +439,7 @@ $$
 
 in which $\bm{R}$ makes the first transformation unitary, $\bm{H}$ is a Hadamard gate for $\ket{0}, \ket{1}$ subspace. With the transform the evolution driven by $\bm{J}$ can be simulated.
 
-The evolution driven by $\gamma^{-1} \bm{I}$ is trivial, now let us consider how to simulate the evolution driven by $\bm{K}$. With qRAM, one can prepare the state of (by double level addressing)
+The evolution driven by $\gamma^{-1} \bm{I}$ is trivial, now let us consider how to simulate the evolution driven by $\bm{K}$. With qRAM, one can prepare the state of (by two-level addressing)
 
 $$
 \ket{x} = \frac 1 {\sqrt{N}} \sum_{i=1}^N \ket{i}\ket{x_i}
@@ -459,7 +459,18 @@ $$
 
 If the kernel function $k(x_i,x_j)=x_i\cdot x_j$, then it is the value of $\braket{x_i|x_j}\|x_i\|\|x_j\|$. With tensor encoding by $\ket{\phi(x_i)} = \ket{x_i}^{\otimes l}$, the coefficients are $\braket{\phi(x_i)|\phi(x_j)} = (\bra{x_i}x_j\rangle)^l$. Thus with this trick, one can prepare any polynomial kernel matrix. 
 
-Now we have the kernel matrix as $\hat \rho = \hat K / \textrm{Tr}\bm{K}$. Since $\textrm{Tr}\bm{K}/\textrm{Tr}\bm{F} \sim \mathcal{O}(1)$, this time factor would not hurt the efficiency of algorithm. The time evolution driven by $\hat \rho$ can be done with the following procedure
+Now we have the kernel matrix as $\hat \rho = \hat K / \textrm{Tr}\bm{K}$. Since $\textrm{Tr}\bm{K}/\textrm{Tr}\bm{F} \sim \mathcal{O}(1)$, this time factor would not hurt the efficiency of algorithm. The trace of kernel matrix can be simply estimated by the following procedure:
+
+1.  Generate the Hamiltonian $\hat H = \sum_{j=1}^N \|x_j\| \ket{j}\bra{j}\otimes \sigma_x$ by qRAM.
+2.  Appling $e^{-\ti \hat H t}$ to the state $\ket{\psi}=\frac 1 {\sqrt{N}} \sum_{j=1}^N \ket{j}\ket{0}$. This results in
+
+    $$
+    \ket{\psi(t)} = \frac 1 {\sqrt{N}}\sum_{j=1}^N \Big(\cos (\|x_j\|t)\ket{j}\ket{0} -\ti \sin(\|x_j\|t)\ket{j}\ket{0} \Big)
+    $$
+
+    When $t$ is small enough, the probability to measure the ancilla qubit in $\ket{1}$ is $\frac 1 N \sum_{j=1}^N \|x_j\|^2 t^2$, which allows the estimation of the trace of kernel matrix.
+
+The time evolution driven by $\hat \rho$ can be done with the following procedure
 
 $$
 \begin{aligned}
@@ -494,7 +505,7 @@ After the training process, i.e., we obtain the amplitude encoding vector $\ket{
     \frac 1 {\sqrt{2}} \Big(\ket{0}\ket{u} + \ket{1} \ket{\tilde{x}}\Big)
     $$
 
-4.  Make a measurement on ancilla qubit with the basis of $\ket{\pm} = 2^{1/2}(\ket{0}\pm\ket{1})$, the probability to find $\ket{+}$ is
+4.  Make a measurement on ancilla qubit with the basis of $\ket{\pm} = 2^{-1/2}(\ket{0}\pm\ket{1})$, the probability to find $\ket{+}$ is
 
     $$
     \begin{aligned}
@@ -673,7 +684,6 @@ Thus, the gradient can be obtained efficiently.
 
 {{% /fold %}}
 
-# Quantum Machine Learning for Quantum Data
 
 [1]: https://en.wikipedia.org/wiki/Data_science
 [2]: https://www.sciencedirect.com/topics/engineering/keplers-law
@@ -684,7 +694,7 @@ Thus, the gradient can be obtained efficiently.
 [7]: https://arxiv.org/abs/1706.07646
 [8]: https://arxiv.org/abs/2001.03622
 [9]: https://arxiv.org/abs/1804.11326
-[10]: https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.2017.0551
+[10]: https://royalsocietypublishing.org/doi/10.1098/rspa.2017.0551
 [11]: https://arxiv.org/abs/1307.0411
 [12]: https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf
 [13]: https://www.sciencedirect.com/science/article/pii/S0747717108800132?via%3Dihub
