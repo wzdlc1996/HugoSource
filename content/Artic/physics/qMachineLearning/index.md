@@ -475,7 +475,7 @@ The time evolution driven by $\hat \rho$ can be done with the following procedur
 $$
 \begin{aligned}
 \textrm{Tr}_1 e^{-\ti \Delta t \hat S} (\hat \rho \otimes \hat \mu) e^{\ti \Delta t \hat S}
-&= \hat \mu - \ti \Delta t[\hat S, \hat\rho \otimes \hat \mu] + \mathcal{O}(\Delta t^2) \\
+&= \hat \mu - \ti \Delta t\textrm{Tr}_1[\hat S, \hat\rho \otimes \hat \mu] + \mathcal{O}(\Delta t^2) \\
 &= \hat \mu - \ti \Delta t [\hat \rho, \hat \mu] + \mathcal{O}(\Delta t^2) \\
 &\approx e^{-\ti \Delta t \hat \rho} \hat \mu e^{\ti \Delta t\hat \rho} 
 \end{aligned}
@@ -540,19 +540,19 @@ $$
 \hat \mu(t) = e^{-\ti \hat \rho t} \hat \mu(0) e^{\ti \hat \rho t}
 $$
 
-efficiently. Thus, with the controlled time evolution and phase estimation, we can prepare the state of (with spectrum decomposition of $\hat \rho = \sum_{i=1}^{\mathcal{D}} p_i \ket{i}\bra{i}$):
+efficiently. Thus, with the controlled time evolution and phase estimation, we can prepare the state of (with spectrum decomposition of $\hat \rho = \sum_{i=1}^{\mathcal{D}} p_i \ket{\chi_i}\bra{\chi_i}$):
 
 $$
 \begin{aligned}
-\sum_t \ket{t}\otimes \ket{\psi} &\rightarrow \sum_{\omega} \ket{\omega} \delta_{\omega,p_i}\otimes \sum_{i=1}^{\mathcal{D}} \ket{i}\bra{i}\psi\rangle \\
-&\rightarrow \sum_{i=1}^{\mathcal{D}} \ket{p_i}\otimes \ket{i}\bra{i}\psi\rangle
+\sum_t \ket{t}\otimes e^{-\ti \hat \rho t}\ket{\psi} &\rightarrow \sum_{\omega} \ket{\omega} \delta_{\omega,p_i}\otimes \sum_{i=1}^{\mathcal{D}} \ket{\chi_i}\bra{\chi_i}\psi\rangle \\
+&\rightarrow \sum_{i=1}^{\mathcal{D}} \ket{p_i}\otimes \ket{\chi_i}\bra{\chi_i}\psi\rangle
 \end{aligned}
 $$
 
 Apply this subroutine on initial state of $\hat \rho$, together with the controlled rotation, we actually achieve the state of
 
 $$
-\sum_{i=1}^{\mathcal{D}} p_i \ket{p_i}\bra{p_i}\otimes \ket{i}\bra{i} 
+\sum_{i=1}^{\mathcal{D}} p_i \ket{p_i}\bra{p_i}\otimes \ket{\chi_i}\bra{\chi_i} 
 $$
 
 The first part is the register storing the eigenvalue of $\hat \rho$. As an encapsulation, qPCA allows us to reach the map
