@@ -649,10 +649,10 @@ with the parameterized circuit $\hat U(\bm{z})$ by gradient descent. In their ma
 In the paper, they used the VQC of form
 
 $$
-\hat U(\bm{z}) = \prod_i \textrm{CNOT}_{i,f(i)} \prod_i e^{\ti z_i \sigma^y_i}
+\hat U(\bm{z}) = \prod_i \prod_{j\in F_i} \textrm{CNOT}_{i,j} \prod_i e^{\ti z_i \sigma^y_i}
 $$
 
-in which function $f$ denotes which two qubits are connected by $\textrm{CNOT}$ gate. This type can be easily to compute the gradient, with the property that: 
+in which set $F_i$ denotes the qubits connected to $i$-th qubit with $\textrm{CNOT}$ gate. This type can be easily to compute the gradient, with the property that: 
 
 $$
 \hat H^2 = \hat 1 \Rightarrow [\hat H, \hat O] = \ti\Big(e^{-\ti \hat H \pi/4}\hat O e^{\ti \hat H \pi/4} - e^{\ti\hat H \pi/4} \hat O e^{-\ti \hat H \pi/4}\Big)
