@@ -2,6 +2,12 @@
 
 Is the source files of my [Blog on Github](https://wzdlc1996.github.io).
 
+## Todo list
+
+-  [x]  Math equation
+-  [ ]  Code line number
+-  [ ]  Neat posts cover
+
 ## MathJax Adjust
 
 Now the theme is automatically support mathjax. One does not need any post-process!
