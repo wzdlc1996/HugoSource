@@ -209,7 +209,7 @@ $$
 
 Thus, he defined the symmetry transformation as a set of one-to-one maps between unit rays with such quantity invariant, i.e., inner product preserved.
 
-The proof of Wigner's theorem can then be formally stated.
+The proof of Wigner's theorem can then be formally stated([V. Bargmann 1964][2]).
 
 For the case of $\dim \mathcal{H} = 1$, with $T e = e'$ we can simply define $\hat V_1 (\alpha\ket{e}) = \alpha \ket{e}$ and $\hat V_2 (\alpha\ket{e}) = \alpha^* \ket{e}$. Such operators $\hat V_1, \hat V_2$ are obviously compatible with $T$. $\hat V_1$ is unitary and $\hat V_2$ is antiunitary. 
 
@@ -248,6 +248,7 @@ If $\hat U_T$ is unitary, the
 ## Reference
 
 [1]: https://doi.org/10.1007/978-3-663-02555-9
+[2]: https://doi.org/10.1007/978-3-662-09203-3_41
 
 1.  Wigner, E. (1931). Gruppentheorie und ihre Anwendung auf die Quantenmechanik der Atomspektren. [doi:10.1007/978-3-663-02555-9](https://doi.org/10.1007/978-3-663-02555-9)
 2.  Shimony, Abner. Wigner on Foundations of Quantum Mechanics. Part I: Particles and Fields. Part II: Foundations of Quantum Mechanics (1997). [doi:10.1007/978-3-662-09203-3_41](https://doi.org/10.1007/978-3-662-09203-3_41)
