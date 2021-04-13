@@ -226,7 +226,7 @@ Function $\chi:\mathbb{C}\rightarrow \mathbb{C}$ acts according to the property 
 We prove the theorem in three stages
 
 1.  For 1 dimensional case, i.e., $\mathcal{H} = \textrm{span}\{\ket{e}\}$. With $T e = e'$ we can simply define $\hat V_1 (\alpha\ket{e}) = \alpha \ket{e}$ and $\hat V_2 (\alpha\ket{e}) = \alpha^* \ket{e}$. Such operators $\hat V_1, \hat V_2$ are obviously compatible with $T$. $\hat V_1$ is unitary and $\hat V_2$ is antiunitary. 
-2.  For finite dimensional cases, i.e., $\dim\mathcal{H} = N \lt \infty$, the proof requires a lemma reads ([V. Bargmann 1964][2])
+2.  For countable dimensional cases, i.e., $\dim\mathcal{H} = N \leq |\mathbb{N}|$ (rigorously, $\mathcal{H}$ is [separable](https://en.wikipedia.org/wiki/Separable_space). Generally $N$ is not a natural number, but due to the nice property of separable Hilbert space, we handle it as a number.), the proof requires a lemma reads ([V. Bargmann 1964][2])
 
     _[Lemma]_: $\forall \ket{x} \in \mathcal{H}$ with decomposition $\ket{x} = \sum_{i=1}^N x_i \ket{\psi_i}$ and corresponding unit ray $x$, we have
 
@@ -268,8 +268,14 @@ We prove the theorem in three stages
     This property helps to make the "mean square error" of $\ket{x'}$ and decomposition vanish such that the Lemma gets proved. 
 
     q.e.d.
+    <br />
+    Given symmetry transformation $T$, the construction of compatible operator begins with the element $\ket{e} \in \mathcal{H}$ and its image $\ket{e'} \in T e \subset \mathcal{H'}$. Consider $\mathcal{P}, \mathcal{P'}$ are orthogonal complements of $\ket{e}, \ket{e'}$, then any vector $\ket{\psi} \in \mathcal{H}$ can be written as
+    
+    $$
+    \ket{\psi} = \alpha \ket{e} + \ket{u} \ ; \ \ket{u}\in\mathcal{P}.
+    $$
 
-    Given symmetry transformation $T$, the construction of compatible operator begins with the element $\ket{e} \in \mathcal{H}$ and its image $\ket{e'} \in T e \subset \mathcal{H'}$
+    where $\alpha = \braket{e|\psi}$. Such decomposition works also for $\ket{\psi'}\in\mathcal{H'}$ and $\ket{e'}$. 
 
 
 
