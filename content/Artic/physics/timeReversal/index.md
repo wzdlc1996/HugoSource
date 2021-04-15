@@ -272,10 +272,18 @@ We prove the theorem in three stages
     Given symmetry transformation $T$, the construction of compatible operator begins with the element $\ket{e} \in \mathcal{H}$ and its image $\ket{e'} \in T e \subset \mathcal{H'}$. Consider $\mathcal{P}, \mathcal{P'}$ are orthogonal complements of $\ket{e}, \ket{e'}$, then any vector $\ket{\psi} \in \mathcal{H}$ can be written as
     
     $$
-    \ket{\psi} = \alpha \ket{e} + \ket{u} \ ; \ \ket{u}\in\mathcal{P}.
+    \ket{\psi} = \alpha \ket{e} + \|\ket{u}\| \frac {\ket{u}} {\|\ket{u}\|} \ ; \ \ket{u}\in\mathcal{P}.
     $$
 
-    where $\alpha = \braket{e|\psi}$. Such decomposition works also for $\ket{\psi'}\in\mathcal{H'}$ and $\ket{e'}$. 
+    where $\alpha = \braket{e|\psi}$. Such decomposition works also for $\ket{\psi'}\in\mathcal{H'}$ and $\ket{e'}$. Note that $\ket{u}$ may not be normalized, and $\|\ket{u}\| = \sqrt{\braket{u|u}}$.
+
+    The construction of $\hat V$ begin with assuming $\hat V\ket{e} = \ket{e'}$. By the definition, we have $e' \in T e$. Then generally for $\psi \in \mathcal{H}$, by the lemma (noticing $\{\ket{e}, \ket{u}/\|\ket{u}\|\}$ forms a orthonormal basis in a two-dimensional subspace), we require the image $\hat V\ket{\psi}$ should satisfy
+
+    $$
+    \psi' \in T\psi \rightarrow \ket{\psi'} = \hat V\ket{\psi} = \alpha' \ket{e'} + \mu' \frac {\ket{u'}} {\|\ket{u'}\|} =\alpha'\ket{e'} + \hat R\ket{u},
+    $$
+
+    in which $|\alpha'| = |\alpha|$ and $|\mu'| = \|\ket{u}\|$. We denote $\hat R\ket{u} = \mu'\ket{u'} / \|\ket{u'}\|$. This equation gives us the fact that $\psi'\in T\psi \Rightarrow \hat R\ket{u} \in Tu$
 
 
 
