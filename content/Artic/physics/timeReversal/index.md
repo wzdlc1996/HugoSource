@@ -274,8 +274,18 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
         in which $\braket{e|u} = 0, \braket{u|u}=1$. With the lemma, if we treat $\{\ket{e}, \ket{u}\}$ as the basis of a two dimensional subspace, we get the requirement of image of $\ket{x}$ under $\hat V$ to be
 
         $$
-        Tx \ni \ket{x'} = \hat V\ket{x} = \ket{e'} + \beta' \hat V\ket{u} \Leftrightarrow |\beta'| = |\beta|, \hat V\ket{u} \in Tu\cap \mathcal{P'}
+        Tx \ni \ket{x'} = \hat V\ket{x} = \ket{e'} + \beta' \ket{u'} \Leftrightarrow |\beta'| = |\beta|, \ket{u'} \in Tu\cap \mathcal{P'}.
         $$
+
+        Note this is not a complete definition for $\hat V$ on this subset, since the map from $\beta\ket{u}$ to $\beta'\ket{u'}$ is not clear yet. We can denote this map as $R:\mathcal{P}\rightarrow \mathcal{P'}$ with the relation of
+
+        $$
+        \beta\ket{u} \mapsto R(\beta \ket{u}) = \beta'\ket{u'} = \hat V(\ket{x}- \ket{e}).
+        $$
+
+        This definition can cover all elements in $\mathcal{P}$ since the generator of $\ket{x} \xrightarrow{\braket{x|e} = 1} \ket{x}-\ket{e} \in \mathcal{P}$ is surjective(actually, bijective). 
+    
+    3.  Now we turn to analyze the behavior of map $R$. 
 
 
     3.  For any vector in $\ket{x}\in\mathcal{H}$, we have the orthogonal decomposition reads
