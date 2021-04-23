@@ -285,7 +285,11 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
 
         This definition can cover all elements in $\mathcal{P}$ since the generator of $\ket{x} \xrightarrow{\braket{x|e} = 1} \ket{x}-\ket{e} \in \mathcal{P}$ is surjective(actually, bijective). 
     
-    3.  Now we turn to analyze the behavior of map $R$. 
+    3.  Now we turn to analyze the behavior of map $R$. Since $R(\beta\ket{u}) = \beta' \ket{u'}$, we actually find that $R$ implements the map on states in the orthogonal complementary based on the transform of $T$ on rays. Namely,
+
+        $$
+        \forall \ket{x} \in x \subset \mathcal{P} \rightarrow R(\ket{x}) \in Tx \subset \mathcal{P'}
+        $$
 
 
     3.  For any vector in $\ket{x}\in\mathcal{H}$, we have the orthogonal decomposition reads
