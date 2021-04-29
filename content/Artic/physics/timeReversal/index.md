@@ -288,8 +288,29 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
     3.  Now we turn to analyze the behavior of map $R$. Since $R(\beta\ket{u}) = \beta' \ket{u'}$, we actually find that $R$ implements the map on states in the orthogonal complementary based on the transform of $T$ on rays. Namely,
 
         $$
-        \forall \ket{x} \in x \subset \mathcal{P} \rightarrow R(\ket{x}) \in Tx \subset \mathcal{P'}
+        \forall \ket{x} \in x \subset \mathcal{P} \rightarrow R(\ket{x}) \in Tx \subset \mathcal{P'}. 
         $$
+
+        We are going to prove that $R$ has the property of:
+
+        $$
+        \begin{aligned}
+        \textrm{a) } & \forall \ket{x}, \ket{y} \in\mathcal{P}\rightarrow R(\ket{x}+\ket{y}) = R(\ket{x}) + R(\ket{y}) \\
+        \textrm{b) } & \forall \ket{x} \in \mathcal{P} \rightarrow R(\lambda\ket{x}) = \chi(\lambda) R(\ket{x}) \\
+        \textrm{c) } & \forall \ket{x}, \ket{y} \in \mathcal{P} \rightarrow (R(\ket{x}), R(\ket{y})) = \chi((\ket{x},\ket{y})) = \chi(\braket{x|y})
+        \end{aligned}
+        $$
+
+        The outline of the proof:
+
+        1.  Function $\chi_s(\cdot)$.
+
+            In the beginning, we define the function $\chi_s(\cdot)$ as a state-dependent map. Formally, it is given by
+
+            $$
+            \forall \ket{s} \in \mathcal{P}\rightarrow R(\lambda \ket{s}) = \chi_s(\lambca) R(\ket{s}).
+            $$
+
 
 
     3.  For any vector in $\ket{x}\in\mathcal{H}$, we have the orthogonal decomposition reads
