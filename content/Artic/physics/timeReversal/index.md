@@ -303,13 +303,21 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
 
         The outline of the proof:
 
-        1.  Function $\chi_s(\cdot)$.
+        1.  Function $\chi_s(\cdot)$. This is the definition.
 
             In the beginning, we define the function $\chi_s(\cdot)$ as a state-dependent map. Formally, it is given by
 
             $$
-            \forall \ket{s} \in \mathcal{P}\rightarrow R(\lambda \ket{s}) = \chi_s(\lambca) R(\ket{s}).
+            \forall \ket{s} \in \mathcal{P}\rightarrow R(\lambda \ket{s}) = \chi_s(\lambda) R(\ket{s}).
             $$
+
+            This form of map $R$ is coming from the definition of $R(\beta \ket{u}) = \beta' \ket{u'}$. Additionally, we have $|\lambda| = |\chi_s(\lambda)|$, by the lemma.
+        
+        2.  Behavior of $\chi_s(\cdot)$. We are going to prove $\textrm{Re}\chi_s(x) = \textrm{Re}(x)$.
+        
+        3.  (Anti-)Linearity of $R$. We are going to prove $R(\ket{x}+\ket{y}) = R(\ket{x}) + R(\ket{y})$
+
+            Consider $\forall \ket{x}, \ket{y} \in\mathcal{P}$. If $\dim \mathcal{H} = 2$, then $\dim\mathcal{P}=1$ and $\ket{y} = \mu\ket{x}$. In this case 
 
 
 
