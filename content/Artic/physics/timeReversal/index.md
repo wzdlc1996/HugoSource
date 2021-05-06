@@ -301,7 +301,7 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
         \end{aligned}
         $$
 
-        The outline of the proof:
+        The road to the proof:
 
         1.  Function $\chi_s(\cdot)$. This is the definition.
 
@@ -314,10 +314,41 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
             This form of map $R$ is coming from the definition of $R(\beta \ket{u}) = \beta' \ket{u'}$. Additionally, we have $|\lambda| = |\chi_s(\lambda)|$, by the lemma.
         
         2.  Behavior of $\chi_s(\cdot)$. We are going to prove $\textrm{Re}\chi_s(x) = \textrm{Re}(x)$.
-        
-        3.  (Anti-)Linearity of $R$. We are going to prove $R(\ket{x}+\ket{y}) = R(\ket{x}) + R(\ket{y})$
 
-            Consider $\forall \ket{x}, \ket{y} \in\mathcal{P}$. If $\dim \mathcal{H} = 2$, then $\dim\mathcal{P}=1$ and $\ket{y} = \mu\ket{x}$. In this case 
+            With the definition of map $R$, we have $\hat V (\ket{e} + \lambda\ket{s}) = \ket{e'} + R(\lambda\ket{s}) = \ket{e'} + \chi_s(\lambda)R(\ket{s})$. Then one can write
+            
+            $$
+            \begin{aligned}
+            \forall \ket{s_1}, \ket{s_2}\in\mathcal{P}\rightarrow & \\
+            |1+\lambda_1^*\lambda_2 \braket{s_1|s_2}|^2 &= |(\ket{e}+\lambda_1\ket{s_1}, \ket{e}+\lambda_2\ket{s_2})|^2\\
+            &= |(\hat V(\ket{e}+\lambda_1 \ket{s_1}), \hat V(\ket{e}+\lambda_2\ket{s_2}))|^2 \\
+            &= |1+\chi_{s_1}(\lambda_1)^* \chi_{s_2}(\lambda_2) \braket{R s_1|R s_2}|^2
+            \end{aligned}
+            $$
+
+            Since $R\ket{s} \in Ts$, one has $|\braket{s_1|s_2}|^2 = |\braket{Rs_1|Rs_2}|^2$. Together with the property of $|\lambda| = |\chi_s(\lambda)|$, the equality gets to be
+            
+            $$
+            \textrm{Re }(\lambda_1^* \lambda_2 \braket{s_1|s_2}) = \textrm{Re }\big(\chi_{s_1}(\lambda_1)^* \chi_{s_2}(\lambda_2) \braket{Rs_1| Rs_2}\big) . 
+            $$
+
+            Letting $s_1=s_2=s$, we have
+
+            $$
+            \textrm{Re }(\lambda_1^* \lambda_2) = \textrm{Re }(\chi_s(\lambda_1)^* \chi_s(\lambda_2)).
+            $$
+
+            With the definition of $\chi_s(\cdot)$ as $R(\lambda\ket{s}) = \chi_s(\lambda) R(\ket{s})$, if $\lambda=1$ we have $R(\ket{s}) = \chi_s(1) R(\ket{s}) \Rightarrow \chi_s(1) = 1$. Then letting $\lambda_1=1, \lambda_2=x$, we have
+
+            $$
+            \textrm{Re }(x) = \textrm{Re }(\chi_s(x))
+            $$
+
+            q.e.d.
+
+        3.  Linearity(Antilinearity) of $R$. We are going to prove $R(\ket{x}+\ket{y}) = R(\ket{x}) + R(\ket{y})$
+
+            Consider $\forall \ket{x}, \ket{y} \in\mathcal{P}$. If $\dim \mathcal{H} = 2$, then $\dim\mathcal{P}=1$ and $\ket{y} = \mu\ket{x}$. In this case, 
 
 
 
