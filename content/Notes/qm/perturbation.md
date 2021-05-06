@@ -89,7 +89,7 @@ Where $\hat G_n=\hat Q_n (E_n-\hat H_0)^{-1}\hat Q_n$ . They do not really solve
 1.  First order perturbation:
 
     
-$$\begin{aligned}
+    $$\begin{aligned}
     \ket{n,\lambda} &= \ket{E_n^{(0)}} + \mathcal{O}(\lambda) \\
     E_n &= E_n^{(0)} + \lambda \bra{E_n^{(0)}}\hat V \ket{E_n^{(0)}} + \mathcal{O}(\lambda^2)
     \end{aligned}$$
@@ -100,13 +100,13 @@ $$\begin{aligned}
 2.  Second order perturbation:
 
     
-$$\begin{aligned}
+    $$\begin{aligned}
     \ket{n,\lambda} &= \ket{E_n^{(0)}} + \lambda \sum_{m,m\neq n} \frac {\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}} {E_m^{(0)}-E_n^{(0)}} \ket{E_m^{(0)}} + \mathcal{O}(\lambda^2) \\
     E_n &= E_n^{(0)} + \lambda \bra{E_n^{(0)}}\hat V \ket{E_n^{(0)}} + \lambda^2 \sum_{m,m\neq n} \frac {|\bra{E_m^{(0)}}\hat V \ket{E_n^{(0)}}|^2} {E_m^{(0)}-E_n^{(0)}} + \mathcal{O}(\lambda^3)
     \end{aligned}$$
 
 
-    {{<fold "Proof">}}
+    {{< fold "Proof" >}}
 
 To compute the Second order expansion, we have:
 
