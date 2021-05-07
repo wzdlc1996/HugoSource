@@ -221,13 +221,13 @@ $$(E_n-E_n^{(0)})c_\alpha = \lambda \sum_{\beta=1}^g V_{n,\alpha;n,\beta} c_\bet
 2.  Second order perturbation:
 
     
-$$\ket{n,\lambda} = \sum_{\alpha} c_\alpha\Big( \ket{E_{n,\alpha}^{(0)}} + \sum_{m,m\neq n} \frac {\lambda V_{m,n\alpha}} {E_n-E_m^{(0)}} \ket{E_m^{(0)}} \Big) + \mathcal{O}(\lambda^2)$$
+    $$\ket{n,\lambda} = \sum_{\alpha} c_\alpha\Big( \ket{E_{n,\alpha}^{(0)}} + \sum_{m,m\neq n} \frac {\lambda V_{m,n\alpha}} {E_n-E_m^{(0)}} \ket{E_m^{(0)}} \Big) + \mathcal{O}(\lambda^2)$$
 
 
     And $c_\alpha, E_n$ can be obtained by:
 
     
-$$(E_n-E_n^{(0)})c_\alpha = \sum_{\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\beta + \mathcal{O}(\lambda^3)$$
+    $$(E_n-E_n^{(0)})c_\alpha = \sum_{\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\beta + \mathcal{O}(\lambda^3)$$
 
 
 _[Theorem]_ : if the first order perturbation has `completely` remove the degeneracy, we can use `normalized` $c_\alpha$, namely $\sum_\alpha |c_\alpha|^2=1$ from 1st perturbation here to compute the energy shift, and:
@@ -236,7 +236,7 @@ _[Theorem]_ : if the first order perturbation has `completely` remove the degene
 $$E_n-E_n^{(0)} = \sum_{\alpha,\beta=1}^g \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\neq n} \frac {\lambda^2V_{n,\alpha;m}V_{m;n,\beta}} {E_n^{(0)}-E_m^{(0)}} \Big) c_\alpha^* c_\beta + \mathcal{O}(\lambda^3)$$
 
 
-{{<fold "Proof">}}
+{{< fold "Proof" >}}
 
 In the 1st perturbation, we actually solve the coefficients by the equation $\bm{V} \bm{c} = \Delta \bm{c}$, where $\bm{c}=(c_\alpha)^T, \bm{V}=\lambda(V_{n,\alpha;n,\beta}) , \Delta = E_n-E_n^{(0)}$.
 
@@ -258,7 +258,7 @@ $$E_n-E_n^{(0)} = \bm{c}^\dagger \Big(\lambda V_{n,\alpha;n,\beta}+ \sum_{m,m\ne
 
 q.e.d.
 
-{{</fold>}}
+{{< /fold >}}
 
 # Perturbation Expansion as Unitary Transformations
 
@@ -326,7 +326,7 @@ If the time evolution operator in Schrodinger picture is $\hat U_S(t)$ , we have
 $$\hat U_I(t)=e^{\ti \hat H_0 t/\hbar} \hat U_S(t)$$
 
 
-{{<fold "Proof">}}
+{{< fold "Proof" >}}
 
 We have:
 
@@ -348,7 +348,7 @@ $$\hat U_S(t)=e^{-\ti \hat H_0 t/\hbar} \hat U_I(t)$$
 
 q.e.d.
 
-{{</fold>}}
+{{< /fold >}}
 
 _[Definition]_ : `transition probability` : let $\ket{i}$ and $\ket{f}$ be normalized eigenstates of $\hat H_0$ respect to energy $E_i,E_f$ . Start at state $\ket{i}$ at $t=0$ , evolve over time $t$ , the prabability of final state $\ket{f}$ is :
 
@@ -362,7 +362,7 @@ Here we can compute the transition probability order by order by the order-by-or
 $$\bra{f}\hat U_I(t)\ket{i} = \bra{f}i\rangle + \frac {-\ti} \hbar \int_{t_1=0}^t e^{\ti(E_f-E_i)t_1/\hbar} V_{fi}(t)\td t_1 +\cdots$$
 
 
-{{<fold "Proof">}}
+{{< fold "Proof" >}}
 
 The expression in the definition is caused by the $e^{\ti \hat H_0 t/\hbar}$ will just contribute a phase factor, which will not change the probability.
 
@@ -390,7 +390,7 @@ Then we can write the integral as:
 $$\bra{f}\hat U_I(t)\ket{i} = \bra{f}i\rangle + \frac {-\ti} \hbar \int_{t_1=0}^t e^{\ti(E_f-E_i)t_1/\hbar} V_{fi}(t)\td t_1 +\cdots$$
 
 
-{{</fold>}}
+{{< /fold >}}
 
 ## Transition Probability: Constant Perturbation
 
