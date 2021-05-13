@@ -305,6 +305,8 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
 
         1.  Function $\chi_s(\cdot)$. This is the definition.
 
+            <br />
+
             In the beginning, we define the function $\chi_s(\cdot)$ as a state-dependent map. Formally, it is given by
 
             $$
@@ -313,7 +315,9 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
 
             This form of map $R$ is coming from the definition of $R(\beta \ket{u}) = \beta' \ket{u'}$. Additionally, we have $|\lambda| = |\chi_s(\lambda)|$, by the lemma.
         
-        2.  Behavior of $\chi_s(\cdot)$. We are going to prove $\textrm{Re}\chi_s(x) = \textrm{Re}(x)$.
+        2.  Behavior of $\chi_s(\cdot)$. We are going to prove $\textrm{Re}\chi_s(x) = \textrm{Re}(x)$.  
+
+            <br />
 
             With the definition of map $R$, we have $\hat V (\ket{e} + \lambda\ket{s}) = \ket{e'} + R(\lambda\ket{s}) = \ket{e'} + \chi_s(\lambda)R(\ket{s})$. Then one can write
             
@@ -347,6 +351,8 @@ Now, let us begin the proof of Wigner's theorem. We prove it in three stages
             q.e.d.
 
         3.  Linearity(Antilinearity) of $R$. We are going to prove $R(\ket{x}+\ket{y}) = R(\ket{x}) + R(\ket{y})$
+
+            <br />
 
             Consider $\forall \ket{x}, \ket{y} \in\mathcal{P}$. If $\dim \mathcal{H} = 2$, then $\dim\mathcal{P}=1$ and $\ket{y} = \mu\ket{x}$. In this case, 
 
