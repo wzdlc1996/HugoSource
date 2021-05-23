@@ -197,7 +197,15 @@ The proof of Wigner theorem can be seen in [physics/wignerTheoremSym]({{< ref "/
 
 ### Anti-unitarity of Time Reversal
 
-Wigner's proposal should not be limited by the word "symmetry". It actually states that any transformation who preserves the transition probability, then its representation is unitary or anti-unitary transform on Hilbert space. Time reversal 
+Wigner's proposal should not be limited by the word "symmetry". It actually states that any transformation who preserves the transition probability, then its representation is unitary or anti-unitary transform on Hilbert space. Time reversal transformation is one of such transformations([Bryan W. Roberts 2016][3]).
+
+{{< fold "Note: Time reversal preserve transition probability" >}}
+
+In quantum mechanics, the quantum state is described by the vector in a Hilbert space(up to a global factor). Orthogonality between two quantum states means their physics is different. i.e., if $\braket{\psi_1|\psi_2}=0$, then there exists a measurement to distinguish them deterministically. 
+
+
+
+{{< /fold >}}
 
 
 
@@ -209,7 +217,9 @@ Wigner's proposal should not be limited by the word "symmetry". It actually stat
 
 [1]: https://doi.org/10.1007/978-3-663-02555-9
 [2]: https://doi.org/10.1007/978-3-662-09203-3_41
+[3]: https://arxiv.org/pdf/1607.07388.pdf
 
 1.  Wigner, E. (1931). Gruppentheorie und ihre Anwendung auf die Quantenmechanik der Atomspektren. [doi:10.1007/978-3-663-02555-9](https://doi.org/10.1007/978-3-663-02555-9)
 2.  Shimony, Abner. Wigner on Foundations of Quantum Mechanics. Part I: Particles and Fields. Part II: Foundations of Quantum Mechanics (1997). [doi:10.1007/978-3-662-09203-3_41](https://doi.org/10.1007/978-3-662-09203-3_41)
-2.  Bargmann, V. (1964, July 01). Note on Wigner's theorem on Symmetry operations. [doi:10.1063/1.1704188 ](https://doi.org/10.1063/1.1704188 )
+3.  Bargmann, V. (1964, July 01). Note on Wigner's theorem on Symmetry operations. [doi:10.1063/1.1704188 ](https://doi.org/10.1063/1.1704188 )
+4.  Bryan W. Roberts (2016). Three myths about time reversal in quantum theory. [arxiv:1607.07388](https://arxiv.org/abs/1607.07388)
