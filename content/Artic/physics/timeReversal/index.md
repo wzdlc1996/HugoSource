@@ -201,7 +201,33 @@ Wigner's proposal should not be limited by the word "symmetry". It actually stat
 
 {{< fold "Note: Time reversal preserve transition probability" >}}
 
-In quantum mechanics, the quantum state is described by the vector in a Hilbert space(up to a global factor). Orthogonality between two quantum states means their physics is different. i.e., if $\braket{\psi_1|\psi_2}=0$, then there exists a measurement to distinguish them deterministically. 
+In quantum mechanics, the quantum state is described by the vector in a Hilbert space(up to a global factor). Orthogonality between two quantum states means their physics is different. i.e., if $\braket{\psi_1|\psi_2}=0$, then there exists a measurement to distinguish them deterministically. Time reversal should not change this property, since to our intuition, or our knowledge about classical mechanics, time reversal would not lead us find any difference on the relation between two states. The state of system does change under time reversal by $s\rightarrow Ts$, but the reference changes too as $r\rightarrow Tr$. If $s\neq r$ (in the sense of they are distinguishable), then $Ts \neq Tr$. The state in the classical context is actually the basis in quantum mechanics. Thus, any two orthogonal quantum states should left orthogonal under time reversal. 
+
+To show this requirement (which can also be treated as the priori assumption of the time reversal in quantum mechanics) makes time reversal preserve the inner product, we prove the Uhlhorn's theorem
+
+_[Theorem]_: (Uhlhorn) For the transformation on the space of unit rays $\mathscr{H}\ni\phi = \{e^{\ti \theta} \ket{\phi}: \ket{\phi} \in \mathcal{H}, \braket{\psi|\psi}=1, \theta \in \mathbb{R}\}$ such that 
+
+$$
+\forall \psi,\phi \in \mathscr{H}, (\psi,\phi)=0 \Leftrightarrow (T\psi, T\phi) = 0,
+$$
+
+then,
+
+$$
+\forall \psi,\phi\in\mathscr{H}, |(T\psi,T\phi)|^2 = |(\psi,\phi)|^2.
+$$
+
+To prove this, assume there exists two states whose inner product is not preserved by $T$. i,e, $\exists x, y \in\mathscr{H} \rightarrow (Tx, Ty) \neq (x,y)$. Since $(x,y)\neq 0, y\neq 0$ (or the inequality would not hold by the condition), we can find
+
+$$
+z = x - \frac {(y,x)}{(y,y)} y,
+$$
+
+which is orthogonal to $y$. Then,
+
+$$
+(Tx, Ty) - (\frac {(y,x)} {(y,y)} y, y) \neq (x,y) - (\frac {(y,x)} {(y,y)}, y) = (z,y) = 0
+$$
 
 
 
