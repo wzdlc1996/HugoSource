@@ -2,7 +2,7 @@
 title: "Complexity in Quantum Computing"
 date: 2021-05-31T14:16:00+08:00
 lastmod: 2021-05-31T18:00:00+08:00
-draft: false
+draft: true
 tags: ["quantum"]
 categories: ["Reviews"]
 toc: true
