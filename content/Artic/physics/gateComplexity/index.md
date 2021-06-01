@@ -27,7 +27,7 @@ $$
 
 where $\hat H(s) = \sum_{j=1}^N y_j(s) \hat O_j \ ; \ \|\hat O_j\| = 1$ and the time-order exponential function is defined as in ([wikipedia/ordered_exponential][2]). The basis $\hat O_j$, for example, in the qubit model we can choose the set of all two-local operators. The matrix norm can be any legal norm. This unitary operator can be approximated by the product of infinitesimal time evolution. Then we define the cost by the "query times" of basis.
 
-_[Definition]_: (Circuit cost). For a given set $\{\hat O_1,\cdots,\hat O_J\}$ in the Lie algebra of $d^n$-dimension (where $d$ is the dimension of local unit(qubit $d=2$) and $n$ is the number of units) $su(d^n)$ of **traceless** Hermitian matrix normalized as $\|\hat O_j\|=1$. The cost of unitary operator $\hat U$ is the infimum 
+_[Definition]_: (Circuit cost). For a given set $\{\hat O_1,\cdots,\hat O_J\}$ in the Lie algebra of $d^n$-dimension (where $d$ is the dimension of local unit(qubit $d=2$) and $n$ is the number of units) $\mathfrak{su}(d^n)$ of **traceless** Hermitian matrix normalized as $\|\hat O_j\|=1$. The cost of unitary operator $\hat U$ is the infimum 
 
 $$
 C(\hat U) := \inf \int_0^1 \td s \ \sum_{j=1}^J |y_j(s)|,
@@ -35,8 +35,63 @@ $$
 
 over all continuous functions $y_j: [0,1] \rightarrow \mathbb{R}$ so that $\hat U = \mathcal{T}\exp\Big( - \ti \int_0^1 \hat H(s) \td s \Big)$ and $\hat H= \sum_{j=1}^N y_j(s) \hat O_j$ are satisfied. Note $\hat O_j$s are traceless since the constant term contributes a global phase. 
 
-<!-- tbc, bloch sphere view -->
+{{< fold "Case of su(2)" >}}
 
+As the simplest case, we consider the situation of $n=1, d=2$, i.e., the unitary operator in $U(2)$. This is also the complexity of single qubit gates. 
+
+The generic form of $2\times 2$ unitary operator reads (up to a global phase or $U(1)$ freedom.)
+
+$$
+\bm{U} = \begin{bmatrix}
+u & v \\
+-v^* & u^*
+\end{bmatrix} \ \textrm{in which} \ |u|^2 + |v|^2 = 1.
+$$
+
+With the embedding of Bloch sphere, any $\bm{U}$ corresponds to a rotation on the Bloch sphere $\mathbb{S}^2$, according to the relation of
+
+$$
+\begin{aligned}
+\bm{U} &= e^{-\ti \sum_{i=1}^3 x^i \sigma^i} = \bm{I} \cos \|\bm{x}\|_2 - \ti \frac {\bm{x}\cdot \bm{\sigma}} {\|\bm{x}\|_2} \sin \|\bm{x}\|_2 \\
+&\sim e^{-\ti 2\theta \bm{n}\cdot \bm{J}} = \tilde{\bm{U}} \in SO(3)
+\end{aligned},
+$$
+
+where $\theta = \|\bm{x}\|_2, \bm{n} = \bm{x} / \|\bm{x}\|_2$, and $\bm{J}$ is the generator of $\mathfrak{so}(3)$. The relation between these two  representation is, with the Bloch sphere map of
+
+$$
+\mathbb{C}^2 \ni \bm{z} = \begin{bmatrix}
+e^{-\ti \phi / 2} \cos \frac \theta 2 \\
+e^{\ti \phi / 2} \sin \frac \theta 2
+\end{bmatrix} \sim (\sin\theta \cos \phi, \sin\theta \sin \phi, \cos\theta) = \tilde{\bm{z}} \in \mathbb{S}^2,
+$$
+
+that
+
+$$
+\bm{U} \bm{z} \sim \tilde{\bm{U}} \tilde{\bm{z}}.
+$$
+
+Thus, with this relation, we can map the approximator driven by $\hat H(s) \in\textrm{span }\mathfrak{su}(2)$ to the linear combination of $\mathfrak{so}(3)$. The latter one has the geometric meaning of infinitesimal rotation in $\mathbb{S}^2$. This fact provides us the equation to compute the cost of any operator in $U(2)$, by the following procedure
+
+1.  Map the unitary operator(matrix) $\hat U$ to the rotation on $\mathbb{S}^2$, described as $(\bm{n}, \theta)$ with axis $\bm{n}$ and angle $\theta$,
+2.  Find the corresponding rotation generator $\{\bm{n}_j\}$ of the given set $\{\hat O_j\}$.
+3.  Find the best approximation of $(\bm{n}, \theta)$ by $\{\bm{R}_j\}$ as the product of a sequence of infinitesimal rotation
+
+    $$
+    (\bm{n},\theta) = \lim_{\min\{\delta\theta_i\}\rightarrow 0}\prod_{i=1}^N (\bm{n}_i,\delta \theta_i).
+    $$
+
+    The "best" means the arc length $s = \sum_i \delta \theta_i$ is minimized over all possible approximation. Note this arc length is different from usual definition in geometry, this is the role of the restricted generator set $\{\hat O_j\}$. In the limit of $\delta\theta_i \rightarrow 0$, ordered exponential of operators(matrix) returns to the product up to a higher order error, like the circuit decomposition. 
+4.  The circuit complexity 
+
+    $$
+    C(\hat U) = \frac 1 2 s.
+    $$
+
+    The factor $s$ comes from the relation between $\theta \bm{n}\cdot\bm{\sigma} \rightarrow 2\theta \bm{n} \cdot \bm{J}$, since the norm of Pauli matrices and generator $\bm{J}$ are $1$. Common generators of $\mathfrak{su}(2)$ has the norm of $1/2$. 
+
+{{< /fold >}}
 
 # Reference
 
