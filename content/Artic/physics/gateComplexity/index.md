@@ -27,7 +27,7 @@ $$
 
 where $\hat H(s) = \sum_{j=1}^N y_j(s) \hat O_j \ ; \ \|\hat O_j\| = 1$ and the time-order exponential function is defined as in ([wikipedia/ordered_exponential][2]). The basis $\hat O_j$, for example, in the qubit model we can choose the set of all two-local operators. The matrix norm can be any legal norm. This unitary operator can be approximated by the product of infinitesimal time evolution. Then we define the cost by the "query times" of basis.
 
-_[Definition]_: (Circuit cost). For a given set $\{\hat O_1,\cdots,\hat O_J\}$ in the Lie algebra of $d^n$-dimension (where $d$ is the dimension of local unit(qubit $d=2$) and $n$ is the number of units) $\mathfrak{su}(d^n)$ of **traceless** Hermitian matrix normalized as $\|\hat O_j\|=1$. The cost of unitary operator $\hat U$ is the infimum 
+_[Definition]_: (Circuit cost). For a given set $\{\hat O_1,\cdots,\hat O_J\}$ in the Lie algebra of $d^n$-dimension (where $d$ is the dimension of local unit(qubit $d=2$) and $n$ is the number of units) $\mathfrak{su}(d^n)$ of **traceless** Hermitian matrix normalized as $\|\hat O_j\|=1$. The cost of unitary operator $\hat U \in SU(d^n)$ is the infimum 
 
 $$
 C(\hat U) := \inf \int_0^1 \td s \ \sum_{j=1}^J |y_j(s)|,
@@ -35,6 +35,7 @@ $$
 
 over all continuous functions $y_j: [0,1] \rightarrow \mathbb{R}$ so that $\hat U = \mathcal{T}\exp\Big( - \ti \int_0^1 \hat H(s) \td s \Big)$ and $\hat H= \sum_{j=1}^N y_j(s) \hat O_j$ are satisfied. Note $\hat O_j$s are traceless since the constant term contributes a global phase. 
 
+<!--
 {{< fold "Case of su(2)" >}}
 
 As the simplest case, we consider the situation of $n=1, d=2$, i.e., the unitary operator in $U(2)$. This is also the complexity of single qubit gates. 
@@ -91,7 +92,16 @@ Thus, with this relation, we can map the approximator driven by $\hat H(s) \in\t
 
     The factor $s$ comes from the relation between $\theta \bm{n}\cdot\bm{\sigma} \rightarrow 2\theta \bm{n} \cdot \bm{J}$, since the norm of Pauli matrices and generator $\bm{J}$ are $1$. Common generators of $\mathfrak{su}(2)$ has the norm of $1/2$. 
 
+Then to find the circuit cost of a unitary operator in $U(2)$ need us to find the decomposition along given axes of a 3-D rotation with minimum sum of rotation angles. 
+
 {{< /fold >}}
+-->
+
+_[Definition]_: (Potential Entangling Power) A unitary operator $\hat U \in SU(d^2)$ has the potential entangling power 
+
+$$
+e(\hat U) := \log(d) \min\{\|\hat H\|: \hat U = e^{-\ti \hat H} , \hat H^\dagger = \hat H\}.
+$$
 
 # Reference
 
