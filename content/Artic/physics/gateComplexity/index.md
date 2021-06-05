@@ -11,7 +11,7 @@ summary: ""
 
 # Introduction
 
-# Circuit Complexity
+# Circuit Complexity and Entanglement
 
 In this part, we review the work of ([Eisert 2021][1])), where the circuit complexity is defined and a lower bound named as entangling power is proved. 
 
@@ -102,6 +102,35 @@ _[Definition]_: (Potential Entangling Power) A unitary operator $\hat U \in SU(d
 $$
 e(\hat U) := \log(d) \min\{\|\hat H\|: \hat U = e^{-\ti \hat H} , \hat H^\dagger = \hat H\}.
 $$
+
+{{< fold "Entangling Power and Entanglement" >}}
+
+Here we make a brief discussion about the relation between potential entangling power $e(\hat U)$ and the commonly used entanglement: the von-Neumann entropy of the reduced density matrix with respect to the separation of system. 
+
+Consider the initial state $\hat \rho = \hat \rho_A \otimes \hat \rho_B$, under the unitary operator $\hat U$, the entanglement generation is the difference between the entropy:
+
+$$
+\Delta S = S(\textrm{Tr}_B \hat U \hat \rho \hat U^\dagger) = -\textrm{Tr}_A\Big(\hat \rho' \log \rho'\Big)\Big|_{\hat \rho' = \textrm{Tr}_B \hat U \hat \rho \hat U^\dagger}.
+$$
+
+If $e(\hat U)$ gets small, for example, consider $\hat U = e^{-\ti \epsilon \hat H}$ with $\|\hat H\|=\textrm{Const}$ and $\epsilon\rightarrow 0$, then
+
+$$
+\begin{aligned}
+\hat \rho' \approx \textrm{Tr}_B (1-\ti\epsilon \hat H) \hat \rho (1+\ti \epsilon \hat H) = \hat \rho_A + \ti \epsilon \textrm{Tr}_B [\hat \rho, \hat H] + \mathcal{O}(\epsilon^2).
+\end{aligned}
+$$
+
+The entropy of the leading order term vanishes, thus when $e(\hat U)$ is small, the entanglement generation will also be expected to be small. When $e(\hat U)\rightarrow 0$, it should be converging to zero. 
+
+However, for finite $e(\hat U)$, the relation between potential entangling power and entanglement generation is still not obvious. 
+
+
+{{< /fold >}}
+
+## Entanglement Bounds Circuit Costs
+
+
 
 # Reference
 
