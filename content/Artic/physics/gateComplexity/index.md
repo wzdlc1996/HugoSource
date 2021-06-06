@@ -25,7 +25,7 @@ $$
 \end{aligned},
 $$
 
-where $\hat H(s) = \sum_{j=1}^N y_j(s) \hat O_j \ ; \ \|\hat O_j\| = 1$ and the time-order exponential function is defined as in ([wikipedia/ordered_exponential][2]). The basis $\hat O_j$, for example, in the qubit model we can choose the set of all two-local operators. The matrix norm can be any legal norm. This unitary operator can be approximated by the product of infinitesimal time evolution. Then we define the cost by the "query times" of basis.
+where $\hat H(s) = \sum_{j=1}^J y_j(s) \hat O_j \ ; \ \|\hat O_j\| = 1$ and the time-order exponential function is defined as in ([wikipedia/ordered_exponential][2]). The basis $\hat O_j$, for example, in the qubit model we can choose the set of all two-local operators. The matrix norm can be any legal norm. This unitary operator can be approximated by the product of infinitesimal time evolution. Then we define the cost by the "query times" of basis.
 
 _[Definition]_: (Circuit cost). For a given set $\{\hat O_1,\cdots,\hat O_J\}$ in the Lie algebra of $d^n$-dimension (where $d$ is the dimension of local unit(qubit $d=2$) and $n$ is the number of units) $\mathfrak{su}(d^n)$ of **traceless** Hermitian matrix normalized as $\|\hat O_j\|=1$. The cost of unitary operator $\hat U \in SU(d^n)$ is the infimum 
 
@@ -130,7 +130,78 @@ However, for finite $e(\hat U)$, the relation between potential entangling power
 
 ## Entanglement Bounds Circuit Costs
 
+For convenience, the following notation is introduced. The system is decomposed into 1-D "chain" spatially: $\{1,\cdots,n\}$. When the locality of operators is not covered, such decomposition is generic by re-encoding as 1-D array. The entanglement entropy of the cut $s\in\{1,\cdots,n-1\}$ reads
 
+$$
+E(\hat \rho; s) := S(\textrm{Tr}_{\{s+1,\cdots,n\}} \hat \rho).
+$$
+
+i.e., this cuts the system into two parts of $\{1,\cdots,s\}$ and $\{s+1,\cdots,n\}$. 
+
+### Entanglement lower bounds the cost
+
+_[Theorem]_: The circuit cost is lower bounded by potentially entanglement power
+
+$$
+C(\hat U) \geq \frac 1 {c \log d} \max_s E(\hat U \ket{\psi}\bra{\psi}\hat U^\dagger ; s),
+$$
+
+where $\ket{\psi} = \bigotimes_{r=1}^n \ket{\phi_i}$ is a product state.
+
+{{< fold "Proof" >}}
+
+With the Trotter's decomposition, we can approximate $\hat U$ with any precision as
+
+$$
+\begin{aligned}
+\hat U &\approx \prod_{k=1}^N e^{-\frac \ti N \sum_{j=1}^J y_j(k/N)\hat O_j}\\
+&\approx \prod_{k=1}^N \Big(e^{-\frac \ti N \frac {y_1(k/N)} m \hat O_1}\cdots e^{-\frac \ti N \frac {y_J(k/N)} m \hat O_J}\Big)^m \\
+&= \prod_{k=1}^N\Big(\prod_{j=1}^J \exp\big( - \frac {\ti} {m N} y_j(k/N) \hat O_j\big)\Big)^m
+\end{aligned}.
+$$
+
+Denoting $\hat V_{k,j}=\exp\big(-\frac \ti N y_j(k/N)\hat O_j \big)$, the second line works by the limit procedure
+
+$$
+\hat V_k = e^{-\frac \ti N \sum_{j=1}^J y_j(k/N)\hat O_j} = \lim_{m\rightarrow \infty} \Big(\prod_{j=1}^J \hat V_{k,j}^{1/m} \Big)^m. 
+$$
+
+Then we rewrite the quantum state driven by $\hat U$ into a time-dependent form as
+
+$$
+\ket{\psi_l} = \prod_{k=1}^l \hat V_k \ket{\psi}.
+$$
+
+Note that we do not specify the order of operator product here since reverse the order (by $\prod_{k=1}^l \rightarrow \prod_{k=N}^{N-l+1}$) is equivalent to substitute the function $y$ as $y(s) \rightarrow y(1-s)$. 
+
+Now we use the result in ([S. Bravyi 2007][3])(Sec. II), which proves
+
+> Denote $d=\min \{\dim A, \dim B\}$, then there exists a constant $c$ such that
+$$
+\frac {\td } {\td t} S(\textrm{Tr}_B e^{-\ti \hat H t} \hat \rho e^{\ti \hat H t}) \Bigg| _{t=0} =\mathcal{O}(\|\hat H\| \log d) .
+$$
+
+With this result, one has (noting $\hat V_k$ is the infinitesimal Hamiltonian driven)
+
+$$
+\begin{aligned}
+& E(\ket{\psi_{l}}\bra{\psi_{l}}; s) - E(\ket{\psi_{l-1}}\bra{\psi_{l-1}}; s) \\
+=& E(\hat V_l \ket{\psi_{l-1}}\bra{\psi_{l-1}}\hat V_l^\dagger;s) - E(\ket{\psi_{l-1}}\bra{\psi_{l-1}}; s) \\
+\approx& \sum_{k=1}^m \sum_{j=1}^J \Delta f(\hat V_{l, j}^{1/m}) \ \ \textrm{omitting state dependence} \\
+=& m \sum_{j=1}^J \frac 1 m \mathcal{O} \Big(\|\hat O_j\|\log d\Big) \frac {|y_j(l/N)|} N \\
+\leq & \frac {c \log d} {N} \sum_{j=1}^J |y_j(l/N)|
+\end{aligned}.
+$$
+
+Then sum over $l=1,\cdots,N$, with the summation approximation for the integral, we have
+
+$$
+E(\hat U\ket{\psi}\bra{\psi}\hat U ; s) - E(\ket{\psi}\bra{\psi}; s) \leq c\log d \times C(\hat U).
+$$
+
+The initial state $\ket{\psi}$ and cut $s$ in the left-hand-side are arbitrary, when it is a bipartite product state we get the form in the theorem. 
+
+{{< /fold >}}
 
 # Reference
 
@@ -138,3 +209,4 @@ However, for finite $e(\hat U)$, the relation between potential entangling power
 
 [1]: https://arxiv.org/pdf/2104.03332.pdf
 [2]: https://en.wikipedia.org/wiki/Ordered_exponential
+[3]: https://journals.aps.org/pra/abstract/10.1103/PhysRevA.76.052319
