@@ -140,10 +140,10 @@ i.e., this cuts the system into two parts of $\{1,\cdots,s\}$ and $\{s+1,\cdots,
 
 ### Entanglement lower bounds the cost
 
-_[Theorem]_: The circuit cost is lower bounded by potentially entanglement power
+_[Theorem]_: The circuit cost of $\hat U\in SU(d^n)$ is lower bounded by potentially entanglement power
 
 $$
-C(\hat U) \geq \frac 1 {c \log d} \max_s E(\hat U \ket{\psi}\bra{\psi}\hat U^\dagger ; s),
+C(\hat U) \geq \frac 1 {c n \log d} \max_s \frac {E(\hat U \ket{\psi}\bra{\psi}\hat U^\dagger ; s)} {\min(s,n-s)} ,
 $$
 
 where $\ket{\psi} = \bigotimes_{r=1}^n \ket{\phi_i}$ is a product state.
@@ -181,6 +181,24 @@ $$
 \frac {\td } {\td t} S(\textrm{Tr}_B e^{-\ti \hat H t} \hat \rho e^{\ti \hat H t}) \Bigg| _{t=0} =\mathcal{O}(\|\hat H\| \log d) .
 $$
 
+This result also provides the relation between the entanglement generation and the potential entanglement power. $e(\hat U)$ controls the initial infinitesimal entropy generation rate. The proof is straightforward as 
+
+$$
+\begin{aligned}
+\delta S(x) &= S(x+\delta x) - S(x) \\
+&= - \textrm{Tr}\Big((x+\delta x) \log (x+\delta x)\Big) + \textrm{Tr} x\log x \\
+&= -\textrm{Tr}\Big((1+\log x) \delta x\Big) + \mathcal{O}(\delta x^2)
+\end{aligned}
+$$
+
+Then the entanglement generation
+
+$$
+\begin{aligned}
+\frac {\td } {\td t} S(\textrm{Tr}_B e^{-\ti \hat H t}\hat \rho e^{\ti \hat H t}) \Bigg| _{t=0} &= -\textrm{Tr}\Big(\Big)
+\end{aligned}
+$$
+
 With this result, one has (noting $\hat V_k$ is the infinitesimal Hamiltonian driven)
 
 $$
@@ -188,20 +206,22 @@ $$
 & E(\ket{\psi_{l}}\bra{\psi_{l}}; s) - E(\ket{\psi_{l-1}}\bra{\psi_{l-1}}; s) \\
 =& E(\hat V_l \ket{\psi_{l-1}}\bra{\psi_{l-1}}\hat V_l^\dagger;s) - E(\ket{\psi_{l-1}}\bra{\psi_{l-1}}; s) \\
 \approx& \sum_{k=1}^m \sum_{j=1}^J \Delta f(\hat V_{l, j}^{1/m}) \ \ \textrm{omitting state dependence} \\
-=& m \sum_{j=1}^J \frac 1 m \mathcal{O} \Big(\|\hat O_j\|\log d\Big) \frac {|y_j(l/N)|} N \\
-\leq & \frac {c \log d} {N} \sum_{j=1}^J |y_j(l/N)|
+=& m \sum_{j=1}^J \frac 1 m \mathcal{O} \Big(\|\hat O_j\|\log d^{\min(s, n-s)}\Big) \frac {|y_j(l/N)|} N \\
+\leq & \min(s, n-s)\times  \frac {c \log d} {N}  \sum_{j=1}^J |y_j(l/N)|
 \end{aligned}.
 $$
 
 Then sum over $l=1,\cdots,N$, with the summation approximation for the integral, we have
 
 $$
-E(\hat U\ket{\psi}\bra{\psi}\hat U ; s) - E(\ket{\psi}\bra{\psi}; s) \leq c\log d \times C(\hat U).
+E(\hat U\ket{\psi}\bra{\psi}\hat U ; s) - E(\ket{\psi}\bra{\psi}; s) \leq \min(s, n-s) c\log d \times C(\hat U).
 $$
 
-The initial state $\ket{\psi}$ and cut $s$ in the left-hand-side are arbitrary, when it is a bipartite product state we get the form in the theorem. 
+The initial state $\ket{\psi}$ and cut $s$ are arbitrary. When it is a product state, we get the form in the theorem. 
 
 {{< /fold >}}
+
+
 
 # Reference
 
