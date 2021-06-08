@@ -188,16 +188,46 @@ $$
 \delta S(x) &= S(x+\delta x) - S(x) \\
 &= - \textrm{Tr}\Big((x+\delta x) \log (x+\delta x)\Big) + \textrm{Tr} x\log x \\
 &= -\textrm{Tr}\Big((1+\log x) \delta x\Big) + \mathcal{O}(\delta x^2)
-\end{aligned}
+\end{aligned}.
 $$
 
 Then the entanglement generation
 
 $$
 \begin{aligned}
-\frac {\td } {\td t} S(\textrm{Tr}_B e^{-\ti \hat H t}\hat \rho e^{\ti \hat H t}) \Bigg| _{t=0} &= -\textrm{Tr}\Big(\Big)
+\Gamma(\hat \rho,\hat H)=\frac {\td } {\td t} S(\textrm{Tr}_B e^{-\ti \hat H t}\hat \rho e^{\ti \hat H t}) \Bigg| _{t=0} &= -\ti \textrm{Tr}_A\Big((1+\log \textrm{Tr}_B \hat \rho ) \textrm{Tr}_B [\hat \rho , \hat H] \Big) \\
+&= -\ti \textrm{Tr}_A \Big\{\textrm{Tr}_B \Big([\hat \rho, \hat H] \log (\textrm{Tr}_B \hat \rho \otimes I_B)\Big)\Big\}  \\
+&= -\ti \textrm{Tr}\Big([\hat \rho, \hat H] \log (\textrm{Tr}_B \hat \rho \otimes I_B)\Big) \\
+&= \ti \textrm{Tr}\Big(\hat H \big[\hat \rho, \log (\textrm{Tr}_B \hat \rho \otimes \hat I_B)\big]\Big),
 \end{aligned}
 $$
+
+in which we used the fact that for finite dimensional, $\textrm{Tr} [A, B] = 0$, and the property of partial trace, given composite Hilbert space $\mathcal{H}=\mathcal{H}_1\otimes \mathcal{H}_2 =\textrm{span}\{\ket{i,k}\}$ and operator $A$ on $\mathcal{H}$, operator $B_1$ on $\mathcal{H}_1$, one has
+
+$$
+\begin{aligned}
+\bra{i}(\textrm{Tr}_2 A) \ B_1 \ket{j}&= \sum_{l\in\mathcal{H}_1} \sum_{k\in\mathcal{H}_2} \bra{i,k} A \ket{l, k} \bra{l} B_1\ket{j} \\
+&= \sum_{l\in\mathcal{H}_1} \sum_{k\in\mathcal{H}_2} \sum_{k'\in\mathcal{H}_2} \bra{i,k} A \ket{l, k'} \bra{l} B_1\ket{j} \delta_{k,k'} \\
+&=\sum_{l\in\mathcal{H}_1} \sum_{k\in\mathcal{H}_2} \sum_{k'\in\mathcal{H}_2} \bra{i,k} A \ket{l, k'} \bra{l, k'} B_1\otimes I_2\ket{j, k} \\
+&= \bra{i} \textrm{Tr}_2(A \ B_1\otimes I_2)\ket{j}
+\end{aligned}.
+$$
+
+Then, the entanglement generation $\Gamma(\hat \rho,\hat H)$ is bounded by the norm of $\hat H$ since $\textrm{Tr}(AB)\leq \|A\|\|B\|$. Another factor is the norm of $\ti[\hat \rho, \log \textrm{Tr}_B \hat \rho \otimes \hat I_B]$ as $\sqrt{\textrm{Tr}(\cdot)^2}$. For the case of $\hat \rho = \ket{\psi}\bra{\psi}$ and the Schmidt decomposition $\ket{\psi} = \sum_{i=1}^d \sqrt{p_i} \ket{i_A,i_B}$, one can write down
+
+$$
+\|\ket{\phi}\bra{\psi} - \ket{\psi}\bra{\phi}\| = \sqrt{2}\sqrt{\braket{\psi|\psi}\braket{\phi|\phi}-|\braket{\psi|\phi}|^2}.
+$$
+
+Substituting $\ket{\phi} = (\log \textrm{Tr}_B \hat \rho \otimes \hat I_B)\ket{\psi}$, we get (with $\textrm{Tr}_B\hat \rho = \sum_{i=1}^d p_i\ket{i_A}\bra{i_A}$, $\ket{\phi}=\sum_{i=1}^d \sqrt{p_i} \log p_i \ket{i_A,i_B}$)
+
+$$
+\begin{aligned}
+\Gamma(\psi, \hat H) &\leq c\|\hat H\|\sqrt{\sum_{i=1}^d p_i \log^2 p_i - \big(\sum_{i=1}^d p_i \log p_i\big)^2} \\
+&= \mathcal{O}\Big(\|\hat H\| \log d \Big)
+\end{aligned} .
+$$
+
 
 With this result, one has (noting $\hat V_k$ is the infinitesimal Hamiltonian driven)
 
