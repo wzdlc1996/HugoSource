@@ -143,7 +143,7 @@ i.e., this cuts the system into two parts of $\{1,\cdots,s\}$ and $\{s+1,\cdots,
 _[Theorem]_: The circuit cost of $\hat U\in SU(d^n)$ is lower bounded by potentially entanglement power
 
 $$
-C(\hat U) \geq \frac 1 {c n \log d} \max_s \frac {E(\hat U \ket{\psi}\bra{\psi}\hat U^\dagger ; s)} {\min(s,n-s)} ,
+C(\hat U) \geq \frac 1 {c \log d} \max_s \frac {E(\hat U \ket{\psi}\bra{\psi}\hat U^\dagger ; s)} {\min(s,n-s)} ,
 $$
 
 where $\ket{\psi} = \bigotimes_{r=1}^n \ket{\phi_i}$ is a product state.
