@@ -244,10 +244,38 @@ $$
 Then sum over $l=1,\cdots,N$, with the summation approximation for the integral, we have
 
 $$
-E(\hat U\ket{\psi}\bra{\psi}\hat U ; s) - E(\ket{\psi}\bra{\psi}; s) \leq \min(s, n-s) c\log d \times C(\hat U).
+E(\hat U\ket{\psi}\bra{\psi}\hat U^\dagger ; s) - E(\ket{\psi}\bra{\psi}; s) \leq \min(s, n-s) c\log d \times C(\hat U).
 $$
 
 The initial state $\ket{\psi}$ and cut $s$ are arbitrary. When it is a product state, we get the form in the theorem. 
+
+For the special case of Hamiltonian $\hat H$ is the sum of local operators, the upper bound by $\textrm{Tr} AB \leq \|A\|\|B\|$ can be tighter. Note the fact that local Hamiltonian would not generate entanglement if the partition is different from the Hamiltonian. This can be seen by letting $\hat H = \hat I_1\otimes \hat H_2$, where the local operator only appears at the second subsystem. Then
+
+$$
+\begin{aligned}
+\Gamma(\rho, \hat H) &= \ti \textrm{Tr}\Big(\hat H \big[\hat \rho, \log (\textrm{Tr}_2 \hat \rho \otimes \hat I_2)\big]\Big) \\
+&= \ti \sum_i \lambda_i \textrm{Tr}\Big(\hat I_1 \otimes \hat H_2 [\hat \rho_{1,i}\otimes \hat \rho_{2,i}, \log(\textrm{Tr}_2 \hat \rho \otimes \hat I_2)]\Big) \\
+&= \ti \sum_i \lambda_i \textrm{Tr} \Big([\hat \rho_{1,i}, \log(\textrm{Tr}_2\hat\rho)] \otimes (\hat H_2 \hat \rho_{2,i})\Big) \\
+&= \ti \sum_i \lambda_i \textrm{Tr} [\hat \rho_{1,i}, \log(\textrm{Tr}_2\hat\rho)] \times \textrm{Tr} (\hat H_2 \hat \rho_{2,i})\\ 
+&= 0 
+\end{aligned}.
+$$
+
+We also used the property that for finite dimensional case, $\textrm{Tr}([A, B]) = 0$. 
+
+Thus, since each term of entanglement generation will only be dependent of one local operator, we can safely write down that
+
+$$
+\sum_{s=1}^{n-1} \Gamma(\rho, \hat H) \leq \mathcal{O}\Big(\|\hat H\| \log \textrm{Dim}_{\hat H}\Big) \leq \mathcal{O} \Big(\|\hat H\| \log d^n\Big).
+$$
+
+Then with the similar procedure, we have
+
+$$
+\sum_{s=1}^{n-1} E(\hat U\ket{\psi}\bra{\psi}\hat U^\dagger; s) \leq c n \log d \times C_g(\hat U),
+$$
+
+where $C_g$ denotes the cost measured by local operators.
 
 {{< /fold >}}
 
