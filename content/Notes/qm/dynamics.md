@@ -390,10 +390,10 @@ The goal of path integral is that try to describe the quantum dynamics from a `"
 $$K(x',x,t) = \int \mathcal{D}[x(\tau)] \exp\big(\frac {\ti} {\hbar} \int_0^t L(x(\tau),\flo{x}(\tau))\td \tau \big) = \int \mathcal{D}[x]\exp\big[\frac {\ti} {\hbar} S \big]$$
 
 
-    -   $\int \mathcal{D}[x]$ : `functional integral` over all `path` $x(\tau)$ with $x(0)=x ; x(t)=x'$ . The measure of path is very diffcult to define.
-    -   $L(x,\flo{x})$ : `Lagrangian`
-    -   $\flo{x} \equiv \frac {\td x(\tau)} {\td \tau}$ : the `velocity` on path $x(\tau)$
-    -   $S[x(\tau)]\equiv \int_0^t L(x(\tau),\flo{x}(\tau))\td \tau$ : the `action` of path $x(\tau)$
+-   $\int \mathcal{D}[x]$ : `functional integral` over all `path` $x(\tau)$ with $x(0)=x ; x(t)=x'$ . The measure of path is very diffcult to define.
+-   $L(x,\flo{x})$ : `Lagrangian`
+-   $\flo{x} \equiv \frac {\td x(\tau)} {\td \tau}$ : the `velocity` on path $x(\tau)$
+-   $S[x(\tau)]\equiv \int_0^t L(x(\tau),\flo{x}(\tau))\td \tau$ : the `action` of path $x(\tau)$
 
 2.  Path Integral Version #2:
 
@@ -401,12 +401,12 @@ $$K(x',x,t) = \int \mathcal{D}[x(\tau)] \exp\big(\frac {\ti} {\hbar} \int_0^t L(
 $$K(x',x,t) = \int \mathcal{D}[x(\tau)]\mathcal{D}[p(\tau)] \exp \big(\frac {\ti} {\hbar} \int_0^t \{p \flo{x} - H(p,x) \} \big)$$
 
 
-    -   $\int \mathcal{D}[p]$ : `functional integral` over all path in momentum space, with proper measure. Path of $p$ has no boundary condition
-    -   $H(p,x)$ : `Hamiltonian`
+-   $\int \mathcal{D}[p]$ : `functional integral` over all path in momentum space, with proper measure. Path of $p$ has no boundary condition
+-   $H(p,x)$ : `Hamiltonian`
 
 One can check these two version of path integral by single particle Hamiltonian: $\hat H = \hat p^2/2m + V(\hat x) = T(\hat p) +V(\hat x)$ , the propagator is $K(x',x,t) = \bra{x'}e^{-\ti t \hat H / \hbar} \ket{x}$:
 
-{{<fold "Check">}}
+{{< fold "Check" >}}
 1.  Check for version 1: <br>
     Divide this propagation over time $t$ into $N$ steps, each of time $\epsilon=t/N$ :
 
