@@ -229,7 +229,7 @@ $$
 $$
 
 
-With this result, one has (noting $\hat V_k$ is the infinitesimal Hamiltonian driven)
+With this result, one has (noting $\hat V_k$ is the infinitesimal Hamiltonian driving)
 
 $$
 \begin{aligned}
