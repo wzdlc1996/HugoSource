@@ -86,7 +86,7 @@ $$H = \frac 1 2 \int \td^3\bm{k} \ \omega_{|\bm{k}|} (a(\bm{k})^*a(\bm{k}) + a(\
 
 In which we hold the order of $a$ , which will let the conclusion hold in quantum theory
 
-{{<fold "Proof">}}
+{{< fold "Proof" >}}
 
 We need to compute three items in Hamiltonian:
 
@@ -101,7 +101,6 @@ $$\begin{aligned}
 \int\td^3\bm{x}(\nabla \phi)^2 &= \frac 1 2 \int \td^3 \bm{k} \ \frac 1 {2\omega_{|\bm{k}|}}  |\bm{k}|^2 \Big\{a(\bm{k})^* a(\bm{k})+a(\bm{k}) a(\bm{k})^*-e^{-2\ti \omega t} a(\bm{k})a(-\bm{k}) - e^{2\ti \omega t} a(\bm{k})^{*}a(-\bm{k})^*  \Big\} \\
 \\
 \int\td^3\bm{x}(m \phi)^2 &= \frac 1 2 \int \td^3 \bm{k} \ \frac {m^2} {\omega_{|\bm{k}|}} \Big\{a(\bm{k})^* a(\bm{k})+a(\bm{k}) a(\bm{k})^*+e^{-2\ti \omega t} a(\bm{k})a(-\bm{k}) + e^{2\ti \omega t} a(\bm{k})^{*}a(-\bm{k})^*  \Big\} \\
-
 \end{aligned}$$
 
 
@@ -111,7 +110,7 @@ Then we have the result:
 $$H =\frac 1 2 \int \td^3\bm{k} \ \omega_{|\bm{k}|} (a(\bm{k})^*a(\bm{k}) + a(\bm{k})a(\bm{k})^*)$$
 
 
-{{</fold>}}
+{{< /fold >}}
 
 ## Charged Klein-Gordon Field
 
