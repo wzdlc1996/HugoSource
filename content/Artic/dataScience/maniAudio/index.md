@@ -57,6 +57,7 @@ The index $i$ indicates the position and the orientation of the vibration.
 The physical view of sound gives us the chance to understand our human's view more better. There seems to be a contradiction between these two views: In music theory, we have notes played sequentially and discretely in the time domain. But in physical theory, the sound is a continuous function with respect to time. The core is, we human cannot make response to the sound instantly. 
 
 <!--核心概念: 纯音, 单音, 复音-->
+<!--Ref for temporal resolution of hearing: https://biology.stackexchange.com/questions/27662/what-is-the-human-ears-temporal-resolution-->
 
 # Sound in Our Computer
 
