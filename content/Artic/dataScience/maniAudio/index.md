@@ -24,7 +24,7 @@ Processing audio data on the computer has been necessary for modern researchers.
 
 Sound can be roughly separated into two classes as **music** and **noise** in the psychological perception. The research of the former leads to the establishment of music theory, with the language of notes and other concepts. Generally speaking, the music is viewed as multiple sequences of the notes with various duration, colors, and amplitudes. The study of noise is seldom included in this framework, but is easy to discuss in the next section, the physics of sound. 
 
-People think the notes in music theory have different height. Now we have known that the height means the frequency of the acoustic wave. Thus, in this view, the sound is the collection of temporal sequences of single frequency simple wave. Apart from the frequency, we can also recognize the strength of the tone. This is another quantitative aspect of the music sound. There are also many unquantitative parameters in the music like the timbre, type of instrument, emotion, and so on. In the expert software for audio processing, these aspects would be totally considered. Mathematically, we can write the description of the sound in human's view as
+People think the notes in music theory have different height(called **pitch**). Now we have known that the height means the frequency of the acoustic wave. Thus, in this view, the sound is the collection of temporal sequences of single frequency simple wave. Apart from the frequency, we can also recognize the strength of the tone. This is another quantitative aspect of the music sound. There are also many unquantitative parameters in the music like the timbre, type of instrument, emotion, and so on. In the expert software for audio processing, these aspects would be totally considered. Mathematically, we can write the description of the sound in human's view as
 
 $$
 C_i : T_n \rightarrow (d, A, f, \theta), \ ; \ i=1,\cdots.
@@ -55,6 +55,8 @@ The index $i$ indicates the position and the orientation of the vibration.
 ### Connection to human's view
 
 The physical view of sound gives us the chance to understand our human's view more better. There seems to be a contradiction between these two views: In music theory, we have notes played sequentially and discretely in the time domain. But in physical theory, the sound is a continuous function with respect to time. The core is, we human cannot make response to the sound instantly. 
+
+<!--核心概念: 纯音, 单音, 复音-->
 
 # Sound in Our Computer
 
