@@ -26,11 +26,31 @@ Read the book of
 
 # Introduction
 
-
+# Generic Discussion
 
 # Numerical Method for Eigensystem Problem
 
 # Numerical Method for Time Dependent Schrodinger Equation
+
+Let us continue for the single particle Schrodinger equation with potential (now it can be dependent of time) of
+
+$$
+\ti \frac {\partial }{\partial t} \psi(x, t) = -\frac 1 2 \nabla^2 \psi(x, t) + V(x, t) \psi(x, t).
+$$
+
+## Unitary Finite Difference
+
+We can always compute the right-hand-side by finite difference to obtain the addition on time domain, and use Eular method to compute the wavefunction $\psi$ at each discretized time step, like the ODE numerical method.
+
+With the Catersian system with spatial resolution $\Delta x$, the Laplacian in right-hand-side can be estimated as
+
+$$
+\nabla^2 \psi = \sum_{i=1}^3 \partial_i^2 \psi =  \sum_{i=1}^3 \frac {\psi(x^i + \Delta x) + \psi(x^i - \Delta x) - 2\psi(x^i)} {\Delta x^2} + \mathcal{O}(\Delta x^3) = [\nabla^2 \psi]_{\Delta x} + \mathcal{O}(\Delta x^3).
+$$
+
+The error scaling can be obtained by Taylor expansion along each axis. Then we can calculate the time step by different order according to our demand.
+
+
 
 # Conclusion
 
