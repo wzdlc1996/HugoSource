@@ -203,7 +203,7 @@ $$e^{-\ti \theta \bm{n}\cdot \hat{\bm{S}}} (\hat{\bm{S}}\cdot \bm{x}) e^{\ti \th
 With the commutator:
 
 
-$$\begin{aligned}
+$$\begin{aligned}[]
 [\hat S_a, \hat S_b] &= \ti \epsilon_{abc}\hat S_c
 \end{aligned}, $$
 
@@ -223,7 +223,7 @@ $$\hat U(\bm{n},\theta) = \exp\Big(-\ti \theta \bm{n} \cdot \hat{\bm{S}}\Big) .$
 Note that the commutator:
 
 
-$$\begin{aligned}
+$$\begin{aligned}[]
 [\bm{x} \cdot \hat {\bm{S}}, \bm{n} \cdot \hat {\bm{S}} ] &= x_an_b \ti \epsilon_{abc}  \hat S_c = \ti (\bm{x}\times \bm{n})\cdot \hat{\bm{S}} \\
 [[\bm{x}\cdot\hat {\bm{S}}, \bm{n} \cdot \hat {\bm{S}}], \bm{n}\cdot \hat {\bm{S}}] &= (\ti)^2 ((\bm{x} \times \bm{n})\times \bm{n})\cdot \hat{\bm{S}} \\
 &=\ti^2 ((\bm{x}\cdot \bm{n})\bm{n} - \bm{x})\cdot \hat{\bm{S}} \\
