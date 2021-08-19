@@ -28,6 +28,26 @@ Read the book of
 
 # Generic Discussion
 
+The dynamical equation in quantum mechanics always has the form of generical Schrodinger Equation as
+
+$$
+\ti \frac {\td} {\td t} \ket{\psi} = \hat H \ket{\psi},
+$$
+
+in which we set $\hbar = 1$. The quantum state (wavefunction) $\ket{\psi}\in\mathcal{H}$ is a vector in an abstract Hilbert space, while $\hat H: \mathcal{H} \rightarrow \mathcal{H}$ is a Linear operator on it. For the closed system, $\hat H$ is Hermitian, while for the effective theory for open system, $\hat H$ could be non-Hermitian to simulate the particle loss and gaining during the time evolution. 
+
+In non-Relativistic quantum theory, the state is usually represented as function of coordinates, and Hamiltonian $\hat H$ is the classical energy with the "quantization" $\hat{\bm{p}} \rightarrow -\ti \nabla$. In relativistic theory, i.e., quantum field theory, spatial coordinates is one degree of freedom of $\ket{\psi}$ (like the subscription of particles in non-relativistic many body system). In this case, the Hilbert space $\mathcal{H}$ is tensor product of infinitly many local Hilbert spaces: $\mathcal{H} = \otimes_x \mathcal{H}_x$, and the equation of motion still has the form of Schrodinger equation, with the Lorentz covariance required by the Special Relativistic theory.
+
+Generally, to numerically solve the Schrodinger equation, we need a set of basis $\ket{x}$ and rewrite the equation as matrix form
+
+$$
+\ti \frac {\td} {\td t} \bm{\psi} = \bm{H}\bm{\psi} \ ; \ (\bm{\psi})_x = \braket{x|\psi}, (\bm{H})_{x,x'} = \braket{x|\hat H|x'}.
+$$
+
+When the time evolution is closed in a finite subspace of $\mathcal{H} = \textrm{span} \{\ket{x}\}$, the equation of motion becomes a finite dimensional linear ODE. There has been much algorithms to handle this case like **Exact Diagonalization** to find the exact solution and **Runge-Kutta Method** for finite precision solution. The problem get serious when we cannot find such finite subspace, this can be led by the initial condition and system itself. If the dynamics is constraint, we can use some cutoff strategy to make it be finite approximately. This procedure is usually completed by analyzing the symmetry of the system. The worst case is the case of the system do not allowed such effective cutoff, like most systems in field theory whose degree of freedom is infinity. This problem attracts much attentions recently and many models friendly to numerical simulation, like lattice field theory, are developed. 
+
+In this note, we will focused on the easy problems: the system who can be treated as finite dimensional system. We discuss the numerical algorithm to effectively solve such ODEs. This is also important since the dimension of Hilbert space is usually exponential to the system size and exact diagonalization might not be always the best choice. How to find the cutoff is also our goal. However, usually it does not have a unified strategy. We will discuss this on some frequently used models. 
+
 # Numerical Method for Eigensystem Problem
 
 # Numerical Method for Time Dependent Schrodinger Equation
