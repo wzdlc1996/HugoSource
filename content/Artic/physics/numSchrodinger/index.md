@@ -50,6 +50,42 @@ $$
 
 The error scaling can be obtained by Taylor expansion along each axis. Then we can calculate the time step by different order according to our demand.
 
+With this discretization, the Crank-Nicolson method suggests (with superscript denoting time point)
+
+$$
+\ti \frac {\psi^{n+1} - \psi^n} {\Delta t} = -\frac 1 4 \Big([\nabla^2 \psi^{n+1}]_{\Delta x} + [\nabla^2 \psi^{n}]_{\Delta x}\Big) + \frac 1 2 (V^{n+1}\psi^{n+1} + V^n\psi^n).
+$$
+
+{{% fold "Note: why not naive propagation" %}}
+
+The naive propagation is defined by the discretization equation
+
+$$
+\ti \frac {\psi^{n+1} - \psi^n} {\Delta t} = -\frac 1 2[\nabla^2 \psi^{n}]_{\Delta x} + V^n\psi^n.
+$$
+
+Different with Crank-Nicolson method, naive propagation is an explicit method, i.e., given the value of $\psi^n$, we can directly compute the next time $\psi^{n+1}$. Crank-Nicolson method is implicit since we need further to solve a linear system to obtain $\psi^{n+1}$.
+
+The reason why we do not use naive propagation is that it is not numerical stable. To see this, we analyze the growth factor of error. Since the original differential equation is linear, the propagation of error function is same to the equation for $\psi$, as
+
+$$
+\ti \frac {\epsilon^{(n+1)} - \epsilon^{(n)}} {\Delta t} = -\frac 1 2[\nabla^2 \epsilon^{(n)}]_{\Delta x} + V^n\epsilon^{(n)}.
+$$
+
+Assuming the growth of $\epsilon$ is
+
+$$
+\epsilon^{(n)} = \sum_k \xi_k^n e^{\ti k\cdot x}.
+$$
+
+The growth factor at mode $k$ is $\xi_k$, and it should be of the order by
+
+$$
+\ti \frac {\xi_k - 1} {\Delta t} = \frac {1-\cos k\cdot \Delta x} {\Delta x^2} + V^n
+$$
+
+{{% /fold %}}
+
 
 
 # Conclusion
