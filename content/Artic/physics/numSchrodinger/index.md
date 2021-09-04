@@ -101,7 +101,15 @@ $$
 The growth factor at mode $k$ is $\xi_k$, and it should be of the order by
 
 $$
-\ti \frac {\xi_k - 1} {\Delta t} = \frac {1-\cos k\cdot \Delta x} {\Delta x^2} + V^n
+\ti \frac {\xi_k - 1} {\Delta t} = \frac {1-\cos k\cdot \Delta x} {\Delta x^2} + V^n \Rightarrow \xi_k = 1- \ti \Big(\frac {2\Delta t} {\Delta x^2} \sin^2 \frac {k\cdot \Delta x} {2} + V^n\Big).
+$$
+
+It shows $|\xi_k|^2 \gt 1$ at finite $\Delta t, \Delta x$ for some $k$ and $x$, i.e., the error grows exponentially. This analysis is known as **von Neumann Stability Analysis**, see [wikipedia/Von_Neumann_stability_analysis](https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis) for more information. It is not the only stability analysis method, but usually a good start. 
+
+Since the Schrodinger equation has an imaginary time step term, the explicit method is often unstable. The Crank-Nicolson method can be stable, by von Neumann analysis as
+
+$$
+
 $$
 
 {{% /fold %}}
