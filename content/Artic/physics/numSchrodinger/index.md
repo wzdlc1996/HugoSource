@@ -65,7 +65,7 @@ We can always compute the right-hand-side by finite difference to obtain the add
 With the Catersian system with spatial resolution $\Delta x$, the Laplacian in right-hand-side can be estimated as
 
 $$
-\nabla^2 \psi = \sum_{i=1}^3 \partial_i^2 \psi =  \sum_{i=1}^3 \frac {\psi(x^i + \Delta x) + \psi(x^i - \Delta x) - 2\psi(x^i)} {\Delta x^2} + \mathcal{O}(\Delta x^3) = [\nabla^2 \psi]_{\Delta x} + \mathcal{O}(\Delta x^3).
+\nabla^2 \psi = \sum_{i=1}^3 \partial_i^2 \psi =  \sum_{i=1}^3 \frac {\psi(x^i + \Delta x) + \psi(x^i - \Delta x) - 2\psi(x^i)} {\Delta x^2} + \mathcal{O}(\Delta x^2) = [\nabla^2 \psi]_{\Delta x} + \mathcal{O}(\Delta x^2).
 $$
 
 The error scaling can be obtained by Taylor expansion along each axis. Then we can calculate the time step by different order according to our demand.
@@ -147,15 +147,26 @@ $$
 \end{aligned}
 $$
 
-The exact (up to third order) local truncation error is actually
+The exact (up to third order) local truncation error is (considering error of gradient)
 
 $$
-T(t) = \psi(t+\Delta t) - \psi^{n+1} \Big|_{\psi^n=\psi(t)}
+\begin{aligned}
+T(t) &= \psi(t+\Delta t) - \psi^{n+1}\Big|_{\psi^n = \psi(t)} \\
+&\approx \psi(t+\Delta t) -\psi(t) - \ti\Delta t\Big(\frac {1} {4}([\nabla^2 \psi(t+\Delta t)]_{\Delta x} + [\nabla^2 \psi(t)]_{\Delta x}) - \frac {V(t) (\psi(t+\Delta t) + \psi(t))} 2 \Big) \\
+&=\psi_t \Delta t + \frac 1 2 \psi_{tt}\Delta t^2 - \ti \Delta t\Big(\frac 1 2 \nabla^2 \psi - V\psi + \frac 1 4 \nabla^2 \psi_t \Delta t + \frac 1 {24}\psi_{xxxx}\Delta x^2 - \frac 1 2 V\psi_t \Delta t -\frac 1 4 V\psi_{tt}\Delta t^2 + \cdots\Big)\\
+&=- \ti \Delta t \Big(\frac 1 {24}\psi_{xxxx}\Delta x^2 - \frac 1 4 V \psi_{tt}\Delta t^2 + \cdots \Big)
+\end{aligned}
+$$
+
+Note that the local error is of third order, thus the approximation in second line (substitute all $\psi^{n+1}$ to exact value $\psi(t+\Delta t)$) would not break the result. Accumulating this local error we can estimate the global error, note $\sum \Delta t = \textrm{Const.}$, we have
+
+$$
+\psi(t) - \psi^n \sim \mathcal{O}(\Delta x^2, \Delta t^2).
 $$
 
 {{% /fold %}}
 
-The price is we need to solve a linear system with (in 1-D) tri-diagonal matrix. With proper algorithm this would cost as $\mathcal{O}(D)$ of dimension of Hilbert space. For higher dimension, the coefficient matrix by direct Crank-Nicolson method would be more complicate. Then we need to use other optimization. 
+Crank-Nicolson method is an implicit method. The price is that we need to solve a linear system with (in 1-D) tri-diagonal matrix. With proper algorithm this would cost as $\mathcal{O}(D)$ of dimension of Hilbert space. For higher dimension, the coefficient matrix by direct Crank-Nicolson method would be more complicate. Then we need to use other optimization. 
 
 
 
