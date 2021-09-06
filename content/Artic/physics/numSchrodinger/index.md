@@ -77,7 +77,11 @@ With this discretization, the Crank-Nicolson method suggests (with superscript d
 $$-->
 
 $$
+\begin{aligned}
+&\ti \frac {\psi^{n+1} - \psi^n} {\Delta t} = -\frac 1 4 \Big([\nabla^2 \psi^{n+1}]_{\Delta x} + [\nabla^2 \psi^{n}]_{\Delta x}\Big) + V^n \frac {\psi^{n+1} + \psi^n} 2 \\
+\Leftrightarrow \indent &
 \psi^{n+1} + \frac {\ti \Delta t} 2\Big(-\frac 1 2 [\nabla^2\psi^{n+1}]_{\Delta x} + V^{n} \psi^{n+1}\Big) = \psi^{n} - \frac {\ti \Delta t} 2 \Big(-\frac 1 2 [\nabla^2 \psi^n]_{\Delta x} + V^n \psi^n\Big).
+\end{aligned}
 $$
 
 Or simplified form $(1+\ti \Delta t \hat H/2) \psi^{n+1} = (1-\ti \Delta t \hat H/2) \psi^n$.
@@ -122,7 +126,36 @@ Which means the method is not only stable, but also unitary. Thus we even do not
 
 {{% /fold %}}
 
-This implicit method is unitary. The price is we need to solve a linear system with tri-diagonal matrix. With proper algorithm this would cost as $\mathcal{O}(D)$ of dimension of Hilbert space.
+Crank-Nicolson method is unitary and has the second order local truncation error. This makes it popular in numerical solution of Schrodinger equation.
+
+{{% fold "Note: error of Crank-Nicolson method" %}}
+
+The **Local Truncation Error** is defined as the difference between numerical solution and exact solution led by single time step. We can compute it with the Taylor expansion at time $t$:
+
+$$
+\psi^{n+1} = \psi(t + \Delta t) = \psi(t) + \psi_t \Delta t + \frac 1 2 \psi_{tt}\Delta t^2 + \mathcal{O}(\Delta t^3).
+$$
+
+Then substitute this into the Crank-Nicolson method iteration, we have
+
+$$
+\begin{aligned}
+\textrm{l.h.s.} &= (1+\ti \Delta t \hat H /2)\Big(\psi(t) + \psi_t \Delta t + \frac 1 2 \psi_{tt}\Delta t^2 + \mathcal{O}(\Delta t^3) \Big) \\
+&=(1+\ti \Delta t \hat H /2) \psi(t) + (1+\ti \Delta t \hat H / 2) (-\ti \hat H \psi(t)) \Delta t + \frac 1 2 \psi_{tt} \Delta t^2 + \mathcal{O}(\Delta t^3) \\
+&=(1-\ti \Delta t \hat H /2) \psi(t) + \mathcal{O}(\Delta t^3) \\
+&=\textrm{r.h.s.} + \mathcal{O}(\Delta t^3)
+\end{aligned}
+$$
+
+The exact (up to third order) local truncation error is actually
+
+$$
+T(t) = \psi(t+\Delta t) - \psi^{n+1} \Big|_{\psi^n=\psi(t)}
+$$
+
+{{% /fold %}}
+
+The price is we need to solve a linear system with (in 1-D) tri-diagonal matrix. With proper algorithm this would cost as $\mathcal{O}(D)$ of dimension of Hilbert space. For higher dimension, the coefficient matrix by direct Crank-Nicolson method would be more complicate. Then we need to use other optimization. 
 
 
 
