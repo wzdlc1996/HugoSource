@@ -168,6 +168,24 @@ $$
 
 Crank-Nicolson method is an implicit method. The price is that we need to solve a linear system with (in 1-D) tri-diagonal matrix. With proper algorithm this would cost as $\mathcal{O}(D)$ of dimension of Hilbert space. For higher dimension, the coefficient matrix by direct Crank-Nicolson method would be more complicate. Then we need to use other optimization. 
 
+<!--{{% fold "Note: Alternating-direction implicit method" %}}
+
+To overcome the heavy cost of solving the linear system in higher dimension, the **alternating-direction implicit(ADI)** is proposed. See [wikipedia/Alternating-direction_implicit_method](https://en.wikipedia.org/wiki/Alternating-direction_implicit_method) for more information. 
+
+One understanding about ADI for Schrodinger equation can be illustrated by the Crank-Nicolson method for a 2-D Schrodinger equation. The time evolution reads
+
+$$
+\Big(1 + \frac {\ti \Delta t} 2 \big(-\frac 1 2 \partial_x^2 -\frac 1 2 \partial_y^2 + V^n\big)\Big)\psi^{n+1} = \Big(1 - \frac {\ti \Delta t} 2 \big(-\frac 1 2 \partial_x^2 -\frac 1 2 \partial_y^2 + V^n\big)\Big)\psi^{n}.
+$$
+
+{{% /fold %}}-->
+
+{{% fold "Fast & stable Explicit Method" %}}
+
+This is originally proposed in [Computers in Physics 5, 596 (1991)](https://aip.scitation.org/doi/abs/10.1063/1.168415). As it was introduced, it is an explicit algorithm with second-order accurate in time. Here we make a brief discussion for it. 
+
+{{% /fold %}}
+
 
 
 # Conclusion
