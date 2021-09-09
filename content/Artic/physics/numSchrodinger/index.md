@@ -182,7 +182,15 @@ $$
 
 {{% fold "Fast & stable Explicit Method" %}}
 
-This is originally proposed in [Computers in Physics 5, 596 (1991)](https://aip.scitation.org/doi/abs/10.1063/1.168415). As it was introduced, it is an explicit algorithm with second-order accurate in time. Here we make a brief discussion for it. 
+This is originally proposed in [Computers in Physics 5, 596 (1991)](https://aip.scitation.org/doi/abs/10.1063/1.168415). As it was introduced, it is an explicit algorithm with second-order accurate in time and as stable as Crank-Nicolson method. Here we make a brief discussion for it. 
+
+The algorithm compute the real and imaginary part of wavefunction separately at different time sequence. Letting $\psi = \psi_r + \ti \psi_i$, the Schrodinger equation reads
+
+$$
+\frac {\td \psi_r} {\td t} = 
+$$
+
+
 
 {{% /fold %}}
 
