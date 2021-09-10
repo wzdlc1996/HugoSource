@@ -166,7 +166,7 @@ $$
 
 {{% /fold %}}
 
-Crank-Nicolson method is an implicit method. The price is that we need to solve a linear system with (in 1-D) tri-diagonal matrix. With proper algorithm this would cost as $\mathcal{O}(D)$ of dimension of Hilbert space. For higher dimension, the coefficient matrix by direct Crank-Nicolson method would be more complicate. Then we need to use other optimization. 
+Crank-Nicolson method is an implicit method. The price is that we need to solve a linear system with (in 1-D) tri-diagonal matrix. With proper algorithm this would cost as $\mathcal{O}(D)$ of dimension of Hilbert space. For higher dimension, the coefficient matrix by direct Crank-Nicolson method would be more complicate. Then we need to use other optimization(Now most sparse matrix library offers fast linear system solving, in many cases the plain way is good enough. But for some specific application, one may use the [Alternating-direction-implicit method](https://en.wikipedia.org/wiki/Alternating-direction_implicit_method), or a stable and explict method as below.). 
 
 <!--{{% fold "Note: Alternating-direction implicit method" %}}
 
@@ -210,6 +210,20 @@ P(t = (n+1/2)\Delta t) &= \psi_r^{n+1} \psi_r^n + (\psi_i^n)^2
 \end{aligned}
 $$
 
+When the iteration is stable, the probability in such algorithm is conserved during the time evolution. As an example, we check the formula for integer time steps (denoting $\Delta t \hat H = \bm{A}$ as matrix form)
+
+$$
+\begin{aligned}
+\sum P^{n+1} &= \bm{\psi_r^{n+1}} \cdot \bm{\psi_r^{n+1}} + \bm{\psi_i^{n+1}} \cdot \bm{\psi_i^{n}} \\
+&=(\bm{\psi_r^n} + \bm{A} \bm{\psi_i^n})\cdot (\bm{\psi_r^n} + \bm{A} \bm{\psi_i^n}) + (\bm{\psi_i^n} - \bm{A} \bm{\psi_r^n}- \bm{A}^2 \bm{\psi_i^{n}})\cdot \bm{\psi_i^n} \\
+&= \bm{\psi_r^n}\cdot \bm{\psi_r^n} + \bm{\psi_r^n}^T \bm{A}\bm{\psi_i^n} + \bm{\psi_i^n}\cdot (\bm{\psi_i^{n-1}} - \bm{A}\bm{\psi_r^n}) \\
+&= \bm{\psi_r^n}\cdot \bm{\psi_r^n} + \bm{\psi_i^n}\cdot \bm{\psi_i^{n-1}} \\
+&= \sum P^n
+\end{aligned}
+$$
+
+Note that we requires that $\bm{\psi_i^n}^T \bm{A}^T\bm{A} \bm{\psi_i^n} = \bm{\psi_i^n}^T \bm{A}^2 \bm{\psi_i^n}$. This leads us to deal the discretized Hamiltonian carefully. It is most convenient to prepare the matrix $\bm{A}$ into a real symmetric matrix. In most physical system, such $\bm{A}$ can be easy obtained. 
+
 This explicit method is different from Crank-Nicolson method in the stability. Here we discuss the stability condition of the method. The discretized iteration equation can be expressed as matrix form as
 
 $$
@@ -225,6 +239,57 @@ $$
 \psi_i^{n}
 \end{bmatrix}
 $$
+
+By the determinant of such block matrix (see [wikipedia/Determinant#Block_matrices](https://en.wikipedia.org/wiki/Determinant#Block_matrices) for details), we have
+
+$$
+\det \begin{bmatrix}
+1 - \lambda & \Delta t \hat H \\
+-\Delta t \hat H & 1 - \Delta t^2 \hat H^2 - \lambda
+\end{bmatrix} = \det \Big((1-\lambda) (1-\Delta t^2 \hat H^2 - \lambda) + \Delta t^2 \hat H^2\Big) = 0.
+$$
+
+One can check the equation is equivalent to (omit the case of $\lambda = 0$)
+
+$$
+\det \Big(\frac {1-2\lambda +\lambda^2} \lambda + \Delta t^2 \hat H^2\Big) = 0.
+$$
+
+That means, if the eigenvalues of $\hat H$ is denoted as $\{E_i\}$, then the eigenvalues of discretized propagation should be
+
+$$
+\lambda_i = 1 - \frac {E_i^2 \Delta t^2} 2 \pm \sqrt{\frac {E_i^4 \Delta t^4} 4 - E_i^2 \Delta t^2}.
+$$
+
+Note that in the practice we implement Hamiltonian $\hat H$ via finite difference for the derivative. So there is slight inconsistency between $E_i$ and actual energy spectrum. With the similar method as von Neumann analysis, we assume the growth of error behaves like $\xi_k^n e^{\ti k\cdot x}$, the eigenvalue of $\hat H \Delta t$ (actually the growth factor), can be estimated as
+
+$$
+\ti \frac {\xi_k - 1} {\Delta t} = E_i \sim \frac {2} {\Delta x^2} \sin^2 \frac {k \cdot \Delta x} 2 + V^n.
+$$
+
+The stability condition requires that $|\lambda_i|\leq 1$. If we require $x = E_i^2 \Delta t^2$ has the property of $x^2/ 4 \geq x$ thus $\lambda_i \in \mathbb{R}$, then the stability condition is equivalent to
+
+$$
+\begin{aligned}
+\Big|1- \frac x 2 \pm \sqrt{\frac {x^2} 4 - x}\Big| \leq 1 &\Rightarrow \Big|1 - \frac x 2\Big| + \sqrt{\frac {x^2} 4 - x} \leq 1 \\
+&\Rightarrow  (1 - x/2)^2 \leq (1-\sqrt{x^2/4 -x})^2 \textrm{ and } 1 \geq \sqrt{x^2/4 -x} \\
+&\Rightarrow 0 \leq -2 \sqrt{x^2/4-x} \textrm{ and } 1 \geq \sqrt{x^2/4 -x}
+\end{aligned}
+$$
+
+which is impossible. Thus we need $x \gt x^2 /4$ and $\lambda_i$ are a pair of conjugate complex numbers. The modulus of them is
+
+$$
+\Big|1- \frac x 2 \pm \sqrt{\frac {x^2} 4 - x}\Big|_{x \leq 4} = (1 - x/2)^2 + (x - x^2 /4) = 1.
+$$
+
+Thus, the stability condition requires that $x \leq 4 \Rightarrow |E_i \Delta t| \leq 2$. With the estimation for $E_i$, we can write down the stability condition w.r.t. potential $V$ and discretization parameters as
+
+$$
+\frac {-2} {\Delta t} \leq V^n \leq \frac {2} {\Delta t} - \frac 2 {\Delta x^2} .
+$$
+
+For any potential $V$, once we make a sufficiently small $\Delta t$ and $\Delta t \leq \mathcal{O}(\Delta x^2)$, then the stability condition can be achieved. 
 
 {{% /fold %}}
 
