@@ -184,13 +184,47 @@ $$
 
 This is originally proposed in [Computers in Physics 5, 596 (1991)](https://aip.scitation.org/doi/abs/10.1063/1.168415). As it was introduced, it is an explicit algorithm with second-order accurate in time and as stable as Crank-Nicolson method. Here we make a brief discussion for it. 
 
-The algorithm compute the real and imaginary part of wavefunction separately at different time sequence. Letting $\psi = \psi_r + \ti \psi_i$, the Schrodinger equation reads
+The algorithm computes the real and imaginary part of wavefunction separately at different time sequence. Letting $\psi = \psi_r + \ti \psi_i$, the Schrodinger equation reads
 
 $$
-\frac {\td \psi_r} {\td t} = 
+\frac {\td \psi_r} {\td t} = \hat H \psi_i \ ; \ \frac {\td \psi_i} {\td t} = -\hat H \psi_r.
 $$
 
+The algorithm requires $\psi_r, \psi_i$ at different time sequence as $\psi_r^n = \psi_r(t=n \Delta t), \psi_i^n = \psi_i(t = (n+1/2) \Delta t)$. Then the time evolution is performed as
 
+$$
+\begin{aligned}
+\psi_r^{n+1} &= \psi_r^n + \Delta t \hat H \psi_i^n \\
+\psi_i^{n+1} &= \psi_i^n - \Delta t \hat H \psi_r^{n+1}
+\end{aligned}
+$$
+
+Different from the implicit method, this method requires the initial condition at two different time points as $\psi_r^0 = \textrm{Re}\psi(t=0), \psi_i^0 = \textrm{Im}\psi(t=\Delta t/2)$. Thus to implement this method we may need to compute one step time evolution by implicit method for higher accuracy. 
+
+The probability along two time sequences are computed in a different way as
+
+$$
+\begin{aligned}
+P(t = n\Delta t) &= (\psi_r^n)^2 + \psi_i^n \psi_i^{n-1} \\
+P(t = (n+1/2)\Delta t) &= \psi_r^{n+1} \psi_r^n + (\psi_i^n)^2
+\end{aligned}
+$$
+
+This explicit method is different from Crank-Nicolson method in the stability. Here we discuss the stability condition of the method. The discretized iteration equation can be expressed as matrix form as
+
+$$
+\begin{bmatrix}
+\psi_r^{n+1} \\
+\psi_i^{n+1}
+\end{bmatrix} = 
+\begin{bmatrix}
+1 & \Delta t \hat H \\
+-\Delta t \hat H & 1 - \Delta t^2 \hat H^2
+\end{bmatrix}\begin{bmatrix}
+\psi_r^{n} \\
+\psi_i^{n}
+\end{bmatrix}
+$$
 
 {{% /fold %}}
 
