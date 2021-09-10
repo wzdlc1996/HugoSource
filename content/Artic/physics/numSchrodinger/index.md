@@ -293,6 +293,15 @@ For any potential $V$, once we make a sufficiently small $\Delta t$ and $\Delta 
 
 {{% /fold %}}
 
+## Trotter-Suzuki Expansion
+
+**Trotter-Suzuki Expansion**, as its formula, works fine when the Hamiltonian can be expressed as a sum of easy to simulate Hamiltonians. The **Trotter-Suzuki Formula** reads
+
+$$
+\exp\Big(-\ti \sum_{j=1}^m \hat H_j t\Big) = \prod_{j=1}^m \exp\Big(-\ti \hat H_j t\Big) + \mathcal{O}(m^2t^2).
+$$
+
+If the subroutine for simulating $e^{-\ti \hat H_j t}$ works fast, then Trotter-Suzuki expansion would be an efficient numerical method for numerical solution of Schrodinger equation. Usually, the spin system with few-body interactions(local interaction) would has such property (sparsity would help much). For the generic equation of spatial wavefunctions, this property holds since the kinetic term can be fast simulated via **FFT(Fast Fourier Transformation)**.
 
 
 # Conclusion
