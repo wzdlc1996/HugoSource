@@ -303,6 +303,16 @@ $$
 
 If the subroutine for simulating $e^{-\ti \hat H_j t}$ works fast, then Trotter-Suzuki expansion would be an efficient numerical method for numerical solution of Schrodinger equation. Usually, the spin system with few-body interactions(local interaction) would has such property (sparsity would help much). For the generic equation of spatial wavefunctions, this property holds since the kinetic term can be fast simulated via **FFT(Fast Fourier Transformation)**.
 
+Let us consider the wavefunction with coordinate representation $\psi(\bm{x})$. The kinetic energy operator reads $\hat T = - \frac 1 2 \nabla^2$. The operator exponent with $\hat T$ as generator can be easily evaluated on $\psi(\bm{x})$ by the Fourier transform (assuming $\psi$ is good enough to do so)
+
+$$
+\begin{aligned}
+e^{-\ti \hat T t} \psi(\bm{x}) &= e^{-\ti \hat T t} \int \frac {\td \bm{k}} {(2\pi)^{3/2}} \tilde{\psi}(\bm{k}) e^{\ti \bm{k}\cdot \bm{x}} \\
+&= \int \frac {\td \bm{k}} {(2\pi)^{3/2}} \tilde{\psi}(\bm{k}) e^{-\ti \bm{k}^2 t /2} \\
+&= \frac {1} {(2\pi)^3} \int \td \bm{x'} \td \bm{k} \ \psi(\bm{x'}) e^{-\ti \bm{k}^2 t/ 2} e^{-\ti \bm{k}\cdot \bm{x'}}
+\end{aligned}
+$$
+
 
 # Conclusion
 
