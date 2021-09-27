@@ -28,7 +28,27 @@ $$
 In such case, there should be no "time evolution" and violates our intuition: time flow does exists and we can even check it by experiment. To overcome this issue, Page and Wootters illustrate an interesting analysis for a closed system and introduced the "clock time" via the entanglement of parties. The "clock time", instead of the "coordinate time" $t$ in the Schrodinger equation, should be the one we realizable in the real world. This analysis, by their original paper, may not be correct but consistent. It is interesting to discuss, especially recently there are some new progress in this context. 
 
 
-# Physical Theory with "Time"
+## Theory: Conditional Probability Interpretation
+
+The core idea of Page and Wootters' is described in ([Page & Wootters, 1983][3]) as
+
+> ... although the dependence of a system upon coordinate time is completely unobservable, one can observe a dependence upon an internal clock time. 
+
+The dependence of the dynamical variables to the clock time is described as the **Conditional Probability**. 
+
+Let the composite system be split into the subsystem we concern as $S$ and the clock $C$. The clock time $\tau$ (we use different notation to distinguish coordinate time $t$) is some observable on $C$, i.e. described as an operator on the subspace $\mathcal{H}_C$. Our naive calling for "Something happened to $S$ at time $\tau$" means we find the system $S$ at some state, with the condition of $C$ reads $\tau$. Mathematically speaking, the state of $S$ at time $\tau$ means the following conditional probability distribution
+
+$$
+\mathbb{P}(S \textrm{ at state } s| C \textrm{ at } \tau).
+$$
+
+Thus the time flow can be separated into two aspects. One is the evolution of coordinate time $t$, which could leave no observable difference on the universe $S+ C$ or any subsystem. Another is the evolution of clock time. Our perception of such evolution comes from the correlation between the subsystem and the internal clock.
+
+
+## An Example: How does Internal Clock Work?
+
+
+# Physical Theory with Clock Time
 
 ref: the recent Nat. Comm. paper [Nat Commun 12, 1787 (2021).](https://www.nature.com/articles/s41467-021-21782-4.pdf)
 
