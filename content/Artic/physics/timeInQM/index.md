@@ -47,6 +47,14 @@ Thus the time flow can be separated into two aspects. One is the evolution of co
 
 ## An Example: How does Internal Clock Work?
 
+This is the example to illustrate the theory of time via conditional probability in Page and Wootters' original paper. Here we discuss it with modern view and language. 
+
+Consider the system (Universe) of two large but distinguishable spins denoted as $1, 2$. The Hamiltonian of the Universe is made up with the kinetic energy of them with **NO** interaction. With the eigenstates of $\hat J_{i, z} , i=1,2$, the Hamiltonian reads
+
+$$
+\hat H = \sum_{m_1=-j_1}^{j_1} \sum_{m_2=-j_2}^{j_2} \hbar \omega_1 \ket{m_1}\bra{m_1} \otimes \hat I_2 + \hbar\omega_2 \hat I_1 \otimes \ket{m_2}\bra{m_2}.
+$$
+
 
 # Physical Theory with Clock Time
 
