@@ -49,11 +49,37 @@ Thus the time flow can be separated into two aspects. One is the evolution of co
 
 This is the example to illustrate the theory of time via conditional probability in Page and Wootters' original paper. Here we discuss it with modern view and language. 
 
-Consider the system (Universe) of two large but distinguishable spins denoted as $1, 2$. The Hamiltonian of the Universe is made up with the kinetic energy of them with **NO** interaction. With the eigenstates of $\hat J_{i, z} , i=1,2$, the Hamiltonian reads
+Consider the system (Universe) of two large but distinguishable spins denoted as $1, 2$. The Hamiltonian of the Universe is made up with the kinetic energy of them with **NO** interaction. With the eigenstates of $\hat S_{i, z} , i=1,2$, the Hamiltonian reads
 
 $$
-\hat H = \sum_{m_1=-j_1}^{j_1} \sum_{m_2=-j_2}^{j_2} \hbar \omega_1 \ket{m_1}\bra{m_1} \otimes \hat I_2 + \hbar\omega_2 \hat I_1 \otimes \ket{m_2}\bra{m_2}.
+\hat H = \hbar \omega_1 \hat S_{1,z}+ \hbar \omega_2 \hat S_{2,z}  = \sum_{m_1=-s_1}^{s_1} \sum_{m_2=-s_2}^{s_2} \hbar \omega_1 m_1 \ket{m_1}\bra{m_1} \otimes \hat I_2 + \hbar\omega_2 m_2 \hat I_1 \otimes \ket{m_2}\bra{m_2}.
 $$
+
+Since there is no interaction between spin 1 and 2, the composite motion is just the direct product of two free rotations along the z-axis. Suppose the initial condition of the composite system is the product state of the eigenstates of $\hat S_{1,x}$ and $\hat S_{2,x}$ with $s_1$ and $s_2$. With the theory of quantum angular momentum, such states should be
+
+$$
+\ket{x}=\frac 1 {2^s} \sum_{m=-s}^s \sqrt{\frac {(2s)!} {(s-m)!(s+m)!}} \ket{m} \Rightarrow \hat S_x \ket{x} = \hbar s \ket{x}.
+$$
+
+{{% fold "Note: Checking for this eigenstate" %}}
+
+One can check this is the eigenstate of $\hat S_x$ with possibly largest eigenvalue by the ladder operator in $\hat S_z$ eigenbasis representation.
+
+$$
+(\hat S_x \pm \ti \hat S_y) \ket{s, m} = \hbar \sqrt{s(s+1) - m(m\pm 1)} \ket{s,m\pm 1} \\
+\Rightarrow \hat S_x =\frac \hbar 2 \sum_{m=-s}^s \sqrt{s(s+1)-m(m+1)}\ket{m+1}\bra{m} + \sqrt{s(s+1)-m(m-1)}\ket{m-1}\bra{m}.
+$$
+
+Then, there is
+
+$$
+\begin{aligned}
+\frac 1 \hbar \hat S_x \ket{x} &= \frac 1 {2^{s+1}}\sum_m \sqrt{C_{2s}^{s+m}}\Big(\sqrt{(s-m)(s+m+1)}\ket{m+1} + \sqrt{(s+m)(s-m+1)}\ket{m-1}\Big) \\
+&=\frac 1 {2^{s+1}} \Big(\sum_m \sqrt{\frac{(2s)!(s+m+1)} {(s-m-1)!(s+m)!}}\Big)
+\end{aligned}
+$$
+
+{{% /fold %}}
 
 
 # Physical Theory with Clock Time
