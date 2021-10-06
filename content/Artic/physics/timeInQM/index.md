@@ -52,10 +52,10 @@ This is the example to illustrate the theory of time via conditional probability
 Consider the system (Universe) of two large but distinguishable spins denoted as $1, 2$. The Hamiltonian of the Universe is made up with the kinetic energy of them with **NO** interaction. With the eigenstates of $\hat S_{i, z} , i=1,2$, the Hamiltonian reads
 
 $$
-\hat H = \hbar \omega_1 \hat S_{1,z}+ \hbar \omega_2 \hat S_{2,z}  = \sum_{m_1=-s_1}^{s_1} \sum_{m_2=-s_2}^{s_2} \hbar \omega_1 m_1 \ket{m_1}\bra{m_1} \otimes \hat I_2 + \hbar\omega_2 m_2 \hat I_1 \otimes \ket{m_2}\bra{m_2}.
+\hat H = \hbar \omega \hat S_{1,z}+ \hbar \omega \hat S_{2,z}  = \sum_{m_1=-s}^{s} \sum_{m_2=-s}^{s} \hbar \omega m_1 \ket{m_1}\bra{m_1} \otimes \hat I_2 + \hbar\omega m_2 \hat I_1 \otimes \ket{m_2}\bra{m_2}.
 $$
 
-Since there is no interaction between spin 1 and 2, the composite motion is just the direct product of two free rotations along the z-axis. Suppose the initial condition of the composite system is the product state of the eigenstates of $\hat S_{1,x}$ and $\hat S_{2,x}$ with $s_1$ and $s_2$. With the theory of quantum angular momentum, such states should be
+Since there is no interaction between spin 1 and 2, the composite motion is just the direct product of two free rotations along the z-axis. Suppose the initial condition of the composite system is the product state of the eigenstates of $\hat S_{1,x}$ and $\hat S_{2,x}$ with maximum magnitude. With the theory of quantum angular momentum, such states should be
 
 $$
 \ket{x}=\frac 1 {2^s} \sum_{m=-s}^s \sqrt{\frac {(2s)!} {(s-m)!(s+m)!}} \ket{m} \Rightarrow \hat S_x \ket{x} = \hbar s \ket{x}.
@@ -75,11 +75,46 @@ Then, there is
 $$
 \begin{aligned}
 \frac 1 \hbar \hat S_x \ket{x} &= \frac 1 {2^{s+1}}\sum_m \sqrt{C_{2s}^{s+m}}\Big(\sqrt{(s-m)(s+m+1)}\ket{m+1} + \sqrt{(s+m)(s-m+1)}\ket{m-1}\Big) \\
-&=\frac 1 {2^{s+1}} \Big(\sum_m \sqrt{\frac{(2s)!(s+m+1)} {(s-m-1)!(s+m)!}}\Big)
+&=\frac 1 {2^{s+1}} \Big(\sum_m \sqrt{\frac{(2s)!(s+m+1)} {(s-m-1)!(s+m)!}} \ket{m+1} + \sqrt{\frac {(2s)!(s-m+1)} {(s+m-1)!(s-m)!}} \ket{m-1} \Big) \\
+&=\frac 1 {2^{s+1}} \Big(\sum_{m=-s+1}^s \sqrt{\frac{(2s)!(s+m)} {(s-m)!(s+m-1)!}} \ket{m} + \sum_{m=-s}^{s-1}\sqrt{\frac {(2s)!(s-m)} {(s+m)!(s-m-1)!}} \ket{m} \Big)  \\
+&=\frac 1 {2^{s+1}} \Big(\sum_{m=-s}^s \sqrt{\frac{(2s)!} {(s-m)!(s+m)!}}(s+m) \ket{m} + \sum_{m=-s}^{s}\sqrt{\frac {(2s)!} {(s+m)!(s-m)!}}(s-m) \ket{m} \Big) \\
+&=s \ket{x}
 \end{aligned}
 $$
 
+We change the range of sum for the added term should be zero by the sum rule. Thus the state $\ket{x}$ should be the eigenstate of $\hat S_x$ with the possibly maximum eigenvalue. This means the spin oriented along $x$ axis.
+
 {{% /fold %}}
+
+The second spin would be our internal clock. The observer (spin 1) cannot be asked any question about its motion with the respect to coordinate time $t$ (though there is indeed absolute motion in this case). One can only ask the conditional probability of spin-1 with the condition of spin-2 state. This procedure cannot be done in real world, since such prediction of probability can only get demonstration via some infinite ensemble of the universe. This fault is the same as many-world interpretation: the theory of the transition probability of the irreversible procedure cannot verified preciously via experiment.   
+
+To illustrate how the internal clock works, we show how spin-1 and spin-2 get correlated via a set of "stationary operators". The system itself does not have any entanglement during the evolution. This is one of the novelty of Page and Wootters' work. 
+
+The operators, or measurement is chosen to be the spin component along $x$ axis. To determine the conditional probability, we need the induced projector by measure spin-2 and spin-1&2 together by
+
+$$
+\hat P_{c} = \hat I_1 \otimes \ket{x, 2}\bra{x, 2} \ ; \ \hat P(k) = \ket{J_{1,x} = s-k, 1}\bra{J_{1,x}=s-k,1}\otimes \ket{x,2}\bra{x,2}.
+$$
+
+In the Heisenberg picture, one can write down the explicit expression for eigenstate of $\hat J_{x}(t)$ as
+
+$$
+\ket{J_x=s-k} = \sum_{m=-s}^s \sqrt{\frac {C_{2s}^k} {C_{2s}^{s+m}}} \sum_{l=0}^k C_k^l C_{2s-k}^{s+m-l} 2^{-s} (-1)^l e^{-\ti m \omega t} \ket{m}.
+$$
+
+Since projector $\hat P_c$ and $\hat P(k)$ are both dependent of time in the Heisenberg picture (i.e., they are not stationary operators). The authors considered the long time average of these projectors for the conditional probability as
+
+$$
+\mathbb{P}(J_{1,x}=s-k|J_{2,x}=s) = \frac {\braket{\psi|\overline{\hat P(k)}|\psi}} {\braket{\psi|\overline{\hat P}_j|\psi}},
+$$
+
+with $\overline{\hat O} = \lim_{T\rightarrow \infty} \frac 1 {2T}\int_{-T}^T e^{\ti \hat H t} \hat O e^{-\ti \hat H t} \td t$. By their result, the conditional probability reads
+
+$$
+\mathbb{P}(J_{1,x} = s-k|J_{2,x}=s) = 2^{-4s} \frac {C_{8s}^{4s} C_{2s}^k C_{4s}^k} {C_{4s}^{2s}C_{8s}^{2k}} \sim_{s\rightarrow \infty} 2^{-1/2 - 3k} C_{2k}^k.
+$$
+
+This performs a strong concentration around $k=0$, i.e., these two spin illustrate the correlation by the conditional probability through the stationary operators.
 
 
 # Physical Theory with Clock Time
