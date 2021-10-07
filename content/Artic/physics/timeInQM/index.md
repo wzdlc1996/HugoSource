@@ -177,7 +177,15 @@ $$
 \end{aligned}
 $$
 
+With the definition of clock states $\ket{\tau}$ and the fact that $[\hat \rho, \hat H] = 0$, one has
 
+$$
+\begin{aligned}
+\textrm{Tr} \hat \rho (\hat O \otimes \ket{\tau}\bra{\tau}) &= \textrm{Tr} \hat \rho \Big(\hat O \otimes e^{-\ti \hat H_C \tau} \ket{0}\bra{0} e^{\ti \hat H_C \tau}\Big) \\
+&= \textrm{Tr} \ e^{-\ti \hat H \tau} \hat \rho e^{\ti \hat H \tau} e^{-\ti \hat I_S \otimes \hat H_C \tau} (\hat O \otimes \ket{0}\bra{0}) e^{\ti \hat I_S \otimes\hat H_C \tau} \\
+&= 
+\end{aligned}
+$$
 
 
 
