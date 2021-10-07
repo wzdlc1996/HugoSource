@@ -121,9 +121,69 @@ This performs a strong concentration around $k=0$, i.e., these two spin illustra
 
 ref: the recent Nat. Comm. paper [Nat Commun 12, 1787 (2021).](https://www.nature.com/articles/s41467-021-21782-4.pdf)
 
+## The Classical Analog
+
+In the classical mechanics, we can assign a dynamical variable as the time instead of coordinate time and obtain the analog of Page and Wootters' mechanism. 
+
+Let us begin with the system described by the clock time $\tau$, which can be the dynamical variable of one additional degree of freedom or another subsystem. The classical mechanics for the subsystem apart from the internal clock can be expressed as the action
+$$
+S = \int \td \tau \ L_S\Big(q, \frac {\td q} {\td \tau}\Big).
+$$
+Without loss of the generality, we choose a time-independent Lagrangian for the system. Then according to the Page & Wootters' picture, we can derive the mechanics of the universe with respect to the coordinate time $t$. The transformation can be down by noting $\tau = \tau(t)$ is a dynamical variable. The action evolving all degrees of freedom(subsystem and the clock) should be
+$$
+S = \int \td t \ \dot{\tau} L_S(q, \dot{q} / \dot{\tau}) = \int\td t\ L(q, \dot{q}, \dot{\tau}).
+$$
+We denoting all time derivative of dynamical variables with respect to coordinate time $t$ as the dot-notation. Then the Lagrangian of the universe which leads to the classical theory for dynamics should be
+$$
+L(q, \dot{q}, \dot{\tau}) = \dot{\tau} L_S(q, \dot{q}/\dot{\tau}).
+$$
+The Hamiltonian of the universe can also be obtained by the full Legendre transformation including $\tau$ as
+$$
+\begin{aligned}
+H &= \frac {\partial L} {\partial \dot{\tau}} \dot{\tau} + \frac {\partial L} {\partial \dot{q}} \dot{q} - L \\
+&= L_S\dot{\tau}+\dot{\tau}\partial_2 L_S \cdot (-\dot{q} / \dot{\tau}^2) \dot{\tau}+\dot{\tau} \partial_2L_S(1/\dot{\tau})\dot{q} - \dot{\tau}L_S \\
+&=0.
+\end{aligned}
+$$
+
+This vanishing Hamiltonian means that this classical universe is stationary. However such form of the Lagrangian $L$ for universe leads to the non-vanishing effective dynamics for the subsystem with respect to internal clock time $\tau$. With this result, we can legally make a conjecture that there is no "absolute" motion of the universe. Our feeling for the time flow is caused by the careful choice of the clock time $\tau$, since the universe's Lagrangian $L$ could lead to a non-vanishing motion of the subsystem with respect to $\tau$. This is the core idea of Page and Wootters' mechanism.
+
+## "Derive" the Schrodinger Equation
+
+Our next work is to apply the analysis to the quantum system. The approach was originally proposed in Page and Wootters' paper. Recently, their idea got mathematically strict expression in [Nat Commun 12, 1787 (2021).](https://www.nature.com/articles/s41467-021-21782-4.pdf) We follow the Page & Wootters' language here since it is simple and enough to show the method.
+
+Consider the composite system (universe) of clock $C$ and system $S$ without interaction. The Hamiltonian reads
+$$
+\hat H = \hat H_S\otimes \hat I_C + \hat I_S \otimes \hat H_C.
+$$
+Without loss of generality, let the universe is at the eigenstate of energy to be zero. The global energy shift can only lead to the overall phase factor(coordinate time dependent) that is not observable. That means
+$$
+\hat H \ket{\Psi} = 0.
+$$
+Without further explanation, we use upper Greek letters to denote the universe and lower case for the (sub)system.
+
+It is necessary in this theory that $\hat H_C$ generates a set of clock states. In Page & Wootters' original paper, they required
+$$
+e^{\ti \hat H_C s}\ket{0} = \ket{s} \ ; \ \hat I_C = \int \td s \ \ket{s}\bra{s}.
+$$
+This is actually a non-trivial requirement for $\hat H_C$. One can easily find the conjugate operator of any spectral operator like position in the Hilbert space of clock match this. However, such $\hat H_C$ would not have a lower bound and harmful for the quantum theory. Such clock works for showing Page & Wootters' mechanism in this toy model. However, one should be carefully to use this for further research. One should also note that this fault is not fatal for the discussion of local procedure during short time interval. For those global cases with a long time interval, the unbounded Hamiltonian from below is questioned because of multiple instability issues. 
+
+By Page & Wootters' setup, the (conditional) expectation value of operator $\hat O$ on the Hilbert space of subsystem $S$ at clock time $\tau$ should be 
+ 
+$$
+\begin{aligned}
+\langle \hat O(\tau)\rangle &= \sum_j \frac {\bra{\Psi} (\ket{O=O_j}\bra{O=O_j} \otimes \ket{\tau}\bra{\tau}) \ket{\Psi}} {\bra{\Psi} (\hat I_S \otimes \ket{\tau}\bra{\tau})\ket{\Psi}} O_j \\
+&= \frac {\textrm{Tr} \hat \rho (\hat O \otimes \ket{\tau}\bra{\tau})} { \textrm{Tr} \hat \rho (\hat I_S \otimes \ket{\tau}\bra{\tau})}.
+\end{aligned}
+$$
+
+
+
+
+
 # Interacted Clock and System 
 
-ref: the work of [Alexander R. H. Smith1 and Mehdi Ahmadi](https://quantum-journal.org/papers/q-2019-07-08-160/pdf/)
+ref: the work of [Alexander R. H. Smith1 and Mehdi Ahmadi-](https://quantum-journal.org/papers/q-2019-07-08-160/pdf/)
 
 # Conclusion
 
