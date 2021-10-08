@@ -2,7 +2,7 @@
 title: "Time in Quantum Mechanics"
 date: 2021-09-25T18:00:00+08:00
 lastmod: 2021-09-25T18:00:00+08:00
-draft: true
+draft: false
 tags: ["quantum"]
 categories: ["Reviews"]
 toc: true
@@ -11,9 +11,13 @@ summary: "Time in quantum mechanics is always left as an parameter in the equati
 
 # Introduction
 
-# Page-Wootters Mechanism
+Time might be the most mysterious concept in physics theory. Before the relativistic theory, time was long considered as the global parameter controlling the world. Einstein told us time and space should be linked as one and influenced by matter. However, the most fundamental two theory of physics, quantum theory and general relativistics are still not unified well. The former one gives us the best description about basic particles and their motion. The latter discuss how matter influence the spacetime, the stage of the motion. These two theories deal time quite differently and make it still an unsolved puzzle to scientists. In 1983, Page and Wootters discussed the approach to treat the time as an emergent phenomena instead of the parameter isolated from theory. They proposed a strategy to define time and dynamics within a stationary system. Recently, the time is emergent from quantum correlation become popular in the community <!-- Need reference -->. It is worthy to discuss their original work and some modern development here. 
 
-ref: the original paper [by Page & Wootters](https://journals.aps.org/prd/pdf/10.1103/PhysRevD.27.2885)
+This post is arranged as three parts. First we show the original Page-Wootters (PaW) mechanism of time. Then we discuss how the equation of motion appear in such scenario. At last, we discuss the recent development about introducing the interaction between clock and system. 
+
+# Page-Wootters(PaW) Mechanism
+
+<!--ref: the original paper [by Page & Wootters](https://journals.aps.org/prd/pdf/10.1103/PhysRevD.27.2885)-->
 
 ## Motivation
 
@@ -47,7 +51,7 @@ Thus the time flow can be separated into two aspects. One is the evolution of co
 
 ## An Example: How does Internal Clock Work?
 
-This is the example to illustrate the theory of time via conditional probability in Page and Wootters' original paper. Here we discuss it with modern view and language. 
+This is the example to illustrate how does conditional probability work in Page and Wootters' original paper. 
 
 Consider the system (Universe) of two large but distinguishable spins denoted as $1, 2$. The Hamiltonian of the Universe is made up with the kinetic energy of them with **NO** interaction. With the eigenstates of $\hat S_{i, z} , i=1,2$, the Hamiltonian reads
 
@@ -119,17 +123,17 @@ This performs a strong concentration around $k=0$, i.e., these two spin illustra
 
 # Physical Theory with Clock Time
 
-ref: the recent Nat. Comm. paper [Nat Commun 12, 1787 (2021).](https://www.nature.com/articles/s41467-021-21782-4.pdf)
+<!--ref: the recent Nat. Comm. paper [Nat Commun 12, 1787 (2021).](https://www.nature.com/articles/s41467-021-21782-4.pdf)-->
 
 ## The Classical Analog
 
-In the classical mechanics, we can assign a dynamical variable as the time instead of coordinate time and obtain the analog of Page and Wootters' mechanism. 
+In the classical mechanics, we can assign a dynamical variable as the time instead of coordinate time and obtain the analog of PaW mechanism. 
 
 Let us begin with the system described by the clock time $\tau$, which can be the dynamical variable of one additional degree of freedom or another subsystem. The classical mechanics for the subsystem apart from the internal clock can be expressed as the action
 $$
 S = \int \td \tau \ L_S\Big(q, \frac {\td q} {\td \tau}\Big).
 $$
-Without loss of the generality, we choose a time-independent Lagrangian for the system. Then according to the Page & Wootters' picture, we can derive the mechanics of the universe with respect to the coordinate time $t$. The transformation can be down by noting $\tau = \tau(t)$ is a dynamical variable. The action evolving all degrees of freedom(subsystem and the clock) should be
+Without loss of the generality, we choose a time-independent Lagrangian for the system. Then according to the PaW picture, we can derive the mechanics of the universe with respect to the coordinate time $t$. The transformation can be down by noting $\tau = \tau(t)$ is a dynamical variable. The action evolving all degrees of freedom(subsystem and the clock) should be
 $$
 S = \int \td t \ \dot{\tau} L_S(q, \dot{q} / \dot{\tau}) = \int\td t\ L(q, \dot{q}, \dot{\tau}).
 $$
@@ -146,11 +150,11 @@ H &= \frac {\partial L} {\partial \dot{\tau}} \dot{\tau} + \frac {\partial L} {\
 \end{aligned}
 $$
 
-This vanishing Hamiltonian means that this classical universe is stationary. However such form of the Lagrangian $L$ for universe leads to the non-vanishing effective dynamics for the subsystem with respect to internal clock time $\tau$. With this result, we can legally make a conjecture that there is no "absolute" motion of the universe. Our feeling for the time flow is caused by the careful choice of the clock time $\tau$, since the universe's Lagrangian $L$ could lead to a non-vanishing motion of the subsystem with respect to $\tau$. This is the core idea of Page and Wootters' mechanism.
+This vanishing Hamiltonian means that this classical universe is stationary. However such form of the Lagrangian $L$ for universe leads to the non-vanishing effective dynamics for the subsystem with respect to internal clock time $\tau$. With this result, we can legally make a conjecture that there is no "absolute" motion of the universe. Our feeling for the time flow is caused by the careful choice of the clock time $\tau$, since the universe's Lagrangian $L$ could lead to a non-vanishing motion of the subsystem with respect to $\tau$. This is the core idea of PaW mechanism.
 
 ## "Derive" the Schrodinger Equation
 
-Our next work is to apply the analysis to the quantum system. The approach was originally proposed in Page and Wootters' paper. Recently, their idea got mathematically strict expression in [Nat Commun 12, 1787 (2021).](https://www.nature.com/articles/s41467-021-21782-4.pdf) We follow the Page & Wootters' language here since it is simple and enough to show the method.
+Our next work is to apply the analysis to the quantum system. The approach was originally proposed in Page and Wootters' paper. Recently, their idea got mathematically strict expression in [Nat Commun 12, 1787 (2021).][4] We follow the Page & Wootters' language here since it is simple and enough to show the method.
 
 Consider the composite system (universe) of clock $C$ and system $S$ without interaction. The Hamiltonian reads
 $$
@@ -166,7 +170,7 @@ It is necessary in this theory that $\hat H_C$ generates a set of clock states. 
 $$
 e^{\ti \hat H_C s}\ket{0} = \ket{s} \ ; \ \hat I_C = \int \td s \ \ket{s}\bra{s}.
 $$
-This is actually a non-trivial requirement for $\hat H_C$. One can easily find the conjugate operator of any spectral operator like position in the Hilbert space of clock match this. However, such $\hat H_C$ would not have a lower bound and harmful for the quantum theory. Such clock works for showing Page & Wootters' mechanism in this toy model. However, one should be carefully to use this for further research. One should also note that this fault is not fatal for the discussion of local procedure during short time interval. For those global cases with a long time interval, the unbounded Hamiltonian from below is questioned because of multiple instability issues. 
+This is actually a non-trivial requirement for $\hat H_C$. One can easily find the conjugate operator of any spectral operator like position in the Hilbert space of clock match this. However, such $\hat H_C$ would not have a lower bound and harmful for the quantum theory. Such clock works for showing PaW mechanism in this toy model. However, one should be carefully to use this for further research. One should also note that this fault is not fatal for the discussion of local procedure during short time interval. For those global cases with a long time interval, the unbounded Hamiltonian from below is questioned because of multiple instability issues. 
 
 By Page & Wootters' setup, the (conditional) expectation value of operator $\hat O$ on the Hilbert space of subsystem $S$ at clock time $\tau$ should be 
  
@@ -183,20 +187,66 @@ $$
 \begin{aligned}
 \textrm{Tr} \hat \rho (\hat O \otimes \ket{\tau}\bra{\tau}) &= \textrm{Tr} \hat \rho \Big(\hat O \otimes e^{-\ti \hat H_C \tau} \ket{0}\bra{0} e^{\ti \hat H_C \tau}\Big) \\
 &= \textrm{Tr} \ e^{-\ti \hat H \tau} \hat \rho e^{\ti \hat H \tau} e^{-\ti \hat I_S \otimes \hat H_C \tau} (\hat O \otimes \ket{0}\bra{0}) e^{\ti \hat I_S \otimes\hat H_C \tau} \\
-&= 
+&= \textrm{Tr} \hat \rho \Big((e^{\ti \hat H_S \tau} \hat O e^{-\ti \hat H_S \tau} )\otimes \ket{0}\bra{0}\Big).
 \end{aligned}
 $$
 
+Thus, the expectation value of the operator at (clock) time $\tau$ should be 
+
+$$
+\braket{\hat O(\tau)} = \frac {\textrm{Tr}\hat \rho (\hat O \otimes \ket{\tau}\bra{\tau})} {\textrm{Tr} \hat\rho (\hat I_S \otimes \ket{\tau}\bra{\tau})}  = \frac {\textrm{Tr}\hat \rho (e^{\ti \hat H_S \tau} \hat O e^{-\ti \hat H_S \tau}\otimes \ket{0}\bra{0})} {\textrm{Tr} \hat \rho (\hat I_S \otimes \ket{0}\bra{0})} = \braket{e^{\ti \hat H_S \tau} \hat O(\tau = 0)e^{-\ti \hat H_S \tau}}.
+$$
+
+That is to say, the dynamics of expectation of observables obeys the Heisenberg equation. By the equivalence between the Heisenberg picture and Schrodinger picture, PaW mechanism provides us the same scene as common quantum mechanics with respect to coordinate time $t$.
 
 
-# Interacted Clock and System 
+# Interacting Clock and System 
 
 ref: the work of [Alexander R. H. Smith1 and Mehdi Ahmadi-](https://quantum-journal.org/papers/q-2019-07-08-160/pdf/)
 
+In the most generic case, we cannot assume that there is no interaction between the clock and the system. There should at least the gravitational interaction between them. Even when we consider the local theory so the gravity is neglectable, the mechanism cannot escape discussing the interaction. As the clock time matches our feeling to the time flow, we need at least an observer to connect the clock and the system. These two subsystem should be entangled to the observer at the same time. This leads to the information exchange between them, for example, by photons. The existence of this procedure requires the interaction. 
+
+With the same setup of the clock states and the universe state (Hamiltonian constraint)
+
+$$
+\Big(\hat H_S\otimes \hat I_C + \hat I_S \otimes \hat H_C + \hat H_{\textrm{int}}\Big) \ket{\Psi} = 0,
+$$
+
+we can derive the "clock time" dependent wavefunction for system $S$: $\ket{\psi_S(\tau)} = \braket{\tau| \Psi} \equiv \sum_j \ket{j} \Big(\bra{j} \otimes \bra{\tau} \ket{\Psi}\Big)$. The equation of motion for it should be
+
+$$
+\begin{aligned}
+\ti \frac {\td} {\td \tau} \ket{\psi_S(\tau)} &= \ti\sum_j \ket{j} \Big(\bra{j} \otimes \bra{0} \frac {\td } {\td \tau} e^{\ti \hat H_C \tau} \Big)\ket{\Psi} \\
+&= \sum_j \ket{j} \Big(\bra{j} \otimes \bra{\tau}\Big) (-\hat I_S \otimes \hat H_C) \ket{\Psi} \\
+&=\sum_j \ket{j} \Big(\bra{j} \otimes \bra{\tau}\Big) (\hat H_S \otimes \hat I_C + \hat H_{\textrm{int}}) \ket{\Psi} \\
+&= \hat H_S \ket{\psi_S(\tau)} + \int \td \tau' \ K(\tau, \tau') \ket{\psi_S(\tau')}
+\end{aligned}
+$$
+
+The integral kernel $K(\tau, \tau') = \braket{\tau|\hat H_{\textrm{int}}| \tau'}$ is the operator on the Hilbert space of $S$. Such equation is firstly introduced in ([Alexander R. H. Smith, 2019][5]) as the direct conclusion of PaW mechanism with clock-system interaction.
+
+Generally, this equation is not local in time, i.e., the motion of $\psi_S$ (time derivative) is dependent of the previous states (history) rather than the state at time $\tau$ only. Further more, the equation of motion does not automatically preserve the inner product of $\psi_S(\tau)$. This requires the interaction cannot be of arbitrary form or the physical states of $\psi_S$ is limited. 
+
 # Conclusion
 
-# Reference
+It has been a long mystery for the answer of what time is. In the past theoretical approach to the nature this question was evaded by introduce the global parameter since Newton's "absolute time" ([wikipedia/absolute_space_and_time][6]). Page and Wootters gave us a novel way to treat time as an emergent phenomena in quantum mechanics. Though there are still some issues in this framework for example
+
+1.  Orthogonal clock states with the stable universe Hamiltonian.
+2.  The choice of clock states is also an instance of preferred basis problem.
+2.  How about the time arrow in microscopic systems?
+2.  ... ...
+
+PaW mechanism is still valuable for the modern research for quantum theory for gravity. 
+
+With PaW mechanism, one can also make further interesting discussion of novel quantum procedure that not allowed with the coordinate time. Like the history representation for the time arrow, time machine with respect to clock time, and the similar approach (conditional probability interpretation) for the spatial coordinates and momentum. 
+
+<!--In quantum field theory, (flat) space and time are treated as parameters (indices of degree of freedom). It would be interesting to reformulate them as the conditional probability with respect some reference frame and discuss the Lorentz invariability. -->
+
+<!--# Reference-->
 
 [1]: https://en.wikipedia.org/wiki/Superselection
 [2]: https://link.springer.com/article/10.1007/BF02741478
 [3]: https://journals.aps.org/prd/abstract/10.1103/PhysRevD.27.2885
+[4]: https://www.nature.com/articles/s41467-021-21782-4.pdf
+[5]: https://quantum-journal.org/papers/q-2019-07-08-160/pdf/
+[6]: https://en.wikipedia.org/wiki/Absolute_space_and_time
