@@ -313,6 +313,57 @@ e^{-\ti \hat T t} \psi(\bm{x}) &= e^{-\ti \hat T t} \int \frac {\td \bm{k}} {(2\
 \end{aligned}
 $$
 
+{{% fold "Note: Approximate Fourier Transform via FFT" %}}
+
+In mathematics we define the **Fourier Transform(FT)** of a 1D-function (with some requirements) as the integral
+
+$$
+\mathcal{F}(f(x))(k) = \int_{-\infty}^{\infty} f(x) e^{-\ti kx} \td x = \tilde{f}(k).
+$$
+
+While the **Fast Fourier Transform(FFT)** algorithm implement the discretized FT for an number array
+
+$$
+\mathcal{F}(\{x_n\}_{n=0}^{N-1})_k = \sum_{n=0}^{N-1} x_n e^{-\ti 2\pi kn/N} = \tilde{x}_k.
+$$
+
+The continuous one can be approximated by the discretized one. Consider the homogeneous mesh for $x$ of function $f$ as $X = \{x_n\}_{n=0}^{N-1}$ such that $x_i = x_0 + n \Delta x$ and the cutoff of $x\notin [x_0, x_{N}] \rightarrow f(x) = 0$, one has
+
+$$
+\begin{aligned}
+\tilde{f}(k) &= \int \td x \ e^{-\ti k x} f(x) \\
+&\approx \sum_{n=0}^{N-1} \Delta x \ e^{-\ti k (x_0 + n \Delta x)} f(x_0 + n \Delta x) \\
+&= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti k n \Delta x} f_n
+\end{aligned} 
+$$
+
+where $f_n = f(x_0 + n \Delta x)$. With the $k$-mesh as $k_m = 2\pi m / \Delta x N$ with $m=0,\cdots, N-1$, we can get the value of $\tilde{f}$ at $k$-mesh with FFT algorithm as
+
+$$
+\tilde{f}(k_m) = \Delta x e^{-\ti k_m x_0} \Big(\mathcal{F}(f_n)\Big)_m.
+$$
+
+If $f(x) \in \mathbb{R}$ is real valued, we can further get $\tilde{f}(-k_m) = \tilde{f}(k_m)^*$ to enlarge our $k$-mesh. Generic way to enlarge $k$-mesh can be represented as rational $m$-value as
+
+$$
+k_{m + l N + s/p} = \frac {2\pi} {\Delta x N} m + \frac {2\pi} {\Delta x} l + \frac {2\pi} {\Delta x N p} s \ ; \ l\in\mathbb{Z}, s\in\{0,\cdots,p-1\}.
+$$
+
+The value of $\tilde{f}$ at these points is approximated as
+
+$$
+\begin{aligned}
+\tilde{f}(k = k_{m+l N + s/ p}) &= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti 2\pi m n/ N} e^{-\ti 2\pi ln} e^{-\ti2\pi s n/ Np} f_n \\
+&= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti 2\pi mn /N} e^{-\ti 2\pi sn / Np} f_n \\
+&= \Delta x e^{-\ti k x_0} \mathcal{F}(e^{-\ti 2\pi s n/ Np} f_n) \\
+&= e^{-\ti 2\pi l x_0 / \Delta x}\tilde{f}(k = k_{m+s/p})
+\end{aligned}
+$$
+
+One may need to call multiple times of FFT subroutine. 
+
+{{% /fold %}}
+
 
 # Conclusion
 
