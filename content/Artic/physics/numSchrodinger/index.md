@@ -308,8 +308,8 @@ Let us consider the wavefunction with coordinate representation $\psi(\bm{x})$. 
 $$
 \begin{aligned}
 e^{-\ti \hat T t} \psi(\bm{x}) &= e^{-\ti \hat T t} \int \frac {\td \bm{k}} {(2\pi)^{3/2}} \tilde{\psi}(\bm{k}) e^{\ti \bm{k}\cdot \bm{x}} \\
-&= \int \frac {\td \bm{k}} {(2\pi)^{3/2}} \tilde{\psi}(\bm{k}) e^{-\ti \bm{k}^2 t /2} \\
-&= \frac {1} {(2\pi)^3} \int \td \bm{x'} \td \bm{k} \ \psi(\bm{x'}) e^{-\ti \bm{k}^2 t/ 2} e^{-\ti \bm{k}\cdot \bm{x'}}
+&= \int \frac {\td \bm{k}} {(2\pi)^{3/2}} \tilde{\psi}(\bm{k}) e^{-\ti \bm{k}^2 t /2} e^{\ti \bm{k}\cdot \bm{x}} \\
+&= \frac {1} {(2\pi)^3} \int \td \bm{x'} \td \bm{k} \ \psi(\bm{x'}) e^{-\ti \bm{k}^2 t/ 2} e^{\ti \bm{k}\cdot (\bm{x} - \bm{x'})}
 \end{aligned}
 $$
 
@@ -340,7 +340,7 @@ $$
 where $f_n = f(x_0 + n \Delta x)$. With the $k$-mesh as $k_m = 2\pi m / \Delta x N$ with $m=0,\cdots, N-1$, we can get the value of $\tilde{f}$ at $k$-mesh with FFT algorithm as
 
 $$
-\tilde{f}(k_m) = \Delta x e^{-\ti k_m x_0} \Big(\mathcal{F}(f_n)\Big)_m.
+\tilde{f}_{appr}(k_m) = \Delta x e^{-\ti k_m x_0} \Big(\mathcal{F}(f_n)\Big)_m.
 $$
 
 If $f(x) \in \mathbb{R}$ is real valued, we can further get $\tilde{f}(-k_m) = \tilde{f}(k_m)^*$ to enlarge our $k$-mesh. Generic way to enlarge $k$-mesh can be represented as rational $m$-value as
@@ -353,14 +353,36 @@ The value of $\tilde{f}$ at these points is approximated as
 
 $$
 \begin{aligned}
-\tilde{f}(k = k_{m+l N + s/ p}) &= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti 2\pi m n/ N} e^{-\ti 2\pi ln} e^{-\ti2\pi s n/ Np} f_n \\
+\tilde{f}_{appr}(k = k_{m+l N + s/ p}) &= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti 2\pi m n/ N} e^{-\ti 2\pi ln} e^{-\ti2\pi s n/ Np} f_n \\
 &= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti 2\pi mn /N} e^{-\ti 2\pi sn / Np} f_n \\
 &= \Delta x e^{-\ti k x_0} \mathcal{F}(e^{-\ti 2\pi s n/ Np} f_n) \\
-&= e^{-\ti 2\pi l x_0 / \Delta x}\tilde{f}(k = k_{m+s/p})
+&= e^{-\ti 2\pi l x_0 / \Delta x}\tilde{f}_{appr}(k = k_{m+s/p})
 \end{aligned}
 $$
 
-One may need to call multiple times of FFT subroutine. 
+One may need to call FFT subroutine multiple times to get a better precision. 
+
+The most important thing is the error of $e^{-\ti \hat H t}$ by approximating Fourier Transform with discretized form. Consider 1-D, the approximated version is
+
+$$
+\begin{aligned}
+\Big[e^{-\ti \hat T t} \psi\Big]_{appr}(x_n) &= \frac 1 {(2\pi)^3} \int \td k \ \tilde{\psi}_{appr}(k) e^{-\ti k^2 t / 2} e^{\ti k x_n}\\
+&= \frac {\Delta x \Delta k} {(2\pi)^3} \sum_m \tilde{\psi}_{appr}(k_m) e^{-\ti k_m^2 t  /2} e^{\ti k_m x_n} \\
+&=\frac {\Delta x \Delta k} {(2\pi)^3} \sum_{l}\sum_{m=0}^{N-1} \tilde{\psi}_{appr}(k_m) e^{-\ti k_{m+lN}^2 t  /2} e^{\ti k_m x_n} e^{-\ti 2\pi l x_0/\Delta x}
+\end{aligned}
+$$
+
+The error comes from two parts. The first is the cutoff of $k$. In the last equality, the summation of $l$ cannot cover the whole $\mathbb{Z}$. Usually, we care about those wavepackets localized in both position space and momentum space. This makes the momentum-cutoff error harmless in most cases. The second part is numerical integral error. We use summation to approximate integral in both computing $\tilde{\psi}(k)$ and inversion Fourier transform of phase-shifted $\tilde{\psi}$. Generally, the numerical integral has the error of
+
+$$
+\Big|\int f(x) \td x - \sum_x f(x) \Delta x\Big| \sim  \frac L {\Delta x} \max_x \int_{x}^{x+\Delta x} |f(t) - f(x)| \td t = \mathcal{O}(\max_x |f'(x)|\Delta x + \frac 1 3 \max_x |f''(x)|\Delta x^2).
+$$
+
+Thus, the error of approximating continuous Fourier Transform is of
+
+$$
+\textrm{error} = \mathcal{O}(\Delta x) + \mathcal{O}(\Delta k) + k\textrm{-cutoff} 
+$$
 
 {{% /fold %}}
 
