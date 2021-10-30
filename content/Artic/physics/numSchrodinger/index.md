@@ -374,6 +374,8 @@ $$
 
 The error comes from two parts. The first is the cutoff of $k$. In the last equality, the summation of $l$ cannot cover the whole $\mathbb{Z}$. Usually, we care about those wavepackets localized in both position space and momentum space. This makes the momentum-cutoff error harmless in most cases. The second part is numerical integral error. We use summation to approximate integral in both computing $\tilde{\psi}(k)$ and inversion Fourier transform of phase-shifted $\tilde{\psi}$. Generally, the numerical integral has the error of
 
+TODO: Need more carefully discuss the error of FFT. This strategy might lead to numerical instability!. 
+
 $$
 \Big|\int f(x) \td x - \sum_x f(x) \Delta x\Big| \sim  \frac L {\Delta x} \max_x \int_{x}^{x+\Delta x} |f(t) - f(x)| \td t = \mathcal{O}(\max_x |f'(x)|\Delta x + \frac 1 3 \max_x |f''(x)|\Delta x^2).
 $$
