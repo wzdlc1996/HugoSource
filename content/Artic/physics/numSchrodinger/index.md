@@ -384,6 +384,8 @@ $$
 \textrm{error} = \mathcal{O}(\Delta x) + \mathcal{O}(\Delta k) + k\textrm{-cutoff} 
 $$
 
+Since $\Delta k \sim 2\pi / N \Delta x$, one can only consider a large $x$ range to mitigate the error. Usually it is more efficient than Crank-Nicolson method since error is less sensitive to time step $\Delta t$(It is still dependent to $\Delta t$).
+
 {{% /fold %}}
 
 
