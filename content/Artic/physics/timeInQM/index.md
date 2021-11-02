@@ -48,6 +48,7 @@ $$
 
 Thus the time flow can be separated into two aspects. One is the evolution of coordinate time $t$, which could leave no observable difference on the universe $S+ C$ or any subsystem. Another is the evolution of clock time. Our perception of such evolution comes from the correlation between the subsystem and the internal clock.
 
+<!--
 
 ## An Example: How does Internal Clock Work?
 
@@ -120,6 +121,7 @@ $$
 
 This performs a strong concentration around $k=0$, i.e., these two spin illustrate the correlation by the conditional probability through the stationary operators.
 
+-->
 
 # Physical Theory with Clock Time
 
