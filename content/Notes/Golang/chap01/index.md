@@ -38,22 +38,22 @@ Go 语言是一个开源的编程语言, 它能够容易地开发简洁, 可靠,
 Go 的几乎所有操作都依赖于命令 `go`, 它的工作模式依赖于若干环境变量. 在命令行中使用命令 `go env` 将会打印出当前的默认环境变量:
 
 ```bash
-# ~ go env
+# ~$ go env
 GO111MODULE=""
 GOARCH="amd64"
 GOBIN=""
-GOCACHE="user_home.../.cache/go-build"
-GOENV="user_home.../.config/go/env"
+GOCACHE="$HOME/.cache/go-build"
+GOENV="$HOME/.config/go/env"
 GOEXE=""
 GOFLAGS=""
 GOHOSTARCH="amd64"
 GOHOSTOS="linux"
 GOINSECURE=""
-GOMODCACHE="user_home.../go/pkg/mod"
+GOMODCACHE="$HOME/go/pkg/mod"
 GONOPROXY=""
 GONOSUMDB=""
 GOOS="linux"
-GOPATH="user_home.../go"
+GOPATH="$HOME/go"
 GOPRIVATE=""
 GOPROXY="https://proxy.golang.org,direct"
 GOROOT="/usr/lib/go"
@@ -77,7 +77,7 @@ GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-bu
 
 ### GOPATH
 
-环境变量 `GOPATH` . 默认情况对于 Unix 系它为 `user_home.../go`, 对于 Windows 它为 `%USERPROFILE%/go` . `GOPATH` 中存放所有用户在 Go 开发中的代码, 使用的文件等. 它是工作目录的根目录, 而且约定拥有如下文件结构:
+环境变量 `GOPATH` . 默认情况对于 Unix 系它为 `$HOME/go`, 对于 Windows 它为 `%USERPROFILE%/go` . `GOPATH` 中存放所有用户在 Go 开发中的代码, 使用的文件等. 它是工作目录的根目录, 而且约定拥有如下文件结构:
 
 ```bash
 go/
@@ -93,8 +93,8 @@ go/
 `GOPROXY` 环境变量某种意义上对于中国大陆的用户有着重要的地位. 它可以被理解为下载 Go 模块的地址. 因此在中国大陆使用 `VS Code` 的 `Golang` 相关功能时, 它会试图从默认仓库拉取代码并报错. 而如果换用中国大陆能够访问的[仓库][6]则可以顺利并且快速进行(事实上, 用户也可以手动下载这些 `go-tools` 的依赖项并本地安装, 参考[文章][8]):
 
 ```bash
-go env -w GOPROXY="https://goproxy.cn,direct"
-go env -w GO111MODULE="on"
+~$ go env -w GOPROXY="https://goproxy.cn,direct"
+~$ go env -w GO111MODULE="on"
 ```
 
 而关于设置 `GOPROXY` 的根本用意与它同 Go 模块(module) 的联系则可以参考[文章][7]
