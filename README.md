@@ -39,9 +39,20 @@ AllinOne/layouts/partials/escapeMathjaxEq.html
 {{- $rddcont | safeHTML -}}
 ```
 
-This replacement run automatically independent of the trigger in `config.toml`
+This replacement run automatically independent of the trigger in `config.toml`. For the special cases when one do not need math rendering, please set params `nomath: true` in the post heading, like
 
-
+```
+---
+title: "Bluetooth Audio Issues"
+date: 2018-11-15T13:13:29+08:00
+draft: false
+tags: ["os-setup", "manjaro"]
+categories: ["Linux"]
+toc: true
+nomath: true
+summary: "How to manager the Bluetooth earphones. Switch HSV to A2DP for the better performance."
+---
+```
 
 <details>
 <summary>previous solutions:</summary>
