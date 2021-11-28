@@ -331,16 +331,16 @@ The continuous one can be approximated by the discretized one. Consider the homo
 
 $$
 \begin{aligned}
-\tilde{f}(k) &= \int \td x \ e^{-\ti k x} f(x) \\
+\tilde{f}(k) &= \int_{x_0}^{x_N} \td x \ e^{-\ti k x} f(x) \\
 &\approx \sum_{n=0}^{N-1} \Delta x \ e^{-\ti k (x_0 + n \Delta x)} f(x_0 + n \Delta x) \\
 &= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti k n \Delta x} f_n
 \end{aligned} 
 $$
 
-where $f_n = f(x_0 + n \Delta x)$. With the $k$-mesh as $k_m = 2\pi m / \Delta x N$ with $m=0,\cdots, N-1$, we can get the value of $\tilde{f}$ at $k$-mesh with FFT algorithm as
+where $f_n = f(x_0 + n \Delta x)$. With the $k$-mesh as $k_m =k_0 +  2\pi m / \Delta x N$ with $m=0,\cdots, N-1$, we can get the value of $\tilde{f}$ at $k$-mesh with FFT algorithm as
 
 $$
-\tilde{f}_{appr}(k_m) = \Delta x e^{-\ti k_m x_0} \Big(\mathcal{F}(f_n)\Big)_m.
+\tilde{f}_{appr}(k_m) = \Delta x e^{-\ti k_m x_0} \Big(\mathcal{F}(f_n e^{-\ti k_0 n \Delta x})\Big)_m.
 $$
 
 $\tilde{f}_{appr}$ is quite different from $\tilde{f}$ but usually a good approximation. One can check that
@@ -355,30 +355,10 @@ e(k_m) &= |\tilde{f}(k_m) - \tilde{f}_{appr}(k_m)| \\
 \end{aligned}
 $$
 
-If $f(x) \in \mathbb{R}$ is real valued, we can further get $\tilde{f}(-k_m) = \tilde{f}(k_m)^*$ to enlarge our $k$-mesh. 
+The error bound grows as $k_m$ gets larger. That means the approximation could be bad at limit $N\rightarrow\infty, \Delta x \rightarrow 0$ while $k_m \sim 2\pi / \Delta x$. That is why we truncate $k$-mesh within $(-\pi/\Delta x , \pi/\Delta x)$ by letting $k_0 = -\pi/\Delta x$ but not zero. 
 
-The time evolution of function
+TODO: need Nyquist-Shannon sampling theorem.
 
-
-
-Generic way to enlarge $k$-mesh can be represented as rational $m$-value as
-
-$$
-k_{m + l N + s/p} = \frac {2\pi} {\Delta x N} m + \frac {2\pi} {\Delta x} l + \frac {2\pi} {\Delta x N p} s \ ; \ l\in\mathbb{Z}, s\in\{0,\cdots,p-1\}.
-$$
-
-The value of $\tilde{f}$ at these points is approximated as
-
-$$
-\begin{aligned}
-\tilde{f}_{appr}(k = k_{m+l N + s/ p}) &= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti 2\pi m n/ N} e^{-\ti 2\pi ln} e^{-\ti2\pi s n/ Np} f_n \\
-&= \Delta x e^{-\ti k x_0} \sum_{n=0}^{N-1} e^{-\ti 2\pi mn /N} e^{-\ti 2\pi sn / Np} f_n \\
-&= \Delta x e^{-\ti k x_0} \mathcal{F}(e^{-\ti 2\pi s n/ Np} f_n) \\
-&= e^{-\ti 2\pi l x_0 / \Delta x}\tilde{f}_{appr}(k = k_{m+s/p})
-\end{aligned}
-$$
-
-One may need to call FFT subroutine multiple times to get a better precision. 
 
 The most important thing is the error of $e^{-\ti \hat H t}$ by approximating Fourier Transform with discretized form. Consider 1-D, the approximated version is
 
@@ -392,7 +372,6 @@ $$
 
 The error comes from two parts. The first is the cutoff of $k$. In the last equality, the summation of $l$ cannot cover the whole $\mathbb{Z}$. Usually, we care about those wavepackets localized in both position space and momentum space. This makes the momentum-cutoff error harmless in most cases. The second part is numerical integral error. We use summation to approximate integral in both computing $\tilde{\psi}(k)$ and inversion Fourier transform of phase-shifted $\tilde{\psi}$. Generally, the numerical integral has the error of
 
-TODO: Need more carefully discuss the error of FFT. This strategy might lead to numerical instability!. 
 
 $$
 \Big|\int f(x) \td x - \sum_x f(x) \Delta x\Big| \sim  \frac L {\Delta x} \max_x \int_{x}^{x+\Delta x} |f(t) - f(x)| \td t = \mathcal{O}(\max_x |f'(x)|\Delta x + \frac 1 3 \max_x |f''(x)|\Delta x^2).
