@@ -321,13 +321,13 @@ $$
 \mathcal{F}(f(x))(k) = \int_{-\infty}^{\infty} f(x) e^{-\ti kx} \td x = \tilde{f}(k).
 $$
 
-While the **Fast Fourier Transform(FFT)** algorithm implement the discretized FT for an number array
+While the **Fast Fourier Transform(FFT)** algorithm implement the discretized FT for an array
 
 $$
 \mathcal{F}(\{x_n\}_{n=0}^{N-1})_k = \sum_{n=0}^{N-1} x_n e^{-\ti 2\pi kn/N} = \tilde{x}_k.
 $$
 
-The continuous one can be approximated by the discretized one. Consider the homogeneous mesh for $x$ of function $f$ as $X = \{x_n\}_{n=0}^{N-1}$ such that $x_i = x_0 + n \Delta x$ and the cutoff of $x\notin [x_0, x_{N}] \rightarrow f(x) = 0$, one has
+The continuous one can be approximated by the discretized one. Consider the homogeneous mesh for $x$ of function $f$ as $X = \{x_n\}_{n=0}^{N-1}$ such that $x_i = x_0 + n \Delta x$ and the cutoff of $x\notin (x_0, x_{N}) \rightarrow f(x) = 0$(Note that this implies the open boundary condition.), one has
 
 $$
 \begin{aligned}
@@ -343,7 +343,25 @@ $$
 \tilde{f}_{appr}(k_m) = \Delta x e^{-\ti k_m x_0} \Big(\mathcal{F}(f_n)\Big)_m.
 $$
 
-If $f(x) \in \mathbb{R}$ is real valued, we can further get $\tilde{f}(-k_m) = \tilde{f}(k_m)^*$ to enlarge our $k$-mesh. Generic way to enlarge $k$-mesh can be represented as rational $m$-value as
+$\tilde{f}_{appr}$ is quite different from $\tilde{f}$ but usually a good approximation. One can check that
+
+$$
+\begin{aligned}
+e(k_m) &= |\tilde{f}(k_m) - \tilde{f}_{appr}(k_m)| \\
+&= \Big|\sum_{n=0}^{N-1} \int_{x_n}^{x_{n+1}} \td x \  e^{-\ti k_m x} f(x) - e^{-\ti k_m x_n} f(x_n)\Big| \\
+&= \Big|\sum_{n=0}^{N-1} \int_{x_n}^{x_{n+1}} \td x \ \Big(\big(f'(z) - \ti k_m f(z)\big) e^{-\ti k_m z}\Big) (x-x_n) \Big| \\
+&\leq\sum_{n=0}^{N-1} \Big|f'(z) - \ti k_m f(z)\Big|_{z\in (x_n, x_{n+1})} \frac {\Delta x^2} 2 \\
+&\leq \frac {N\Delta x^2} 2 \max |f'(z) - \ti k_m f(z)|
+\end{aligned}
+$$
+
+If $f(x) \in \mathbb{R}$ is real valued, we can further get $\tilde{f}(-k_m) = \tilde{f}(k_m)^*$ to enlarge our $k$-mesh. 
+
+The time evolution of function
+
+
+
+Generic way to enlarge $k$-mesh can be represented as rational $m$-value as
 
 $$
 k_{m + l N + s/p} = \frac {2\pi} {\Delta x N} m + \frac {2\pi} {\Delta x} l + \frac {2\pi} {\Delta x N p} s \ ; \ l\in\mathbb{Z}, s\in\{0,\cdots,p-1\}.
