@@ -355,38 +355,38 @@ e(k_m) &= |\tilde{f}(k_m) - \tilde{f}_{appr}(k_m)| \\
 \end{aligned}
 $$
 
-The error bound grows as $k_m$ gets larger. That means the approximation could be bad at limit $N\rightarrow\infty, \Delta x \rightarrow 0$ while $k_m \sim 2\pi / \Delta x$. That is why we truncate $k$-mesh within $(-\pi/\Delta x , \pi/\Delta x)$ by letting $k_0 = -\pi/\Delta x$ but not zero. 
+The error bound grows as $k_m$ gets larger. That means the approximation could be bad at limit $N\rightarrow\infty, \Delta x \rightarrow 0$ while $k_m \sim 2\pi / \Delta x$. That is why we truncate $k$-mesh within $(-\pi/\Delta x , \pi/\Delta x)$ by letting $k_0 = -\pi/\Delta x$ but not zero. This is also what **[Nyquist-Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem)** said:
+> If a function $x(t)$ contains no frequencies higher than $F$, it is completely determined by giving its ordinates at a series of points spaced $1/(2F)$ seconds apart.
 
-TODO: need Nyquist-Shannon sampling theorem.
+As our spatial sampling spacing $\Delta x$, the good momentum cutoff should be $\pi / \Delta x$. 
 
-
-The most important thing is the error of $e^{-\ti \hat H t}$ by approximating Fourier Transform with discretized form. Consider 1-D, the approximated version is
+Now we consider the approximation to free evolution $e^{-\ti \hat T t}$ with FFT. It is (in 1-D)
 
 $$
 \begin{aligned}
-\Big[e^{-\ti \hat T t} \psi\Big]_{appr}(x_n) &= \frac 1 {(2\pi)^3} \int \td k \ \tilde{\psi}_{appr}(k) e^{-\ti k^2 t / 2} e^{\ti k x_n}\\
-&= \frac {\Delta x \Delta k} {(2\pi)^3} \sum_m \tilde{\psi}_{appr}(k_m) e^{-\ti k_m^2 t  /2} e^{\ti k_m x_n} \\
-&=\frac {\Delta x \Delta k} {(2\pi)^3} \sum_{l}\sum_{m=0}^{N-1} \tilde{\psi}_{appr}(k_m) e^{-\ti k_{m+lN}^2 t  /2} e^{\ti k_m x_n} e^{-\ti 2\pi l x_0/\Delta x}
+\Big[e^{-\ti \hat T t} \psi\Big]_{appr}(x_n) &= \frac 1 {2\pi} \int \td k \ \tilde{\psi}(k) e^{-\ti k^2 t / 2} e^{\ti k x_n}\\
+&\approx\frac {\Delta k} {2\pi} \sum_m \tilde{\psi}_{appr}(k_m) e^{-\ti k_m^2 t  /2} e^{\ti k_m x_n} \\
+&= e^{\ti k_0 x_n} \mathcal{F}^{-1} \Big(e^{-\ti k_m^2 t/2} \big(e^{-\ti k_m x_0} \mathcal{F} (e^{-\ti k_0 n' \Delta x}\psi(x_{n'})  )\big)\Big)
 \end{aligned}
 $$
 
-The error comes from two parts. The first is the cutoff of $k$. In the last equality, the summation of $l$ cannot cover the whole $\mathbb{Z}$. Usually, we care about those wavepackets localized in both position space and momentum space. This makes the momentum-cutoff error harmless in most cases. The second part is numerical integral error. We use summation to approximate integral in both computing $\tilde{\psi}(k)$ and inversion Fourier transform of phase-shifted $\tilde{\psi}$. Generally, the numerical integral has the error of
-
-
-$$
-\Big|\int f(x) \td x - \sum_x f(x) \Delta x\Big| \sim  \frac L {\Delta x} \max_x \int_{x}^{x+\Delta x} |f(t) - f(x)| \td t = \mathcal{O}(\max_x |f'(x)|\Delta x + \frac 1 3 \max_x |f''(x)|\Delta x^2).
-$$
-
-Thus, the error of approximating continuous Fourier Transform is of
-
-$$
-\textrm{error} = \mathcal{O}(\Delta x) + \mathcal{O}(\Delta k) + k\textrm{-cutoff} 
-$$
-
-Since $\Delta k \sim 2\pi / N \Delta x$, one can only consider a large $x$ range to mitigate the error. Usually it is more efficient than Crank-Nicolson method since error is less sensitive to time step $\Delta t$(It is still dependent to $\Delta t$).
+The error comes from two parts. One is the truncation of momentum: those contribution from high momentum components are not considered in the summation. The other one is the error of using discrete Fourier transform to approximate continuous Fourier transform. The error between analytical result and the numerical result based on FFT can be usually large and hard to mitigate. One can only make $\Delta x$ to be quite small to approximate well the continuous function $\psi(x)$ with discrete one $\sum_n \psi(x_n) \delta(x - x_n)$. Or make sure that $\psi(x)$ is really smooth and contains no high frequency components. But this method is still efficient to illustrate the dynamics of wave, since the time complexity is just $\mathcal{O}(N\log N)$.
 
 {{% /fold %}}
 
+The Trotters-Suzuki method is powerful for simulating generic quantum system. One can develop higher order Trotter-Suzuki expansion to obtain higher precision with cost polynomialy scaling of $m$. For example the second order expansion (see [docs.microsoft:quantum](https://docs.microsoft.com/en-us/azure/quantum/user-guide/libraries/chemistry/concepts/algorithms))
+
+$$
+\hat U_2(t) = \Big(\prod_{j=1}^m e^{-\ti \hat H_j t/2r} \prod_{j=m}^1 e^{-\ti \hat H_j t/2r}\Big)^r = e^{-\ti \hat H t} + \mathcal{O}(m^3 t^3 / r^2),
+$$
+
+and higher order with iterative form
+
+$$
+\hat U_{2k}(t) = \big(\hat U_{2k-2}(s_k t)\big)^2 \hat U_{2k-2}((1-4s_k)t)\big(\hat U_{2k-2} (s_kt)\big)^2 = e^{-\ti \hat H t} + \mathcal{O}((mt)^{2k+1} / r^{2k}),
+$$
+
+where $s_k = (4-4^{1/(2k-1)})^{-1}$.
 
 # Conclusion
 
