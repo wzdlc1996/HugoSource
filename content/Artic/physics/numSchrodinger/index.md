@@ -370,7 +370,30 @@ $$
 \end{aligned}
 $$
 
-The error comes from two parts. One is the truncation of momentum: those contribution from high momentum components are not considered in the summation. The other one is the error of using discrete Fourier transform to approximate continuous Fourier transform. The error between analytical result and the numerical result based on FFT can be usually large and hard to mitigate. One can only make $\Delta x$ to be quite small to approximate well the continuous function $\psi(x)$ with discrete one $\sum_n \psi(x_n) \delta(x - x_n)$. Or make sure that $\psi(x)$ is really smooth and contains no high frequency components. But this method is still efficient to illustrate the dynamics of wave, since the time complexity is just $\mathcal{O}(N\log N)$.
+The error comes from two parts. One is the truncation of momentum: those contribution from high momentum components are not considered in the summation. The other one is the error of using discrete Fourier transform to approximate continuous Fourier transform. The error between analytical result and the numerical result based on FFT can be usually large and hard to mitigate. One can only make $\Delta x$ to be quite small to approximate well the continuous function $\psi(x)$ with discrete one $\sum_n \psi(x_n) 1_{x_n\leq x\leq x_{n+1}}$. Or make sure that $\psi(x)$ is really smooth and contains no high frequency components. But this method is still efficient to illustrate the dynamics of wave, since the time complexity is just $\mathcal{O}(N\log N)$.
+
+There are better algorithms to compute the Fourier integral with FFT subroutine. The method is to use better function approximator. The above one is to use
+
+$$
+f_{appr}(x) = \sum_{n=0}^{N-1} f(x_n) 1_{x_n \leq x \leq x_{n+1}} \approx f(x).
+$$
+
+This is actually bad in any cases. One can use better interpolation function to do this work, generally
+
+$$
+f_{appr}(x) = \sum_{n=0}^{N-1} f(x_n) G(x-x_n).
+$$
+
+Then the integral
+
+$$
+\begin{aligned}
+\tilde{f}_{appr}(k) &= \sum_{n=0}^{N-1} f(x_n) \int G(x) e^{-\ti k (x+x_n)} \td x \\
+&= W(k) \sum_{n=0}^{N-1} f(x_n) e^{-\ti k x_n}
+\end{aligned}
+$$
+
+where $W(k) = \int G(x) e^{-\ti k x} \td x$. This would provide a better approximation to $\tilde{f}(k)$, but would cost more.
 
 {{% /fold %}}
 
