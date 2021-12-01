@@ -364,13 +364,12 @@ Now we consider the approximation to free evolution $e^{-\ti \hat T t}$ with FFT
 
 $$
 \begin{aligned}
-\Big[e^{-\ti \hat T t} \psi\Big]_{appr}(x_n) &= \frac 1 {2\pi} \int \td k \ \tilde{\psi}(k) e^{-\ti k^2 t / 2} e^{\ti k x_n}\\
-&\approx\frac {\Delta k} {2\pi} \sum_m \tilde{\psi}_{appr}(k_m) e^{-\ti k_m^2 t  /2} e^{\ti k_m x_n} \\
-&= e^{\ti k_0 x_n} \mathcal{F}^{-1} \Big(e^{-\ti k_m^2 t/2} \big(e^{-\ti k_m x_0} \mathcal{F} (e^{-\ti k_0 n' \Delta x}\psi(x_{n'})  )\big)\Big)
+\Delta x e^{-\ti k_m x_0}\Big(\mathcal{F}(e^{-\ti \hat T t}\psi(x_n) e^{-\ti k_0 n \Delta x})\Big) &= e^{-\ti k_m^2 t}\Delta x e^{-\ti k_m x_0}\Big(\mathcal{F}(\psi(x_n) e^{-\ti k_0 n \Delta x})\Big)\\
+\Rightarrow  (e^{-\ti \hat T t}\psi)(x_n) &= e^{\ti k_0 n\Delta x} \mathcal{F}^{-1}\Big(e^{-\ti k_m^2 t} \mathcal{F}(\psi(x_n) e^{-\ti k_0 n\Delta x})\Big)
 \end{aligned}
 $$
 
-The error comes from two parts. One is the truncation of momentum: those contribution from high momentum components are not considered in the summation. The other one is the error of using discrete Fourier transform to approximate continuous Fourier transform. The error between analytical result and the numerical result based on FFT can be usually large and hard to mitigate. One can only make $\Delta x$ to be quite small to approximate well the continuous function $\psi(x)$ with discrete one $\sum_n \psi(x_n) 1_{x_n\leq x\leq x_{n+1}}$. Or make sure that $\psi(x)$ is really smooth and contains no high frequency components. But this method is still efficient to illustrate the dynamics of wave, since the time complexity is just $\mathcal{O}(N\log N)$.
+The error comes from two parts. One is the truncation of momentum: those contribution from high momentum components are not considered in the summation. The other one is the error of using discrete Fourier transform to approximate continuous Fourier transform. To control the error, one need to make sure that $\Delta x$ is small enough while $\Delta x N$ should not be too small (i.e., $\Delta k$ should also be small enough). Thus, it would approximate well the continuous function $\psi(x)$ with discrete one $\sum_n \psi(x_n) 1_{x_n\leq x\leq x_{n+1}}$. Making sure that $\psi(x)$ is really smooth and contains no high frequency components is also helpful. This method is efficient to illustrate the dynamics of wave, since the time complexity is just $\mathcal{O}(N\log N)$.
 
 There are better algorithms to compute the Fourier integral with FFT subroutine. The method is to use better function approximator. The above one is to use
 
