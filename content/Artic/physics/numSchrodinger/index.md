@@ -50,6 +50,26 @@ In this note, we will focused on the easy problems: the system who can be treate
 
 # Numerical Method for Eigensystem Problem
 
+For those systems who have natural discretized basis, the stationary Schrodinger equation has the form of common eigensystem problem of an Hermitian matrix:
+
+$$
+\sum_{x'} \braket{x|\hat H|x'} \braket{x'|E} = E \braket{x|E} \Rightarrow \bm{H} \bm{\psi}_E = E \bm{\psi}_E. 
+$$
+
+For the case of dimension of Hilbert space is small, one can choose exact diagonalization with treating $\bm{H}$ as a dense matrix. In the real scenarios, people encode $\bm{H}$ as a sparse matrix and use iterative algorithms since usually one the lowest few energy levels are matter. In this section we will not discuss these method detailly. There are two method apart from exact diagonalization and widely used in computational physics: imaginary time evolution and the variational approach. Note that the latter is actually a large category of a class of algorithms and have been well developed. We will only focus on its spirit and a generic framework of the approach.
+
+## Imaginary Time Evolution
+
+**Imaginary time evolution** can be quite efficient to find the ground state if the time evolution driven by the Hamiltonian can be efficiently simulated(See the next section "Numerical Method for Time Dependent Schrodinger Equation"). If the Hamiltonian has a sparse encoding, this would be quite easy. But this makes it hard to defeat **exact diagonalization** for sparse matrix(i.e., Lancos algorithm).
+
+One can see how imaginary time evolution work by the following equation
+
+$$
+e^{-\hat H \tau} \ket{\psi} = \sum_{i} \ket{E_i}e^{- E_i \tau} \braket{E_i|\psi} = e^{-E_{g.s.} \tau} \Big(\ket{E_{g.s.}} \braket{E_{g.s.} |\psi} + \sum_{i \neq g.s.} \ket{E_i} e^{-(E_i - E_{g.s.}) \tau} \braket{E_i|\psi}\Big).
+$$
+
+Note that $E_i - E_{g.s.} \geq 0$. Thus, if the ground state is non-degenerate and the overlap between it and the initial state $\ket{\psi}$ is not zero, then simulate the "time" evolution of $e^{-\hat H\tau}$ together with normalization, i.e., $\ket{\psi(\tau)} = e^{-\hat H \tau} \ket{\psi} / |e^{-\hat H \tau} \ket{\psi}|$, one can expect that $\ket{\psi(\tau)}$ should be the ground state as $\tau$ gets large enough. The name "imaginary time evolution" comes from that $e^{-\hat H\tau} = e^{-\ti \hat H (-\ti \tau)}$, i.e., it looks like the quantum time evolution with $t = -\ti \tau$ pure imaginary time interval.
+
 # Numerical Method for Time Dependent Schrodinger Equation
 
 Let us continue for the single particle Schrodinger equation with potential (now it can be dependent of time) of
@@ -60,7 +80,7 @@ $$
 
 ## Unitary Finite Difference
 
-We can always compute the right-hand-side by finite difference to obtain the addition on time domain, and use Eular method to compute the wavefunction $\psi$ at each discretized time step, like the ODE numerical method.
+We can always compute the right-hand-side by finite difference to obtain the addition on time domain, and use Euler method to compute the wavefunction $\psi$ at each discretized time step, like the ODE numerical method.
 
 With the Catersian system with spatial resolution $\Delta x$, the Laplacian in right-hand-side can be estimated as
 
