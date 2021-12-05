@@ -2,29 +2,12 @@
 title: "Numerical Methods for Schrodinger Equation"
 date: 2021-07-22T22:50:00+08:00
 lastmod: 2021-07-22T22:50:00+08:00
-draft: true
+draft: false
 tags: ["quantum"]
 categories: ["Reviews"]
 toc: true
-summary: "The first problem we meet in the practice about quantum mechanics is to simulate the quantum time evolution on computer. Formally, it is the numerical simulation of the (time-dependent) Schrodinger Equation. In this review, we discuss various numerical method for the Schrodinger equation and quantum time evolution, including their implementation and error analysis."
+summary: "The first problem we meet in the practice about quantum mechanics is to simulate the quantum time evolution on computer. Formally, it is the numerical simulation of the (time-dependent) Schrodinger Equation. In this review, we discuss various numerical method for the Schrodinger equation and quantum time evolution, including their implementation and error analysis. We will only focus on the non-relativistic quantum mechanics, i.e., the number of degree of freedom is finite."
 ---
-
-# Outline
-
-begin with the generic Schrodinger equation of
-
-$$
-\ti \frac {\td } {\td t} \ket{\psi} = \hat H \ket{\psi}
-$$
-
-If the dimension of Hilbert space is finite, it is a problem about linear ODE. However, if the Hilbert space is countable infinite, it is a PDE with different boundary condition. The eigenvalue problem can be solved by imagenary time evolution, which is equivalent to Lancoz method. The dynamics can be simulated by the unitarized RK method and Trotters-Suzuki decomposition, the cumulating error and stability is discussed. 
-
-Read the book of 
-
-1.  Computational Physics by Koonin Steven E
-2.  Computational methods for physicists by Sirca Smion Horvat.
-
-# Introduction
 
 # Generic Discussion
 
@@ -65,10 +48,33 @@ For the case of dimension of Hilbert space is small, one can choose exact diagon
 One can see how imaginary time evolution work by the following equation
 
 $$
-e^{-\hat H \tau} \ket{\psi} = \sum_{i} \ket{E_i}e^{- E_i \tau} \braket{E_i|\psi} = e^{-E_{g.s.} \tau} \Big(\ket{E_{g.s.}} \braket{E_{g.s.} |\psi} + \sum_{i \neq g.s.} \ket{E_i} e^{-(E_i - E_{g.s.}) \tau} \braket{E_i|\psi}\Big).
+\begin{aligned}
+e^{-\hat H \tau} \ket{\psi} &= \sum_{i} \ket{E_i}e^{- E_i \tau} \braket{E_i|\psi} \\
+&= e^{-E_{g.s.} \tau} \Big(\ket{E_{g.s.}} \braket{E_{g.s.} |\psi} + \sum_{i \neq g.s.} \ket{E_i} e^{-(E_i - E_{g.s.}) \tau} \braket{E_i|\psi}\Big).
+\end{aligned}
 $$
 
 Note that $E_i - E_{g.s.} \geq 0$. Thus, if the ground state is non-degenerate and the overlap between it and the initial state $\ket{\psi}$ is not zero, then simulate the "time" evolution of $e^{-\hat H\tau}$ together with normalization, i.e., $\ket{\psi(\tau)} = e^{-\hat H \tau} \ket{\psi} / |e^{-\hat H \tau} \ket{\psi}|$, one can expect that $\ket{\psi(\tau)}$ should be the ground state as $\tau$ gets large enough. The name "imaginary time evolution" comes from that $e^{-\hat H\tau} = e^{-\ti \hat H (-\ti \tau)}$, i.e., it looks like the quantum time evolution with $t = -\ti \tau$ pure imaginary time interval.
+
+In practice, one may need to solve the imaginary time Schrodinger equation numerically
+
+$$
+-\frac {\td } {\td t} \ket{\psi} = \hat H \ket{\psi}.
+$$
+
+One way is to rewrite it in coordinate basis and solve the diffusion equation by Monte Carlo method (see [Quantum Monte Carlo simulations of solids](https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.73.33)).
+
+## Variational Quantum Eigensolver
+
+**Variational Quantum Eigensolver(VQE)**, or a large category of variational algorithms behind it, is to convert the diagonalization in the hugo Hilbert space into the optimization in a low-dimensional parameter manifold. To implement the approach, one need to specify a parameterized model, which can be simulated efficiently on a classical computer (like matrix product state), or could be prepared on a [NISQ](https://arxiv.org/abs/1801.00862) quantum device. Generally, it can be represented as a parameterized quantum state $\ket{\psi(x)}, x\in \mathcal{X}$. Then the ground state(energy) can be obtained by the optimization procedure
+
+$$
+E_{g.s.} = \argmin_{x\in\mathcal{X}} \braket{\psi(x)|\hat H |\psi(x)}. 
+$$
+
+This can be done by gradient descent procedure or other programming subroutines. 
+
+The issue of variational algorithms is that the solution could diverge quite from the exact solution. In the meanwhile, whether the optimization is more efficient than diagonalization or not is questionable. By the procedure, one can only find the state with minimal energy(if the optimization is done) in a small set $\{\ket{\psi(x)} : x\in\mathcal{X}\}\subset \mathcal{H}$. One can hardly to ensure that this set can cover the exact solution. And this can only be improved by making a more powerful model, which is exactly hard to design. The trade-off between precision and the complexity of optimization is also an open problem in the community. 
 
 # Numerical Method for Time Dependent Schrodinger Equation
 
@@ -429,6 +435,3 @@ $$
 $$
 
 where $s_k = (4-4^{1/(2k-1)})^{-1}$.
-
-# Conclusion
-
