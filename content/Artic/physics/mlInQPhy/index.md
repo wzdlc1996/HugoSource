@@ -106,12 +106,24 @@ There are three models and three different phase transition are studied in this 
     <img name="preview" src="./figs/img_supv_03.png"/>
     {{< /center >}}
 
+### Comments
+
+As a pioneering work in classification for many-body phases, this work gives us a basic view of how to apply machine learning technology on a fundamental and particularly popular physical problem. The scheme, though has been a little old fashion, can still teach us much on the issue in this field. 
+1.  The capability is deeply dependent of the preengineering.
+    -  The core feature of deep learning is to put feature extraction for data to the deep neural networks. Here to efficiently train a classifier one must feed it with the entanglement spectra, which is actually rely on out knowledge about the physics in the phase transition
+    -  In the recent works about classifying many-body localization and topological phase transition, this preengineering is still necessary. ([G. Carleo 2019][3])
+2.  The requirement of dataset.
+    -  In practice, one may not find a balance dataset to use. The argument of how the algorithm works requires the training set is unbiased and covers only one critical point
+    -  In practice, the sufficient size of dataset to train a classifier could be hard to obtain. The numerical simulation for synthetic data could be quite expensive, while the experiment data is limited by the platform.
+3.  The interpretability of NN result.
+    -  Deeper neural network could be hard to interpret and hard to refertilize our understanding about the many-body physics, while shallow one could lose the universality and performance.
+    -  The classifier with SVM tech is proposed for spin model with MBL and thermal transition. However the issue 1. is still suffered ([W. Zhang][4])
 
 ## Quantum Constraint for Ground State
 
 # Unsupervised Learning: Encoding and Defeat Ignorance
 
-## Restricted Boltzmann Machine and Variational Monte Carlo
+## Quantum Autoencoder
 
 ## Generative Model
 
@@ -131,6 +143,10 @@ There are three models and three different phase transition are studied in this 
 
 [1]: https://www.nature.com/articles/nphys4037
 [2]: https://journals.aps.org/prb/supplemental/10.1103/PhysRevB.93.104203/supplmat.pdf
+[3]: https://journals.aps.org/rmp/pdf/10.1103/RevModPhys.91.045002
+[4]: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.054208
 
 1.  van Nieuwenburg, E., Liu, YH. & Huber, S. Learning phase transitions by confusion. Nature Phys 13, 435–439 (2017)
 2.  Nicolas Regnault and Rahul Nandkishore Floquet thermalization: Symmetries and random matrix ensembles. Phys. Rev. B 93, 104203
+3.  Giuseppe Carleo, Ignacio Cirac, Kyle Cranmer, Laurent Daudet, Maria Schuld, Naftali Tishby, Leslie Vogt-Maranto, and Lenka Zdeborová. Machine learning and the physical sciences. Rev. Mod. Phys. 91, 045002
+4.  Wei Zhang, Lei Wang, and Ziqiang Wang. Interpretable machine learning study of the many-body localization transition in disordered quantum Ising spin chains. Phys. Rev. B 99, 054208
