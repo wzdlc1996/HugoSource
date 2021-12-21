@@ -117,27 +117,158 @@ As a pioneering work in classification for many-body phases, this work gives us 
     -  In practice, the sufficient size of dataset to train a classifier could be hard to obtain. The numerical simulation for synthetic data could be quite expensive, while the experiment data is limited by the platform.
 3.  The interpretability of NN result.
     -  Deeper neural network could be hard to interpret and hard to refertilize our understanding about the many-body physics, while shallow one could lose the universality and performance.
-    -  The classifier with SVM tech is proposed for spin model with MBL and thermal transition. However the issue 1. is still suffered ([W. Zhang][4])
+    -  The classifier with SVM tech is proposed for spin model with MBL and thermal transition. However the issue 1. is still suffered ([W. Zhang 2018][4])
 
 ## Quantum Constraint for Ground State
 
 # Unsupervised Learning: Encoding and Defeat Ignorance
 
-## Quantum Autoencoder
-
-## Generative Model
+## Generative Adversarial Network
 
 # Reinforcement Learning: Can AI Understand the Nature?
 
+**Reinforcement Learning(RL)** handles a large class of tasks in which one needs to collect data via interaction to the environment and build a optimal strategy. Different from other branches in machine learning, RL is not fed with structured data but use an intelligent agents to collect data. This property makes it popular in solving some real-world tasks with the information lacking.
+
+A typical framework of Reinforcement learning:
+
+{{< center >}}
+<img name="preview" src="./figs/img_rein_04.png"/>
+{{< /center >}}
+
+The agent would be trained to obtain as much reward as possible during the exploring of environment.
+
 ## Quantum State Preparation
+
+### Main Problem
+
+In ([Shuai-Feng Guo 2021][6]), the authors proposed a faster ground state preparation for a quantum many-body system by reinforcement learning.
+
+The system they studied is a spinor BEC in the $^{87}\textrm{Rb}$ system. The effective Hamiltonian reads
+
+$$
+\hat H(q) = \frac {\lambda} {2N} (\hat {\bm{S}})^2 - q \hat a_0^\dagger \hat a_0,
+$$
+
+where $\hat{\bm{S}}_\alpha = \sum_{\mu,\nu\in\{-1,0,1\}}\hat a_\mu^\dagger (\bm{S}_\alpha)_{\mu\nu} \hat a_\nu \ , \alpha=x,y,z$ is the pseudo spin-1 operator. The matrix $\bm{S}$ are matrix form of components of spin-1 in $\hat S_z$ eigenbasis (See ([Z. Zhang 2013][7]) and its supplementary information). For $^{87}\textrm{Rb}$, the interaction term is ferromagnetic with $\lambda \lt 0$ ($c_2$ in the paper). 
+
+There is a quantum phase transition in this system by the competition of Zeeman term and spin interaction. When $q\gg |\lambda|$, the ground state is the configuration of all atoms at $0$-mode. For $q = 0$, the ground states spans a $(2N+1)$-dimensional subspace for $(\hat{\bm{S}})^2 = N(N+1)$, i.e., $\{\ket{S, S_z}: S_z = -N,\cdots,N\}$. The massive entangled state (Dicke state) is $\ket{\psi_{\textrm{Dicke}}} = \ket{S, S_z=0}$. One approach to prepare it is by the adiabatic sweeping from large $q$ to $q=0$. The level spacing near the critical point scales as $N^{-1/3}$. 
+
+To prepare the Dicke state, one can start from the ground state of large q and adiabatically sweep down $q$ to $q=0$. By the protection of symmetry: $[\hat S_z, \hat H(q)] = 0$ for any $q$, the state could reach the Dicke state.
+
+### Learning Task Setup
+
+The (deep) reinforcement learning protocol has two components. 
+1.  The **environment** offers the state transition from action and readable state data. 
+    -  In this problem, the environment is a quantum simulator to implement the time-dependent Schrodinger equation by $\hat H$. This simulator is implement by numerical tech and experiment.
+    -  Given the max evolution time $T$ and the uniform discretization, the quantum evolution process is separated into multiple stages denoting by time $t$.
+    -  From time $t$ to $t+1$, the environment implement the quantum time evolution by Schrodinger equation driven by fixed $q$ value
+    -  The readable state data are some expectation value on $\ket{\psi(t)}$: 
+    $$
+    s_t = \Big\{\rho_0=\frac {\braket{N_0}} N, \delta\rho_0=\frac {\braket{\delta N_0^2}} {N^2}, \frac {|\braket{\hat a_{+1}^\dagger \hat a_{-1}^\dagger \hat a_0^2}|} {N^2}, \theta=\arg \braket{\hat a_{+1}^\dagger \hat a_{-1}^\dagger \hat a_0^2}\Big\}.
+    $$
+
+2.  The **agent** computing the action by the given state. 
+    -  In this problem, the action is tunable parameter $q_t$
+    -  The initial state is the ground state of $q\gg |\lambda|$
+    -  The state transition under action reads
+       $$
+       \ket{\psi_{t+1}} = \exp{(-\ti \hat H(q=q_t) \delta)} \ket{\psi_t} \ ; \ \ket{\psi_0} \propto \hat a_0^{\dagger, N}\ket{0}.
+       $$
+
+The training loop is
+
+{{< center >}}
+<img name="preview" src="./figs/img_rein_01.png"/>
+{{< /center >}}
+
+Authors choose two type of reward as fidelity to target state $\mathcal{F} = |\braket{\psi(t)|\psi_{\textrm{Dicke}}}|^2$ and (entanglement enhanced three-mode $SU(2)$) interferometric sensitivity. The training has a multistep scheme. The agent is trained on $N=10$ instance and increase $N$ gradually to get the ceiling of computational power at $N=2000$.
+
+### Result
+
+The optimal policy achieves with $\mathcal{F} \sim 0.99$ at $|\lambda|\tau = 15.5$ on numerical simulator, while the linear (nonlinear) adiabatic routine requires $|\lambda|\tau\gt 600(350)$ at the same fidelity level. On experiment platform, the time cost is half of the previously reported time.
+
+The path learned by agent is discussed in the paper. 
+
+{{< center >}}
+<img name="preview" src="./figs/img_rein_02.png"/>
+{{< /center >}}
+
+The path is partitioned into three stages.
+
+1.  $|\lambda|t \in[0, 2.6]$. This stage drives the state to mix the ground state and the low lying excited states. The initial point $q_{t=0}$ is chosen to be lower than the critical point such that spin-interaction starts early.
+2.  $|\lambda| t \in [2.6,10]$. This stage cross the critical point. At the end of this stage, the state becomes a Gaussian-like wave packet (inset in Fig.2(b)) wrt Fock state basis. It is also the instance ground state at near $q$ case. The speed in this stage is limited by adiabatic energy gap.
+3.  $|\lambda|t \in [10, 15.5]$. This stage provides the acceleration of RL protocol. The agent find a shortcut to adiabatic and performs the ``rise and fall'' shape of the average energy (Fig.2(d1))
+
+### Comments
+
+Use reinforcement learning to accelerate the state preparation suffers vary issues.
+
+1.  **The cost of quantum simulation**
+    Without the efficient quantum simulator platform, the interaction between environment and agent has to be numerically simulated by classical computer, which suffers the curse of dimensionality of quantum mechanics. In Reinforcement Learning, to converge the agent, one needs a large number of game loops to get in touch with the low-level mechanism of environment, which leads to a heavy cost for the protocol.
+
+    In this work, the dimension of Hilbert space is proportional to particle number and the numerical simulation is easy. For those generic many-body quantum system, the exponential growing dimensional would greatly harm the protocol. 
+
+    In another recent work ([J. Yao 2021][8]), the authors studied the ground-state preparation of a non-integrable spin system. But their model is a generalization of QAOA, which also reduces the complexity to simulate quantum evolution. However, the price is the limitation of model.
+
+2.  **Universality of agent**
+    It is hard to prove that universality of agent trained in one quantum system to others. In this work, authors escape from this problem by study a system possessing self-similarity in the model: by different particle number $N$. Such generality of learning algorithm is questionable. 
+
 
 ## Quantum CartPole
 
-# Differential Programming: Something Else.
+### Main Problem
 
-## Quantum Tomography
+In ([Z. T. Wang 2020][9]), the authors consider the ability of classical Reinforcement learning agent on a ``quantum game'', the cartpole stabilization. Formally, they study the following system
 
-## Hamiltonian Reconstruction
+$$
+\hat H(F) = \frac {\hat p^2} {2m} + V(\hat x) -F \hat x.
+$$
+
+The potential $V$ is symmetry about $x=0$. In this work, authors consider cartpole stabilization task with $V(x) \propto - x^2, -x^4$ and the cooling task $V(x) \propto x^2, x^4$. The former requires the agent adjust $F$ such that the wavefunction is localized near its center, while the latter does the same but has a physical interpretation that hold the system with low energy. To simulate the influence of extracting information from the quantum system, the authors apply the continuous position measurement on the system and use the stochastic equation of motion formalism
+
+$$
+\td \hat \rho = -\frac {\ti} {\hbar} [\hat H ,\hat \rho] \td t - \frac {\gamma} 4 [\hat x, [\hat x,\hat \rho]]\td t + Z \{\hat x - \braket{\hat x}, \hat \rho\} \td W,
+$$
+
+where $\gamma, Z$ are constants related to measurement and $\td W$ is the Wiener increment (see ([L. Diosi 1988][10]) for detail. This formalism is not violate the quantum Zeno effect since the precision of measurement and period are gets to zero with finite ratio, as the function of $Z$ and $\gamma$). 
+
+### Learning Task Setup
+
+1.  **environment**
+    -  The environment is a classical computer to simulate the stochastic differential equation
+    -  The state transition is
+       $$
+       \ket{\psi_t} \rightarrow \hat \rho_{t+1} \xrightarrow{\textrm{measurment and project to pure state}} \ket{\psi_{t+1}}
+       $$
+    -  There are three choices to encoding the state:
+       1.  _Distribution moments_: various order moments of position, i.e., $\braket{\psi_t|\hat x^n|\psi_t}$, $\braket{\psi_t|\hat p^n|\psi_t}$. For harmonic $n\leq 2$ and quartic $n\leq 5$
+       2.  _wavefunction_: the wavefunction itself of $\braket{x|\psi}$
+       3.  _measurement outcomes_: is the sequence of measurements on position, i.e., a slice of $[\textrm{Tr}\hat \rho_t \hat x]_{t=...}$
+2.  **agent**
+    -  The agent has the action of $F$, by bounded with $[-F_{\textrm{max}}, F_{\textrm{max}}]$ and discretization.
+
+The reward for cooling is the minus system energy, while for cartpole is the time of agent holding the wavepacket.
+
+### Result
+
+The performance of RL on these problems are
+
+{{< center >}}
+<img name="preview" src="./figs/img_rein_03.png"/>
+{{< /center >}}
+
+Its performance is (slightly) greater than classical control theory (LQG). The videos of the AI on these problems are shown in their [supplemental materials](https://journals.aps.org/prl/supplemental/10.1103/PhysRevLett.125.100401).
+
+### Comment
+
+Using RL to play ``quantum games'' has the following problems
+
+1.  The capability is not clear yet.
+    In this work, the authors actually simulated a stochastic quantum process for a single body system. The dynamics is quite similar to some classical PDE and lose a lot of quantum properties. The capability of classical RL on quantum problem is still questionable.
+
+2.  Is it worthy?
+    To teach AI play quantum games requires us simulating quantum dynamics a lot times. This could be even harder than training the AI itself. When the quantum computer got built, the quantum AI would also enter our sight. Actually, in some recent works, people have been studied some quantum enhanced reinforcement learning protocols and their application on classical games. (([Neukart Florian 2018][12], use quantum algorithm enhance the optimization sub-problem in training), ([Sofiene Jerbi 2021][11], use a deep energy-based RL which could get speed-up with quantum computer))
+
 
 # References
 
@@ -145,8 +276,23 @@ As a pioneering work in classification for many-body phases, this work gives us 
 [2]: https://journals.aps.org/prb/supplemental/10.1103/PhysRevB.93.104203/supplmat.pdf
 [3]: https://journals.aps.org/rmp/pdf/10.1103/RevModPhys.91.045002
 [4]: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.054208
+[5]: https://www.nature.com/articles/s41534-018-0077-z
+[6]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.126.060401
+[7]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.111.180401
+[8]: https://journals.aps.org/prx/abstract/10.1103/PhysRevX.11.031070
+[9]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.125.100401
+[10]: https://www.sciencedirect.com/science/article/abs/pii/037596018890309X?via%3Dihub
+[11]: https://www.frontiersin.org/articles/10.3389/fphy.2017.00071/full
+[12]: https://journals.aps.org/prxquantum/abstract/10.1103/PRXQuantum.2.010328
 
 1.  van Nieuwenburg, E., Liu, YH. & Huber, S. Learning phase transitions by confusion. Nature Phys 13, 435–439 (2017)
 2.  Nicolas Regnault and Rahul Nandkishore Floquet thermalization: Symmetries and random matrix ensembles. Phys. Rev. B 93, 104203
 3.  Giuseppe Carleo, Ignacio Cirac, Kyle Cranmer, Laurent Daudet, Maria Schuld, Naftali Tishby, Leslie Vogt-Maranto, and Lenka Zdeborová. Machine learning and the physical sciences. Rev. Mod. Phys. 91, 045002
 4.  Wei Zhang, Lei Wang, and Ziqiang Wang. Interpretable machine learning study of the many-body localization transition in disordered quantum Ising spin chains. Phys. Rev. B 99, 054208
+5.  Rocchetto, A., Grant, E., Strelchuk, S. et al. Learning hard quantum distributions with variational autoencoders. npj Quantum Inf 4, 28 (2018). https://doi.org/10.1038/s41534-018-0077-z
+6.  Shuai-Feng Guo, Feng Chen, Qi Liu, Ming Xue, Jun-Jie Chen, Jia-Hao Cao, Tian-Wei Mao, Meng Khoon Tey, and Li You, Faster State Preparation across Quantum Phase Transition Assisted by Reinforcement Learning, Phys. Rev. Lett. 126, 060401
+7.  Z. Zhang and L.-M. Duan, Generation of Massive Entanglement through an Adiabatic Quantum Phase Transition in a Spinor Condensate, Phys. Rev. Lett. 111, 180401
+8.  Jiahao Yao, Lin Lin, and Marin Bukov, Reinforcement Learning for Many-Body Ground-State Preparation Inspired by Counterdiabatic Driving, Phys. Rev. X 11, 031070.
+9.  Zhikang T. Wang, Yuto Ashida, and Masahito Ueda. Deep Reinforcement Learning Control of Quantum Cartpoles. Phys. Rev. Lett. 125, 100401
+10.  Sofiene Jerbi, Lea M. Trenkwalder, Hendrik Poulsen Nautrup, Hans J. Briegel, and Vedran Dunjko. Quantum Enhancements for Deep Reinforcement Learning in Large Spaces. PRX Quantum 2, 010328
+11.  Neukart Florian, Von Dollen David, Seidel Christian, Compostella Gabriele. Quantum-Enhanced Reinforcement Learning for Finite-Episode Games with Discrete State Spaces. Frontiers in Physics. 5.71.2018
