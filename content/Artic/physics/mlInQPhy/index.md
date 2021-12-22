@@ -121,9 +121,35 @@ As a pioneering work in classification for many-body phases, this work gives us 
 
 ## Quantum Constraint for Ground State
 
+In ([P. Zheng][13]), a novel method to estimate the energy and other expectation values on the ground state of many body system was proposed. 
+
+The algorithm reads
+1.  Start with a large ensemble of quantum many-body ground states $\mathcal{E}=\{\ket{\Psi}\}$
+2.  Select a set of operators $\{\hat O_j\}$ or as a vector $\hat{\bm{O}}$. Then build the dataset as its expectation value among all states in the ensemble: $\mathcal{S}=\{\braket{\Psi|\hat{\bm{O}}|\Psi}: \ket{\Psi} \in \mathcal{E}\}$.
+3.  Via supervised learning on the training set to fit the indicator function
+    $$
+    F(\braket{\Psi|\hat{\bm{O}}|\Psi};\theta) \rightarrow \textrm{Phys}(\braket{\Psi|\hat{\bm{O}}|\Psi}) = \begin{cases}
+    1 & \ket{\Psi} \textrm{ is a physical many-body ground state} \\
+    0 & \textrm{otherwise}
+    \end{cases}.
+    $$
+4.  For the Hamiltonian $\hat H = \sum_j a_j \hat O_j$, the ground state energy can be obtained by the following constrained optimization problem:
+    $$
+    \begin{aligned}
+    E_{g.s.} &= \arg \min_{O_j} \sum_j a_j O_j \\
+    \textrm{s.t. } & F(\bm{O};\theta) = 1.
+    \end{aligned}
+    $$
+
+This approach based on the following assumption
+
+1.  The 
+
 # Unsupervised Learning: Encoding and Defeat Ignorance
 
 ## Generative Adversarial Network
+
+## Quantum Neural Network State
 
 # Reinforcement Learning: Can AI Understand the Nature?
 
@@ -284,6 +310,7 @@ Using RL to play ``quantum games'' has the following problems
 [10]: https://www.sciencedirect.com/science/article/abs/pii/037596018890309X?via%3Dihub
 [11]: https://www.frontiersin.org/articles/10.3389/fphy.2017.00071/full
 [12]: https://journals.aps.org/prxquantum/abstract/10.1103/PRXQuantum.2.010328
+[13]: https://arxiv.org/pdf/2105.09947.pdf
 
 1.  van Nieuwenburg, E., Liu, YH. & Huber, S. Learning phase transitions by confusion. Nature Phys 13, 435–439 (2017)
 2.  Nicolas Regnault and Rahul Nandkishore Floquet thermalization: Symmetries and random matrix ensembles. Phys. Rev. B 93, 104203
@@ -296,3 +323,4 @@ Using RL to play ``quantum games'' has the following problems
 9.  Zhikang T. Wang, Yuto Ashida, and Masahito Ueda. Deep Reinforcement Learning Control of Quantum Cartpoles. Phys. Rev. Lett. 125, 100401
 10.  Sofiene Jerbi, Lea M. Trenkwalder, Hendrik Poulsen Nautrup, Hans J. Briegel, and Vedran Dunjko. Quantum Enhancements for Deep Reinforcement Learning in Large Spaces. PRX Quantum 2, 010328
 11.  Neukart Florian, Von Dollen David, Seidel Christian, Compostella Gabriele. Quantum-Enhanced Reinforcement Learning for Finite-Episode Games with Discrete State Spaces. Frontiers in Physics. 5.71.2018
+12.  Pei-Lin Zheng, Si-Jing Du, Yi Zhang, Ground-state properties via machine learning quantum constraints. arXiv:2105.09947
