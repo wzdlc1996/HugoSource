@@ -143,7 +143,13 @@ The algorithm reads
 
 This approach based on the following assumption
 
-1.  The 
+1.  The ground state of many-body systems has some properties in common. Thus function $\textrm{Phys}$ could be fitted by ANN and generalized to systems not appearing in dataset.
+2.  The database, no matter get $\mathcal{E}$ numerically or $\mathcal{S}$ by experiment, should be accessible. The dataset of non-physical states should be balanced to the physical states.
+3.  The supervised learning is reliable such that the constrained optimization does be equivalent to the ground state seeking.
+
+Though this approach has many unique advantages comparing to various modern methods for the same problem, like
+1.  The space of operators are not too much as the Hilbert space for quantum states. (One needs only consider those operators involved in Hamiltonian, which usually be polynomial even independent to the system size.)
+2.  The approach is only depend on the structure of Hamiltonian instead of the parameters like system size and interaction strength. Thus the case of statistical limit can also be reached, and the trained constraint is efficiently reusable for other systems.
 
 # Unsupervised Learning: Encoding and Defeat Ignorance
 
