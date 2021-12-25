@@ -151,7 +151,17 @@ Though this approach has many unique advantages comparing to various modern meth
 1.  The space of operators are not too much as the Hilbert space for quantum states. (One needs only consider those operators involved in Hamiltonian, which usually be polynomial even independent to the system size.)
 2.  The approach is only depend on the structure of Hamiltonian instead of the parameters like system size and interaction strength. Thus the case of statistical limit can also be reached, and the trained constraint is efficiently reusable for other systems.
 
+There are still many problems in this method:
+1.  To train an ANN fitting the indicator well, one needs a balanced ensemble of physical states and the non-physical states. The former would be easy by experiment and many numerical method for physical systems. The latter is quite hard to obtain. What's worse is the physical states probably is a small subset of the whole Hilbert space. To make the approximated indicator function efficient, we need deep understanding about the problems itself. This is violate the spirit of deep learning: make AI discover the unknown knowledge instead of being taught by us.
+2.  Whether the output is correct is based on the performance of ANN. If ANN cannot encode the ground state property well, the optimization would be not equivalent to the ground state problem. This would leads to some better energy estimation(even lower than the state-of-the-art result), but no one can confirm it is correct since the ground state wavefunction is not provided. 
+
 # Unsupervised Learning: Encoding and Defeat Ignorance
+
+Different from the supervised learning, **Unsupervised Learning** handles the task within which the data are not labeled. The learner needs to understand the hidden structure of the dataset and give us the distribution information of it. 
+
+In statistical learning, unsupervised task includes clustering and dimensionality reduction for data. In recent years the generative adversarial network(GAN) and autoencoder are successful application of ANN in this field. 
+
+For quantum mechanics, one of the must impressive applications of unsupervised learning is to discover the phase transition ([Lei Wang 2016][15], [Li-Wei Yu 2021][14]). Here, instead of digging deeper in this topic, we focus on the application of GAN in state tomography and the quantum autoencoder in quantum machine learning. Apart from these, we also discuss the Quantum Neural Network state. Mathematically, it is an ansartz for various tasks in quantum physics with the understanding of machine learning.
 
 ## Generative Adversarial Network
 
@@ -317,6 +327,8 @@ Using RL to play ``quantum games'' has the following problems
 [11]: https://www.frontiersin.org/articles/10.3389/fphy.2017.00071/full
 [12]: https://journals.aps.org/prxquantum/abstract/10.1103/PRXQuantum.2.010328
 [13]: https://arxiv.org/pdf/2105.09947.pdf
+[14]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.126.240402
+[15]: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.94.195105
 
 1.  van Nieuwenburg, E., Liu, YH. & Huber, S. Learning phase transitions by confusion. Nature Phys 13, 435–439 (2017)
 2.  Nicolas Regnault and Rahul Nandkishore Floquet thermalization: Symmetries and random matrix ensembles. Phys. Rev. B 93, 104203
