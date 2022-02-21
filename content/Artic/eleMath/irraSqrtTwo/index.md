@@ -1,7 +1,7 @@
 ---
 title: "Prove the Irrationality of Square Root of 2"
 date: 2022-02-19T00:21:44+08:00
-draft: true
+draft: false
 tags: ["math", "number-theory"]
 categories: ["Interest-Math"]
 toc: true
@@ -34,6 +34,24 @@ Other proofs by contradiction are mainly the variation of the procedure to const
 
 This is another way to make a contradiction by $p^2 = 2q^2$ by [zhihu@BAJIN][1]. Consider the factorization of $p, q$, there should be integer even factors in both of them. Thus the numbers of even factors in $p^2, q^2$ are both even. However, there are odd number of even factor in $2q^2$ since the extra factor $2$. Thus the number of even factors in the two sides of equality $p^2 = 2q^2$ would be ``even = odd''. That makes a contradiction.
 
+## With the area of squares
+
+This is another simple and elegant way to make contradiction for $p^2 = 2q^2$. This method is found in ([zhihu@楚若儿][1], [CSDN@matrix67][4]). 
+
+{{% center %}}
+<img name="preview" src="./figs/image_02.png"/>
+{{% /center %}}
+
+Let $p, q$ are the smallest integers with $p^2 = 2q^2$, then make three squares with edge length $p, q, q$. Their size can be shown in the scratch. We have the areas satisfies
+
+$$
+\begin{cases}
+S_A + S_Q = q^2 & \\
+2S_Q + S_A + 2S_B = p^2 = 2q^2
+\end{cases} \Rightarrow 2S_B = S_A.
+$$
+
+Then the edge length of two smaller squares $A, B$ would also satisfies $p'^2 = 2q'^2$ and they are smaller than $p, q$. This is contradict to our assumption that $p, q$ are smallest instance. This proves that $p^2 = 2q^2$ cannot be true for integer $p, q$.
 
 # Directive Method
 
@@ -86,12 +104,28 @@ Thus $\sqrt{2}$ should be an irrational number.
 
 ## By geometric way
 
+Another direct way is also based on the Euclidean algorithm. The proof can be well described by the scratch ([CSDN@matrix67][4])
+
+{{% center %}}
+<img name="preview" src="./figs/image_01.PNG"/>
+{{% /center %}}
+
+Unit square $ABCD$ ($AB=BC=CD=DA=1$, so $BD =\sqrt{2}$). The arc $CE$ makes that $BE= BC=1, EF=FC$. The Euclidean algorithm for $(1, \sqrt{2})$ could be represented by such geometric way as
+
+1.  $(BC, BD) \rightarrow (BC, BD - BC) = (BC, DE)$
+2.  $(DE, BC) \rightarrow (DE, BC - DE) = (DE, DF)$
+3.  ...
+
+One can see that such procedure repeats itself with a scaling from square $ABCD$ to square $DEFG$. This means that such procedure would not terminate. That means $\sqrt{2}$ and $1$ are not **commensurable(可公度)**, i.e., $\sqrt{2}$ is irrational.
+
 # Reference
 
 [1]: https://www.zhihu.com/question/61798983
 [2]: https://en.wikipedia.org/wiki/Continued_fraction
 [3]: https://proofwiki.org/wiki/Irrational_Number_is_Limit_of_Unique_Simple_Infinite_Continued_Fraction
+[4]: https://blog.csdn.net/matrix67/article/details/4780419?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0.pc_relevant_paycolumn_v3&spm=1001.2101.3001.4242.1&utm_relevant_index=3
 
 1. [知乎: 如何证明根号 2 是无理数？][1]
 2. [wikipedia/Continued_fraction][2]
 3. [proofwiki/Irrational_Number_is_Limit_of_Unique_Simple_Infinite_Continued_Fraction][3]
+4. [CSDN@matrix67/令人称奇的简单证明：五种方法证明根号2是无理数][4]
