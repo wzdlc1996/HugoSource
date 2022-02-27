@@ -2,7 +2,7 @@
 title: "Machine Learning in Quantum Mechanics, Up to 2021"
 date: 2021-12-12T22:50:00+08:00
 lastmod: 2021-12-12T22:50:00+08:00
-draft: false
+draft: true
 tags: ["quantum"]
 categories: ["Reviews"]
 toc: true
