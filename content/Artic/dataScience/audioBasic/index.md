@@ -84,9 +84,89 @@ How to quantify the **timbre** is still an open question. Different from frequen
 
 # Encoding the Sound Data: Digital Audio
 
+Since the computer can not direct handle the continuous signal, one needs to discretize the signal first. One of the most used way in audio processing is by **sampling**.  The sampler is a system mapping the continuous signal (as the function of real numbers) into the function of integers by some sampling interval. Generally, sampler implement a frequency cutoff of the signal. Since human can only recognize the sound within a finite frequency window, such cutoff is acceptable in practice. To fully digitalize the audio signal, one also need to encode the amplitude information into the finite precision representation. These two procedure are usually called **discretization** and **quantization**. ([wikipedia/Digital_signal_processing][11], [LeeAndVaraiya11.pdf][12]).
+
+This section we will first discuss the sampling procedure and how to reconstruct the signal by discretized value, which relies on the Nyquist-Shannon sampling theorem. Then we will discuss the mainly used amplitude encoding methods and their precision.
+
 ## Sampling and Reconstruction
 
-# Storing Digital Audio in Computer
+Given the continuous signal as $Z(t)$, a **sampler** maps it into the discretized signal defined on integers. Formally:
+
+$$
+\{(t, Z(t)): t\in\mathbb{R}\} \xrightarrow{\textrm{sampling}} \{(n, \mathcal{S}(Z)(n) \equiv \hat Z(n) = Z(nT)) : n \in\mathbb{Z}\}.
+$$
+
+The value of $T$ is **sampling interval**, and its reciprocal $f_s = 1/ T$ is **sampling frequency**. In this note, we will denote $\hat Z$ as the sampled signal $\mathcal{S}(Z)$ for simplicity. 
+
+Sampling is not a revertible mapping in the signal space. **Aliasing** denotes the phenomenon that two different signals could have the same sampled signal. One example is the sinusoidal signal:
+
+$$
+Z_f(t) = \cos 2\pi f t \Rightarrow \hat Z_f(n) = \cos 2\pi n \frac f {f_s}.
+$$
+
+One has $\hat Z_{f+k f_s} = \hat Z_{f}$. This also leads to the information loss for high frequency components when $f_s$ is fixed. In practice, people may need to avoid aliasing. And such **anti-aliasing** usually requires some priori-assumptions to the signal, such as the frequency range.
+
+The **reconstruction** is the mapping from sampled signal to a continuous signal. Note that general the reconstruction could be different from the original one. Mainly reconstruction processes are the interpolation by discretized data, i.e.:
+
+$$
+\mathcal{R}(\hat Z)(t) = \sum_{n\in\mathbb{Z}} \phi_n(t) \hat Z(n).
+$$
+
+The functions $\{\phi_n(t)\}$ are interpolation basis. For example:
+
+1.  _zero-order hold_: $\mathcal{R}(\hat Z)(t) = \hat Z(n) \textrm{ if } nT \leq t \lt (n+1)T$. In this case, $\phi_n(t) = 1_{nT \leq t \lt (n+1)T}$ is the characteristic function.
+2.  _linear interpolation_: $\mathcal{R}(\hat Z)(t) = \hat Z(n) + (\hat Z(n+1) - \hat Z(n))( t - nT) \textrm{ if } nT\leq t \lt (n+1)T$. This is the interpolation by connect neighbor points by line.
+
+_[Theorem]_: (Nyquist-Shannon Sampling Theorem): If the signal $Z(t)$ contains no frequencies higher than $f_s / 2$, then it is completely determined by the sampling $\hat Z(n)$ with sampling frequency $f_s$. The reconstruction is achieved by **sinc interpolation**:
+
+$$
+Z(t) = \mathcal{R}(\hat Z)(t) = \sum_{n\in\mathbb{Z}} \hat Z(n) \textrm{sinc} \Big(\frac {t - nT} T\Big).
+$$
+
+The sinc function is $\textrm{sinc} x = \sin \pi x / (\pi x)$.
+
+{{% fold "Proof" %}}
+
+Since the signal $Z(t)$ has no frequency components than $2f_s$, thus we have the Fourier analysis
+
+$$
+Z(t) = \int_{-\infty}^{\infty} \td f \ \tilde{Z}(f) e^{\ti 2\pi f t} = \int_{-f_s/2}^{f_s/2} \td f \ \tilde{Z}(f) e^{\ti 2\pi f t} .
+$$
+
+Then consider the sampling with frequency $f_s$, one has
+
+$$
+\hat Z(n) = Z(nT) =Z(n / f_s) = \int_{-f_s/2}^{f_s/2} \td f \ \tilde{Z}(f) e^{\ti 2\pi f n / f_s} = \int_{-1/2}^{1/2} \td f \ f_s\tilde{Z}(f f_s) e^{\ti 2 \pi n f}.
+$$
+
+With the periodic extension of $u(f) = f_s\tilde{Z}(f f_s) \textrm{ if } f \in [n-1/2, n+1/2)$ by period $1$, one has Fourier series
+
+$$
+u(f) = \sum_{n\in\mathbb{Z}} c_n e^{-\ti 2\pi n f} \Rightarrow c_n = \int_{-1/2}^{1/2} u(f) e^{\ti 2\pi n f}.
+$$
+
+This means that
+
+$$
+u(f) = \sum_{n\in\mathbb{Z}} \hat Z(n) e^{-\ti 2\pi n f} \Rightarrow \tilde{Z}(f) = 1_{|f|\leq f_s/2}\times\sum_{n\in\mathbb{Z}} \frac 1 {f_s} \hat Z(n) e^{-\ti 2\pi n f /f_s}.
+$$
+
+Thus, we have
+
+$$
+\begin{aligned}
+Z(t) &= \int_{-f_s/2}^{f_s/2} \td f \ e^{\ti 2\pi ft}\sum_{n\in\mathbb{Z}} \frac 1 {f_s} \hat Z(n) e^{-\ti 2\pi n f/ f_s}\\
+&= \sum_{n\in\mathbb{Z}} \hat Z(n) \int_{-1/2}^{1/2} \td f \ e^{\ti 2\pi f (f_s t - n)} \\
+&= \sum_{n\in\mathbb{Z}}\hat Z(n) \frac {\sin \pi (f_s t - n)} {\pi (f_s t -n)} \\
+&= \sum_{n\in \mathbb{Z}} \hat Z(n) \textrm{sinc} \Big(\frac {t - nT} {T}\Big)
+\end{aligned}
+$$
+
+{{% /fold %}}
+
+By Nyquist theorem, people could use a finite sampling rate to sample the continuous signal and reconstruct it ideally if we admit there is a frequency upper bound for the signal. For audio, this upper bound is the limit of human ear: (20Hz ~ 20 kHz). The digital audio commonly used the sampling frequency of $44.1\textrm{kHz}$, which was originally used by Sony in 1979. ([wikipedia/44,100_Hz][13]).
+
+## Quantize Amplitude
 
 # Formats of Audio File
 
@@ -102,3 +182,6 @@ How to quantify the **timbre** is still an open question. Different from frequen
 [8]: https://en.wikipedia.org/wiki/C_(musical_note)
 [9]: https://en.wikipedia.org/wiki/Equal_temperament
 [10]: https://arxiv.org/abs/1703.06697
+[11]: https://en.wikipedia.org/wiki/Digital_signal_processing
+[12]: https://ptolemy.berkeley.edu/projects/chess/eecs124/reading/LeeAndVaraiya11.pdf
+[13]: https://en.wikipedia.org/wiki/44,100_Hz
