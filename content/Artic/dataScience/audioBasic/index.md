@@ -168,6 +168,10 @@ By Nyquist theorem, people could use a finite sampling rate to sample the contin
 
 ## Quantize Amplitude
 
+Technically speaking, the **quantization** has two aspects. First, one need to discretized the amplitude information (usually the voltage signal). Similar to what we did in the time domain, this procedure maps a continuous range quantity into a discretized and finite quantity. Thus the amplitude is possible to be stored and handled in the computer. Second, we need to design a encoding system to represent the physical information into the bits. In this part, we need to standardize the amplitude such that all sounds can be quantized universally.
+
+
+
 # Formats of Audio File
 
 # References
@@ -185,3 +189,4 @@ By Nyquist theorem, people could use a finite sampling rate to sample the contin
 [11]: https://en.wikipedia.org/wiki/Digital_signal_processing
 [12]: https://ptolemy.berkeley.edu/projects/chess/eecs124/reading/LeeAndVaraiya11.pdf
 [13]: https://en.wikipedia.org/wiki/44,100_Hz
+[14]: https://cmtext.indiana.edu/digital_audio/chapter5_quantize.php
