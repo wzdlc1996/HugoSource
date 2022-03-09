@@ -170,9 +170,57 @@ By Nyquist theorem, people could use a finite sampling rate to sample the contin
 
 Technically speaking, the **quantization** has two aspects. First, one need to discretized the amplitude information (usually the voltage signal). Similar to what we did in the time domain, this procedure maps a continuous range quantity into a discretized and finite quantity. Thus the amplitude is possible to be stored and handled in the computer. Second, we need to design a encoding system to represent the physical information into the bits. In this part, we need to standardize the amplitude such that all sounds can be quantized universally.
 
+### Pulse-code Modulation (PCM)
 
+As a standard form of digital audio, the **Pulse-code Modulation** is a general method to quantize the signal. Formally, it (LPCM, linear-PCM) is
+
+$$
+Z \xrightarrow{\textrm{LPCM}} A \times \textrm{round}_n\Big(\frac {Z - Z_{\textrm{min}}} A\Big),
+$$
+
+in which $A$ is the width of the full scale, i.e., $A = \max_t Z(t) - \min_t Z(t)$, $Z_{\textrm{min}} = \min_t Z(t)$, and the function $\textrm{round}_n$ approximate the argument $x\in [0, 1]$ into $2^n-1$ uniform levels by 
+$$
+\textrm{round}_n(x) =\textrm{round} (x * (2^n-1)) /(2^n-1).
+$$ 
+
+The **bit-depth** $n$ captures the resolution of quantization. For general PCM method, one could use suitable functions of $Z$ instead of itself (see ([wikipedia/M-law_algorithm][15]) for mu-law and its cousin A-law algorithm). 
+
+With the quantization, we map the continuous function (signal) $Z(t)$ into a discrete valued time series defined on $\mathbb{N}$ by
+
+$$
+Z(t) \xrightarrow{\textrm{digitalization}} \hat Z(n) = k \Delta .
+$$
+
+For the commonly used parameters
+
+```json
+{
+    "sampling_rate": 44100,
+    "bit_depth": 16,
+}
+```
+
+we can compute the size of a $1$-min length single-channel audio file:
+
+$$
+\textrm{size} = T \times \textrm{sampling\_rate} * \textrm{bit\_depth}\times \textrm{n\_channel} = 60\textrm{s} \times 44100\textrm{Hz}\times 16\textrm{bit} \approx 5.047 \textrm{MB}.
+$$
 
 # Formats of Audio File
+
+## WAV
+
+**WAV** is designed by IBM and Microsoft to store the bitstream of audio datas ([wikipedia/WAV][16]). WAV (though could contain compressed audio) stores the uncompressed waveform information of the audio by LPCM digitalization. This means the audio file could be large (as we calculated above, $\sim 2.52\textrm{MB}/\textrm{min}$). 
+
+With `scipy.io` module we could access data in WAV files in `python` ([doc.scipy/scipy.io.wavfile.read][16])
+
+## Compressed Format
+
+There are a lot compressed format to reduce the size of audio files. Mainly there are two classes of them ([wikipedia/Audio_file_format][18])
+1.  **Lossless Compress**: FLAC, ALAC(for apple)
+2.  **Lossy Compress**: MP3(formally MPEG-2 Audio Layer III)
+
+## MIDI
 
 # References
 
@@ -190,3 +238,7 @@ Technically speaking, the **quantization** has two aspects. First, one need to d
 [12]: https://ptolemy.berkeley.edu/projects/chess/eecs124/reading/LeeAndVaraiya11.pdf
 [13]: https://en.wikipedia.org/wiki/44,100_Hz
 [14]: https://cmtext.indiana.edu/digital_audio/chapter5_quantize.php
+[15]: https://en.wikipedia.org/wiki/%CE%9C-law_algorithm
+[16]: https://en.wikipedia.org/wiki/WAV
+[17]: https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.read.html
+[18]: https://en.wikipedia.org/wiki/Audio_file_format
