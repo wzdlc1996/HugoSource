@@ -208,6 +208,28 @@ $$
 \hat \rho = \argmax_{\rho} \prod_\alpha \Big(\textrm{Tr}\rho \ket{x_\alpha}\bra{x_\alpha}\Big)^{d_\alpha}.
 $$
 
+In this paper, the authors show their practice on reconstructing the state of "cat-state" in quantum optics. Formally, it is
+
+$$
+\ket{\psi} = \frac 1 {\mathcal{A}}(\ket{\alpha} + \ket{-\alpha}),
+$$
+
+in which $\mathcal{A}$ is the normalization factor. The coherent state is truncated by the given size of Hilbert space $N$. The definition they exactly used is (see [qutip.coherent(N, alpha, method="operator")][19]):
+
+$$
+\ket{\alpha}_N = \exp(\alpha \hat a^\dagger_N - \alpha^* \hat a_N) \ket{0}_N,
+$$
+
+where the Hilbert space is spanned by $\{\ket{i}_N\}_{i=0}^{N-1}$, and the truncated destroyer $\hat a =\sum_{n=1}^{N-1} \sqrt{n} \ket{n-1}_N \bra{n}_N$. In the main text, the setup is $\alpha = 2, N=32$
+
+The simulated data for measurement are obtained by the $Q$-distribution, formally, they are
+
+$$
+Q(\beta) = \frac 1 \pi \textrm{Tr} \rho(\alpha) \ket{\beta}\bra{\beta},
+$$
+
+where $\beta$ is sampled within a finite region in $\mathbb{C}^2$. For experiment data, they also tested cGAN on the state with negative Wigner function with the measurement is the sample of Wigner function like an image.
+
 ### Learning Task Setup
 
 The learning task of cGAN is shown in the Fig. 1 of the paper:
@@ -238,6 +260,28 @@ There are some additional physical tricks in the learning task:
 
 If the generator has managed to learn the correct matrix, the discriminator will not be able to distinguish the generated statistics from the true data.
 
+
+### Result
+
+The main result of the paper is summarized in Fig. 3 of the main text:
+
+{{< center >}}
+<img name="preview" src="./figs/img_unsupv_02.png"/>
+{{< /center >}}
+
+The cGAN on simulated situation (no noise) shows a better performance than the state-of-the-art maximally likelihood estimation methods, which means cGAN could be either faster than them or requiring fewer measurements than them to reach the same fidelity. On experiment situation they showed cGAN is capable but no comparison between other methods.
+
+### Comment
+
+The story of the work is direct and interesting. Using the frontier AI technology to reconstruct the quantum state is actually a well-defined data-driven task. The authors also chose a proper situation to study: the image-like measurement and the GAN which is popular in image processing/generating in recent years.
+
+There are still some issues in this work. 
+
+1.  The current framework is hard to scale up.
+    Their QST-cGAN requires the measurement operators as the input and output the density matrix itself. This works for their small system (actually it is a single body state) within size $32$. This is far smaller than the practice and the demand of experiments and industries, since the dimension of Hilbert space exponentially grows with the system size. The large size could be harmful to the optimization, even make the GAN hard to converge.
+
+2.  The current numerical support is still weak.
+    The authors only argued that their framework is universal but the numerical evidence is lack. By their code, QST-cGAN is quite relevant to the image-like data by measurement (like $Q$ distribution and Wigner function). For the actual Fermion system and spin system these measurement could be hard to implement and even no experience can be referred like computer vision.
 
 
 ## Quantum Neural Network State
@@ -408,6 +452,7 @@ Using RL to play ``quantum games'' has the following problems
 [16]: https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.127.140502
 [17]: https://arxiv.org/abs/1611.07004
 [18]: https://en.wikipedia.org/wiki/POVM
+[19]: https://qutip.org/docs/latest/modules/qutip/states.html#coherent
 
 1.  van Nieuwenburg, E., Liu, YH. & Huber, S. Learning phase transitions by confusion. Nature Phys 13, 435–439 (2017)
 2.  Nicolas Regnault and Rahul Nandkishore Floquet thermalization: Symmetries and random matrix ensembles. Phys. Rev. B 93, 104203
