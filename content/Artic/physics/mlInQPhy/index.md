@@ -2,7 +2,7 @@
 title: "Machine Learning in Quantum Mechanics, Up to 2021"
 date: 2021-12-12T22:50:00+08:00
 lastmod: 2021-12-12T22:50:00+08:00
-draft: true
+draft: false
 tags: ["quantum"]
 categories: ["Reviews"]
 toc: true
@@ -283,8 +283,6 @@ There are still some issues in this work.
 2.  The current numerical support is still weak.
     The authors only argued that their framework is universal but the numerical evidence is lack. By their code, QST-cGAN is quite relevant to the image-like data by measurement (like $Q$ distribution and Wigner function). For the actual Fermion system and spin system these measurement could be hard to implement and even no experience can be referred like computer vision.
 
-
-## Quantum Neural Network State
 
 # Reinforcement Learning: Can AI Understand the Nature?
 
