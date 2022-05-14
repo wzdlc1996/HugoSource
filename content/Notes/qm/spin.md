@@ -549,16 +549,16 @@ And $\hat L_-\hat L_+,\hat L_+\hat L_-$ are semi-definite, because of $\hat L_{\
 $$\alpha\geq \beta(\beta\pm 1)$$
 
 
-That means, there are $\beta_{\min}\leq \beta \leq \beta_{\max}$ . Namely:
+That means, there are $\beta_{\textrm{min}}\leq \beta \leq \beta_{\textrm{max}}$ . Namely:
 
 
-$$\hat L_+\ket{\alpha,\beta_{\max}} = \hat L_-\ket{\alpha,\beta_{\min}}=0$$
+$$\hat L_+\ket{\alpha,\beta_{\textrm{max}}} = \hat L_-\ket{\alpha,\beta_{\textrm{min}}}=0$$
 
 
-Then $\alpha=\beta_{\max}(\beta_\max +1)=\beta_\min(\beta_\min-1)$ . With $\beta_{\min,\max}$ are integer. One can solve that:
+Then $\alpha=\beta_{\textrm{max}}(\beta_{\textrm{max}} +1)=\beta_\textrm{min}(\beta_\textrm{min}-1)$ . With $\beta_{\textrm{min},\textrm{max}}$ are integer. One can solve that:
 
 
-$$\beta_{\min} = \frac 1 2 -\sqrt{\frac 1 4 +\alpha} , \beta_\max = -\frac 1 2 +\sqrt{\frac 1 4 +\alpha} $$
+$$\beta_{\min} = \frac 1 2 -\sqrt{\frac 1 4 +\alpha} , \beta_\textrm{max} = -\frac 1 2 +\sqrt{\frac 1 4 +\alpha} $$
 
 
 That is $\alpha=l(l+1)$ , and $-l\leq \beta \leq l$ .
