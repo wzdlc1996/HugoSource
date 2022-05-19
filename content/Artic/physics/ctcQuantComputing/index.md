@@ -3,7 +3,7 @@ title: "Time Travel and Quantum Computation"
 date: 2020-09-27T15:54:07+08:00
 lastmod: 2020-12-10T18:00:00+08:00
 draft: false
-tags: ["quantum"]
+tags: ["quantum-computing"]
 categories: ["Reviews"]
 toc: true
 summary: "Time travel, as a famous concept in science fiction, fascinates people for a long time. However for physicists, this is not only a beautiful dream, but also a interesting problem to discuss mathematically. In the community, there are generally two directions about time travel: (1) does it exist and (2) if it indeed exists, what can we do. In this report, we discuss the application of time travel mainly in the field of quantum computation"

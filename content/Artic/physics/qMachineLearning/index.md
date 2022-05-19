@@ -3,7 +3,7 @@ title: "Quantum Machine Learning: Quantum Algorithms to Classical Data"
 date: 2020-12-19T14:16:00+08:00
 lastmod: 2020-02-10T18:00:00+08:00
 draft: false
-tags: ["quantum"]
+tags: ["quantum-computing"]
 categories: ["Reviews"]
 toc: true
 summary: "Quantum machine learning is the integration of quantum algorithms within machine learning programs. Generally, we have four different approaches for this purpose, by the type of data (quantum state/data or classical data) and type of algorithm or platform (quantum algorithm/computer or classical algorithm/computer). In this report, we focus on an elementary discussion about aspect of the quantum approach to classical data. The more attractive part about quantum approach to quantum data will be left for future posts."
