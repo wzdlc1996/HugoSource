@@ -82,13 +82,159 @@ By the universality of circuit model with single-qubit rotation and CNOT gate, w
 
 To simulate arbitrary single-qubit rotation, we need only simulate the X-rotation and Z-rotation, then make the decomposition of $\hat U = \hat R_x(\gamma) \hat R_z(\beta) \hat R_x(\alpha)$. 
 
+Let us firstly introduce the single-qubit rotation unit:
+
+$$
+\begin{aligned}
+\ket{\psi} &\rightarrow \ket{ini} &&=\textrm{CZ}_{0,1}(\ket{\psi}_0\otimes \ket{+}_1) \\
+&\rightarrow \ket{fin:s} &&= \hat P_{(\theta, \phi) = (\pi/2, \xi)}^{(\textrm{on qubit-0})}(s)\ket{ini} \\
+& && = H Z^s e^{\ti Z \xi/2} \ket{\psi}
+\end{aligned}
+$$
+
+(neglect global phase.) State $\ket{+}$ is the eigenstate of $X$ with $1$ eigenvalue. The probabilities to find $s = 0, 1$ are both $1/2$. By circuit model we illustrate this unit as
+
+(Waiting for a figure to illustrate the circuit)
+
+
+Such single-qubit rotation unit together with single-qubit Hadamard gate and Pauli gates would offer us any single qubit rotation, by the fact that $HZH=X$ (even Hadamard gate can be implemented with $\xi =0$). Such unit can be viewed as the MBQC operation with graph state by $G(\{0, 1\}, \{(0,1)\})$ as the resource. We note that MBQC strategy could be different for different resource setup. 
+
+Cascading the unit, we can implement any rotation for single qubit with $5$-qubit graph state with only single-qubit measurement. By
+
+$$
+\begin{aligned}
+\ket{G} = \prod_{i=3}^0\textrm{CZ}_{i,i+1}(\ket{\psi}\ket{+}^{\otimes 4}) \sim & G(\{0,1,2,3,4\}, \{ \\
+    & \indent (0, 1), (1, 2), (2, 3), (3, 4) \\
+& \}),
+\end{aligned}
+$$
+
+by GZ gates with $0$ as input qubit, we have ([Raussendorf 2003][1])
+
+$$
+\begin{aligned}
+& \prod_{i=4}^1 \hat P_{(\theta, \phi) = (\pi/2, \xi_i)}(s_i)\ket{G} = \prod_{i=4}^1 HZ^{s_i} e^{\ti Z\xi_i / 2} \ket{\psi} \\
+=& R_x(-\xi_4) X^{s_4}R_z(-\xi_3)Z^{s_3}R_x(-\xi_2)X^{s_2}Z^{s_1}R_z(-\xi_1) \ket{\psi} \\
+=& X^{s_4}Z^{s_3}X^{s_2}Z^{s_1}R_x\Big((-1)^{1+s_3+s_1}\xi_4\Big)R_z\Big((-1)^{1+s_2}\xi_3\Big)R_x\Big((-1)^{1+s_1} \xi_2\Big)R_z(-\xi_1)\ket{\psi}
+\end{aligned}
+$$
+
+By adaptively choosing $\xi_1=0, \xi_2 = (-1)^{1+s_1}\alpha, \xi_3=(-1)^{1+s_2} \beta, \xi_4=(-1)^{1+s_1+s_3} \gamma$, we have any single-qubit rotation as (neglecting global phase factor)
+
+$$
+R_x(\gamma)R_z(\beta)R_x(\alpha)\ket{\psi} = X^{s_4+s_2}Z^{s_1+s_3}\prod_{i=4}^1 \hat P_{(\theta, \phi) = (\pi/2, \xi_i)}(s_i)\ket{G}.
+$$
+
+The proof is as follows. The initial state reads
+
+$$
+\begin{aligned}
+\ket{ini} &= \textrm{CZ}_{0,1} \Big((u_0\ket{0}+u_1\ket{1})\otimes \ket{+}\Big) \\
+&= \frac 1 {\sqrt{2}}\Big(u_0 \ket{0,0} + u_0\ket{0,1} + u_1\ket{1,0} - u_1\ket{1,1}\Big)\\
+&= \frac 1 {\sqrt{2}} \Big(u_0 \ket{0}\ket{+} + u_1 \ket{1} \ket{-}\Big). 
+\end{aligned}
+$$
+
+We measure this state along the direction $(\pi/2, \xi)\sim (\cos \xi, \sin\xi, 0)$ on the first qubit(input), with the basis
+
+$$
+\begin{aligned}
+\ket{0: (\pi/2, \xi)} &= \frac 1 {\sqrt 2}\ket{0} +\frac 1 {\sqrt{2}} e^{\ti \xi} \ket{1}\\
+\ket{1: (\pi/2, \xi)} &= \frac 1 {\sqrt 2}\ket{0} -\frac 1 {\sqrt{2}} e^{\ti \xi} \ket{1}
+\end{aligned}
+$$
+
+or $\ket{s: (\pi/2, \xi)} = \frac 1 {\sqrt{2}} (\ket{0} + (-1)^s e^{\ti \xi}\ket{1})$ in short ($s \in \{0, 1\}$). Then the possible outcome reads
+
+$$
+\begin{aligned}
+\ket{fin:s} &= \braket{s:(\pi/2,\xi)| ini} \\
+&= \frac 1 2 \Big(u_0 \ket{+} + u_1(-1)^s e^{-\ti \xi}\ket{-}\Big) \\
+&=\frac {e^{-\ti \xi/2}} {\sqrt{2}} H Z^s e^{\ti Z\xi /2}(u_0\ket{0}+ u_1\ket{1}).
+\end{aligned}
+$$
+
+It is not normalized with the length as the probability to find result $s$. Obviously the probability of $0/1$ is the same. 
+
 {{% /fold %}}
 
 {{% fold "Proof: CNOT gate" %}}
 
+The minimal implement of CNOT gate requires $4$ qubit in total([Raussendorf 2001][4]). The graph state reads
+
+$$
+G(\{0, 1, 2, 3\}, \{(0, 2), (1, 2), (2, 3)\}).
+$$
+
+The qubit $0, 1$ are input qubit, while $1, 3$ is the output qubit. Actually, we note $1$ as the controlling qubit.
+
+Formally, the CNOT unit reads
+
+$$
+\begin{aligned}
+\ket{c}\otimes\ket{\psi} & \rightarrow \ket{ini} &&= \textrm{CZ}_{0,2}\textrm{CZ}_{1,2}\textrm{CZ}_{2,3} \Big(\ket{\psi}_0 \ket{c}_1 \ket{+}_2 \ket{+}_3  \Big) \\
+& \rightarrow \ket{fin: s_0, s_2} && = \hat P_{(\theta,\phi) = (\pi/2, 0)}^{(\textrm{on qubit-2})}(s_2) \hat P_{(\theta,\phi) = (\pi/2, 0)}^{(\textrm{on qubit-1})}(s_0)\ket{ini} \\
+& && = \Big(Z^{s_0}\otimes (X^{s_2}Z^{s_0})\Big) \textrm{CNOT} (\ket{c}\otimes \ket{\psi})
+\end{aligned}
+$$
+
+with $\ket{c}$ being the controlling qubit. 
+
+The proof is as follows.
+
+Note the basis along $(\theta,\phi) = (\pi/2, 0)$ is the eigenstates of $X$, i.e.,
+
+$$
+\ket{s: (\pi/2, 0)} = \frac 1 {\sqrt{2}}(\ket{0} + (-1)^s \ket{1}).
+$$
+
+$$
+\hat P_{(\theta,\phi) = (\pi/2, 0)}(s) = \frac {1 + (-1)^s X} 2.
+$$
+
+Thus, we have
+
+$$
+\begin{aligned}
+\ket{fin: s_0, s_2} &= \bra{s_0, s_2:(\pi/2,0)}\textrm{CZ}_{0,2}\textrm{CZ}_{1,2}\textrm{CZ}_{2,3} \ket{\psi}_0 \ket{c}_1 \ket{+}_2 \ket{+}_3 \\
+&=\bra{s_2:(\pi/2,0)} \textrm{CZ}_{1,2}\textrm{CZ}_{2,3} \ket{c}_1 (H Z^{s_0}\ket{\psi})_2 \ket{+}_3 \\
+&= \sum_{s\in \{0, 1\}}\braket{s|c}\bra{s_2:(\pi/2,0)}  \textrm{CZ}_{23}\ket{s}_1 (Z^s H Z^{s_0}\ket{\psi}_2)\ket{+}_3 \\
+&= \sum_{s\in \{0, 1\}} \braket{s|c} \ket{s}_1 \Big(H Z^{s_2} Z^s H Z^{s_0}\ket{\psi}_3\Big) \\
+&= (1\otimes HZ^{s_2}) (\textrm{CZ}_{1,3}) (1\otimes HZ^{s_0}) \ket{c}_1 \ket{\psi}_3 \\
+&= (1\otimes X^{s_2}) (1\otimes H) (Z\otimes X)^{s_0} \textrm{CZ}_{1,3} (1\otimes H) \ket{c}_1 \ket{\psi}_3 \\
+&=\Big(Z^{s_0}\otimes X^{s_2}Z^{s_0}\Big) \textrm{CNOT}_{1,3}(\ket{c}_1\ket{\psi}_3)
+\end{aligned}
+$$
+
+We used the following property of (Clifford algebra):
+
+$$
+\begin{aligned}
+Z^s H &= H X^s \\
+H Z^s &= X^s H \\
+\textrm{CNOT} &= (1\otimes H)\textrm{CZ} (1\otimes H) \\
+X^s Z &= (-1)^s Z X^s \\
+\textrm{CZ}(1\otimes X^s) &= \begin{bmatrix}
+X^s & 0 \\
+0 & Z  X^s
+\end{bmatrix} = (1\otimes X^s)\begin{bmatrix}
+1 & 0 \\
+0 & (-1)^s
+\end{bmatrix}\begin{bmatrix}
+1 & 0 \\
+0 & Z
+\end{bmatrix} = (Z^s \otimes X^s)\textrm{CZ}
+\end{aligned}
+$$
+
 {{% /fold %}}
 
+We note that this is a weaker version of the universality of MBQC. However, we can still make some helpful conclusion from this proof:
 
+1.  The exact implementation of the same unitary evolution by MBQC is deeply related to the form of **clusterization** : the preparation of graph state. 
+2.  Once a measurement is done, the corresponding qubit is projected out. It cannot be used again until another entangle layer is applied.
+3.  The I/O qubit during the computation procedure is not necessary to be static. Actually, this is also the originality of MBQC: the information flow exists in the computing model.
+4.  In CNOT proof, we notice that independent measurement can be applied by arbitrary order. The parallelization of MBQC is relied on this property. 
 
 
 # Applications
@@ -100,6 +246,7 @@ To simulate arbitrary single-qubit rotation, we need only simulate the X-rotatio
 [1]: https://doi.org/10.1103/PhysRevA.68.022312
 [2]: https://www.nature.com/articles/nphys1157
 [3]: https://en.wikipedia.org/wiki/Gottesman%E2%80%93Knill_theorem
+[4]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.5188
 
 1.  [Robert Raussendorf, Daniel E. Browne, and Hans J. Briegel, Measurement-based quantum computation on cluster states, Phys. Rev. A 68, 022312](https://doi.org/10.1103/PhysRevA.68.022312)
 1.  [Gottesman, D., Chuang, I. Demonstrating the viability of universal quantum computation using teleportation and single-qubit operations. Nature 402, 390–393 (1999). https://doi.org/10.1038/46503](https://www.nature.com/articles/46503?__hstc=13887208.d9c6f9c40e1956d463f0af8da73a29a7.1475020800048.1475020800050.1475020800051.2&__hssc=13887208.1.1475020800051&__hsfp=1773666937)
@@ -112,3 +259,5 @@ To simulate arbitrary single-qubit rotation, we need only simulate the X-rotatio
 8.  [qml.baidu: MBQC-tutorial](https://qml.baidu.com/tutorials/measurement-based-quantum-computation/mbqc-quick-start-guide.html)
 9.  [Tzu-Chieh Wei, Measurement-Based Quantum Computation, arXiv:2109.10111](https://arxiv.org/abs/2109.10111)
 10.  [wikipedia/Gottesman-Knill_theorem](https://en.wikipedia.org/wiki/Gottesman%E2%80%93Knill_theorem)
+11.  [Prof. Dr. Hans J. Briegel's qic group website](https://www.uibk.ac.at/th-physik/qic-group/research/topics/measurement-based-quantum-computation/)
+12.  [Robert Raussendorf and Tzu-Chieh Wei, Quantum Computation by Local Measurement, Annual Review of Condensed Matter Physics, Vol. 3:239-261 (Volume publication date March 2012) ](https://www.annualreviews.org/doi/10.1146/annurev-conmatphys-020911-125041)
