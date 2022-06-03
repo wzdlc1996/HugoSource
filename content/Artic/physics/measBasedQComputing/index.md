@@ -25,7 +25,7 @@ The most generic formalism for MBQC has the following procedure:
 2.  **Clusterize** the platform means a standard unitary evolution to prepare the initial state:
 
     $$
-    \ket{\psi_{\mathcal{C}}} = \hat U_{\mathcal{C}} \ket{+}^{\otimes |\mathcal{C}|}.
+    \ket{\psi_{\mathcal{C}}} = \hat U_{\mathcal{C}} \ket{\psi}_{I} \otimes\ket{+}^{\otimes |\mathcal{C} - I|}.
     $$
 
     The evolution generates the entanglement but can be independent of the algorithm. 
@@ -188,10 +188,6 @@ $$
 \ket{s: (\pi/2, 0)} = \frac 1 {\sqrt{2}}(\ket{0} + (-1)^s \ket{1}).
 $$
 
-$$
-\hat P_{(\theta,\phi) = (\pi/2, 0)}(s) = \frac {1 + (-1)^s X} 2.
-$$
-
 Thus, we have
 
 $$
@@ -231,13 +227,73 @@ $$
 
 We note that this is a weaker version of the universality of MBQC. However, we can still make some helpful conclusion from this proof:
 
-1.  The exact implementation of the same unitary evolution by MBQC is deeply related to the form of **clusterization** : the preparation of graph state. 
+1.  The exact implementation of the same unitary evolution by MBQC is deeply related to the form of **clusterization** : the preparation of graph state.
 2.  Once a measurement is done, the corresponding qubit is projected out. It cannot be used again until another entangle layer is applied.
 3.  The I/O qubit during the computation procedure is not necessary to be static. Actually, this is also the originality of MBQC: the information flow exists in the computing model.
-4.  In CNOT proof, we notice that independent measurement can be applied by arbitrary order. The parallelization of MBQC is relied on this property. 
-
+4.  In CNOT proof, we notice that independent measurement can be applied by arbitrary order. The parallelization of MBQC is relied on this property.
 
 # Applications
+
+## Limited MBQC: Measurement Calculus
+
+Note that there are only measurement along $\theta = \pi/2$ are needed to build single-qubit rotation and CNOT gate. A limited version of MBQC(**L-MBQC**) is
+
+1.  **Platform** is a set of qubits $\mathcal{C} = I + O + \textrm{Red} = V$
+2.  **Clusterization** generates entanglement by controlled-Z gate. Note that $\textrm{CZ}_{i,j} = \textrm{CZ}_{j,i} = E_{ij}$
+3.  **Measurement** are a set of single-parameter measurement: $M_i(\alpha, s) = \hat P_{(\theta,\phi) = (\pi/2,\alpha)}^{(\textrm{on qubit-i})}(s)$
+4.  **Post-process** applies single qubit gates $X_i^s, Z_i^s$ according to the **signal**(measurement results) $s$
+
+The above operations $\{E_{ij}\}\cup \{M_i(\alpha,s): \alpha\in [0,2\pi), s=0, 1\}\cup \{X_i^s, Z_i^s\}$ forms the **syntax** of **L-MBQC**. The **Standardization** rule helps to rewrite all single qubit syntax at the left of entanglement syntax
+
+$$
+\begin{cases}
+X_i^s Z_i^t &= (-1)^t Z_i^t X_i^s \\
+E_{ij} X_i^s &= X_i^s Z_j^s E_{ij} \\
+E_{ij} Z_i^s &= Z_i^s E_{ij} \\
+M_i(\alpha, *) X_i^s Z_i^t &= M_i\Big((-1)^s\alpha + t \pi, *\Big) \\
+M_i(\alpha, s) Z_i^t &= M_i(\alpha, s + t\mod 2)
+\end{cases}
+$$
+
+The universality of **L-MBQC** reads
+
+_[Theorem]_: Any unitary operator on $O$ can be implement with single qubit syntax on entangled resource:
+
+$$
+\hat U \ket{\psi}_O = (XZ...)_{O}^s (M(\alpha..., s))_{V -O} \prod_{(i,j) \in \textrm{Edge}} E_{ij} \ket{\psi}_I \otimes \ket{+}_{V - I}. 
+$$
+
+{{% fold "Proof" %}}
+
+We need only to prove the cascading of L-MBQC unit preserve the format. Then by cascading the single-qubit rotation and CNOT any unitary can be simulated. 
+
+For this, we denote single qubit syntax $X, Z$ as $C$, a general L-MBQC unit reads
+
+$$
+\hat U \ket{\psi}_O = C_O M_{V-O} E \ket{\psi}_I \otimes \ket{+}_{V-I}.
+$$
+
+Then the cascading
+
+$$
+\begin{aligned}
+\hat U_2 \hat U_1\ket{\psi}_O &= C_{O_2} M_{V_2 - O_2} E_{V_2} \Big((\hat U_1 \ket{\psi})_{I_2} \otimes \ket{+}_{V_2 - I_2}\Big) \\
+&= C_{O_2} M_{V_2-O_2}E_{V_2} \Big(C_{O_1} M_{V_1-O_1} E_{V_1} (\ket{\psi}_{I_1} \otimes \ket{+}_{V_1-I_1}) \otimes \ket{+}_{V_2-I_2} \Big) \\
+&= C_{O_2}C'_{O_1} M'_{V_2-O_2} M_{V_1-O_1} E_{V_2}E_{V_1} \ket{\psi}_{I_1} \otimes \ket{+}_{V_1-I_1 + V_2-I_2}.
+\end{aligned}
+$$
+
+We note that $V_1 \cap V_2 = O_1$ thus $(V_1-O_1) \cap V_2 = \varnothing$. That is why we have
+
+$$
+E_{V_2} M_{V_1-O_1} = M_{V_1-O_1} E_{V_2}.
+$$
+
+By standardization we can always move $C$ to the left side. q.e.d.
+
+{{% /fold %}}
+
+In Ref. ([Broadbent 2009][5]), the authors proved with the standardization and proper reduction, quantum circuit can be transpiled to MBQC unit with polynomial more auxiliary qubits and depth. By the parallelization nature of MBQC, the exact depth could usually be decreased. 
 
 # Outlook
 
@@ -247,6 +303,7 @@ We note that this is a weaker version of the universality of MBQC. However, we c
 [2]: https://www.nature.com/articles/nphys1157
 [3]: https://en.wikipedia.org/wiki/Gottesman%E2%80%93Knill_theorem
 [4]: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.5188
+[5]: https://doi.org/10.1016/j.tcs.2008.12.046
 
 1.  [Robert Raussendorf, Daniel E. Browne, and Hans J. Briegel, Measurement-based quantum computation on cluster states, Phys. Rev. A 68, 022312](https://doi.org/10.1103/PhysRevA.68.022312)
 1.  [Gottesman, D., Chuang, I. Demonstrating the viability of universal quantum computation using teleportation and single-qubit operations. Nature 402, 390–393 (1999). https://doi.org/10.1038/46503](https://www.nature.com/articles/46503?__hstc=13887208.d9c6f9c40e1956d463f0af8da73a29a7.1475020800048.1475020800050.1475020800051.2&__hssc=13887208.1.1475020800051&__hsfp=1773666937)
@@ -261,3 +318,4 @@ We note that this is a weaker version of the universality of MBQC. However, we c
 10.  [wikipedia/Gottesman-Knill_theorem](https://en.wikipedia.org/wiki/Gottesman%E2%80%93Knill_theorem)
 11.  [Prof. Dr. Hans J. Briegel's qic group website](https://www.uibk.ac.at/th-physik/qic-group/research/topics/measurement-based-quantum-computation/)
 12.  [Robert Raussendorf and Tzu-Chieh Wei, Quantum Computation by Local Measurement, Annual Review of Condensed Matter Physics, Vol. 3:239-261 (Volume publication date March 2012) ](https://www.annualreviews.org/doi/10.1146/annurev-conmatphys-020911-125041)
+13.  [Broadbent, A., & Kashefi, E. (2009). Parallelizing quantum circuits. Theoretical Computer Science, 410(26), 2489–2510.](https://doi.org/10.1016/j.tcs.2008.12.046)
