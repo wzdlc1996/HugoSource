@@ -1,10 +1,10 @@
 ---
 title: "Introduction to Measurement Based Quantum Computing"
 date: 2022-05-19T22:16:06+08:00
-draft: true
+draft: false
 tags: ["measurement", "quantum-computing"]
 categories: ["Reviews"]
-summary: ""
+summary: "In this note, we will generally discuss the basic conceptions of measurement-based quantum computing(MBQC). We focus on the workflow of MBQC and how to transpile a circuit-based model to MBQC. The parallization for quantum computing and other optimizations are not fully covered but the references are offered. Finally, we discuss the development of MBQC in theoretical perspective."
 ---
 
 
@@ -13,7 +13,14 @@ summary: ""
 **Measurement Based Quantum Computing (MBQC)**, or **One-way quantum computing** ( **QCc** in short with `c` denoting the term cluster state) is a
 1.  Universal, all circuit can be simulated by it
 2.  Operation-friendly, only single-qubit measurement.
-quantum computation model. 
+
+quantum computation model. As firstly introduced by Robert Raussendorf and Hans J. Briegel in 2001 ([Raussendorf 2001][4]), MBQC has attracted much attentions of community. The main reason is MBQC has no direct classical concept and the isolation between entanglement unit (as multi-qubit gates) and single qubit operations. This framework helps us to understand the unique role of entanglement on the power of quantum computing. It also offers a efficient way to design the quantum computer on some modern platforms like optics system. 
+
+In this note, we focus on answer the following two questions:
+1.  What is MBQC and how does it work?
+2.  Is MBQC more powerful than circuit model?
+
+Some other developments on MBQC are also discussed here like whether more entanglement leads us more power or not. As an introduction, we will not fully cover the optimization techs but those references are still offered.
 
 # Main Model
 
@@ -94,8 +101,9 @@ $$
 
 (neglect global phase.) State $\ket{+}$ is the eigenstate of $X$ with $1$ eigenvalue. The probabilities to find $s = 0, 1$ are both $1/2$. By circuit model we illustrate this unit as
 
-(Waiting for a figure to illustrate the circuit)
-
+{{< center >}}
+<img name="preview" src="./figs/single_unit.png"/>
+{{< /center >}}
 
 Such single-qubit rotation unit together with single-qubit Hadamard gate and Pauli gates would offer us any single qubit rotation, by the fact that $HZH=X$ (even Hadamard gate can be implemented with $\xi =0$). Such unit can be viewed as the MBQC operation with graph state by $G(\{0, 1\}, \{(0,1)\})$ as the resource. We note that MBQC strategy could be different for different resource setup. 
 
@@ -352,10 +360,6 @@ However, since the concentration of measure, such too entangled to be useful sta
 
 _[Theorem]_: The fraction of states on $n\geq 11$ qubits with geometric measure of entanglement less than $n-2\log_2 n -3$ is smaller than $e^{-n^2}$. 
 
-{{% fold "Proof" %}}
-
-{{% /fold %}}
-
 ## Simulate Evolution
 
 The simulation of quantum evolution based on MBQC and accelerating QAOA is based on the following subroutine ([qml.baidu/mbqc][9]):
@@ -405,8 +409,6 @@ $$
 q.e.d.
 
 {{% /fold %}}
-
-# Outlook
 
 # Reference
 
