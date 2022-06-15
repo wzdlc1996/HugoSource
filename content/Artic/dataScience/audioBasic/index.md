@@ -4,7 +4,7 @@ date: 2021-06-24T00:21:44+08:00
 draft: true
 tags: ["data-science", "python"]
 categories: ["Techs"]
-toc: true
+toc: false
 summary: "The basic knowledge about audio data in computer. Including audio data representation, main audio file format, and simple audio processing. We will use python to illustrate these technologies. The hardware aspects will not be covered in this essay."
 ---
 
@@ -222,6 +222,92 @@ There are a lot compressed format to reduce the size of audio files. Mainly ther
 
 ## MIDI
 
+[MIDI(Musical Instrument Digital Interface)][19] is a technical standard for digital audio and instruments. A MIDI file stores how to interchange time-stamped MIDI data between different programs or hardwares. MIDI file is highly compacted and unified, it actually is a computer-friendly way to represent music scores.
+
+1.  MIDI header:
+
+    The header of a MIDI file has following three parts:
+    -  name: 4 bytes, should be `MThd`
+    -  size: 4 bytes, is the size of header data, is fixed as `00 00 00 06`, always 6 bytes.
+    -  data: 6 bytes, is made up with three integers:
+       1.  2 bytes for the type of MIDI file:
+           -  `00 00` means there is only one track
+           -  `00 01` means there are multiple syncronized tracks
+           -  `00 10` means there are multiple asyncronized tracks
+       2.  2 bytes for the number of tracks
+       3.  2 bytes for the time unit (ticks).
+
+2.  MIDI tracks
+    
+    Every track is made up with a 8-byte header and a sequence of MIDI events.
+    1.  In the header (8 bytes, with big-endian 4-len `char[]` and an unsigned `long`. In python, use `struct.unpack('>4sL', header)`):
+        -  name: 4 bytes, should be `MTrk`
+        -  size: 4 bytes, is the size of whole track events, integer
+    2.  In each event:
+        -  delta t: time duration stored by dynamic byte, is the number of ticks
+        -  MIDI message: is made up with a 1-byte status and data(parameters) of multiple bytes.
+
+{{% fold "Table of MIDI messages" %}}
+
+For channeled messages (`n` means the number of channel, 0~15):
+
+|Status|Meaning|Number of parameters|param 1|param 2|
+|---|---|---|---|---|
+|0x8n|Note-off|2|pitch value(0~127)|velocity value(0~127)|
+|0x9n|Note-on|2|pitch value(0~127)|velocity value(0~127)|
+|0xAn|Aftertouch|2|pitch value|touch|
+|0xBn|Continuous controller|2|controller number|controller param|
+|0xCn|Patch change|1|instrument number| -|
+|0xDn|Channel pressure|1|pressure| - |
+|0xEn|Pitch bent|2|lsb|msb|
+
+There is a set of `0xF_` messages for non-musical events. `0xF0` and `0xF7` are system exclusive message without parameter. `0xFF` leads a class of meta-events with form:
+
+```
+0xFF, type(1 byte), data_length(dynamic byte), data
+```
+
+Some commonly used meta-events are
+
+|Type|Meaning|Data length|Description|
+|---|---|---|---|
+|00|Set track order|2|00 00 ~ FF FF|
+|01|Text Event|0|Text information|
+|02|Copyright|0||
+|03|Set music/track name|0||
+|04|Set instrument|0||
+|05|Lyric|0||
+|2F|End of track|0|Sign of track end|
+|51|Set velocity|0||
+|58|Set metre|0||
+
+{{% /fold %}}
+
+{{% fold "Note on dynamic byte" %}}
+
+`dynamic byte` is widely used in MIDI file. The algorithm is(big-endian):
+1.  read a byte
+2.  If the highest is 0, it should end.
+3.  Else, the number should left-shift 7 bits and waiting for lower bits (big-endian)
+4.  `byte & 0x7f` is `byte & 0111,1111`, omit the highest position and add as lower bits.
+5.  goto 1 repeat
+
+For example, represent `0000,0001,1111,0100` as dynamic bytes with big-endian:
+The number should be splitted as `11` and `1110100`:
+1.  lower bits: `0111,0100`, the highest bit is `0` denoting it is the end
+2.  higher bits: `1000,0011`, the highest bit is `1` denoting it is the end
+
+Follow this algorithm:
+1.  read in one byte: `1000,0011` 
+2.  make the left-shift and mask: `0000,0000 | 0000,0011` -> `0000,0011`
+3.  read in one byte: `0111,0100`
+4.  make the left-shift and mask: `1,100,0000 | 0,0111,0100` -> `1,1111,0100`
+5.  check the current byte `0100,0100` is less than `0x7f == 0111,1111`
+6.  return the number `1,1111,0100`
+
+{{% /fold %}}
+
+
 # References
 
 [1]: https://en.wikipedia.org/wiki/Acoustics#Early_research_in_acoustics
@@ -242,3 +328,14 @@ There are a lot compressed format to reduce the size of audio files. Mainly ther
 [16]: https://en.wikipedia.org/wiki/WAV
 [17]: https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.read.html
 [18]: https://en.wikipedia.org/wiki/Audio_file_format
+[19]: https://en.wikipedia.org/wiki/MIDI
+[20]: https://www.jianshu.com/p/31d02765e1ec
+[21]: https://www.cs.cmu.edu/~music/cmsip/readings/MIDI%20tutorial%20for%20programmers.html
+
+
+1.  [wikipedia.org/Acoustics](https://en.wikipedia.org/wiki/Acoustics)
+1.  [quora.com/Why-isnt-the-transverse-wave-produced-in-liquid-and-gases](https://www.quora.com/Why-isnt-the-transverse-wave-produced-in-liquid-and-gases)
+2.  [music and computers book](http://musicandcomputersbook.com/)
+3.  [简书@AlanWong: 如何看懂一份MIDI文件](https://www.jianshu.com/p/31d02765e1ec)
+4.  [All You Need for Music Software Development](http://www.music-software-development.com/)
+5.  [Mido - MIDI Objects for Python](https://mido.readthedocs.io/en/latest/index.html)
