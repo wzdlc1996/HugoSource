@@ -31,7 +31,31 @@ $$
 
 Note that since $\bm{K}$ is a hermitian matrix, the unitarity of $\bm{P}$ preserves the fermionic anti-commutation as $\{\hat x_i, \hat x_j^\dagger\} = \delta_{ij}$ .
 
+{{% fold "Proof: anti-commutation rule" %}}
+
+We check the anti-commutation rule is not broken by the unitary diagonalization matrix $\bm{P}$. We note that the anti-commutation rule for $\{\hat x_i, \hat x_j\}$ and their conjugation transpose is automatically preserved by any linear transformations that do not mix the annihilation and creation operators. 
+
+$$
+\begin{aligned}
+\{\hat x_i, \hat x_j^\dagger\} &= \sum_{l, m}\{\hat c_l P_{li}, \hat c_m^\dagger P_{mj}^*\} \\
+&= \sum_{l, m} \{\hat c_l, \hat c_m^\dagger\} P_{li} P_{mj}^* \\
+&=\sum_{l,m} \delta_{lm} P_{li} P_{mj}^* \\
+&=(\bm{P}\bm{P}^\dagger)_{ji} \\
+&= \delta_{ij}.
+\end{aligned}
+$$
+
+q.e.d.
+
+{{% /fold %}}
+
 # Quantum Statistical Mechanics
+
+In quantum statistical mechanics, we usually focus on the expectation value of various operators on the thermal state. Usually, we care about the mixed state of free fermions with density operator
+
+$$
+\hat \rho = \frac 1 {Z} e^{-\beta \hat H} = \frac 1 Z \exp\Big(-\beta \sum_{i,j=1}^N K_{ij} \hat c_i^\dagger \hat c_j\Big).
+$$
 
 # Quantum Entanglement
 
