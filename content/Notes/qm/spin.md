@@ -87,7 +87,7 @@ $$\bm{R}_{\bm{n}}(\theta) = e^{\theta \bm{A}_{\bm{n}}} $$
     $$\bm{R}=\bm{R}_{\bm{e}_z}(\alpha)\bm{R}_{\bm{e}_y}(\beta)\bm{R}_{\bm{e}_z}(\gamma)$$
     
 
-    Where $\alpha\in[0,\pi), \beta\in[0,\pi), \gamma\in[0,2\pi)$ .
+    Where $\alpha\in[0,2\pi), \beta\in[0,\pi), \gamma\in[0,2\pi)$ .
 
     {{<fold "Matrix form">}}
 Rotations around $z$ and $y$ axis are explicitly:
