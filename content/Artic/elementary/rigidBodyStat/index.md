@@ -96,7 +96,12 @@ $$
 对刚体构型的描述尽管被简化为矩阵 $\bm{A}$, 但事实上我们并不需要 $3\times 3$ 个实数来描述它. 作为正交矩阵, 事实上只需要 $3$ 个独立参数就能够达成完整描述. 直观地, 任何转动都等同于对某个轴的一次转动, 因此两个参数确定轴的方向, 一个参数确定角度即可给出结果. 但更常用的我们会选择 Euler 角参数. 其几何定义可以参看 [wikipedia/Euler_angles](https://en.wikipedia.org/wiki/Euler_angles), 我们这里相对分析地给出它们. 对于任意的正交矩阵, 都能够分解为逐次的 $z-y-z$ 转动
 
 $$
-\bm{A}(t) = \bm{R}_z(\gamma) \bm{R}_y(\beta) \bm{R}_z(\alpha) = 
+\bm{A}(t) = \bm{R}_z(\alpha) \bm{R}_y(\beta) \bm{R}_z(\gamma) = 
+\begin{bmatrix}
+\cos \alpha & -\sin \alpha & 0 \\
+\sin \alpha & \cos \alpha & 0 \\
+0 & 0 & 1
+\end{bmatrix}
 \begin{bmatrix}
 \cos \gamma & -\sin \gamma & 0 \\
 \sin \gamma & \cos \gamma & 0 \\
@@ -106,43 +111,50 @@ $$
 \cos \beta & 0 & \sin \beta  \\
 0 & 1 & 0 \\
 -\sin \beta & 0 & \cos \beta 
-\end{bmatrix}
-\begin{bmatrix}
-\cos \alpha & -\sin \alpha & 0 \\
-\sin \alpha & \cos \alpha & 0 \\
-0 & 0 & 1
 \end{bmatrix}.
 $$
 
-我们关心角速度的三个分量是如何和 Euler 角的时间导数联系起来的, 按照角速度的定义, 我们计算
+注意在实际的 Euler 角定义的转动中, 第二个 y 转动和第三个 z 转动的轴是固连刚体的轴. 因此应当是:
+
+$$
+\bm{R}_{z''}(\gamma)\bm{R}_{y'}(\beta)\bm{R}_z(\alpha) = \bm{R}_z(\alpha)\bm{R}_{y}(\beta)\bm{R}_{z}(\gamma)\bm{R}_{y}(\beta)^T\bm{R}_z(\alpha)^T\bm{R}_z(\alpha)\bm{R}_{y}(\beta)\bm{R}_z(\alpha)^T\bm{R}_z(\alpha) = \bm{R}_z(\alpha) \bm{R}_y(\beta) \bm{R}_z(\gamma).
+$$
+
+其中我们使用转动复合的如下性质:
+
+$$
+\bm{R}\bm{R}_{\bm{n}}(\theta) \bm{R}^T = \bm{R}_{\bm{R}\bm{n}}(\theta).
+$$
+
+它不难从 $\bm{R}_{\bm{n}}(\theta)$ 的谱分解: $\bm{R}_{\bm{n}}(\theta) = \bm{n}\bm{n}^T + ...$ 得到: $\bm{R}\bm{R}_{\bm{n}}(\theta) \bm{R}^T$ 对应于本征值为 $1$ 的方向(转动轴)是 $\bm{R}\bm{n}$, 因此有 $\bm{R}_{y'}(\beta) = \bm{R}_z(\alpha)\bm{R}_{y}(\beta)\bm{R}_z(\alpha)^T$ 和 $\bm{R}_{z''}(\gamma) = \bm{R}_z(\alpha)\bm{R}_{y}(\beta)\bm{R}_{z}(\gamma)\bm{R}_{y}(\beta)^T\bm{R}_z(\alpha)^T$ 我们关心角速度的三个分量是如何和 Euler 角的时间导数联系起来的, 按照角速度的定义, 我们计算
 
 $$
 \begin{aligned}
-\frac {\td \bm{A}(t)} {\td t} \bm{A}(t)^T &= \frac {\td \bm{R}_z(\gamma) \bm{R}_y(\beta) \bm{R}_z(\alpha)} {\td t} \bm{R}_z(-\alpha) \bm{R}_y(-\beta) \bm{R}_z(-\gamma) \\
-&=\frac {\td \bm{R}_z(\gamma)} {\td t} \bm{R}_z(-\gamma) + \bm{R}_z(\gamma) \frac {\td \bm{R}_y(\beta)} {\td t} \bm{R}_y(-\beta) \bm{R}_z(-\gamma) \\
-&\indent + \bm{R}_z(\gamma) \bm{R}_y(\beta) \frac {\td \bm{R}_z(\alpha)} {\td t} \bm{R}_z(-\alpha)\bm{R}_y(-\beta) \bm{R}_z(-\gamma) \\
-&= \dot{\gamma}
+\frac {\td \bm{A}(t)} {\td t} \bm{A}(t)^T &= \frac {\td \bm{R}_z(\alpha) \bm{R}_y(\beta) \bm{R}_z(\gamma)} {\td t} \bm{R}_z(-\gamma) \bm{R}_y(-\beta) \bm{R}_z(-\alpha) \\
+&=\frac {\td \bm{R}_z(\alpha)} {\td t} \bm{R}_z(-\alpha) + \bm{R}_z(\alpha) \frac {\td \bm{R}_y(\beta)} {\td t} \bm{R}_y(-\beta) \bm{R}_z(-\alpha) \\
+&\indent + \bm{R}_z(\alpha) \bm{R}_y(\beta) \frac {\td \bm{R}_z(\gamma)} {\td t} \bm{R}_z(-\gamma)\bm{R}_y(-\beta) \bm{R}_z(-\alpha) \\
+&= \dot{\alpha}
 \begin{bmatrix}
 0 & -1 & 0\\ 
 1 & 0 & 0 \\
 0 & 0 & 0
 \end{bmatrix}
-+\dot{\beta} \bm{R}_z(\gamma)\begin{bmatrix}
++\dot{\beta} \bm{R}_z(\alpha)\begin{bmatrix}
 0 & 0 & 1\\ 
 0 & 0 & 0 \\
 -1 & 0 & 0
-\end{bmatrix} \bm{R}_z(-\gamma) \\
-&\indent + \dot{\alpha }\bm{R}_z(\gamma) \bm{R}_y(\beta) 
+\end{bmatrix} \bm{R}_z(-\alpha) \\
+&\indent + \dot{\gamma }\bm{R}_z(\alpha) \bm{R}_y(\beta) 
 \begin{bmatrix}
 0 & -1 & 0\\ 
 1 & 0 & 0 \\
 0 & 0 & 0
 \end{bmatrix}
-\bm{R}_y(-\beta) \bm{R}_z(-\gamma) \\
+\bm{R}_y(-\beta) \bm{R}_z(-\alpha) \\
 &= \begin{bmatrix}
-0 & -\dot{\gamma} - \dot{\alpha} \cos\beta & \dot{\beta} \cos\gamma +\dot{\alpha}\sin\beta \sin\gamma \\
-\dot{\gamma} + \dot{\alpha}\cos\beta & 0 & \dot{\beta}\sin\gamma - \dot{\alpha}\cos\gamma \sin \beta \\
--\dot{\beta} \cos\gamma -\dot{\alpha}\sin\beta \sin\gamma & -\dot{\beta}\sin\gamma + \dot{\alpha}\cos\gamma \sin \beta & 0
+0 & -\dot{\alpha} - \dot{\gamma} \cos\beta & \dot{\beta} \cos\alpha +\dot{\gamma}\sin\beta \sin\alpha \\
+\dot{\alpha} + \dot{\gamma}\cos\beta & 0 & \dot{\beta}\sin\alpha - \dot{\gamma}\cos\alpha \sin \beta \\
+-\dot{\beta} \cos\alpha -\dot{\gamma}\sin\beta \sin\alpha & -\dot{\beta}\sin\alpha + \dot{\gamma}\cos\alpha \sin \beta & 0
 \end{bmatrix}
 \end{aligned}
 $$
@@ -154,12 +166,12 @@ $$
 \omega_x \\ \omega_y \\ \omega_z
 \end{bmatrix} = 
 \begin{bmatrix}
-\cos\gamma \sin \beta & -\sin\gamma & 0 \\
-\sin\gamma \sin \beta & \cos\gamma & 0 \\
+\cos\alpha \sin \beta & -\sin\alpha & 0 \\
+\sin\alpha \sin \beta & \cos\alpha & 0 \\
 \cos\beta & 0 & 1
 \end{bmatrix}
 \begin{bmatrix}
-\dot{\alpha} \\ \dot{\beta} \\ \dot{\gamma}
+\dot{\gamma} \\ \dot{\beta} \\ \dot{\alpha}
 \end{bmatrix}.
 $$
 
@@ -167,8 +179,8 @@ $$
 
 $$
 \det \begin{bmatrix}
-\cos\gamma \sin \beta & -\sin\gamma & 0 \\
-\sin\gamma \sin \beta & \cos\gamma & 0 \\
+\cos\alpha \sin \beta & -\sin\alpha & 0 \\
+\sin\alpha \sin \beta & \cos\alpha & 0 \\
 \cos\beta & 0 & 1
 \end{bmatrix} = \sin \beta.
 $$
