@@ -103,14 +103,14 @@ $$
 0 & 0 & 1
 \end{bmatrix}
 \begin{bmatrix}
-\cos \gamma & -\sin \gamma & 0 \\
-\sin \gamma & \cos \gamma & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
 \cos \beta & 0 & \sin \beta  \\
 0 & 1 & 0 \\
 -\sin \beta & 0 & \cos \beta 
+\end{bmatrix}
+\begin{bmatrix}
+\cos \gamma & -\sin \gamma & 0 \\
+\sin \gamma & \cos \gamma & 0 \\
+0 & 0 & 1
 \end{bmatrix}.
 $$
 
