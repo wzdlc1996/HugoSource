@@ -80,6 +80,11 @@ pygmentsuseclasses         = true
     # analytics
     googleAnalytics = "UA-128644147-1"
 
+    # algolia search
+    algolia_appid = "916YRU5QNA"
+    algolia_pubkey  = "fd296abe6c1266d8c198ff2672a1bbae"
+    algolia_indexName = "myblog"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
