@@ -4,7 +4,7 @@ date: 2023-03-05T00:00:00+08:00
 draft: false
 tags: ["data-science", "python"]
 categories: ["Techs"]
-toc: false
+toc: true
 summary: "This note roughly introduces the development in natural language processing during the past decades. The RNN, LSTM, attention, and Transformer would be covered. Then, the technologies behind the recent popular ChatGPT will be shared, including GPT-series models, Prompts, and how to train language model fitting human intent"
 ---
 

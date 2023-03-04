@@ -4,7 +4,7 @@ date: 2021-06-24T00:21:44+08:00
 draft: true
 tags: ["data-science", "python"]
 categories: ["Techs"]
-toc: false
+toc: true
 summary: "The basic knowledge about audio data in computer. Including audio data representation, main audio file format, and simple audio processing. We will use python to illustrate these technologies. The hardware aspects will not be covered in this essay."
 ---
 
