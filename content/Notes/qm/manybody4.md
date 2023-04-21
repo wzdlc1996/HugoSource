@@ -17,16 +17,22 @@ _[Definition]_ : `External source` is introduced into the system by adding a ter
 
 1.  **Linear Source**:
 
-    $$\hat S=\sum_\alpha \int \td \tau \big\{J_\alpha^*(\tau)\hat a_\alpha(\tau)+\hat a_\alpha^\dagger(\tau)J_\alpha(\tau)\big\}$$
+    $$
+    \hat S=\sum_\alpha \int \td \tau \big\{J_\alpha^*(\tau)\hat a_\alpha(\tau)+\hat a_\alpha^\dagger(\tau)J_\alpha(\tau)\big\}
+    $$
 
     in which \(J(\tau)\) is Grassmann function for Fermions
 
 2.  **Bilinear Source**
 
-    $$\hat S=\sum_{\alpha,\beta}\int \td\tau_1\td\tau_2 \Big\{\hat a_\alpha^\dagger(\tau_1)\hat a_\beta(\tau_2) V_{\alpha,\beta}(\tau_1,\tau_2)+\hat a_\alpha^\dagger(\tau_1)\hat a_\beta^\dagger (\tau_2)\Delta_{\alpha,\beta}(\tau_1,\tau_2)+\text{c.c.}\Big\}$$
+    $$
+    \hat S=\sum_{\alpha,\beta}\int \td\tau_1\td\tau_2 \Big\{\hat a_\alpha^\dagger(\tau_1)\hat a_\beta(\tau_2) V_{\alpha,\beta}(\tau_1,\tau_2)+\hat a_\alpha^\dagger(\tau_1)\hat a_\beta^\dagger (\tau_2)\Delta_{\alpha,\beta}(\tau_1,\tau_2)+\text{c.c.}\Big\}
+    $$
 
     in which \(V_{\alpha,\beta}\) is a scalar potential, and \(\Delta_{\alpha,\beta}\) is the pairing potential which appears in the superconductivity theory. In the following discussion we will focus on the scalar potential source.
 
 _[Definition]_ : `Generating functional`: is defined as the quotient of the (grand) partition function with external field \(V\) over the (grand) partition function with external field \(V=0\):
 
-$$\mathscr{G}[V]:= \frac {\mathcal{Z}[V]} {\mathcal{Z}[V=0]}=$$
+$$
+\mathscr{G}[V]:= \frac {\mathcal{Z}[V]} {\mathcal{Z}[V=0]}=
+$$
